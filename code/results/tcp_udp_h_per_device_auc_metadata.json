@@ -1,0 +1,6 @@
+{
+  "split": "reconstructed Stage B training split",
+  "positive_class_for_auc_udp": "gafgyt_udp",
+  "interpretation": "auc_udp near 0.5 means no within-device ranking signal; separation_auc removes direction so a value near 1 means strong within-device separation in either direction.",
+  "n_pair_train_rows": 61200
+}

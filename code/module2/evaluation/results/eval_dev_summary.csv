@@ -1,0 +1,5 @@
+config,n_cases,supported,unsupported_but_true,unsupported_and_false,total_claims,hallucination_rate,faithfulness,fabricated_number_count,numeric_token_count,fabricated_number_rate,invalid_ref_count,contextual_misuse_count,contextual_misuse_rate,factual_accuracy_mean,actionability_device_specific_mean,actionability_phases_separated_mean,actionability_matches_category_mean,hallucination_check_mean,n_fallback,n_needs_review,gate1_register_mapping_pass_rate,gate2_hedged_disclosures_pass_rate,gate3_no_ordering_language_pass_rate,gate4_probability_consistency_pass_rate,all_gates_pass_rate
+full_rag,12,0,144,12,156,0.07692307692307693,0.0,0,32,0.0,0,0,0.0,4.0,1.0,1.0,1.0,1.0,0,0,1.0,1.0,1.0,1.0,1.0
+naive_rag,12,0,144,12,156,0.07692307692307693,0.0,0,32,0.0,0,0,0.0,4.0,1.0,1.0,1.0,1.0,0,0,1.0,1.0,1.0,1.0,1.0
+no_rag,12,0,144,12,156,0.07692307692307693,0.0,0,32,0.0,0,0,0.0,4.0,1.0,1.0,1.0,1.0,0,0,1.0,1.0,1.0,1.0,1.0
+self_check,12,0,144,12,156,0.07692307692307693,0.0,0,32,0.0,0,0,0.0,4.0,1.0,1.0,1.0,1.0,0,0,1.0,1.0,1.0,1.0,1.0

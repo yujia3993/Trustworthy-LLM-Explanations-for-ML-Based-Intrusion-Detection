@@ -1,0 +1,14 @@
+{
+  "test_fraction": 0.2,
+  "calib_fraction": 0.15,
+  "random_state": 42,
+  "n_test": 89000,
+  "recomputed_accuracy": 0.8975280898876404,
+  "recomputed_macro_f1": 0.9000000108391407,
+  "saved_report_found": true,
+  "saved_accuracy": 0.8975280898876404,
+  "saved_macro_f1": 0.9000000108391407,
+  "accuracy_abs_diff": 0.0,
+  "macro_f1_abs_diff": 0.0,
+  "matches_saved_report": true
+}

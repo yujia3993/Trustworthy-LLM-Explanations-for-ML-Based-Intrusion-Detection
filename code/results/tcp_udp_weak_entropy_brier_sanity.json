@@ -1,0 +1,12 @@
+{
+  "n_weak_test": 5968,
+  "brier_tcp": 0.023284947527915278,
+  "brier_udp": 0.023284947527915278,
+  "brier_abs_diff": 0.0,
+  "max_abs_p_tcp_plus_p_udp_minus_1": 0.0,
+  "mean_abs_p_tcp_plus_p_udp_minus_1": 0.0,
+  "max_abs_entropy_minus_binary_entropy_p_tcp": 2.486791605971206e-10,
+  "mean_abs_entropy_minus_binary_entropy_p_tcp": 2.4820727783962044e-10,
+  "entropy_mean": 0.1120005549110871,
+  "binary_entropy_p_tcp_mean": 0.11200055466287982
+}

@@ -1,0 +1,8 @@
+true_class,pred_class,n
+gafgyt_udp,gafgyt_tcp,7082
+gafgyt_tcp,gafgyt_udp,2029
+gafgyt_junk,gafgyt_combo,4
+benign,gafgyt_tcp,2
+gafgyt_udp,benign,1
+mirai_scan,benign,1
+mirai_udpplain,mirai_udp,1

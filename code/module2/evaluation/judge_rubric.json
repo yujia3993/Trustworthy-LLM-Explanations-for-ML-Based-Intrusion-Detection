@@ -1,0 +1,31 @@
+{
+  "rubric_version": "1.0.0",
+  "eval_prompt_version": "1.0.0",
+  "claim_labels": ["supported", "unsupported_but_true", "unsupported_and_false"],
+  "claim_types": ["feature", "knowledge", "procedural"],
+  "report_scores": {
+    "factual_accuracy": {"type": "integer", "min": 1, "max": 5},
+    "actionability_device_specific": {"type": "integer", "enum": [0, 1]},
+    "actionability_phases_separated": {"type": "integer", "enum": [0, 1]},
+    "actionability_matches_category": {"type": "integer", "enum": [0, 1]},
+    "hallucination_check": {"type": "integer", "min": 0},
+    "comments": {"type": "string"}
+  },
+  "feature_claim_machine_verdicts": {
+    "fabricated_number": "unsupported_and_false",
+    "correct_value_valid_citation": "supported",
+    "correct_value_missing_or_invalid_citation": "unsupported_but_true"
+  },
+  "rq3": {
+    "n_cases": 20,
+    "stratification": {"hedged_pair_min": 8, "assertive_error_min": 2},
+    "agreement_primary": "cohens_kappa on three-way claim labels",
+    "agreement_secondary": "cohens_kappa on actionability sub-criteria",
+    "agreement_ordinal": "linear-weighted kappa on factual_accuracy",
+    "caveats": ["n=20 wide CI", "second rater sought; single-rater fallback disclosed"]
+  },
+  "judge_independence": {
+    "rule": "judge model family must differ from generator/self-checker family",
+    "env": ["JUDGE_API_KEY", "JUDGE_BASE_URL", "JUDGE_MODEL"]
+  }
+}

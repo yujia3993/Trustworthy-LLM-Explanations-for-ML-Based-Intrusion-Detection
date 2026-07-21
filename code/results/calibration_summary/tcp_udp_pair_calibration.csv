@@ -1,0 +1,2 @@
+target,n_samples,n_positive,prevalence,ece_quantile,brier,min_probability,max_probability
+gafgyt_tcp_or_udp,89000,18000,0.20224719101123595,4.4106788706411644e-05,3.29266889393851e-05,0.0,1.0

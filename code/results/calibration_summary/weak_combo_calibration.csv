@@ -1,0 +1,3 @@
+slice,class,ece_quantile,brier,n_samples,n_positive,n_bins
+weak_devices_true_gafgyt_tcp_udp,gafgyt_tcp,0.013122710035724183,0.2497914477687694,5968,2961,10
+weak_devices_true_gafgyt_tcp_udp,gafgyt_udp,0.01284935880048725,0.24982768039514555,5968,3007,10

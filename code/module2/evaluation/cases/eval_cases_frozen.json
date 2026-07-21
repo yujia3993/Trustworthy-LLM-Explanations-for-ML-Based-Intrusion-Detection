@@ -1,0 +1,6567 @@
+[
+  {
+    "case_id": "assertive_correct-30000",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 0.0,
+        "benign_p99": 163.165038525,
+        "benign_std": 103.9426348544,
+        "feature": "HH_L0.1_covariance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 1.0717349285,
+        "benign_p99": 3.0647740801,
+        "benign_std": 0.516432683,
+        "feature": "HH_L0.1_weight",
+        "screen": "discriminative",
+        "value": 7742.7041308584
+      },
+      {
+        "benign_median": 1.9846267045,
+        "benign_p99": 5.1715117341,
+        "benign_std": 1.4791793135,
+        "feature": "MI_dir_L3_weight",
+        "screen": "discriminative",
+        "value": 299.9102682986
+      },
+      {
+        "benign_median": 101.9995081,
+        "benign_p99": 102.0,
+        "benign_std": 17.3639220927,
+        "feature": "MI_dir_L5_mean",
+        "screen": "contextual",
+        "value": 74.0073235016
+      },
+      {
+        "benign_median": 144.2497834,
+        "benign_p99": 144.2497834,
+        "benign_std": 18.6583266723,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2675690908
+      }
+    ],
+    "label_type": "gafgyt_combo",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_combo",
+      "sample_id": 30000,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_combo"
+  },
+  {
+    "case_id": "assertive_correct-85009",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": -0.354150511,
+        "benign_p99": 1316.80504205,
+        "benign_std": 4784.0644499043,
+        "feature": "HH_L0.1_covariance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 8.6769428935,
+        "benign_p99": 14.1577080207,
+        "benign_std": 3.6722368707,
+        "feature": "HH_L0.01_weight",
+        "screen": "discriminative",
+        "value": 28337.4586589452
+      },
+      {
+        "benign_median": 1.000382886,
+        "benign_p99": 2.2898430674,
+        "benign_std": 0.3456249327,
+        "feature": "MI_dir_L3_weight",
+        "screen": "discriminative",
+        "value": 249.579141782
+      },
+      {
+        "benign_median": 144.72499045,
+        "benign_p99": 645.997950863,
+        "benign_std": 145.828830556,
+        "feature": "MI_dir_L5_mean",
+        "screen": "contextual",
+        "value": 74.0193266673
+      },
+      {
+        "benign_median": 382.59997555,
+        "benign_p99": 765.518873063,
+        "benign_std": 184.206424014,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2664203936
+      }
+    ],
+    "label_type": "gafgyt_combo",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_combo",
+      "sample_id": 85009,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_combo"
+  },
+  {
+    "case_id": "assertive_correct-115007",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Ennio_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": -0.0,
+        "benign_p99": 2219.76094975,
+        "benign_std": 361.4320672653,
+        "feature": "HH_L0.1_covariance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 1.0,
+        "benign_p99": 2.7607072963,
+        "benign_std": 0.8760519945,
+        "feature": "HH_L3_weight",
+        "screen": "discriminative",
+        "value": 245.6974067872
+      },
+      {
+        "benign_median": 1.9975189895,
+        "benign_p99": 6.0510033877,
+        "benign_std": 1.4190894606,
+        "feature": "MI_dir_L3_weight",
+        "screen": "discriminative",
+        "value": 246.0489381693
+      },
+      {
+        "benign_median": 89.999403065,
+        "benign_p99": 235.886591934,
+        "benign_std": 32.2729499605,
+        "feature": "MI_dir_L5_mean",
+        "screen": "contextual",
+        "value": 74.0243717112
+      },
+      {
+        "benign_median": 106.91757985,
+        "benign_p99": 222.96160472,
+        "benign_std": 27.9205321945,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2675689166
+      }
+    ],
+    "label_type": "gafgyt_combo",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_combo",
+      "sample_id": 115007,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_combo"
+  },
+  {
+    "case_id": "assertive_correct-170008",
+    "case_set_version": "1.0.0",
+    "device_category": "baby_monitor",
+    "device_name": "Philips_B120N10_Baby_Monitor",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 2.8055441145,
+        "benign_p99": 17599.8896226002,
+        "benign_std": 10885.1923067206,
+        "feature": "HH_L0.1_covariance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 1.6944454735,
+        "benign_p99": 14.2596334201,
+        "benign_std": 4.1443722932,
+        "feature": "MI_dir_L3_weight",
+        "screen": "discriminative",
+        "value": 240.330054586
+      },
+      {
+        "benign_median": 117.64997755,
+        "benign_p99": 765.567125091,
+        "benign_std": 116.5620877497,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2622621297
+      },
+      {
+        "benign_median": 66.0,
+        "benign_p99": 552.015747493,
+        "benign_std": 101.1338721316,
+        "feature": "MI_dir_L5_mean",
+        "screen": "contextual",
+        "value": 74.5543163936
+      },
+      {
+        "benign_median": 0.02397221,
+        "benign_p99": 0.5609857583,
+        "benign_std": 0.2035479224,
+        "feature": "HH_L0.1_pcc",
+        "screen": "contextual",
+        "value": 4.2e-09
+      }
+    ],
+    "label_type": "gafgyt_combo",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "gafgyt_combo",
+      "sample_id": 170008,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_combo"
+  },
+  {
+    "case_id": "assertive_correct-225005",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_737E_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 1.841699948,
+        "benign_p99": 92.416818828,
+        "benign_std": 24.0294491575,
+        "feature": "HH_L0.1_weight",
+        "screen": "discriminative",
+        "value": 7679.2140689359
+      },
+      {
+        "benign_median": -3e-10,
+        "benign_p99": 22484.7153407,
+        "benign_std": 9540.1606598822,
+        "feature": "HH_L0.1_covariance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 1.992478808,
+        "benign_p99": 61.5196228997,
+        "benign_std": 16.5114922753,
+        "feature": "MI_dir_L3_weight",
+        "screen": "discriminative",
+        "value": 248.030278717
+      },
+      {
+        "benign_median": 89.779794635,
+        "benign_p99": 181.86707591,
+        "benign_std": 41.7514731614,
+        "feature": "MI_dir_L5_mean",
+        "screen": "contextual",
+        "value": 74.0430134598
+      },
+      {
+        "benign_median": 108.16133995,
+        "benign_p99": 592.731945996,
+        "benign_std": 120.0448292022,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2670670762
+      }
+    ],
+    "label_type": "gafgyt_combo",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_combo",
+      "sample_id": 225005,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_combo"
+  },
+  {
+    "case_id": "assertive_correct-280000",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_838_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": -0.0,
+        "benign_p99": 11765.8660864001,
+        "benign_std": 8391.3957774149,
+        "feature": "HH_L0.1_covariance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 114.0175375,
+        "benign_p99": 522.150256691,
+        "benign_std": 124.3484641887,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2666419528
+      },
+      {
+        "benign_median": 83.41834512,
+        "benign_p99": 196.980713997,
+        "benign_std": 43.1458557017,
+        "feature": "MI_dir_L5_mean",
+        "screen": "contextual",
+        "value": 100.7102574681
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 0.6380332295,
+        "benign_std": 0.1883785893,
+        "feature": "HH_L0.1_pcc",
+        "screen": "contextual",
+        "value": 7e-10
+      },
+      {
+        "benign_median": 3.053624952,
+        "benign_p99": 115.525450788,
+        "benign_std": 30.4433047438,
+        "feature": "HH_L0.1_weight",
+        "screen": "discriminative",
+        "value": 5029.1200193129
+      }
+    ],
+    "label_type": "gafgyt_combo",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "gafgyt_combo",
+      "sample_id": 280000,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_combo"
+  },
+  {
+    "case_id": "assertive_correct-310015",
+    "case_set_version": "1.0.0",
+    "device_category": "webcam",
+    "device_name": "Samsung_SNH_1011_N_Webcam",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 0.0,
+        "benign_p99": 2863.53957373,
+        "benign_std": 2901.165182676,
+        "feature": "HH_L0.1_covariance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 1.3920249935,
+        "benign_p99": 5.3491255922,
+        "benign_std": 1.2826776428,
+        "feature": "MI_dir_L3_weight",
+        "screen": "discriminative",
+        "value": 261.2178289884
+      },
+      {
+        "benign_median": 381.8109303,
+        "benign_p99": 591.826249904,
+        "benign_std": 149.3842582184,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2643012283
+      },
+      {
+        "benign_median": 245.05978935,
+        "benign_p99": 456.734823718,
+        "benign_std": 161.6197309247,
+        "feature": "MI_dir_L5_mean",
+        "screen": "contextual",
+        "value": 74.0707140708
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 0.330508624,
+        "benign_std": 0.075963185,
+        "feature": "HH_L0.1_pcc",
+        "screen": "contextual",
+        "value": 5.9e-09
+      }
+    ],
+    "label_type": "gafgyt_combo",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "gafgyt_combo",
+      "sample_id": 310015,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_combo"
+  },
+  {
+    "case_id": "assertive_correct-35003",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 1.0717349285,
+        "benign_p99": 3.0647740801,
+        "benign_std": 0.516432683,
+        "feature": "HH_L0.1_weight",
+        "screen": "discriminative",
+        "value": 7334.7427213876
+      },
+      {
+        "benign_median": 144.2497834,
+        "benign_p99": 144.2497834,
+        "benign_std": 18.6583266723,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2666980459
+      },
+      {
+        "benign_median": 1.9846267045,
+        "benign_p99": 5.1715117341,
+        "benign_std": 1.4791793135,
+        "feature": "MI_dir_L3_weight",
+        "screen": "discriminative",
+        "value": 263.6399740749
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 210.566574307,
+        "benign_std": 1.9179728784686516e+16,
+        "feature": "HH_jit_L1_variance",
+        "screen": "contextual",
+        "value": 0.8190267887
+      },
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.5186293564,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 74.5203719782
+      }
+    ],
+    "label_type": "gafgyt_junk",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_junk",
+      "sample_id": 35003,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_junk"
+  },
+  {
+    "case_id": "assertive_correct-90002",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 1.5237997815,
+        "benign_p99": 5.3444099233,
+        "benign_std": 1.2086570432,
+        "feature": "HH_L0.1_weight",
+        "screen": "discriminative",
+        "value": 7008.3867104909
+      },
+      {
+        "benign_median": 2.4263250005,
+        "benign_p99": 6.2574028273,
+        "benign_std": 1.3727313324,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 7032.865550655
+      },
+      {
+        "benign_median": 3.53e-05,
+        "benign_p99": 880.077861504,
+        "benign_std": 2.0571958522836416e+16,
+        "feature": "HH_jit_L1_variance",
+        "screen": "contextual",
+        "value": 24.2777668813
+      },
+      {
+        "benign_median": 382.59997555,
+        "benign_p99": 765.518873063,
+        "benign_std": 184.206424014,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2660662489
+      },
+      {
+        "benign_median": 200.8874374,
+        "benign_p99": 261.386906612,
+        "benign_std": 30.8022764899,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 74.3490488957
+      }
+    ],
+    "label_type": "gafgyt_junk",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_junk",
+      "sample_id": 90002,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_junk"
+  },
+  {
+    "case_id": "assertive_correct-120019",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Ennio_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 1.1478134445,
+        "benign_p99": 4.0433458242,
+        "benign_std": 2.9674420924,
+        "feature": "HH_L0.1_weight",
+        "screen": "discriminative",
+        "value": 7080.6775983634
+      },
+      {
+        "benign_median": 3.3200597825,
+        "benign_p99": 12.4957634615,
+        "benign_std": 4.7348327455,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 7105.335702757
+      },
+      {
+        "benign_median": 106.91757985,
+        "benign_p99": 222.96160472,
+        "benign_std": 27.9205321945,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2662306076
+      },
+      {
+        "benign_median": 7.6e-09,
+        "benign_p99": 1.470500000000011e+16,
+        "benign_std": 2.1412286783287444e+16,
+        "feature": "HH_jit_L1_variance",
+        "screen": "contextual",
+        "value": 11.4154834362
+      },
+      {
+        "benign_median": 3.3200597825,
+        "benign_p99": 12.4957634615,
+        "benign_std": 4.7348326271,
+        "feature": "H_L0.1_weight",
+        "screen": "discriminative",
+        "value": 7105.335702757
+      }
+    ],
+    "label_type": "gafgyt_junk",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "gafgyt_junk",
+      "sample_id": 120019,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_junk"
+  },
+  {
+    "case_id": "assertive_correct-175000",
+    "case_set_version": "1.0.0",
+    "device_category": "baby_monitor",
+    "device_name": "Philips_B120N10_Baby_Monitor",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 1.026089552,
+        "benign_p99": 9.4861177981,
+        "benign_std": 2.8191173984,
+        "feature": "HH_L5_weight",
+        "screen": "discriminative",
+        "value": 166.9280615267
+      },
+      {
+        "benign_median": 2.0652008075,
+        "benign_p99": 22.8290355007,
+        "benign_std": 8.333986919,
+        "feature": "MI_dir_L1_weight",
+        "screen": "discriminative",
+        "value": 838.628885941
+      },
+      {
+        "benign_median": 1.856265571,
+        "benign_p99": 63919287000000.75,
+        "benign_std": 1.3813232457607242e+16,
+        "feature": "HH_jit_L1_variance",
+        "screen": "contextual",
+        "value": 37795107214505.5
+      },
+      {
+        "benign_median": 117.64997755,
+        "benign_p99": 765.567125091,
+        "benign_std": 116.5620877497,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2612247665
+      },
+      {
+        "benign_median": 71.111999015,
+        "benign_p99": 277.523422909,
+        "benign_std": 95.1881987373,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 74.1480322898
+      }
+    ],
+    "label_type": "gafgyt_junk",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_junk",
+      "sample_id": 175000,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_junk"
+  },
+  {
+    "case_id": "assertive_correct-230012",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_737E_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 1.000000014,
+        "benign_p99": 49.6341261757,
+        "benign_std": 13.6364769296,
+        "feature": "HH_L5_weight",
+        "screen": "discriminative",
+        "value": 171.7690455022
+      },
+      {
+        "benign_median": 2.000146642,
+        "benign_p99": 80.3548384714,
+        "benign_std": 21.0660638299,
+        "feature": "MI_dir_L1_weight",
+        "screen": "discriminative",
+        "value": 831.5979216681
+      },
+      {
+        "benign_median": 0.4675193535,
+        "benign_p99": 5414996.803520336,
+        "benign_std": 1.8912505992397948e+16,
+        "feature": "HH_jit_L1_variance",
+        "screen": "discriminative",
+        "value": 65286183354868.33
+      },
+      {
+        "benign_median": 108.16133995,
+        "benign_p99": 592.731945996,
+        "benign_std": 120.0448292022,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2600083303
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 20314.5341656,
+        "benign_std": 3925.2877642896,
+        "feature": "HH_L0.01_covariance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_junk",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "gafgyt_junk",
+      "sample_id": 230012,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_junk"
+  },
+  {
+    "case_id": "assertive_correct-285001",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_838_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 3.053624952,
+        "benign_p99": 115.525450788,
+        "benign_std": 30.4433047438,
+        "feature": "HH_L0.1_weight",
+        "screen": "discriminative",
+        "value": 7282.4921603931
+      },
+      {
+        "benign_median": 8.7226257975,
+        "benign_p99": 123.341242178,
+        "benign_std": 33.2728127562,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 7309.4395734056
+      },
+      {
+        "benign_median": 114.0175375,
+        "benign_p99": 522.150256691,
+        "benign_std": 124.3484641887,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2666169259
+      },
+      {
+        "benign_median": 0.757133562,
+        "benign_p99": 104164.5808480105,
+        "benign_std": 7950197008052360.0,
+        "feature": "HH_jit_L1_variance",
+        "screen": "contextual",
+        "value": 1.3700659525
+      },
+      {
+        "benign_median": 103.7066793,
+        "benign_p99": 159.186801653,
+        "benign_std": 26.2720084156,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 74.529985717
+      }
+    ],
+    "label_type": "gafgyt_junk",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_junk",
+      "sample_id": 285001,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_junk"
+  },
+  {
+    "case_id": "assertive_correct-315007",
+    "case_set_version": "1.0.0",
+    "device_category": "webcam",
+    "device_name": "Samsung_SNH_1011_N_Webcam",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 2.24263253,
+        "benign_p99": 50.3548237322,
+        "benign_std": 8.4564200154,
+        "feature": "HH_L0.1_weight",
+        "screen": "discriminative",
+        "value": 7478.6514400915
+      },
+      {
+        "benign_median": 381.8109303,
+        "benign_p99": 591.826249904,
+        "benign_std": 149.3842582184,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2654339174
+      },
+      {
+        "benign_median": 1.3920249935,
+        "benign_p99": 5.3491255922,
+        "benign_std": 1.2826776428,
+        "feature": "MI_dir_L3_weight",
+        "screen": "discriminative",
+        "value": 321.2967489389
+      },
+      {
+        "benign_median": 0.017671034,
+        "benign_p99": 450759.2152570295,
+        "benign_std": 2.054792133733171e+16,
+        "feature": "HH_jit_L1_variance",
+        "screen": "contextual",
+        "value": 0.3289038214
+      },
+      {
+        "benign_median": 284.99534845,
+        "benign_p99": 308.646702106,
+        "benign_std": 37.1267855611,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 74.5053563523
+      }
+    ],
+    "label_type": "gafgyt_junk",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_junk",
+      "sample_id": 315007,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_junk"
+  },
+  {
+    "case_id": "assertive_correct-40013",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.5186293564,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 76.3665854419
+      },
+      {
+        "benign_median": 102.0,
+        "benign_p99": 102.0,
+        "benign_std": 13.5048821417,
+        "feature": "HH_L0.1_mean",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 144.2497834,
+        "benign_p99": 144.2497834,
+        "benign_std": 18.6583266723,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 4.2825315045,
+        "benign_p99": 7.767849933,
+        "benign_std": 1.6379988343,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 692.5254944644
+      },
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.6116131856,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "discriminative",
+        "value": 1467.5118911437
+      }
+    ],
+    "label_type": "gafgyt_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "gafgyt_scan",
+      "sample_id": 40013,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_scan"
+  },
+  {
+    "case_id": "assertive_correct-95006",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 200.8874374,
+        "benign_p99": 261.386906612,
+        "benign_std": 30.8022764899,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 76.2077583057
+      },
+      {
+        "benign_median": 229.50393525,
+        "benign_p99": 468.025697762,
+        "benign_std": 121.1390586045,
+        "feature": "HH_L0.1_mean",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 3.53e-05,
+        "benign_p99": 880.077861504,
+        "benign_std": 2.0571958522836416e+16,
+        "feature": "HH_jit_L1_variance",
+        "screen": "discriminative",
+        "value": 2.335113384091426e+17
+      },
+      {
+        "benign_median": 382.59997555,
+        "benign_p99": 765.518873063,
+        "benign_std": 184.206424014,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 2.4263250005,
+        "benign_p99": 6.2574028273,
+        "benign_std": 1.3727313324,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 1014.1466620701
+      }
+    ],
+    "label_type": "gafgyt_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_scan",
+      "sample_id": 95006,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_scan"
+  },
+  {
+    "case_id": "assertive_correct-125012",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Ennio_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 82.201726635,
+        "benign_p99": 106.524968318,
+        "benign_std": 11.4388583581,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 76.4701999133
+      },
+      {
+        "benign_median": 83.72299131,
+        "benign_p99": 202.086251724,
+        "benign_std": 25.7726681118,
+        "feature": "HH_L0.1_mean",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 7.6e-09,
+        "benign_p99": 1.470500000000011e+16,
+        "benign_std": 2.1412286783287444e+16,
+        "feature": "HH_jit_L1_variance",
+        "screen": "contextual",
+        "value": 4254426358288527.0
+      },
+      {
+        "benign_median": 106.91757985,
+        "benign_p99": 222.96160472,
+        "benign_std": 27.9205321945,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 3.3200597825,
+        "benign_p99": 12.4957634615,
+        "benign_std": 4.7348327455,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 1206.0445715743
+      }
+    ],
+    "label_type": "gafgyt_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_scan",
+      "sample_id": 125012,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_scan"
+  },
+  {
+    "case_id": "assertive_correct-180002",
+    "case_set_version": "1.0.0",
+    "device_category": "baby_monitor",
+    "device_name": "Philips_B120N10_Baby_Monitor",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 71.111999015,
+        "benign_p99": 277.523422909,
+        "benign_std": 95.1881987373,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 75.9980264139
+      },
+      {
+        "benign_median": 71.296305515,
+        "benign_p99": 415.495550538,
+        "benign_std": 94.5721666366,
+        "feature": "HH_L0.1_mean",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 1.856265571,
+        "benign_p99": 63919287000000.75,
+        "benign_std": 1.3813232457607242e+16,
+        "feature": "HH_jit_L1_variance",
+        "screen": "discriminative",
+        "value": 2.223029715520988e+17
+      },
+      {
+        "benign_median": 117.64997755,
+        "benign_p99": 765.567125091,
+        "benign_std": 116.5620877497,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 10.55922202,
+        "benign_p99": 60.6285991321,
+        "benign_std": 20.7991184532,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 1056.1481803098
+      }
+    ],
+    "label_type": "gafgyt_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_scan",
+      "sample_id": 180002,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_scan"
+  },
+  {
+    "case_id": "assertive_correct-235000",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_737E_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 80.51380292,
+        "benign_p99": 150.925195795,
+        "benign_std": 26.8959425214,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 77.1307449784
+      },
+      {
+        "benign_median": 83.75187579,
+        "benign_p99": 174.590369854,
+        "benign_std": 40.6802554769,
+        "feature": "HH_L0.1_mean",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 108.16133995,
+        "benign_p99": 592.731945996,
+        "benign_std": 120.0448292022,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 4.9185618455,
+        "benign_p99": 97.3685801946,
+        "benign_std": 25.4442650861,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 844.0023076049
+      },
+      {
+        "benign_median": 4.9185618455,
+        "benign_p99": 97.3685801946,
+        "benign_std": 25.4441933665,
+        "feature": "H_L0.1_weight",
+        "screen": "discriminative",
+        "value": 844.0023076049
+      }
+    ],
+    "label_type": "gafgyt_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "gafgyt_scan",
+      "sample_id": 235000,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_scan"
+  },
+  {
+    "case_id": "assertive_correct-290005",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_838_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 88.85586199,
+        "benign_p99": 178.889317109,
+        "benign_std": 42.1107827982,
+        "feature": "HH_L0.1_mean",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 103.7066793,
+        "benign_p99": 159.186801653,
+        "benign_std": 26.2720084156,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 75.1743537544
+      },
+      {
+        "benign_median": 114.0175375,
+        "benign_p99": 522.150256691,
+        "benign_std": 124.3484641887,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 8.7226257975,
+        "benign_p99": 123.341242178,
+        "benign_std": 33.2728127562,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 656.9024635547
+      },
+      {
+        "benign_median": 8.7226257975,
+        "benign_p99": 123.341242178,
+        "benign_std": 33.2728127562,
+        "feature": "H_L0.1_weight",
+        "screen": "discriminative",
+        "value": 656.9024635547
+      }
+    ],
+    "label_type": "gafgyt_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "gafgyt_scan",
+      "sample_id": 290005,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_scan"
+  },
+  {
+    "case_id": "assertive_correct-320003",
+    "case_set_version": "1.0.0",
+    "device_category": "webcam",
+    "device_name": "Samsung_SNH_1011_N_Webcam",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 284.99534845,
+        "benign_p99": 308.646702106,
+        "benign_std": 37.1267855611,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 77.4814759067
+      },
+      {
+        "benign_median": 217.15124945,
+        "benign_p99": 456.340444077,
+        "benign_std": 160.0660357114,
+        "feature": "HH_L0.1_mean",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 381.8109303,
+        "benign_p99": 591.826249904,
+        "benign_std": 149.3842582184,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 3.790071266,
+        "benign_p99": 52.9668576712,
+        "benign_std": 9.8860703545,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 772.9612570747
+      },
+      {
+        "benign_median": 3.791334693,
+        "benign_p99": 52.9668576712,
+        "benign_std": 9.8859164657,
+        "feature": "H_L0.1_weight",
+        "screen": "discriminative",
+        "value": 772.9612570747
+      }
+    ],
+    "label_type": "gafgyt_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "gafgyt_scan",
+      "sample_id": 320003,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_scan"
+  },
+  {
+    "case_id": "assertive_correct-5005",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 1.9548827805,
+        "benign_p99": 5.0109052401,
+        "benign_std": 1.4624083245,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 145.3651305776
+      },
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.5186293564,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 391.2014470605
+      },
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.606857972,
+        "feature": "H_L0.01_variance",
+        "screen": "discriminative",
+        "value": 57890.1159276639
+      },
+      {
+        "benign_median": 102.0,
+        "benign_p99": 102.0,
+        "benign_std": 17.743199032,
+        "feature": "HpHp_L0.01_mean",
+        "screen": "discriminative",
+        "value": 566.0
+      },
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.6116131856,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "discriminative",
+        "value": 57890.1159276639
+      }
+    ],
+    "label_type": "mirai_ack",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_ack",
+      "sample_id": 5005,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_ack"
+  },
+  {
+    "case_id": "assertive_correct-60001",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 200.8874374,
+        "benign_p99": 261.386906612,
+        "benign_std": 30.8022764899,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 442.4229990577
+      },
+      {
+        "benign_median": 1.0000014195,
+        "benign_p99": 2.0043353192,
+        "benign_std": 0.2411433041,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 135.216863143
+      },
+      {
+        "benign_median": 200.8874374,
+        "benign_p99": 261.386906612,
+        "benign_std": 30.8146594046,
+        "feature": "H_L0.01_mean",
+        "screen": "discriminative",
+        "value": 442.4229990577
+      },
+      {
+        "benign_median": 241.66633865,
+        "benign_p99": 314.822023386,
+        "benign_std": 88.1535097588,
+        "feature": "HpHp_L0.01_mean",
+        "screen": "discriminative",
+        "value": 566.0
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10400.622993904,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 47254.3472218314
+      }
+    ],
+    "label_type": "mirai_ack",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "mirai_ack",
+      "sample_id": 60001,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_ack"
+  },
+  {
+    "case_id": "assertive_correct-145003",
+    "case_set_version": "1.0.0",
+    "device_category": "baby_monitor",
+    "device_name": "Philips_B120N10_Baby_Monitor",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 71.111999015,
+        "benign_p99": 277.523422909,
+        "benign_std": 95.1881987373,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 390.788933644
+      },
+      {
+        "benign_median": 1.380564682,
+        "benign_p99": 10.3314980725,
+        "benign_std": 2.8638396091,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 166.0710867271
+      },
+      {
+        "benign_median": 0.0212995125,
+        "benign_p99": 79179.1827497004,
+        "benign_std": 36725.7934465245,
+        "feature": "MI_dir_L3_variance",
+        "screen": "contextual",
+        "value": 61654.2958393232
+      },
+      {
+        "benign_median": 393.6760094,
+        "benign_p99": 184009.8454610002,
+        "benign_std": 37852.6782135167,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 57954.376258936
+      },
+      {
+        "benign_median": 66.85905326,
+        "benign_p99": 170.500620533,
+        "benign_std": 82.2910866764,
+        "feature": "HpHp_L0.01_mean",
+        "screen": "contextual",
+        "value": 60.0
+      }
+    ],
+    "label_type": "mirai_ack",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_ack",
+      "sample_id": 145003,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_ack"
+  },
+  {
+    "case_id": "assertive_correct-200000",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_737E_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 3419.4886815,
+        "benign_p99": 43841.5337451,
+        "benign_std": 15197.2190217103,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "discriminative",
+        "value": 63415.1027254014
+      },
+      {
+        "benign_median": 1.9674601045,
+        "benign_p99": 49.7298018761,
+        "benign_std": 13.4672602157,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 226.0031427742
+      },
+      {
+        "benign_median": 3430.270964,
+        "benign_p99": 43841.5337451,
+        "benign_std": 15196.1792897611,
+        "feature": "H_L0.01_variance",
+        "screen": "discriminative",
+        "value": 63415.1027254014
+      },
+      {
+        "benign_median": 82.531959835,
+        "benign_p99": 286.675014089,
+        "benign_std": 59.231544038,
+        "feature": "HpHp_L0.01_mean",
+        "screen": "discriminative",
+        "value": 566.0
+      },
+      {
+        "benign_median": 80.51380292,
+        "benign_p99": 150.925195795,
+        "benign_std": 26.8959425214,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 336.8920369466
+      }
+    ],
+    "label_type": "mirai_ack",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_ack",
+      "sample_id": 200000,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_ack"
+  },
+  {
+    "case_id": "assertive_correct-255000",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_838_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 17664.89792,
+        "benign_p99": 49499.4974991,
+        "benign_std": 16938.7708567381,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "discriminative",
+        "value": 63427.5848715364
+      },
+      {
+        "benign_median": 1.9707696375,
+        "benign_p99": 54.3931240433,
+        "benign_std": 12.8675400109,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 221.4811080883
+      },
+      {
+        "benign_median": 17664.89792,
+        "benign_p99": 49499.4974991,
+        "benign_std": 16938.7708567381,
+        "feature": "H_L0.01_variance",
+        "screen": "discriminative",
+        "value": 63427.5848715364
+      },
+      {
+        "benign_median": 103.7066793,
+        "benign_p99": 159.186801653,
+        "benign_std": 26.2720084156,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 336.6298794949
+      },
+      {
+        "benign_median": 74.0,
+        "benign_p99": 306.669650025,
+        "benign_std": 61.7255163053,
+        "feature": "HpHp_L0.01_mean",
+        "screen": "contextual",
+        "value": 60.0
+      }
+    ],
+    "label_type": "mirai_ack",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_ack",
+      "sample_id": 255000,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_ack"
+  },
+  {
+    "case_id": "assertive_correct-340002",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 190.98595475,
+        "benign_p99": 220.746491273,
+        "benign_std": 29.9101598481,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 438.8762831339
+      },
+      {
+        "benign_median": 1.032182985,
+        "benign_p99": 194.421321799,
+        "benign_std": 30.5236968027,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 152.9485156492
+      },
+      {
+        "benign_median": 98.0,
+        "benign_p99": 330.0,
+        "benign_std": 121.4209869312,
+        "feature": "HpHp_L0.01_mean",
+        "screen": "discriminative",
+        "value": 566.0
+      },
+      {
+        "benign_median": 15562.70448,
+        "benign_p99": 22380.8691346,
+        "benign_std": 3511.6463001573,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "discriminative",
+        "value": 48158.3937841488
+      },
+      {
+        "benign_median": 190.98595475,
+        "benign_p99": 220.746491273,
+        "benign_std": 30.2673286309,
+        "feature": "H_L0.01_mean",
+        "screen": "discriminative",
+        "value": 438.8762831339
+      }
+    ],
+    "label_type": "mirai_ack",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "mirai_ack",
+      "sample_id": 340002,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_ack"
+  },
+  {
+    "case_id": "assertive_correct-395004",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 230.10855235,
+        "benign_p99": 246.380839006,
+        "benign_std": 27.1226810282,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 439.0068801364
+      },
+      {
+        "benign_median": 1.000000058,
+        "benign_p99": 5.0051693623,
+        "benign_std": 1.1071586836,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 122.2140557735
+      },
+      {
+        "benign_median": 330.0,
+        "benign_p99": 330.0,
+        "benign_std": 129.4494323757,
+        "feature": "HpHp_L0.01_mean",
+        "screen": "discriminative",
+        "value": 566.0
+      },
+      {
+        "benign_median": 16922.01203,
+        "benign_p99": 23587.3242259,
+        "benign_std": 2963.6920035959,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "discriminative",
+        "value": 48122.5939178438
+      },
+      {
+        "benign_median": 230.10855235,
+        "benign_p99": 246.380839006,
+        "benign_std": 26.7250983104,
+        "feature": "H_L0.01_mean",
+        "screen": "discriminative",
+        "value": 439.0068801364
+      }
+    ],
+    "label_type": "mirai_ack",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "mirai_ack",
+      "sample_id": 395004,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_ack"
+  },
+  {
+    "case_id": "assertive_correct-10000",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 1.9548827805,
+        "benign_p99": 5.0109052401,
+        "benign_std": 1.4624083245,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 98.7636752343
+      },
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.5186293564,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 60.0217657709
+      },
+      {
+        "benign_median": 4.2825315045,
+        "benign_p99": 7.767849933,
+        "benign_std": 1.6377053437,
+        "feature": "H_L0.1_weight",
+        "screen": "discriminative",
+        "value": 2295.6093962269
+      },
+      {
+        "benign_median": 0.0004141735,
+        "benign_p99": 362.022673699,
+        "benign_std": 434.272383116,
+        "feature": "MI_dir_L3_variance",
+        "screen": "contextual",
+        "value": 5.2985985853
+      },
+      {
+        "benign_median": 0.0004141735,
+        "benign_p99": 362.022673699,
+        "benign_std": 434.2723831329,
+        "feature": "H_L3_variance",
+        "screen": "contextual",
+        "value": 5.2985985853
+      }
+    ],
+    "label_type": "mirai_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_scan",
+      "sample_id": 10000,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_scan"
+  },
+  {
+    "case_id": "assertive_correct-65009",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 1.0000014195,
+        "benign_p99": 2.0043353192,
+        "benign_std": 0.2411433041,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 108.2287045843
+      },
+      {
+        "benign_median": 200.8874374,
+        "benign_p99": 261.386906612,
+        "benign_std": 30.8022764899,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 60.1563914201
+      },
+      {
+        "benign_median": 2.4263250005,
+        "benign_p99": 6.2574028273,
+        "benign_std": 1.3727724689,
+        "feature": "H_L0.1_weight",
+        "screen": "discriminative",
+        "value": 1975.4799994453
+      },
+      {
+        "benign_median": 3.7410492225,
+        "benign_p99": 93130.7325897002,
+        "benign_std": 15282.541501978,
+        "feature": "MI_dir_L3_variance",
+        "screen": "contextual",
+        "value": 1.2e-09
+      },
+      {
+        "benign_median": 3.7410492225,
+        "benign_p99": 93130.7325897002,
+        "benign_std": 15282.541501978,
+        "feature": "H_L3_variance",
+        "screen": "contextual",
+        "value": 1.2e-09
+      }
+    ],
+    "label_type": "mirai_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_scan",
+      "sample_id": 65009,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_scan"
+  },
+  {
+    "case_id": "assertive_correct-150000",
+    "case_set_version": "1.0.0",
+    "device_category": "baby_monitor",
+    "device_name": "Philips_B120N10_Baby_Monitor",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 1.380564682,
+        "benign_p99": 10.3314980725,
+        "benign_std": 2.8638396091,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 77.6745943453
+      },
+      {
+        "benign_median": 71.111999015,
+        "benign_p99": 277.523422909,
+        "benign_std": 95.1881987373,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 60.0199321538
+      },
+      {
+        "benign_median": 10.55922202,
+        "benign_p99": 60.6285991321,
+        "benign_std": 20.7989527631,
+        "feature": "H_L0.1_weight",
+        "screen": "discriminative",
+        "value": 2276.8966113148
+      },
+      {
+        "benign_median": 0.0212995125,
+        "benign_p99": 79179.1827497004,
+        "benign_std": 36725.7934465245,
+        "feature": "MI_dir_L3_variance",
+        "screen": "contextual",
+        "value": 1e-10
+      },
+      {
+        "benign_median": 0.0212995125,
+        "benign_p99": 79179.1827497004,
+        "benign_std": 36725.7934465245,
+        "feature": "H_L3_variance",
+        "screen": "contextual",
+        "value": 1e-10
+      }
+    ],
+    "label_type": "mirai_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_scan",
+      "sample_id": 150000,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_scan"
+  },
+  {
+    "case_id": "assertive_correct-205000",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_737E_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 1.9674601045,
+        "benign_p99": 49.7298018761,
+        "benign_std": 13.4672602157,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 42.4632767856
+      },
+      {
+        "benign_median": 80.51380292,
+        "benign_p99": 150.925195795,
+        "benign_std": 26.8959425214,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 60.1051348717
+      },
+      {
+        "benign_median": 4.9185618455,
+        "benign_p99": 97.3685801946,
+        "benign_std": 25.4441933665,
+        "feature": "H_L0.1_weight",
+        "screen": "discriminative",
+        "value": 1864.5406850825
+      },
+      {
+        "benign_median": 0.080477146,
+        "benign_p99": 58109.5730531,
+        "benign_std": 21421.5881889815,
+        "feature": "MI_dir_L3_variance",
+        "screen": "contextual",
+        "value": 3.5074711302
+      },
+      {
+        "benign_median": 0.080477146,
+        "benign_p99": 58109.5730531,
+        "benign_std": 21421.5881889815,
+        "feature": "H_L3_variance",
+        "screen": "contextual",
+        "value": 3.5074711302
+      }
+    ],
+    "label_type": "mirai_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_scan",
+      "sample_id": 205000,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_scan"
+  },
+  {
+    "case_id": "assertive_correct-260007",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_838_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 1.9707696375,
+        "benign_p99": 54.3931240433,
+        "benign_std": 12.8675400109,
+        "feature": "MI_dir_L5_weight",
+        "screen": "contextual",
+        "value": 35.0907341029
+      },
+      {
+        "benign_median": 103.7066793,
+        "benign_p99": 159.186801653,
+        "benign_std": 26.2720084156,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 60.0967147803
+      },
+      {
+        "benign_median": 8.7226257975,
+        "benign_p99": 123.341242178,
+        "benign_std": 33.2728127562,
+        "feature": "H_L0.1_weight",
+        "screen": "discriminative",
+        "value": 2011.0512631957
+      },
+      {
+        "benign_median": 12.221735105,
+        "benign_p99": 66334.1551542,
+        "benign_std": 22279.897650032,
+        "feature": "MI_dir_L3_variance",
+        "screen": "contextual",
+        "value": 0.5703499516
+      },
+      {
+        "benign_median": 12.221735105,
+        "benign_p99": 66334.1551542,
+        "benign_std": 22279.897650032,
+        "feature": "H_L3_variance",
+        "screen": "contextual",
+        "value": 0.5703499516
+      }
+    ],
+    "label_type": "mirai_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_scan",
+      "sample_id": 260007,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_scan"
+  },
+  {
+    "case_id": "assertive_correct-345008",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 1.032182985,
+        "benign_p99": 194.421321799,
+        "benign_std": 30.5236968027,
+        "feature": "MI_dir_L5_weight",
+        "screen": "contextual",
+        "value": 34.7016810639
+      },
+      {
+        "benign_median": 190.98595475,
+        "benign_p99": 220.746491273,
+        "benign_std": 29.9101598481,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 60.2066850871
+      },
+      {
+        "benign_median": 3.5392238895,
+        "benign_p99": 595.884117443,
+        "benign_std": 97.8509208185,
+        "feature": "H_L0.1_weight",
+        "screen": "discriminative",
+        "value": 1891.0487110304
+      },
+      {
+        "benign_median": 0.0483716365,
+        "benign_p99": 16224.1939595002,
+        "benign_std": 4382.3749731024,
+        "feature": "MI_dir_L3_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 0.0487374435,
+        "benign_p99": 16224.1939595002,
+        "benign_std": 4382.3749108404,
+        "feature": "H_L3_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "mirai_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_scan",
+      "sample_id": 345008,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_scan"
+  },
+  {
+    "case_id": "assertive_correct-400011",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 1.000000058,
+        "benign_p99": 5.0051693623,
+        "benign_std": 1.1071586836,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 84.5516059848
+      },
+      {
+        "benign_median": 230.10855235,
+        "benign_p99": 246.380839006,
+        "benign_std": 27.1226810282,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 60.1212018249
+      },
+      {
+        "benign_median": 2.771414999,
+        "benign_p99": 36.8997655373,
+        "benign_std": 5.7866286696,
+        "feature": "H_L0.1_weight",
+        "screen": "discriminative",
+        "value": 1945.1873621184
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 14832.9549062,
+        "benign_std": 2830.7445765083,
+        "feature": "MI_dir_L3_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 14832.9549062,
+        "benign_std": 2830.7445765083,
+        "feature": "H_L3_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "mirai_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_scan",
+      "sample_id": 400011,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_scan"
+  },
+  {
+    "case_id": "assertive_correct-15005",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.5186293564,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 69.3741227198
+      },
+      {
+        "benign_median": 4.2825315045,
+        "benign_p99": 7.767849933,
+        "benign_std": 1.6379988343,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 6603.9017372772
+      },
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.6116131856,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 43.512273451
+      },
+      {
+        "benign_median": 102.0,
+        "benign_p99": 102.0,
+        "benign_std": 17.7925112916,
+        "feature": "HH_L5_mean",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 1.0,
+        "benign_p99": 1.960215846,
+        "benign_std": 0.1658147085,
+        "feature": "HH_L3_weight",
+        "screen": "discriminative",
+        "value": 156.8818422607
+      }
+    ],
+    "label_type": "mirai_syn",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_syn",
+      "sample_id": 15005,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_syn"
+  },
+  {
+    "case_id": "assertive_correct-70002",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 200.8874374,
+        "benign_p99": 261.386906612,
+        "benign_std": 30.8022764899,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 70.7177923215
+      },
+      {
+        "benign_median": 2.4263250005,
+        "benign_p99": 6.2574028273,
+        "benign_std": 1.3727313324,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 7071.7766471168
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10401.8261738834,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 35.4264574576
+      },
+      {
+        "benign_median": 144.69834135,
+        "benign_p99": 645.997950873,
+        "benign_std": 146.3691531738,
+        "feature": "HH_L5_mean",
+        "screen": "contextual",
+        "value": 73.9999964703
+      },
+      {
+        "benign_median": 1.0,
+        "benign_p99": 2.1557955728,
+        "benign_std": 0.3230889487,
+        "feature": "HH_L3_weight",
+        "screen": "discriminative",
+        "value": 163.4890153849
+      }
+    ],
+    "label_type": "mirai_syn",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_syn",
+      "sample_id": 70002,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_syn"
+  },
+  {
+    "case_id": "assertive_correct-155013",
+    "case_set_version": "1.0.0",
+    "device_category": "baby_monitor",
+    "device_name": "Philips_B120N10_Baby_Monitor",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 71.111999015,
+        "benign_p99": 277.523422909,
+        "benign_std": 95.1881987373,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 69.3874461607
+      },
+      {
+        "benign_median": 10.55922202,
+        "benign_p99": 60.6285991321,
+        "benign_std": 20.7991184532,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 6733.1619901893
+      },
+      {
+        "benign_median": 393.66041135,
+        "benign_p99": 184009.8454610002,
+        "benign_std": 37852.9065474444,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 43.455981919
+      },
+      {
+        "benign_median": 66.0,
+        "benign_p99": 557.21078452,
+        "benign_std": 103.2247514896,
+        "feature": "HH_L5_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 2.0652008075,
+        "benign_p99": 22.8290355007,
+        "benign_std": 8.3339860101,
+        "feature": "H_L1_weight",
+        "screen": "discriminative",
+        "value": 698.4423004567
+      }
+    ],
+    "label_type": "mirai_syn",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "mirai_syn",
+      "sample_id": 155013,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_syn"
+  },
+  {
+    "case_id": "assertive_correct-210002",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_737E_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 80.51380292,
+        "benign_p99": 150.925195795,
+        "benign_std": 26.8959425214,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 67.6661626109
+      },
+      {
+        "benign_median": 4.9185618455,
+        "benign_p99": 97.3685801946,
+        "benign_std": 25.4442650861,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 3313.4796021181
+      },
+      {
+        "benign_median": 3419.4886815,
+        "benign_p99": 43841.5337451,
+        "benign_std": 15197.2190217103,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 48.7398234709
+      },
+      {
+        "benign_median": 89.99971635,
+        "benign_p99": 181.935051302,
+        "benign_std": 45.6143654781,
+        "feature": "HH_L5_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 2.000146642,
+        "benign_p99": 80.3548384714,
+        "benign_std": 21.0660638279,
+        "feature": "H_L1_weight",
+        "screen": "discriminative",
+        "value": 342.5730367648
+      }
+    ],
+    "label_type": "mirai_syn",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "mirai_syn",
+      "sample_id": 210002,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_syn"
+  },
+  {
+    "case_id": "assertive_correct-265002",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_838_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 103.7066793,
+        "benign_p99": 159.186801653,
+        "benign_std": 26.2720084156,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 67.9596111101
+      },
+      {
+        "benign_median": 8.7226257975,
+        "benign_p99": 123.341242178,
+        "benign_std": 33.2728127562,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 3024.3014099123
+      },
+      {
+        "benign_median": 17664.89792,
+        "benign_p99": 49499.4974991,
+        "benign_std": 16938.7708567381,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 48.241249579
+      },
+      {
+        "benign_median": 83.37140082,
+        "benign_p99": 197.0,
+        "benign_std": 43.3423785153,
+        "feature": "HH_L5_mean",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 1.018098776,
+        "benign_p99": 65.5873614423,
+        "benign_std": 15.189562883,
+        "feature": "HH_L3_weight",
+        "screen": "contextual",
+        "value": 38.9502717687
+      }
+    ],
+    "label_type": "mirai_syn",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_syn",
+      "sample_id": 265002,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_syn"
+  },
+  {
+    "case_id": "assertive_correct-350000",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 190.98595475,
+        "benign_p99": 220.746491273,
+        "benign_std": 29.9101598481,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 70.7119686164
+      },
+      {
+        "benign_median": 3.5349883655,
+        "benign_p99": 595.884117443,
+        "benign_std": 97.8514184088,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 6606.224997007
+      },
+      {
+        "benign_median": 15562.70448,
+        "benign_p99": 22380.8691346,
+        "benign_std": 3511.6463001573,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 35.5903262898
+      },
+      {
+        "benign_median": 98.0,
+        "benign_p99": 330.0,
+        "benign_std": 123.4109237853,
+        "feature": "HH_L5_mean",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 1.0,
+        "benign_p99": 242.6386339,
+        "benign_std": 37.5148221973,
+        "feature": "HH_L3_weight",
+        "screen": "discriminative",
+        "value": 179.1837490744
+      }
+    ],
+    "label_type": "mirai_syn",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_syn",
+      "sample_id": 350000,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_syn"
+  },
+  {
+    "case_id": "assertive_correct-405013",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 230.10855235,
+        "benign_p99": 246.380839006,
+        "benign_std": 27.1226810282,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 70.6152688169
+      },
+      {
+        "benign_median": 2.771414999,
+        "benign_p99": 36.8997655373,
+        "benign_std": 5.7866622924,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 5098.4813858645
+      },
+      {
+        "benign_median": 16922.01203,
+        "benign_p99": 23587.3242259,
+        "benign_std": 2963.6920035959,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 36.1139544953
+      },
+      {
+        "benign_median": 330.0,
+        "benign_p99": 330.0,
+        "benign_std": 131.3553311962,
+        "feature": "HH_L5_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 16922.01203,
+        "benign_p99": 23587.3242259,
+        "benign_std": 2956.6413384049,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 36.1139544953
+      }
+    ],
+    "label_type": "mirai_syn",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "mirai_syn",
+      "sample_id": 405013,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_syn"
+  },
+  {
+    "case_id": "assertive_correct-20012",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.5186293564,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 383.1842700678
+      },
+      {
+        "benign_median": 30.33888449,
+        "benign_p99": 35.2467349421,
+        "benign_std": 2.3492190101,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "discriminative",
+        "value": 62307.0555550106
+      },
+      {
+        "benign_median": 0.0004141735,
+        "benign_p99": 362.022673699,
+        "benign_std": 434.272383116,
+        "feature": "MI_dir_L3_variance",
+        "screen": "discriminative",
+        "value": 47342.9817107015
+      },
+      {
+        "benign_median": 30.33888449,
+        "benign_p99": 35.2467349421,
+        "benign_std": 2.3396091109,
+        "feature": "H_L0.01_weight",
+        "screen": "discriminative",
+        "value": 62307.0555550106
+      },
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.3741098094,
+        "feature": "H_L0.01_mean",
+        "screen": "discriminative",
+        "value": 383.1842700678
+      }
+    ],
+    "label_type": "mirai_udp",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "mirai_udp",
+      "sample_id": 20012,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_udp"
+  },
+  {
+    "case_id": "assertive_correct-75003",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 200.8874374,
+        "benign_p99": 261.386906612,
+        "benign_std": 30.8022764899,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 427.6792909514
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10401.8261738834,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 46413.8798151954
+      },
+      {
+        "benign_median": 12.61918242,
+        "benign_p99": 18.3692629093,
+        "benign_std": 3.5644033945,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "discriminative",
+        "value": 50038.3653349918
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10400.622993904,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 46413.8798151954
+      },
+      {
+        "benign_median": 382.59997555,
+        "benign_p99": 765.518873063,
+        "benign_std": 184.206424014,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 553.9215922279
+      }
+    ],
+    "label_type": "mirai_udp",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "mirai_udp",
+      "sample_id": 75003,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_udp"
+  },
+  {
+    "case_id": "assertive_correct-160003",
+    "case_set_version": "1.0.0",
+    "device_category": "baby_monitor",
+    "device_name": "Philips_B120N10_Baby_Monitor",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 71.111999015,
+        "benign_p99": 277.523422909,
+        "benign_std": 95.1881987373,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 383.3689033817
+      },
+      {
+        "benign_median": 100.15797155,
+        "benign_p99": 193.536967773,
+        "benign_std": 40.7109260402,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "discriminative",
+        "value": 49194.1925281467
+      },
+      {
+        "benign_median": 0.0212995125,
+        "benign_p99": 79179.1827497004,
+        "benign_std": 36725.7934465245,
+        "feature": "MI_dir_L3_variance",
+        "screen": "contextual",
+        "value": 32355.5310749602
+      },
+      {
+        "benign_median": 100.15797155,
+        "benign_p99": 193.536967773,
+        "benign_std": 40.7085308295,
+        "feature": "H_L0.01_weight",
+        "screen": "discriminative",
+        "value": 49194.1925281467
+      },
+      {
+        "benign_median": 71.111999015,
+        "benign_p99": 277.523422909,
+        "benign_std": 95.2044483162,
+        "feature": "H_L0.01_mean",
+        "screen": "discriminative",
+        "value": 383.3689033817
+      }
+    ],
+    "label_type": "mirai_udp",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "mirai_udp",
+      "sample_id": 160003,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_udp"
+  },
+  {
+    "case_id": "assertive_correct-215011",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_737E_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 80.51380292,
+        "benign_p99": 150.925195795,
+        "benign_std": 26.8959425214,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 340.4739025708
+      },
+      {
+        "benign_median": 0.080477146,
+        "benign_p99": 58109.5730531,
+        "benign_std": 21421.5881889815,
+        "feature": "MI_dir_L3_variance",
+        "screen": "discriminative",
+        "value": 59907.5240015805
+      },
+      {
+        "benign_median": 31.503919645,
+        "benign_p99": 131.063588767,
+        "benign_std": 29.7626841649,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "discriminative",
+        "value": 27428.521969278
+      },
+      {
+        "benign_median": 80.51380292,
+        "benign_p99": 150.925195795,
+        "benign_std": 26.4241414895,
+        "feature": "H_L0.01_mean",
+        "screen": "discriminative",
+        "value": 340.4739025708
+      },
+      {
+        "benign_median": 39.43160122,
+        "benign_p99": 56221.720047,
+        "benign_std": 20257.8073806098,
+        "feature": "H_L1_variance",
+        "screen": "discriminative",
+        "value": 60961.9617414662
+      }
+    ],
+    "label_type": "mirai_udp",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "mirai_udp",
+      "sample_id": 215011,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_udp"
+  },
+  {
+    "case_id": "assertive_correct-270001",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_838_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 103.7066793,
+        "benign_p99": 159.186801653,
+        "benign_std": 26.2720084156,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 343.9524100876
+      },
+      {
+        "benign_median": 12.221735105,
+        "benign_p99": 66334.1551542,
+        "benign_std": 22279.897650032,
+        "feature": "MI_dir_L3_variance",
+        "screen": "contextual",
+        "value": 53880.6662202723
+      },
+      {
+        "benign_median": 59.292237115,
+        "benign_p99": 254.168005661,
+        "benign_std": 75.0686975544,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "discriminative",
+        "value": 37282.858436694
+      },
+      {
+        "benign_median": 103.7066793,
+        "benign_p99": 159.186801653,
+        "benign_std": 26.2720084156,
+        "feature": "H_L0.01_mean",
+        "screen": "discriminative",
+        "value": 343.9524100876
+      },
+      {
+        "benign_median": 114.0175375,
+        "benign_p99": 522.150256691,
+        "benign_std": 124.3484641887,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "discriminative",
+        "value": 553.9594695292
+      }
+    ],
+    "label_type": "mirai_udp",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.4,
+      "label_type": "mirai_udp",
+      "sample_id": 270001,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_udp"
+  },
+  {
+    "case_id": "assertive_correct-355006",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 190.98595475,
+        "benign_p99": 220.746491273,
+        "benign_std": 29.9101598481,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 427.0446709954
+      },
+      {
+        "benign_median": 15562.70448,
+        "benign_p99": 22380.8691346,
+        "benign_std": 3511.6463001573,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "discriminative",
+        "value": 46570.8127347829
+      },
+      {
+        "benign_median": 27.291655445,
+        "benign_p99": 712.843221066,
+        "benign_std": 117.1870479349,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "discriminative",
+        "value": 51989.4999076929
+      },
+      {
+        "benign_median": 15562.70448,
+        "benign_p99": 22380.8691346,
+        "benign_std": 3504.5124165277,
+        "feature": "H_L0.01_variance",
+        "screen": "discriminative",
+        "value": 46570.8127347829
+      },
+      {
+        "benign_median": 27.291655445,
+        "benign_p99": 712.843221066,
+        "benign_std": 117.1791078859,
+        "feature": "H_L0.01_weight",
+        "screen": "discriminative",
+        "value": 51989.4999076929
+      }
+    ],
+    "label_type": "mirai_udp",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_udp",
+      "sample_id": 355006,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_udp"
+  },
+  {
+    "case_id": "assertive_correct-410001",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 230.10855235,
+        "benign_p99": 246.380839006,
+        "benign_std": 27.1226810282,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 427.1774983986
+      },
+      {
+        "benign_median": 16922.01203,
+        "benign_p99": 23587.3242259,
+        "benign_std": 2963.6920035959,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "discriminative",
+        "value": 46545.1698989194
+      },
+      {
+        "benign_median": 19.168403885,
+        "benign_p99": 161.235033134,
+        "benign_std": 23.482714953,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "discriminative",
+        "value": 54829.1196899624
+      },
+      {
+        "benign_median": 16922.01203,
+        "benign_p99": 23587.3242259,
+        "benign_std": 2956.6413384049,
+        "feature": "H_L0.01_variance",
+        "screen": "discriminative",
+        "value": 46545.1698989194
+      },
+      {
+        "benign_median": 19.168403885,
+        "benign_p99": 161.235033134,
+        "benign_std": 23.4818593277,
+        "feature": "H_L0.01_weight",
+        "screen": "discriminative",
+        "value": 54829.1196899624
+      }
+    ],
+    "label_type": "mirai_udp",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_udp",
+      "sample_id": 410001,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_udp"
+  },
+  {
+    "case_id": "assertive_correct-25015",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.606857972,
+        "feature": "H_L0.01_variance",
+        "screen": "discriminative",
+        "value": 60133.2646842512
+      },
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.5186293564,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 336.5228405016
+      },
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.6116131856,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "discriminative",
+        "value": 60133.2646842512
+      },
+      {
+        "benign_median": 4.2825315045,
+        "benign_p99": 7.767849933,
+        "benign_std": 1.6379988343,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 4966.1540960007
+      },
+      {
+        "benign_median": 4.2825315045,
+        "benign_p99": 7.767849933,
+        "benign_std": 1.6377053437,
+        "feature": "H_L0.1_weight",
+        "screen": "discriminative",
+        "value": 4966.1540960007
+      }
+    ],
+    "label_type": "mirai_udpplain",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "mirai_udpplain",
+      "sample_id": 25015,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_udpplain"
+  },
+  {
+    "case_id": "assertive_correct-80000",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10400.622993904,
+        "feature": "H_L0.01_variance",
+        "screen": "discriminative",
+        "value": 55698.751516651
+      },
+      {
+        "benign_median": 1.5102115525,
+        "benign_p99": 5.2373410955,
+        "benign_std": 1.2050573044,
+        "feature": "HpHp_L0.1_weight",
+        "screen": "discriminative",
+        "value": 2771.1249001789
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10401.8261738834,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "discriminative",
+        "value": 55698.751516651
+      },
+      {
+        "benign_median": 1.0000014195,
+        "benign_p99": 2.0043353192,
+        "benign_std": 0.2411433041,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 158.9193457689
+      },
+      {
+        "benign_median": 144.72499045,
+        "benign_p99": 645.997950863,
+        "benign_std": 145.828830556,
+        "feature": "MI_dir_L5_mean",
+        "screen": "contextual",
+        "value": 251.7889407211
+      }
+    ],
+    "label_type": "mirai_udpplain",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_udpplain",
+      "sample_id": 80000,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_udpplain"
+  },
+  {
+    "case_id": "assertive_correct-165000",
+    "case_set_version": "1.0.0",
+    "device_category": "baby_monitor",
+    "device_name": "Philips_B120N10_Baby_Monitor",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 393.6760094,
+        "benign_p99": 184009.8454610002,
+        "benign_std": 37852.6782135167,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 60046.8935749652
+      },
+      {
+        "benign_median": 2.4199540365,
+        "benign_p99": 11.6246847654,
+        "benign_std": 18.7494313184,
+        "feature": "HpHp_L0.1_weight",
+        "screen": "discriminative",
+        "value": 2807.1342264543
+      },
+      {
+        "benign_median": 66.0,
+        "benign_p99": 552.015747493,
+        "benign_std": 101.1338721316,
+        "feature": "MI_dir_L5_mean",
+        "screen": "discriminative",
+        "value": 477.3544498525
+      },
+      {
+        "benign_median": 393.66041135,
+        "benign_p99": 184009.8454610002,
+        "benign_std": 37852.9065474444,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 60046.8935749652
+      },
+      {
+        "benign_median": 10.55922202,
+        "benign_p99": 60.6285991321,
+        "benign_std": 20.7991184532,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 4951.6632527708
+      }
+    ],
+    "label_type": "mirai_udpplain",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_udpplain",
+      "sample_id": 165000,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_udpplain"
+  },
+  {
+    "case_id": "assertive_correct-220005",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_737E_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 3430.270964,
+        "benign_p99": 43841.5337451,
+        "benign_std": 15196.1792897611,
+        "feature": "H_L0.01_variance",
+        "screen": "discriminative",
+        "value": 60968.5661453267
+      },
+      {
+        "benign_median": 1.171321007,
+        "benign_p99": 5.9978091312,
+        "benign_std": 1.5028653685,
+        "feature": "HpHp_L0.1_weight",
+        "screen": "discriminative",
+        "value": 1571.5550300302
+      },
+      {
+        "benign_median": 89.779794635,
+        "benign_p99": 181.86707591,
+        "benign_std": 41.7514731614,
+        "feature": "MI_dir_L5_mean",
+        "screen": "discriminative",
+        "value": 462.4362897568
+      },
+      {
+        "benign_median": 3419.4886815,
+        "benign_p99": 43841.5337451,
+        "benign_std": 15197.2190217103,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "discriminative",
+        "value": 60968.5661453267
+      },
+      {
+        "benign_median": 4.9185618455,
+        "benign_p99": 97.3685801946,
+        "benign_std": 25.4442650861,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 3168.7068780391
+      }
+    ],
+    "label_type": "mirai_udpplain",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_udpplain",
+      "sample_id": 220005,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_udpplain"
+  },
+  {
+    "case_id": "assertive_correct-275000",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_838_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 17664.89792,
+        "benign_p99": 49499.4974991,
+        "benign_std": 16938.7708567381,
+        "feature": "H_L0.01_variance",
+        "screen": "discriminative",
+        "value": 60961.6469286498
+      },
+      {
+        "benign_median": 1.933181753,
+        "benign_p99": 14.8663488097,
+        "benign_std": 3.0749280001,
+        "feature": "HpHp_L0.1_weight",
+        "screen": "discriminative",
+        "value": 1561.88856693
+      },
+      {
+        "benign_median": 103.7066793,
+        "benign_p99": 159.186801653,
+        "benign_std": 26.2720084156,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 302.4977247432
+      },
+      {
+        "benign_median": 17664.89792,
+        "benign_p99": 49499.4974991,
+        "benign_std": 16938.7708567381,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "discriminative",
+        "value": 60961.6469286498
+      },
+      {
+        "benign_median": 1.9707696375,
+        "benign_p99": 54.3931240433,
+        "benign_std": 12.8675400109,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 121.2948235602
+      }
+    ],
+    "label_type": "mirai_udpplain",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_udpplain",
+      "sample_id": 275000,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_udpplain"
+  },
+  {
+    "case_id": "assertive_correct-360001",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 15562.70448,
+        "benign_p99": 22380.8691346,
+        "benign_std": 3504.5124165277,
+        "feature": "H_L0.01_variance",
+        "screen": "discriminative",
+        "value": 52143.6364819784
+      },
+      {
+        "benign_median": 1.21486241,
+        "benign_p99": 528.065628548,
+        "benign_std": 84.3913517393,
+        "feature": "HpHp_L0.1_weight",
+        "screen": "discriminative",
+        "value": 3864.0316216273
+      },
+      {
+        "benign_median": 15562.70448,
+        "benign_p99": 22380.8691346,
+        "benign_std": 3511.6463001573,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "discriminative",
+        "value": 52143.6364819784
+      },
+      {
+        "benign_median": 98.0,
+        "benign_p99": 330.0,
+        "benign_std": 121.5270198079,
+        "feature": "MI_dir_L5_mean",
+        "screen": "discriminative",
+        "value": 340.2989303014
+      },
+      {
+        "benign_median": 1.032182985,
+        "benign_p99": 194.421321799,
+        "benign_std": 30.5236968027,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 186.7114663227
+      }
+    ],
+    "label_type": "mirai_udpplain",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_udpplain",
+      "sample_id": 360001,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_udpplain"
+  },
+  {
+    "case_id": "assertive_correct-415009",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 16922.01203,
+        "benign_p99": 23587.3242259,
+        "benign_std": 2956.6413384049,
+        "feature": "H_L0.01_variance",
+        "screen": "discriminative",
+        "value": 51395.0292514188
+      },
+      {
+        "benign_median": 1.214102811,
+        "benign_p99": 35.2521363527,
+        "benign_std": 5.3482858931,
+        "feature": "HpHp_L0.1_weight",
+        "screen": "discriminative",
+        "value": 4132.3587988182
+      },
+      {
+        "benign_median": 16922.01203,
+        "benign_p99": 23587.3242259,
+        "benign_std": 2963.6920035959,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "discriminative",
+        "value": 51395.0292514188
+      },
+      {
+        "benign_median": 330.0,
+        "benign_p99": 330.0,
+        "benign_std": 130.833651021,
+        "feature": "MI_dir_L5_mean",
+        "screen": "discriminative",
+        "value": 540.5776986625
+      },
+      {
+        "benign_median": 1.000000058,
+        "benign_p99": 5.0051693623,
+        "benign_std": 1.1071586836,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 85.34490571
+      }
+    ],
+    "label_type": "mirai_udpplain",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_udpplain",
+      "sample_id": 415009,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_udpplain"
+  },
+  {
+    "case_id": "assertive_error-65940",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 8.6749909665,
+        "benign_p99": 14.1064176491,
+        "benign_std": 3.6708367555,
+        "feature": "HpHp_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 200.8874374,
+        "benign_p99": 261.386906612,
+        "benign_std": 30.8022764899,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 76.6501941147
+      },
+      {
+        "benign_median": 1.0000014195,
+        "benign_p99": 2.0043353192,
+        "benign_std": 0.2411433041,
+        "feature": "MI_dir_L5_weight",
+        "screen": "contextual",
+        "value": 5.028229322
+      },
+      {
+        "benign_median": 12.61918242,
+        "benign_p99": 18.3692629093,
+        "benign_std": 3.5589728158,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 5.9992126065
+      },
+      {
+        "benign_median": 34518.71413,
+        "benign_p99": 111905.5599160002,
+        "benign_std": 30986.0694457569,
+        "feature": "HpHp_L0.01_radius",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "mirai_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "mirai_scan",
+      "sample_id": 65940,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_error"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_combo",
+    "y_pred": "benign"
+  },
+  {
+    "case_id": "assertive_error-91545",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 0.00670467352624007,
+    "evidence": [
+      {
+        "benign_median": 2.4263250005,
+        "benign_p99": 6.2574028273,
+        "benign_std": 1.3727313324,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 7484.7196913746
+      },
+      {
+        "benign_median": 382.59997555,
+        "benign_p99": 765.518873063,
+        "benign_std": 184.206424014,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 137.457408491
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 835.681633694,
+        "benign_std": 1.6809260657580208e+16,
+        "feature": "HH_jit_L3_variance",
+        "screen": "contextual",
+        "value": 9.366e-07
+      },
+      {
+        "benign_median": -0.354150511,
+        "benign_p99": 1316.80504205,
+        "benign_std": 4784.0644499043,
+        "feature": "HH_L0.1_covariance",
+        "screen": "contextual",
+        "value": 26.782498525
+      },
+      {
+        "benign_median": 34538.55267,
+        "benign_p99": 111905.5599160002,
+        "benign_std": 30508.1867092595,
+        "feature": "HH_L0.01_radius",
+        "screen": "contextual",
+        "value": 38.8801302003
+      }
+    ],
+    "label_type": "gafgyt_junk",
+    "margin": 0.9983436853491909,
+    "metadata": {
+      "atypicality_score": 0.4,
+      "label_type": "gafgyt_junk",
+      "sample_id": 91545,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_error"
+    },
+    "p_pair": 0.0,
+    "p_top1": 0.9991718426745955,
+    "p_top2": 0.0008281573254044858,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_combo"
+  },
+  {
+    "case_id": "assertive_error-317103",
+    "case_set_version": "1.0.0",
+    "device_category": "webcam",
+    "device_name": "Samsung_SNH_1011_N_Webcam",
+    "entropy": 0.00670467352624007,
+    "evidence": [
+      {
+        "benign_median": 3.790071266,
+        "benign_p99": 52.9668576712,
+        "benign_std": 9.8860703545,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 7484.7196913746
+      },
+      {
+        "benign_median": 381.8109303,
+        "benign_p99": 591.826249904,
+        "benign_std": 149.3842582184,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 137.457408491
+      },
+      {
+        "benign_median": 0.003905641,
+        "benign_p99": 631.508075109,
+        "benign_std": 1.7529795185911748e+16,
+        "feature": "HH_jit_L3_variance",
+        "screen": "contextual",
+        "value": 9.366e-07
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 2863.53957373,
+        "benign_std": 2901.165182676,
+        "feature": "HH_L0.1_covariance",
+        "screen": "contextual",
+        "value": 26.782498525
+      },
+      {
+        "benign_median": 397.07178645,
+        "benign_p99": 197443.8910580006,
+        "benign_std": 33294.3192476533,
+        "feature": "HH_L0.01_radius",
+        "screen": "contextual",
+        "value": 38.8801302003
+      }
+    ],
+    "label_type": "gafgyt_junk",
+    "margin": 0.9983436853491909,
+    "metadata": {
+      "atypicality_score": 0.4,
+      "label_type": "gafgyt_junk",
+      "sample_id": 317103,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "assertive_error"
+    },
+    "p_pair": 0.0,
+    "p_top1": 0.9991718426745955,
+    "p_top2": 0.0008281573254044858,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_combo"
+  },
+  {
+    "case_id": "hedged_pair-45008",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 0.6931456996400363,
+    "evidence": [
+      {
+        "benign_median": 30.33888449,
+        "benign_p99": 35.2467349421,
+        "benign_std": 2.3396091109,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.606857972,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 95.17788682,
+        "benign_p99": 101.020475927,
+        "benign_std": 7.1820016298,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 1.9548827805,
+        "benign_p99": 5.0109052401,
+        "benign_std": 1.4624083245,
+        "feature": "MI_dir_L5_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 0.5663621308,
+        "benign_std": 0.1305887308,
+        "feature": "HH_L0.1_pcc",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0017211437225341797,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 45008,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5008605718612671,
+    "p_top2": 0.4991394281387329,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_tcp",
+    "y_pred": "gafgyt_udp"
+  },
+  {
+    "case_id": "hedged_pair-100000",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 0.6992789723371928,
+    "evidence": [
+      {
+        "benign_median": 12.61918242,
+        "benign_p99": 18.3692629093,
+        "benign_std": 3.5589728158,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10400.622993904,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 222.75688285,
+        "benign_p99": 414.836904654,
+        "benign_std": 86.4850186613,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 12.61918242,
+        "benign_p99": 18.3692629093,
+        "benign_std": 3.5644033945,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10401.8261738834,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0004781943327545335,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 100000,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 0.9991716446768589,
+    "p_top1": 0.49982491950480673,
+    "p_top2": 0.4993467251720522,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-130000",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Ennio_Doorbell",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 20.36293527,
+        "benign_p99": 41.3232093505,
+        "benign_std": 9.2670088426,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 199.5947821,
+        "benign_p99": 8922.5783906,
+        "benign_std": 3167.8906610099,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 87.613307815,
+        "benign_p99": 129.677297859,
+        "benign_std": 14.5928499841,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 20.36293527,
+        "benign_p99": 41.3232093505,
+        "benign_std": 9.2684281907,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 199.59406625,
+        "benign_p99": 8921.61420291,
+        "benign_std": 3165.6188526802,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 130000,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-185003",
+    "case_set_version": "1.0.0",
+    "device_category": "baby_monitor",
+    "device_name": "Philips_B120N10_Baby_Monitor",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 100.15797155,
+        "benign_p99": 193.536967773,
+        "benign_std": 40.7085308295,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 393.6760094,
+        "benign_p99": 184009.8454610002,
+        "benign_std": 37852.6782135167,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 70.95817521,
+        "benign_p99": 394.098951023,
+        "benign_std": 86.1872550959,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 100.15797155,
+        "benign_p99": 193.536967773,
+        "benign_std": 40.7109260402,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 393.66041135,
+        "benign_p99": 184009.8454610002,
+        "benign_std": 37852.9065474444,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 185003,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-240001",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_737E_Security_Camera",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 31.503919645,
+        "benign_p99": 131.063588767,
+        "benign_std": 29.7611934285,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 3430.270964,
+        "benign_p99": 43841.5337451,
+        "benign_std": 15196.1792897611,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 79.264531365,
+        "benign_p99": 171.136493401,
+        "benign_std": 35.073888056,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 31.503919645,
+        "benign_p99": 131.063588767,
+        "benign_std": 29.7626841649,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 3419.4886815,
+        "benign_p99": 43841.5337451,
+        "benign_std": 15197.2190217103,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 240001,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-295007",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_838_Security_Camera",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 59.292237115,
+        "benign_p99": 254.168005661,
+        "benign_std": 75.0686975544,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 17664.89792,
+        "benign_p99": 49499.4974991,
+        "benign_std": 16938.7708567381,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 89.049219135,
+        "benign_p99": 171.303692258,
+        "benign_std": 33.5585002637,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 59.292237115,
+        "benign_p99": 254.168005661,
+        "benign_std": 75.0686975544,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 17664.89792,
+        "benign_p99": 49499.4974991,
+        "benign_std": 16938.7708567381,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 295007,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-325000",
+    "case_set_version": "1.0.0",
+    "device_category": "webcam",
+    "device_name": "Samsung_SNH_1011_N_Webcam",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 29.181780205,
+        "benign_p99": 410.659051494,
+        "benign_std": 63.3621053617,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 31642.135565,
+        "benign_p99": 76881.73791,
+        "benign_std": 9376.7963479714,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 288.29221435,
+        "benign_p99": 413.197152305,
+        "benign_std": 72.2970271896,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 29.181780205,
+        "benign_p99": 410.659051494,
+        "benign_std": 63.3632283176,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 31642.135565,
+        "benign_p99": 76881.73791,
+        "benign_std": 9381.3219233487,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 325000,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-380007",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+    "entropy": 0.6931422518830699,
+    "evidence": [
+      {
+        "benign_median": 27.291655445,
+        "benign_p99": 712.843221066,
+        "benign_std": 117.1791078859,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 15562.70448,
+        "benign_p99": 22380.8691346,
+        "benign_std": 3504.5124165277,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 197.77668135,
+        "benign_p99": 303.944006083,
+        "benign_std": 69.4014834871,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 1.032182985,
+        "benign_p99": 194.421321799,
+        "benign_std": 30.5236968027,
+        "feature": "MI_dir_L5_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 0.0004329155,
+        "benign_p99": 1.8711081329,
+        "benign_std": 0.3627940224,
+        "feature": "HH_L0.1_pcc",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0031397189225583766,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 380007,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5015698594612792,
+    "p_top2": 0.4984301405387208,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_tcp",
+    "y_pred": "gafgyt_udp"
+  },
+  {
+    "case_id": "hedged_pair-435002",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+    "entropy": 0.6992789723371928,
+    "evidence": [
+      {
+        "benign_median": 19.168403885,
+        "benign_p99": 161.235033134,
+        "benign_std": 23.4818593277,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 16922.01203,
+        "benign_p99": 23587.3242259,
+        "benign_std": 2956.6413384049,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 257.68340465,
+        "benign_p99": 303.359401027,
+        "benign_std": 54.6998060034,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 19.168403885,
+        "benign_p99": 161.235033134,
+        "benign_std": 23.482714953,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 16922.01203,
+        "benign_p99": 23587.3242259,
+        "benign_std": 2963.6920035959,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0004781943327545335,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 435002,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 0.9991716446768589,
+    "p_top1": 0.49982491950480673,
+    "p_top2": 0.4993467251720522,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-45009",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 0.6931456996400363,
+    "evidence": [
+      {
+        "benign_median": 30.33888449,
+        "benign_p99": 35.2467349421,
+        "benign_std": 2.3396091109,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.606857972,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 95.17788682,
+        "benign_p99": 101.020475927,
+        "benign_std": 7.1820016298,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 1.9548827805,
+        "benign_p99": 5.0109052401,
+        "benign_std": 1.4624083245,
+        "feature": "MI_dir_L5_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 0.5663621308,
+        "benign_std": 0.1305887308,
+        "feature": "HH_L0.1_pcc",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0017211437225341797,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 45009,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5008605718612671,
+    "p_top2": 0.4991394281387329,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_tcp",
+    "y_pred": "gafgyt_udp"
+  },
+  {
+    "case_id": "hedged_pair-100010",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 0.6992789723371928,
+    "evidence": [
+      {
+        "benign_median": 12.61918242,
+        "benign_p99": 18.3692629093,
+        "benign_std": 3.5589728158,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10400.622993904,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 222.75688285,
+        "benign_p99": 414.836904654,
+        "benign_std": 86.4850186613,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 12.61918242,
+        "benign_p99": 18.3692629093,
+        "benign_std": 3.5644033945,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10401.8261738834,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0004781943327545335,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 100010,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 0.9991716446768589,
+    "p_top1": 0.49982491950480673,
+    "p_top2": 0.4993467251720522,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-130001",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Ennio_Doorbell",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 20.36293527,
+        "benign_p99": 41.3232093505,
+        "benign_std": 9.2670088426,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 199.5947821,
+        "benign_p99": 8922.5783906,
+        "benign_std": 3167.8906610099,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 87.613307815,
+        "benign_p99": 129.677297859,
+        "benign_std": 14.5928499841,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 20.36293527,
+        "benign_p99": 41.3232093505,
+        "benign_std": 9.2684281907,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 199.59406625,
+        "benign_p99": 8921.61420291,
+        "benign_std": 3165.6188526802,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 130001,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-185005",
+    "case_set_version": "1.0.0",
+    "device_category": "baby_monitor",
+    "device_name": "Philips_B120N10_Baby_Monitor",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 100.15797155,
+        "benign_p99": 193.536967773,
+        "benign_std": 40.7085308295,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 393.6760094,
+        "benign_p99": 184009.8454610002,
+        "benign_std": 37852.6782135167,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 70.95817521,
+        "benign_p99": 394.098951023,
+        "benign_std": 86.1872550959,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 100.15797155,
+        "benign_p99": 193.536967773,
+        "benign_std": 40.7109260402,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 393.66041135,
+        "benign_p99": 184009.8454610002,
+        "benign_std": 37852.9065474444,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 185005,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-240005",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_737E_Security_Camera",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 31.503919645,
+        "benign_p99": 131.063588767,
+        "benign_std": 29.7611934285,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 3430.270964,
+        "benign_p99": 43841.5337451,
+        "benign_std": 15196.1792897611,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 79.264531365,
+        "benign_p99": 171.136493401,
+        "benign_std": 35.073888056,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 31.503919645,
+        "benign_p99": 131.063588767,
+        "benign_std": 29.7626841649,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 3419.4886815,
+        "benign_p99": 43841.5337451,
+        "benign_std": 15197.2190217103,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 240005,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-295024",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_838_Security_Camera",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 59.292237115,
+        "benign_p99": 254.168005661,
+        "benign_std": 75.0686975544,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 17664.89792,
+        "benign_p99": 49499.4974991,
+        "benign_std": 16938.7708567381,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 89.049219135,
+        "benign_p99": 171.303692258,
+        "benign_std": 33.5585002637,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 59.292237115,
+        "benign_p99": 254.168005661,
+        "benign_std": 75.0686975544,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 17664.89792,
+        "benign_p99": 49499.4974991,
+        "benign_std": 16938.7708567381,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 295024,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-325011",
+    "case_set_version": "1.0.0",
+    "device_category": "webcam",
+    "device_name": "Samsung_SNH_1011_N_Webcam",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 29.181780205,
+        "benign_p99": 410.659051494,
+        "benign_std": 63.3621053617,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 31642.135565,
+        "benign_p99": 76881.73791,
+        "benign_std": 9376.7963479714,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 288.29221435,
+        "benign_p99": 413.197152305,
+        "benign_std": 72.2970271896,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 29.181780205,
+        "benign_p99": 410.659051494,
+        "benign_std": 63.3632283176,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 31642.135565,
+        "benign_p99": 76881.73791,
+        "benign_std": 9381.3219233487,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 325011,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-380008",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+    "entropy": 0.6931422518830699,
+    "evidence": [
+      {
+        "benign_median": 27.291655445,
+        "benign_p99": 712.843221066,
+        "benign_std": 117.1791078859,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 15562.70448,
+        "benign_p99": 22380.8691346,
+        "benign_std": 3504.5124165277,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 197.77668135,
+        "benign_p99": 303.944006083,
+        "benign_std": 69.4014834871,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 1.032182985,
+        "benign_p99": 194.421321799,
+        "benign_std": 30.5236968027,
+        "feature": "MI_dir_L5_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 0.0004329155,
+        "benign_p99": 1.8711081329,
+        "benign_std": 0.3627940224,
+        "feature": "HH_L0.1_pcc",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0031397189225583766,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 380008,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5015698594612792,
+    "p_top2": 0.4984301405387208,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_tcp",
+    "y_pred": "gafgyt_udp"
+  },
+  {
+    "case_id": "hedged_pair-435003",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+    "entropy": 0.6992789723371928,
+    "evidence": [
+      {
+        "benign_median": 19.168403885,
+        "benign_p99": 161.235033134,
+        "benign_std": 23.4818593277,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 16922.01203,
+        "benign_p99": 23587.3242259,
+        "benign_std": 2956.6413384049,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 257.68340465,
+        "benign_p99": 303.359401027,
+        "benign_std": 54.6998060034,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 19.168403885,
+        "benign_p99": 161.235033134,
+        "benign_std": 23.482714953,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 16922.01203,
+        "benign_p99": 23587.3242259,
+        "benign_std": 2963.6920035959,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0004781943327545335,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 435003,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 0.9991716446768589,
+    "p_top1": 0.49982491950480673,
+    "p_top2": 0.4993467251720522,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-50001",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 0.6931456996400363,
+    "evidence": [
+      {
+        "benign_median": 30.33888449,
+        "benign_p99": 35.2467349421,
+        "benign_std": 2.3396091109,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.606857972,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 95.17788682,
+        "benign_p99": 101.020475927,
+        "benign_std": 7.1820016298,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 1.9548827805,
+        "benign_p99": 5.0109052401,
+        "benign_std": 1.4624083245,
+        "feature": "MI_dir_L5_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 0.5663621308,
+        "benign_std": 0.1305887308,
+        "feature": "HH_L0.1_pcc",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0017211437225341797,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 50001,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5008605718612671,
+    "p_top2": 0.4991394281387329,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_tcp",
+    "y_pred": "gafgyt_udp"
+  },
+  {
+    "case_id": "hedged_pair-105000",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 0.6992789723371928,
+    "evidence": [
+      {
+        "benign_median": 12.61918242,
+        "benign_p99": 18.3692629093,
+        "benign_std": 3.5589728158,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10400.622993904,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 222.75688285,
+        "benign_p99": 414.836904654,
+        "benign_std": 86.4850186613,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 12.61918242,
+        "benign_p99": 18.3692629093,
+        "benign_std": 3.5644033945,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10401.8261738834,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0004781943327545335,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 105000,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 0.9991716446768589,
+    "p_top1": 0.49982491950480673,
+    "p_top2": 0.4993467251720522,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-135000",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Ennio_Doorbell",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 20.36293527,
+        "benign_p99": 41.3232093505,
+        "benign_std": 9.2670088426,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 199.5947821,
+        "benign_p99": 8922.5783906,
+        "benign_std": 3167.8906610099,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 87.613307815,
+        "benign_p99": 129.677297859,
+        "benign_std": 14.5928499841,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 20.36293527,
+        "benign_p99": 41.3232093505,
+        "benign_std": 9.2684281907,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 199.59406625,
+        "benign_p99": 8921.61420291,
+        "benign_std": 3165.6188526802,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 135000,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-190002",
+    "case_set_version": "1.0.0",
+    "device_category": "baby_monitor",
+    "device_name": "Philips_B120N10_Baby_Monitor",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 100.15797155,
+        "benign_p99": 193.536967773,
+        "benign_std": 40.7085308295,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 393.6760094,
+        "benign_p99": 184009.8454610002,
+        "benign_std": 37852.6782135167,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 70.95817521,
+        "benign_p99": 394.098951023,
+        "benign_std": 86.1872550959,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 100.15797155,
+        "benign_p99": 193.536967773,
+        "benign_std": 40.7109260402,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 393.66041135,
+        "benign_p99": 184009.8454610002,
+        "benign_std": 37852.9065474444,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 190002,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-245001",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_737E_Security_Camera",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 31.503919645,
+        "benign_p99": 131.063588767,
+        "benign_std": 29.7611934285,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 3430.270964,
+        "benign_p99": 43841.5337451,
+        "benign_std": 15196.1792897611,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 79.264531365,
+        "benign_p99": 171.136493401,
+        "benign_std": 35.073888056,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 31.503919645,
+        "benign_p99": 131.063588767,
+        "benign_std": 29.7626841649,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 3419.4886815,
+        "benign_p99": 43841.5337451,
+        "benign_std": 15197.2190217103,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 245001,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-300004",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_838_Security_Camera",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 59.292237115,
+        "benign_p99": 254.168005661,
+        "benign_std": 75.0686975544,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 17664.89792,
+        "benign_p99": 49499.4974991,
+        "benign_std": 16938.7708567381,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 89.049219135,
+        "benign_p99": 171.303692258,
+        "benign_std": 33.5585002637,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 59.292237115,
+        "benign_p99": 254.168005661,
+        "benign_std": 75.0686975544,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 17664.89792,
+        "benign_p99": 49499.4974991,
+        "benign_std": 16938.7708567381,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 300004,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-330014",
+    "case_set_version": "1.0.0",
+    "device_category": "webcam",
+    "device_name": "Samsung_SNH_1011_N_Webcam",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 29.181780205,
+        "benign_p99": 410.659051494,
+        "benign_std": 63.3621053617,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 31642.135565,
+        "benign_p99": 76881.73791,
+        "benign_std": 9376.7963479714,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 288.29221435,
+        "benign_p99": 413.197152305,
+        "benign_std": 72.2970271896,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 29.181780205,
+        "benign_p99": 410.659051494,
+        "benign_std": 63.3632283176,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 31642.135565,
+        "benign_p99": 76881.73791,
+        "benign_std": 9381.3219233487,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 330014,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-385001",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+    "entropy": 0.6931422518830699,
+    "evidence": [
+      {
+        "benign_median": 27.291655445,
+        "benign_p99": 712.843221066,
+        "benign_std": 117.1791078859,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 15562.70448,
+        "benign_p99": 22380.8691346,
+        "benign_std": 3504.5124165277,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 197.77668135,
+        "benign_p99": 303.944006083,
+        "benign_std": 69.4014834871,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 1.032182985,
+        "benign_p99": 194.421321799,
+        "benign_std": 30.5236968027,
+        "feature": "MI_dir_L5_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 0.0004329155,
+        "benign_p99": 1.8711081329,
+        "benign_std": 0.3627940224,
+        "feature": "HH_L0.1_pcc",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0031397189225583766,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 385001,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5015698594612792,
+    "p_top2": 0.4984301405387208,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_tcp",
+    "y_pred": "gafgyt_udp"
+  },
+  {
+    "case_id": "hedged_pair-440000",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+    "entropy": 0.6992789723371928,
+    "evidence": [
+      {
+        "benign_median": 19.168403885,
+        "benign_p99": 161.235033134,
+        "benign_std": 23.4818593277,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 16922.01203,
+        "benign_p99": 23587.3242259,
+        "benign_std": 2956.6413384049,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 257.68340465,
+        "benign_p99": 303.359401027,
+        "benign_std": 54.6998060034,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 19.168403885,
+        "benign_p99": 161.235033134,
+        "benign_std": 23.482714953,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 16922.01203,
+        "benign_p99": 23587.3242259,
+        "benign_std": 2963.6920035959,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0004781943327545335,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 440000,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 0.9991716446768589,
+    "p_top1": 0.49982491950480673,
+    "p_top2": 0.4993467251720522,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-50003",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 0.6931456996400363,
+    "evidence": [
+      {
+        "benign_median": 30.33888449,
+        "benign_p99": 35.2467349421,
+        "benign_std": 2.3396091109,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.606857972,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 95.17788682,
+        "benign_p99": 101.020475927,
+        "benign_std": 7.1820016298,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 1.9548827805,
+        "benign_p99": 5.0109052401,
+        "benign_std": 1.4624083245,
+        "feature": "MI_dir_L5_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 0.5663621308,
+        "benign_std": 0.1305887308,
+        "feature": "HH_L0.1_pcc",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0017211437225341797,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 50003,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5008605718612671,
+    "p_top2": 0.4991394281387329,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_tcp",
+    "y_pred": "gafgyt_udp"
+  },
+  {
+    "case_id": "hedged_pair-105004",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 0.6992789723371928,
+    "evidence": [
+      {
+        "benign_median": 12.61918242,
+        "benign_p99": 18.3692629093,
+        "benign_std": 3.5589728158,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10400.622993904,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 222.75688285,
+        "benign_p99": 414.836904654,
+        "benign_std": 86.4850186613,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 12.61918242,
+        "benign_p99": 18.3692629093,
+        "benign_std": 3.5644033945,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10401.8261738834,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0004781943327545335,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 105004,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 0.9991716446768589,
+    "p_top1": 0.49982491950480673,
+    "p_top2": 0.4993467251720522,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-135001",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Ennio_Doorbell",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 20.36293527,
+        "benign_p99": 41.3232093505,
+        "benign_std": 9.2670088426,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 199.5947821,
+        "benign_p99": 8922.5783906,
+        "benign_std": 3167.8906610099,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 87.613307815,
+        "benign_p99": 129.677297859,
+        "benign_std": 14.5928499841,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 20.36293527,
+        "benign_p99": 41.3232093505,
+        "benign_std": 9.2684281907,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 199.59406625,
+        "benign_p99": 8921.61420291,
+        "benign_std": 3165.6188526802,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 135001,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-190003",
+    "case_set_version": "1.0.0",
+    "device_category": "baby_monitor",
+    "device_name": "Philips_B120N10_Baby_Monitor",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 100.15797155,
+        "benign_p99": 193.536967773,
+        "benign_std": 40.7085308295,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 393.6760094,
+        "benign_p99": 184009.8454610002,
+        "benign_std": 37852.6782135167,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 70.95817521,
+        "benign_p99": 394.098951023,
+        "benign_std": 86.1872550959,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 100.15797155,
+        "benign_p99": 193.536967773,
+        "benign_std": 40.7109260402,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 393.66041135,
+        "benign_p99": 184009.8454610002,
+        "benign_std": 37852.9065474444,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 190003,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-245009",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_737E_Security_Camera",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 31.503919645,
+        "benign_p99": 131.063588767,
+        "benign_std": 29.7611934285,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 3430.270964,
+        "benign_p99": 43841.5337451,
+        "benign_std": 15196.1792897611,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 79.264531365,
+        "benign_p99": 171.136493401,
+        "benign_std": 35.073888056,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 31.503919645,
+        "benign_p99": 131.063588767,
+        "benign_std": 29.7626841649,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 3419.4886815,
+        "benign_p99": 43841.5337451,
+        "benign_std": 15197.2190217103,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 245009,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-300009",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_838_Security_Camera",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 59.292237115,
+        "benign_p99": 254.168005661,
+        "benign_std": 75.0686975544,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 17664.89792,
+        "benign_p99": 49499.4974991,
+        "benign_std": 16938.7708567381,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 89.049219135,
+        "benign_p99": 171.303692258,
+        "benign_std": 33.5585002637,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 59.292237115,
+        "benign_p99": 254.168005661,
+        "benign_std": 75.0686975544,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 17664.89792,
+        "benign_p99": 49499.4974991,
+        "benign_std": 16938.7708567381,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 300009,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-330023",
+    "case_set_version": "1.0.0",
+    "device_category": "webcam",
+    "device_name": "Samsung_SNH_1011_N_Webcam",
+    "entropy": 0.6931470662840545,
+    "evidence": [
+      {
+        "benign_median": 29.181780205,
+        "benign_p99": 410.659051494,
+        "benign_std": 63.3621053617,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 31642.135565,
+        "benign_p99": 76881.73791,
+        "benign_std": 9376.7963479714,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 288.29221435,
+        "benign_p99": 413.197152305,
+        "benign_std": 72.2970271896,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 29.181780205,
+        "benign_p99": 410.659051494,
+        "benign_std": 63.3632283176,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 31642.135565,
+        "benign_p99": 76881.73791,
+        "benign_std": 9381.3219233487,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0004785907759713992,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 330023,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5002392953879857,
+    "p_top2": 0.49976070461201433,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-385011",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+    "entropy": 0.6931422518830699,
+    "evidence": [
+      {
+        "benign_median": 27.291655445,
+        "benign_p99": 712.843221066,
+        "benign_std": 117.1791078859,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 15562.70448,
+        "benign_p99": 22380.8691346,
+        "benign_std": 3504.5124165277,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 197.77668135,
+        "benign_p99": 303.944006083,
+        "benign_std": 69.4014834871,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 1.032182985,
+        "benign_p99": 194.421321799,
+        "benign_std": 30.5236968027,
+        "feature": "MI_dir_L5_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 0.0004329155,
+        "benign_p99": 1.8711081329,
+        "benign_std": 0.3627940224,
+        "feature": "HH_L0.1_pcc",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0031397189225583766,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 385011,
+      "split": "frozen",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5015698594612792,
+    "p_top2": 0.4984301405387208,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_tcp",
+    "y_pred": "gafgyt_udp"
+  },
+  {
+    "case_id": "hedged_pair-440001",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+    "entropy": 0.6992789723371928,
+    "evidence": [
+      {
+        "benign_median": 19.168403885,
+        "benign_p99": 161.235033134,
+        "benign_std": 23.4818593277,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 16922.01203,
+        "benign_p99": 23587.3242259,
+        "benign_std": 2956.6413384049,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 257.68340465,
+        "benign_p99": 303.359401027,
+        "benign_std": 54.6998060034,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 19.168403885,
+        "benign_p99": 161.235033134,
+        "benign_std": 23.482714953,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 16922.01203,
+        "benign_p99": 23587.3242259,
+        "benign_std": 2963.6920035959,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0004781943327545335,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 440001,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 0.9991716446768589,
+    "p_top1": 0.49982491950480673,
+    "p_top2": 0.4993467251720522,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_generic-28152",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 0.2906215883746708,
+    "evidence": [
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.5186293564,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 340.5666681773
+      },
+      {
+        "benign_median": 30.33888449,
+        "benign_p99": 35.2467349421,
+        "benign_std": 2.3396091109,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 9067.8380369448
+      },
+      {
+        "benign_median": 30.33888449,
+        "benign_p99": 35.2467349421,
+        "benign_std": 2.3492190101,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 9067.8380369448
+      },
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.3741098094,
+        "feature": "H_L0.01_mean",
+        "screen": "discriminative",
+        "value": 340.5666681773
+      },
+      {
+        "benign_median": 144.2497834,
+        "benign_p99": 144.2497834,
+        "benign_std": 18.6583266723,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 60.0
+      }
+    ],
+    "label_type": "mirai_udpplain",
+    "margin": 0.8301622473700521,
+    "metadata": {
+      "atypicality_score": 0.4,
+      "label_type": "mirai_udpplain",
+      "sample_id": 28152,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "hedged_generic"
+    },
+    "p_pair": 0.0,
+    "p_top1": 0.915081123685026,
+    "p_top2": 0.084918876314974,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "mirai_udpplain",
+    "y_pred": "mirai_udp"
+  },
+  {
+    "case_id": "hedged_generic-38847",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 0.6469181655009082,
+    "evidence": [
+      {
+        "benign_median": 1.0,
+        "benign_p99": 1.9325259507,
+        "benign_std": 0.1527367865,
+        "feature": "HH_L5_weight",
+        "screen": "discriminative",
+        "value": 128.9337650519
+      },
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.5186293564,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 74.0730452962
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 210.566574307,
+        "benign_std": 1.9179728784686516e+16,
+        "feature": "HH_jit_L1_variance",
+        "screen": "discriminative",
+        "value": 542821495772892.5
+      },
+      {
+        "benign_median": 1.9999917605,
+        "benign_p99": 5.6400411289,
+        "benign_std": 1.5129006138,
+        "feature": "MI_dir_L1_weight",
+        "screen": "discriminative",
+        "value": 673.1042030815
+      },
+      {
+        "benign_median": 102.0,
+        "benign_p99": 102.0,
+        "benign_std": 13.3083789578,
+        "feature": "HH_L0.01_mean",
+        "screen": "contextual",
+        "value": 74.0
+      }
+    ],
+    "label_type": "gafgyt_junk",
+    "margin": 0.3017022542427561,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "gafgyt_junk",
+      "sample_id": 38847,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "hedged_generic"
+    },
+    "p_pair": 0.0,
+    "p_top1": 0.650851127121378,
+    "p_top2": 0.34914887287862195,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_combo",
+    "y_pred": "gafgyt_junk"
+  },
+  {
+    "case_id": "hedged_generic-91824",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 0.6926744336085259,
+    "evidence": [
+      {
+        "benign_median": 1.000382886,
+        "benign_p99": 2.2898430674,
+        "benign_std": 0.3456249327,
+        "feature": "MI_dir_L3_weight",
+        "screen": "discriminative",
+        "value": 248.5907537001
+      },
+      {
+        "benign_median": 382.59997555,
+        "benign_p99": 765.518873063,
+        "benign_std": 184.206424014,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 137.7389310006
+      },
+      {
+        "benign_median": -856.04941905,
+        "benign_p99": 6470.57463585,
+        "benign_std": 5432.6773293098,
+        "feature": "HH_L0.01_covariance",
+        "screen": "contextual",
+        "value": 23.9906187535
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 835.681633694,
+        "benign_std": 1.6809260657580208e+16,
+        "feature": "HH_jit_L3_variance",
+        "screen": "contextual",
+        "value": 8.986e-07
+      },
+      {
+        "benign_median": 241.7114374,
+        "benign_p99": 314.476521467,
+        "benign_std": 87.1106115749,
+        "feature": "HH_L0.01_mean",
+        "screen": "contextual",
+        "value": 97.3264811474
+      }
+    ],
+    "label_type": "gafgyt_junk",
+    "margin": 0.030746469675819454,
+    "metadata": {
+      "atypicality_score": 0.4,
+      "label_type": "gafgyt_junk",
+      "sample_id": 91824,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "hedged_generic"
+    },
+    "p_pair": 0.0,
+    "p_top1": 0.5153732348379098,
+    "p_top2": 0.4846267651620903,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_junk",
+    "y_pred": "gafgyt_combo"
+  },
+  {
+    "case_id": "hedged_generic-93520",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 0.929844687817548,
+    "evidence": [
+      {
+        "benign_median": -0.354150511,
+        "benign_p99": 1316.80504205,
+        "benign_std": 4784.0644499043,
+        "feature": "HH_L0.1_covariance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 241.7114374,
+        "benign_p99": 314.476521467,
+        "benign_std": 87.1106115749,
+        "feature": "HH_L0.01_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 1.000382886,
+        "benign_p99": 2.2898430674,
+        "benign_std": 0.3456249327,
+        "feature": "MI_dir_L3_weight",
+        "screen": "discriminative",
+        "value": 290.7790323564
+      },
+      {
+        "benign_median": 382.59997555,
+        "benign_p99": 765.518873063,
+        "benign_std": 184.206424014,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 1.0,
+        "benign_p99": 2.1557955728,
+        "benign_std": 0.3230889487,
+        "feature": "HH_L3_weight",
+        "screen": "contextual",
+        "value": 1.0
+      }
+    ],
+    "label_type": "gafgyt_junk",
+    "margin": 0.3055749818164518,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "gafgyt_junk",
+      "sample_id": 93520,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "hedged_generic"
+    },
+    "p_pair": 0.3036651075405504,
+    "p_top1": 0.6092400893570022,
+    "p_top2": 0.3036651075405504,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_tcp",
+    "y_pred": "gafgyt_combo"
+  },
+  {
+    "case_id": "hedged_generic-93575",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 0.668370640742621,
+    "evidence": [
+      {
+        "benign_median": 1.0,
+        "benign_p99": 1.9999653291,
+        "benign_std": 0.2231233711,
+        "feature": "HH_L5_weight",
+        "screen": "discriminative",
+        "value": 183.7227269494
+      },
+      {
+        "benign_median": 1.000382886,
+        "benign_p99": 2.2898430674,
+        "benign_std": 0.3456249327,
+        "feature": "MI_dir_L3_weight",
+        "screen": "discriminative",
+        "value": 297.7001604102
+      },
+      {
+        "benign_median": 200.8874374,
+        "benign_p99": 261.386906612,
+        "benign_std": 30.8022764899,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 74.0776735944
+      },
+      {
+        "benign_median": 3.53e-05,
+        "benign_p99": 880.077861504,
+        "benign_std": 2.0571958522836416e+16,
+        "feature": "HH_jit_L1_variance",
+        "screen": "discriminative",
+        "value": 616366012208454.4
+      },
+      {
+        "benign_median": 382.59997555,
+        "benign_p99": 765.518873063,
+        "benign_std": 184.206424014,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2680429105
+      }
+    ],
+    "label_type": "gafgyt_junk",
+    "margin": 0.2216809791992504,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_junk",
+      "sample_id": 93575,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "hedged_generic"
+    },
+    "p_pair": 0.0,
+    "p_top1": 0.6108404895996252,
+    "p_top2": 0.38915951040037483,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_combo",
+    "y_pred": "gafgyt_junk"
+  },
+  {
+    "case_id": "hedged_generic-286865",
+    "case_set_version": "1.0.0",
+    "device_category": "security_camera",
+    "device_name": "Provision_PT_838_Security_Camera",
+    "entropy": 0.5902454545164599,
+    "evidence": [
+      {
+        "benign_median": 2.7230437895,
+        "benign_p99": 84.6842922084,
+        "benign_std": 19.2068844051,
+        "feature": "MI_dir_L1_weight",
+        "screen": "discriminative",
+        "value": 830.3072308089
+      },
+      {
+        "benign_median": 0.757133562,
+        "benign_p99": 104164.5808480105,
+        "benign_std": 7950197008052360.0,
+        "feature": "HH_jit_L1_variance",
+        "screen": "contextual",
+        "value": 91.4396936457
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 0.6165118937,
+        "benign_std": 0.183572336,
+        "feature": "HH_L0.01_pcc",
+        "screen": "discriminative",
+        "value": 0.9462643414
+      },
+      {
+        "benign_median": 1.001013876,
+        "benign_p99": 53.9215409539,
+        "benign_std": 12.7747260628,
+        "feature": "HH_L5_weight",
+        "screen": "contextual",
+        "value": 1.0295596021
+      },
+      {
+        "benign_median": 114.0175375,
+        "benign_p99": 522.150256691,
+        "benign_std": 124.3484641887,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 137.3735144123
+      }
+    ],
+    "label_type": "gafgyt_junk",
+    "margin": 0.4456915723048458,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "gafgyt_junk",
+      "sample_id": 286865,
+      "split": "frozen",
+      "stage_a_flagged": true,
+      "stratum": "hedged_generic"
+    },
+    "p_pair": 0.0,
+    "p_top1": 0.7228457861524229,
+    "p_top2": 0.2771542138475771,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_combo",
+    "y_pred": "gafgyt_junk"
+  }
+]

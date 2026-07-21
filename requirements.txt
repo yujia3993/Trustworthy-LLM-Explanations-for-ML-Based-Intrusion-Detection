@@ -1,0 +1,17 @@
+# Module 1 runtime dependencies (from imports in code/*.py)
+numpy
+pandas
+scikit-learn
+xgboost
+joblib
+pyarrow
+shap
+matplotlib
+
+# Test dependencies
+pytest
+
+# Module 2 retrieval dependencies
+chromadb
+rank-bm25
+sentence-transformers

@@ -1,0 +1,288 @@
+{
+  "definition": "SHAP(gafgyt_tcp) - SHAP(gafgyt_udp) on calibrated tcp/udp predictions",
+  "n_predicted_tcp_or_udp_population": 90005,
+  "n_shap_sampled_tcp_or_udp": 10000,
+  "top_units_overall": [
+    {
+      "feature_unit": "H_weight",
+      "unit_kind": "traffic_feature_family",
+      "mean_abs_shap_tcp_minus_udp": 0.019732535494027207,
+      "mean_signed_shap_tcp_minus_udp": 0.01838824661508411
+    },
+    {
+      "feature_unit": "H_variance",
+      "unit_kind": "traffic_feature_family",
+      "mean_abs_shap_tcp_minus_udp": 0.018444239915647403,
+      "mean_signed_shap_tcp_minus_udp": -0.018223466461523414
+    },
+    {
+      "feature_unit": "dev_SimpleHome_XCS7_1003_WHT_Security_Camera",
+      "unit_kind": "device_one_hot",
+      "mean_abs_shap_tcp_minus_udp": 0.0046249813755741345,
+      "mean_signed_shap_tcp_minus_udp": 6.879372359253466e-06
+    },
+    {
+      "feature_unit": "dev_SimpleHome_XCS7_1002_WHT_Security_Camera",
+      "unit_kind": "device_one_hot",
+      "mean_abs_shap_tcp_minus_udp": 0.00353013656543626,
+      "mean_signed_shap_tcp_minus_udp": -6.421509632782544e-05
+    },
+    {
+      "feature_unit": "MI_dir_variance",
+      "unit_kind": "traffic_feature_family",
+      "mean_abs_shap_tcp_minus_udp": 0.002606966909808625,
+      "mean_signed_shap_tcp_minus_udp": -0.0006125189678003607
+    },
+    {
+      "feature_unit": "HH_pcc",
+      "unit_kind": "traffic_feature_family",
+      "mean_abs_shap_tcp_minus_udp": 0.00175578202847189,
+      "mean_signed_shap_tcp_minus_udp": -0.00016358663646080912
+    },
+    {
+      "feature_unit": "dev_Danmini_Doorbell",
+      "unit_kind": "device_one_hot",
+      "mean_abs_shap_tcp_minus_udp": 0.0017498847476686934,
+      "mean_signed_shap_tcp_minus_udp": 7.180010598676745e-06
+    },
+    {
+      "feature_unit": "dev_Provision_PT_838_Security_Camera",
+      "unit_kind": "device_one_hot",
+      "mean_abs_shap_tcp_minus_udp": 0.001082145432526886,
+      "mean_signed_shap_tcp_minus_udp": 5.863908534229268e-06
+    },
+    {
+      "feature_unit": "MI_dir_weight",
+      "unit_kind": "traffic_feature_family",
+      "mean_abs_shap_tcp_minus_udp": 0.0010796646927388792,
+      "mean_signed_shap_tcp_minus_udp": -0.00016049078920841566
+    },
+    {
+      "feature_unit": "dev_Provision_PT_737E_Security_Camera",
+      "unit_kind": "device_one_hot",
+      "mean_abs_shap_tcp_minus_udp": 0.0010579271286405856,
+      "mean_signed_shap_tcp_minus_udp": 0.00013937796388345305
+    },
+    {
+      "feature_unit": "HH_jit_variance",
+      "unit_kind": "traffic_feature_family",
+      "mean_abs_shap_tcp_minus_udp": 0.0008723867569499816,
+      "mean_signed_shap_tcp_minus_udp": -0.0003034030908803288
+    },
+    {
+      "feature_unit": "dev_Ennio_Doorbell",
+      "unit_kind": "device_one_hot",
+      "mean_abs_shap_tcp_minus_udp": 0.0005674451164144557,
+      "mean_signed_shap_tcp_minus_udp": 1.3699589355383068e-06
+    },
+    {
+      "feature_unit": "HH_magnitude",
+      "unit_kind": "traffic_feature_family",
+      "mean_abs_shap_tcp_minus_udp": 0.0004985369840764634,
+      "mean_signed_shap_tcp_minus_udp": 0.00020964448432091558
+    },
+    {
+      "feature_unit": "dev_Philips_B120N10_Baby_Monitor",
+      "unit_kind": "device_one_hot",
+      "mean_abs_shap_tcp_minus_udp": 0.00039818741683338887,
+      "mean_signed_shap_tcp_minus_udp": 2.5387818908347982e-05
+    },
+    {
+      "feature_unit": "HH_std",
+      "unit_kind": "traffic_feature_family",
+      "mean_abs_shap_tcp_minus_udp": 0.0003846236063937113,
+      "mean_signed_shap_tcp_minus_udp": -6.503151837257519e-05
+    }
+  ],
+  "top_device_one_hot_units": [
+    {
+      "feature_unit": "dev_SimpleHome_XCS7_1003_WHT_Security_Camera",
+      "mean_abs_shap_tcp_minus_udp": 0.0046249813755741345,
+      "mean_signed_shap_tcp_minus_udp": 6.879372359253466e-06
+    },
+    {
+      "feature_unit": "dev_SimpleHome_XCS7_1002_WHT_Security_Camera",
+      "mean_abs_shap_tcp_minus_udp": 0.00353013656543626,
+      "mean_signed_shap_tcp_minus_udp": -6.421509632782544e-05
+    },
+    {
+      "feature_unit": "dev_Danmini_Doorbell",
+      "mean_abs_shap_tcp_minus_udp": 0.0017498847476686934,
+      "mean_signed_shap_tcp_minus_udp": 7.180010598676745e-06
+    },
+    {
+      "feature_unit": "dev_Provision_PT_838_Security_Camera",
+      "mean_abs_shap_tcp_minus_udp": 0.001082145432526886,
+      "mean_signed_shap_tcp_minus_udp": 5.863908534229268e-06
+    },
+    {
+      "feature_unit": "dev_Provision_PT_737E_Security_Camera",
+      "mean_abs_shap_tcp_minus_udp": 0.0010579271286405856,
+      "mean_signed_shap_tcp_minus_udp": 0.00013937796388345305
+    },
+    {
+      "feature_unit": "dev_Ennio_Doorbell",
+      "mean_abs_shap_tcp_minus_udp": 0.0005674451164144557,
+      "mean_signed_shap_tcp_minus_udp": 1.3699589355383068e-06
+    },
+    {
+      "feature_unit": "dev_Philips_B120N10_Baby_Monitor",
+      "mean_abs_shap_tcp_minus_udp": 0.00039818741683338887,
+      "mean_signed_shap_tcp_minus_udp": 2.5387818908347982e-05
+    },
+    {
+      "feature_unit": "dev_Samsung_SNH_1011_N_Webcam",
+      "mean_abs_shap_tcp_minus_udp": 0.00033205328257063227,
+      "mean_signed_shap_tcp_minus_udp": -2.3310162213238073e-05
+    },
+    {
+      "feature_unit": "dev_Ecobee_Thermostat",
+      "mean_abs_shap_tcp_minus_udp": 3.896204764296271e-05,
+      "mean_signed_shap_tcp_minus_udp": -5.871261973334185e-06
+    }
+  ],
+  "top_traffic_family_units": [
+    {
+      "feature_unit": "H_weight",
+      "mean_abs_shap_tcp_minus_udp": 0.019732535494027207,
+      "mean_signed_shap_tcp_minus_udp": 0.01838824661508411
+    },
+    {
+      "feature_unit": "H_variance",
+      "mean_abs_shap_tcp_minus_udp": 0.018444239915647403,
+      "mean_signed_shap_tcp_minus_udp": -0.018223466461523414
+    },
+    {
+      "feature_unit": "MI_dir_variance",
+      "mean_abs_shap_tcp_minus_udp": 0.002606966909808625,
+      "mean_signed_shap_tcp_minus_udp": -0.0006125189678003607
+    },
+    {
+      "feature_unit": "HH_pcc",
+      "mean_abs_shap_tcp_minus_udp": 0.00175578202847189,
+      "mean_signed_shap_tcp_minus_udp": -0.00016358663646080912
+    },
+    {
+      "feature_unit": "MI_dir_weight",
+      "mean_abs_shap_tcp_minus_udp": 0.0010796646927388792,
+      "mean_signed_shap_tcp_minus_udp": -0.00016049078920841566
+    },
+    {
+      "feature_unit": "HH_jit_variance",
+      "mean_abs_shap_tcp_minus_udp": 0.0008723867569499816,
+      "mean_signed_shap_tcp_minus_udp": -0.0003034030908803288
+    },
+    {
+      "feature_unit": "HH_magnitude",
+      "mean_abs_shap_tcp_minus_udp": 0.0004985369840764634,
+      "mean_signed_shap_tcp_minus_udp": 0.00020964448432091558
+    },
+    {
+      "feature_unit": "HH_std",
+      "mean_abs_shap_tcp_minus_udp": 0.0003846236063937113,
+      "mean_signed_shap_tcp_minus_udp": -6.503151837257519e-05
+    },
+    {
+      "feature_unit": "HH_covariance",
+      "mean_abs_shap_tcp_minus_udp": 0.00037869789153992315,
+      "mean_signed_shap_tcp_minus_udp": 0.00014743425544074852
+    },
+    {
+      "feature_unit": "HH_radius",
+      "mean_abs_shap_tcp_minus_udp": 0.0003590169272492631,
+      "mean_signed_shap_tcp_minus_udp": 9.771910618021594e-05
+    }
+  ],
+  "per_device_own_dummy": [
+    {
+      "device_name": "Danmini_Doorbell",
+      "n_shap_sampled_predicted_tcp_or_udp": 1112,
+      "n_shap_sampled_predicted_tcp": 1,
+      "n_shap_sampled_predicted_udp": 1111,
+      "mean_abs_shap_tcp_minus_udp": 0.007835902594739283,
+      "mean_signed_shap_tcp_minus_udp": -0.007835902594739283,
+      "rank_by_abs_within_scope": 3,
+      "predicted_tcp_fraction": 0.0008992805755395684
+    },
+    {
+      "device_name": "Ecobee_Thermostat",
+      "n_shap_sampled_predicted_tcp_or_udp": 1111,
+      "n_shap_sampled_predicted_tcp": 1110,
+      "n_shap_sampled_predicted_udp": 1,
+      "mean_abs_shap_tcp_minus_udp": 0.000148923427856114,
+      "mean_signed_shap_tcp_minus_udp": 0.000148923427856114,
+      "rank_by_abs_within_scope": 22,
+      "predicted_tcp_fraction": 0.9990999099909991
+    },
+    {
+      "device_name": "Ennio_Doorbell",
+      "n_shap_sampled_predicted_tcp_or_udp": 1111,
+      "n_shap_sampled_predicted_tcp": 1111,
+      "n_shap_sampled_predicted_udp": 0,
+      "mean_abs_shap_tcp_minus_udp": 0.002559923831458119,
+      "mean_signed_shap_tcp_minus_udp": 0.002559923831458119,
+      "rank_by_abs_within_scope": 5,
+      "predicted_tcp_fraction": 1.0
+    },
+    {
+      "device_name": "Philips_B120N10_Baby_Monitor",
+      "n_shap_sampled_predicted_tcp_or_udp": 1111,
+      "n_shap_sampled_predicted_tcp": 1110,
+      "n_shap_sampled_predicted_udp": 1,
+      "mean_abs_shap_tcp_minus_udp": 0.0016777659672594098,
+      "mean_signed_shap_tcp_minus_udp": -0.0016777659672594098,
+      "rank_by_abs_within_scope": 6,
+      "predicted_tcp_fraction": 0.9990999099909991
+    },
+    {
+      "device_name": "Provision_PT_737E_Security_Camera",
+      "n_shap_sampled_predicted_tcp_or_udp": 1111,
+      "n_shap_sampled_predicted_tcp": 1110,
+      "n_shap_sampled_predicted_udp": 1,
+      "mean_abs_shap_tcp_minus_udp": 0.004133884629870083,
+      "mean_signed_shap_tcp_minus_udp": -0.004133884629870083,
+      "rank_by_abs_within_scope": 3,
+      "predicted_tcp_fraction": 0.9990999099909991
+    },
+    {
+      "device_name": "Provision_PT_838_Security_Camera",
+      "n_shap_sampled_predicted_tcp_or_udp": 1111,
+      "n_shap_sampled_predicted_tcp": 1111,
+      "n_shap_sampled_predicted_udp": 0,
+      "mean_abs_shap_tcp_minus_udp": 0.004896531687943813,
+      "mean_signed_shap_tcp_minus_udp": 0.004896531687943813,
+      "rank_by_abs_within_scope": 4,
+      "predicted_tcp_fraction": 1.0
+    },
+    {
+      "device_name": "Samsung_SNH_1011_N_Webcam",
+      "n_shap_sampled_predicted_tcp_or_udp": 1111,
+      "n_shap_sampled_predicted_tcp": 1111,
+      "n_shap_sampled_predicted_udp": 0,
+      "mean_abs_shap_tcp_minus_udp": 0.0013894829899072647,
+      "mean_signed_shap_tcp_minus_udp": 0.0013894829899072647,
+      "rank_by_abs_within_scope": 6,
+      "predicted_tcp_fraction": 1.0
+    },
+    {
+      "device_name": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+      "n_shap_sampled_predicted_tcp_or_udp": 1111,
+      "n_shap_sampled_predicted_tcp": 0,
+      "n_shap_sampled_predicted_udp": 1111,
+      "mean_abs_shap_tcp_minus_udp": 0.01617620009794818,
+      "mean_signed_shap_tcp_minus_udp": -0.01617620009794818,
+      "rank_by_abs_within_scope": 2,
+      "predicted_tcp_fraction": 0.0
+    },
+    {
+      "device_name": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+      "n_shap_sampled_predicted_tcp_or_udp": 1111,
+      "n_shap_sampled_predicted_tcp": 1111,
+      "n_shap_sampled_predicted_udp": 0,
+      "mean_abs_shap_tcp_minus_udp": 0.020845457911491394,
+      "mean_signed_shap_tcp_minus_udp": 0.020845457911491394,
+      "rank_by_abs_within_scope": 2,
+      "predicted_tcp_fraction": 1.0
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "frozen": true,
+  "frozen_policy": "This schema is frozen before KB ingestion. Any change requires a new major version and invalidates downstream retrieval experiments.",
+  "fields": {
+    "doc_id": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Kebab-case identifier; must equal the markdown filename without extension."
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "description": "Human-readable document title."
+    },
+    "attack_family": {
+      "type": "string",
+      "required": true,
+      "enum": ["mirai", "gafgyt", "other_botnet", "generic"],
+      "description": "Primary botnet family the document is about; 'generic' for family-agnostic material."
+    },
+    "attack_types": {
+      "type": "array[string]",
+      "required": true,
+      "item_enum": [
+        "gafgyt_combo",
+        "gafgyt_junk",
+        "gafgyt_scan",
+        "gafgyt_tcp",
+        "gafgyt_udp",
+        "mirai_ack",
+        "mirai_scan",
+        "mirai_syn",
+        "mirai_udp",
+        "mirai_udpplain"
+      ],
+      "description": "Specific N-BaIoT attack classes the document addresses; empty for generic or off-dataset material."
+    },
+    "device_categories": {
+      "type": "array[string]",
+      "required": true,
+      "item_enum": ["doorbell", "thermostat", "baby_monitor", "security_camera", "webcam", "generic"],
+      "description": "Device categories the document applies to; ['generic'] when device-agnostic. Categories outside this enum (e.g. routers, TVs) map to 'generic'."
+    },
+    "doc_type": {
+      "type": "string",
+      "required": true,
+      "enum": ["family_overview", "attack_mechanism", "device_profile", "remediation", "concept", "project_finding", "threat_intel"],
+      "description": "Functional role of the document in report generation."
+    },
+    "source": {
+      "type": "string",
+      "required": true,
+      "enum": ["self_authored", "public_analysis", "mitre_attack", "cve", "vendor_advisory"],
+      "description": "Provenance of the content."
+    },
+    "is_distractor": {
+      "type": "boolean",
+      "required": true,
+      "description": "True for deliberately off-target documents seeded to make retrieval fallible. Must appear ONLY in metadata, never in doc_id, title, or body text (it would leak into embeddings)."
+    }
+  },
+  "device_category_map": {
+    "Danmini_Doorbell": "doorbell",
+    "Ennio_Doorbell": "doorbell",
+    "Ecobee_Thermostat": "thermostat",
+    "Philips_B120N10_Baby_Monitor": "baby_monitor",
+    "Provision_PT_737E_Security_Camera": "security_camera",
+    "Provision_PT_838_Security_Camera": "security_camera",
+    "SimpleHome_XCS7_1002_WHT_Security_Camera": "security_camera",
+    "SimpleHome_XCS7_1003_WHT_Security_Camera": "security_camera",
+    "Samsung_SNH_1011_N_Webcam": "webcam"
+  },
+  "retrieval_filtering_note": "Metadata filtering at retrieval time uses attack_family and device_categories, applied per report section as a soft preference (not a hard filter), so generic remediation documents remain reachable."
+}

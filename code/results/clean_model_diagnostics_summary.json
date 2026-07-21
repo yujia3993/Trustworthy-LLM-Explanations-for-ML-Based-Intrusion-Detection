@@ -1,0 +1,31 @@
+{
+  "n_test": 89000,
+  "stage_a_flagged_frac": 0.6766404494382022,
+  "stage_b_accuracy": 0.8975280898876404,
+  "confusion_pairs_for_fingerprint": [
+    {
+      "class_a": "benign",
+      "class_b": "gafgyt_tcp"
+    },
+    {
+      "class_a": "benign",
+      "class_b": "gafgyt_udp"
+    },
+    {
+      "class_a": "benign",
+      "class_b": "mirai_scan"
+    },
+    {
+      "class_a": "gafgyt_combo",
+      "class_b": "gafgyt_junk"
+    },
+    {
+      "class_a": "gafgyt_tcp",
+      "class_b": "gafgyt_udp"
+    },
+    {
+      "class_a": "mirai_udp",
+      "class_b": "mirai_udpplain"
+    }
+  ]
+}

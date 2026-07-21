@@ -1,0 +1,49 @@
+{
+  "alerts_full_schema": [
+    "sample_id",
+    "device_name",
+    "y_pred",
+    "p_vector",
+    "p_top1",
+    "top2_class",
+    "p_top2",
+    "p_pair",
+    "margin",
+    "entropy",
+    "stage_a_flagged",
+    "is_weak_combo"
+  ],
+  "p_vector_class_order": [
+    "benign",
+    "gafgyt_combo",
+    "gafgyt_junk",
+    "gafgyt_scan",
+    "gafgyt_tcp",
+    "gafgyt_udp",
+    "mirai_ack",
+    "mirai_scan",
+    "mirai_syn",
+    "mirai_udp",
+    "mirai_udpplain"
+  ],
+  "p_pair": "Calibrated p(gafgyt_tcp) + p(gafgyt_udp); this is the tcp-or-udp superclass probability.",
+  "entropy": "Shannon entropy over p_vector, natural-log units (nats).",
+  "stage_a_flagged": "Boolean clean Stage A Isolation Forest result; its saved feature list is validated to exclude timestamp-like HH_jit_mean features.",
+  "is_weak_combo": {
+    "label_type_values": [
+      "gafgyt_tcp",
+      "gafgyt_udp"
+    ],
+    "device_names": [
+      "Ennio_Doorbell",
+      "Provision_PT_737E_Security_Camera",
+      "SimpleHome_XCS7_1003_WHT_Security_Camera"
+    ]
+  },
+  "explanation_feature_filter": {
+    "excluded_families": [
+      "HH_jit_mean"
+    ],
+    "note": "Filtered from Module 2 evidence; model inputs remain unchanged."
+  }
+}

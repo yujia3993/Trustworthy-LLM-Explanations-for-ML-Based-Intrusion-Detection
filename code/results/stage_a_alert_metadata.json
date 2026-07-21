@@ -1,0 +1,10 @@
+{
+  "stage_a_feature_count": 64,
+  "stage_a_excluded_time_feature_families": [
+    "HH_jit_mean"
+  ],
+  "stage_a_flagged_n_all_samples": 301471,
+  "stage_a_flagged_frac_all_samples": 0.6774629213483147,
+  "stage_a_flagged_n_attack_alerts": 295974,
+  "stage_a_flagged_frac_attack_alerts": 0.739935
+}

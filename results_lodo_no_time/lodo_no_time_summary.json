@@ -1,0 +1,42 @@
+{
+  "scope": "lodo_no_time_features",
+  "feature_filter": {
+    "removed_feature_count": 7,
+    "kept_feature_count": 108,
+    "removed_families": [
+      "HH_jit_mean",
+      "HH_jit_variance"
+    ],
+    "epoch_like_rule": "p75 >= 100000000.0",
+    "family_rule": [
+      "HH_jit_mean"
+    ]
+  },
+  "macro_f1": {
+    "mean": 0.855355251365898,
+    "median": 0.8758589559837046,
+    "min": 0.7780662760382038,
+    "max": 0.8789925915818517
+  },
+  "binary_attack_recall_mean": 0.9998955555555555,
+  "tcp_udp_total": {
+    "tcp_to_udp": 44950,
+    "udp_to_tcp": 1,
+    "tcp_support": 45000,
+    "udp_support": 45000
+  },
+  "worst_folds": [
+    {
+      "held_out_device": "Ennio_Doorbell",
+      "macro_f1": 0.7780662760382038
+    },
+    {
+      "held_out_device": "Samsung_SNH_1011_N_Webcam",
+      "macro_f1": 0.778287957296127
+    },
+    {
+      "held_out_device": "Danmini_Doorbell",
+      "macro_f1": 0.8747536988364861
+    }
+  ]
+}

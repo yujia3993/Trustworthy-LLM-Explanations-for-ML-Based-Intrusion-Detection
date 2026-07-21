@@ -1,0 +1,42 @@
+{
+  "audit_rules_version": "1.0.0",
+  "register_threshold": 0.9,
+  "probability_format": "{:.4f}",
+  "gates": {
+    "gate1_register_mapping": {
+      "description": "The register used must match the margin band: margin >= 0.9 -> assertive; margin < 0.9 and ambiguous pair -> hedged_pair; margin < 0.9 otherwise -> hedged_generic. An ambiguous-pair alert with margin >= 0.9 keeps register assertive but must set needs_review=true (runtime guard; empty set on current data).",
+      "check": "structural: compare pipeline-recorded register against case.margin and case.is_ambiguous_pair"
+    },
+    "gate2_hedged_disclosures": {
+      "description": "Every hedged_pair report must disclose indistinguishability, the pcap disambiguation action, and the pair probability. All three pattern groups must match somewhere in the report.",
+      "applies_to": ["hedged_pair"],
+      "required_patterns": [
+        "(?i)(indistinguish|cannot\\s+(?:be\\s+)?distinguish|cannot\\s+(?:reliably\\s+)?(?:determine|tell)\\s+which|no\\s+(?:way|evidence)\\s+to\\s+(?:determine|distinguish))",
+        "(?i)(protocol\\s+field|packet\\s+capture|pcap|tcpdump|single\\s+packet)",
+        "(?i)(pair\\s+probability|p_?pair|combined\\s+probability|pair-level\\s+probability)"
+      ]
+    },
+    "gate3_no_ordering_language": {
+      "description": "No hedged_pair report may contain within-pair ordering or preference language. Any single match fails the gate.",
+      "applies_to": ["hedged_pair"],
+      "forbidden_patterns": [
+        "(?i)\\b(more|most)\\s+likely\\b",
+        "(?i)\\blikel(?:y|ier|iest)\\s+(?:a\\s+|an\\s+|the\\s+)?(?:gafgyt[_\\s-]?)?(tcp|udp)\\b",
+        "(?i)\\bprobabl\\w*\\s+(?:a\\s+|an\\s+|the\\s+)?(?:gafgyt[_\\s-]?)?(tcp|udp)\\b",
+        "(?i)\\blean(?:s|ing)?\\s+(?:toward|towards)\\b",
+        "(?i)\\bfavou?r(?:s|ed|ing)?\\b",
+        "(?i)\\bsuggests?\\s+(?:a\\s+|an\\s+|the\\s+)?(?:gafgyt[_\\s-]?)?(tcp|udp)\\b",
+        "(?i)\\b(primary|leading|top|best|strongest|likelier)\\s+candidate\\b",
+        "(?i)\\bbest\\s+guess\\b",
+        "(?i)\\bwe\\s+believe\\s+it\\s+is\\b",
+        "(?i)\\b(first|second)\\s+candidate\\b"
+      ]
+    },
+    "gate4_probability_consistency": {
+      "description": "Numeric confidence figures in the report must match the alert. Probabilities are rendered with probability_format (4 decimal places) by the prompt builder, so string comparison is exact. hedged_pair: the formatted p_pair string MUST appear at least once, and the formatted p_top1/p_top2 strings MUST NOT appear (they are the within-pair split). assertive: the formatted p_top1 string MUST appear at least once. hedged_generic: formatted p_top1 AND p_top2 must both appear.",
+      "applies_to": ["assertive", "hedged_pair", "hedged_generic"],
+      "tolerance_note": "String-level check by design: the pipeline formats all probabilities identically, so a mismatch means the model altered or invented a number. Exception: if p_top1/p_top2 format to the same string as p_pair (cannot happen while p_pair = p_top1 + p_top2 and both members are nonzero), the check on their absence is skipped."
+    }
+  },
+  "notes": "Gates 2-4 are text-level and machine-checkable with the regexes above; gate 1 is structural. These rules mirror prompts/register_*.md v1.0.0 - the two must be versioned together. False-positive risk accepted and documented: e.g. 'favors' could appear in benign phrasing; hedged-pair reports have no legitimate use for it."
+}

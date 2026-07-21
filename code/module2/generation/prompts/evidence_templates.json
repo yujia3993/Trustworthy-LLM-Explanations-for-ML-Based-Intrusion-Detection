@@ -1,0 +1,17 @@
+{
+  "evidence_templates_version": "1.0.0",
+  "number_formats": {
+    "probability": "{:.4f}",
+    "feature_value": "{:.4g}",
+    "ratio": "{:.1f}"
+  },
+  "discriminative": "[E{index}] (DISCRIMINATIVE) {feature} = {value} - {ratio_text} the device's benign median ({benign_median}); {p99_relation} the benign 99th percentile ({benign_p99}).",
+  "contextual": "[E{index}] (CONTEXTUAL) {feature} = {value} - {ratio_text} the device's benign median ({benign_median}); {p99_relation} the benign 99th percentile ({benign_p99}). Contextual only: describe as anomalous relative to baseline; do not tie to a specific attack type.",
+  "ratio_text_rules": {
+    "above": "{ratio}x above",
+    "below": "{ratio}x below",
+    "near": "approximately at"
+  },
+  "p99_relation_values": ["above", "within"],
+  "notes": "Placeholders are filled by prompt_builder with number_formats applied. ratio = value/benign_median when median > 0; 'near' used when 0.8 <= ratio <= 1.25. The same formatting is used by audit gate 4, so probability strings in prompts and reports are comparable."
+}

@@ -1,0 +1,625 @@
+case_id,config,section,type,text,cited_refs,label,verdict_source
+assertive_correct-10008,full_rag,threat_assessment,knowledge,This device is emitting Mirai scan.,[],unsupported_but_true,judge
+assertive_correct-10008,full_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-10008,full_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-10008,full_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-10008,full_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-10008,full_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-10008,full_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-10008,full_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-10008,full_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-10008,full_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-10008,full_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-10008,full_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-10008,naive_rag,threat_assessment,knowledge,This device is emitting Mirai scan.,[],unsupported_but_true,judge
+assertive_correct-10008,naive_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-10008,naive_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-10008,naive_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-10008,naive_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-10008,naive_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-10008,naive_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-10008,naive_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-10008,naive_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-10008,naive_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-10008,naive_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-10008,naive_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-10008,no_rag,threat_assessment,knowledge,This device is emitting Mirai scan.,[],unsupported_but_true,judge
+assertive_correct-10008,no_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-10008,no_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-10008,no_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-10008,no_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-10008,no_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-10008,no_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-10008,no_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-10008,no_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-10008,no_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-10008,no_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-10008,no_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-10008,self_check,threat_assessment,knowledge,This device is emitting Mirai scan.,[],unsupported_but_true,judge
+assertive_correct-10008,self_check,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-10008,self_check,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-10008,self_check,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-10008,self_check,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-10008,self_check,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-10008,self_check,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-10008,self_check,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-10008,self_check,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-10008,self_check,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-10008,self_check,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-10008,self_check,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-15007,full_rag,threat_assessment,knowledge,This device is emitting Mirai SYN flood.,[],unsupported_but_true,judge
+assertive_correct-15007,full_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-15007,full_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-15007,full_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-15007,full_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-15007,full_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-15007,full_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-15007,full_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-15007,full_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-15007,full_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-15007,full_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-15007,full_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-15007,naive_rag,threat_assessment,knowledge,This device is emitting Mirai SYN flood.,[],unsupported_but_true,judge
+assertive_correct-15007,naive_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-15007,naive_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-15007,naive_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-15007,naive_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-15007,naive_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-15007,naive_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-15007,naive_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-15007,naive_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-15007,naive_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-15007,naive_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-15007,naive_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-15007,no_rag,threat_assessment,knowledge,This device is emitting Mirai SYN flood.,[],unsupported_but_true,judge
+assertive_correct-15007,no_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-15007,no_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-15007,no_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-15007,no_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-15007,no_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-15007,no_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-15007,no_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-15007,no_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-15007,no_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-15007,no_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-15007,no_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-15007,self_check,threat_assessment,knowledge,This device is emitting Mirai SYN flood.,[],unsupported_but_true,judge
+assertive_correct-15007,self_check,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-15007,self_check,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-15007,self_check,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-15007,self_check,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-15007,self_check,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-15007,self_check,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-15007,self_check,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-15007,self_check,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-15007,self_check,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-15007,self_check,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-15007,self_check,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-20014,full_rag,threat_assessment,knowledge,This device is emitting Mirai UDP flood.,[],unsupported_but_true,judge
+assertive_correct-20014,full_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-20014,full_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-20014,full_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-20014,full_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-20014,full_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-20014,full_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-20014,full_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-20014,full_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-20014,full_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-20014,full_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-20014,full_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-20014,naive_rag,threat_assessment,knowledge,This device is emitting Mirai UDP flood.,[],unsupported_but_true,judge
+assertive_correct-20014,naive_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-20014,naive_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-20014,naive_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-20014,naive_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-20014,naive_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-20014,naive_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-20014,naive_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-20014,naive_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-20014,naive_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-20014,naive_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-20014,naive_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-20014,no_rag,threat_assessment,knowledge,This device is emitting Mirai UDP flood.,[],unsupported_but_true,judge
+assertive_correct-20014,no_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-20014,no_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-20014,no_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-20014,no_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-20014,no_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-20014,no_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-20014,no_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-20014,no_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-20014,no_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-20014,no_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-20014,no_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-20014,self_check,threat_assessment,knowledge,This device is emitting Mirai UDP flood.,[],unsupported_but_true,judge
+assertive_correct-20014,self_check,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-20014,self_check,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-20014,self_check,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-20014,self_check,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-20014,self_check,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-20014,self_check,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-20014,self_check,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-20014,self_check,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-20014,self_check,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-20014,self_check,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-20014,self_check,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-25017,full_rag,threat_assessment,knowledge,This device is emitting Mirai UDP plain flood.,[],unsupported_but_true,judge
+assertive_correct-25017,full_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-25017,full_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-25017,full_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-25017,full_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-25017,full_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-25017,full_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-25017,full_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-25017,full_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-25017,full_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-25017,full_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-25017,full_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-25017,naive_rag,threat_assessment,knowledge,This device is emitting Mirai UDP plain flood.,[],unsupported_but_true,judge
+assertive_correct-25017,naive_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-25017,naive_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-25017,naive_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-25017,naive_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-25017,naive_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-25017,naive_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-25017,naive_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-25017,naive_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-25017,naive_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-25017,naive_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-25017,naive_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-25017,no_rag,threat_assessment,knowledge,This device is emitting Mirai UDP plain flood.,[],unsupported_but_true,judge
+assertive_correct-25017,no_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-25017,no_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-25017,no_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-25017,no_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-25017,no_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-25017,no_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-25017,no_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-25017,no_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-25017,no_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-25017,no_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-25017,no_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-25017,self_check,threat_assessment,knowledge,This device is emitting Mirai UDP plain flood.,[],unsupported_but_true,judge
+assertive_correct-25017,self_check,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-25017,self_check,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-25017,self_check,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-25017,self_check,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-25017,self_check,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-25017,self_check,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-25017,self_check,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-25017,self_check,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-25017,self_check,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-25017,self_check,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-25017,self_check,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-30005,full_rag,threat_assessment,knowledge,This device is emitting Gafgyt combo attack.,[],unsupported_but_true,judge
+assertive_correct-30005,full_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-30005,full_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-30005,full_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-30005,full_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-30005,full_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-30005,full_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-30005,full_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-30005,full_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-30005,full_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-30005,full_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-30005,full_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-30005,naive_rag,threat_assessment,knowledge,This device is emitting Gafgyt combo attack.,[],unsupported_but_true,judge
+assertive_correct-30005,naive_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-30005,naive_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-30005,naive_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-30005,naive_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-30005,naive_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-30005,naive_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-30005,naive_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-30005,naive_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-30005,naive_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-30005,naive_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-30005,naive_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-30005,no_rag,threat_assessment,knowledge,This device is emitting Gafgyt combo attack.,[],unsupported_but_true,judge
+assertive_correct-30005,no_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-30005,no_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-30005,no_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-30005,no_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-30005,no_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-30005,no_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-30005,no_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-30005,no_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-30005,no_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-30005,no_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-30005,no_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-30005,self_check,threat_assessment,knowledge,This device is emitting Gafgyt combo attack.,[],unsupported_but_true,judge
+assertive_correct-30005,self_check,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-30005,self_check,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-30005,self_check,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-30005,self_check,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-30005,self_check,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-30005,self_check,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-30005,self_check,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-30005,self_check,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-30005,self_check,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-30005,self_check,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-30005,self_check,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-35006,full_rag,threat_assessment,knowledge,This device is emitting Gafgyt junk attack.,[],unsupported_but_true,judge
+assertive_correct-35006,full_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-35006,full_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-35006,full_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-35006,full_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-35006,full_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-35006,full_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-35006,full_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-35006,full_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-35006,full_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-35006,full_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-35006,full_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-35006,naive_rag,threat_assessment,knowledge,This device is emitting Gafgyt junk attack.,[],unsupported_but_true,judge
+assertive_correct-35006,naive_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-35006,naive_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-35006,naive_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-35006,naive_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-35006,naive_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-35006,naive_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-35006,naive_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-35006,naive_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-35006,naive_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-35006,naive_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-35006,naive_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-35006,no_rag,threat_assessment,knowledge,This device is emitting Gafgyt junk attack.,[],unsupported_but_true,judge
+assertive_correct-35006,no_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-35006,no_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-35006,no_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-35006,no_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-35006,no_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-35006,no_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-35006,no_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-35006,no_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-35006,no_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-35006,no_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-35006,no_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-35006,self_check,threat_assessment,knowledge,This device is emitting Gafgyt junk attack.,[],unsupported_but_true,judge
+assertive_correct-35006,self_check,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-35006,self_check,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-35006,self_check,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-35006,self_check,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-35006,self_check,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-35006,self_check,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-35006,self_check,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-35006,self_check,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-35006,self_check,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-35006,self_check,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-35006,self_check,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-40017,full_rag,threat_assessment,knowledge,This device is emitting Gafgyt scan.,[],unsupported_but_true,judge
+assertive_correct-40017,full_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-40017,full_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-40017,full_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-40017,full_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-40017,full_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-40017,full_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-40017,full_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-40017,full_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-40017,full_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-40017,full_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-40017,full_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-40017,naive_rag,threat_assessment,knowledge,This device is emitting Gafgyt scan.,[],unsupported_but_true,judge
+assertive_correct-40017,naive_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-40017,naive_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-40017,naive_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-40017,naive_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-40017,naive_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-40017,naive_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-40017,naive_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-40017,naive_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-40017,naive_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-40017,naive_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-40017,naive_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-40017,no_rag,threat_assessment,knowledge,This device is emitting Gafgyt scan.,[],unsupported_but_true,judge
+assertive_correct-40017,no_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-40017,no_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-40017,no_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-40017,no_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-40017,no_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-40017,no_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-40017,no_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-40017,no_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-40017,no_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-40017,no_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-40017,no_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-40017,self_check,threat_assessment,knowledge,This device is emitting Gafgyt scan.,[],unsupported_but_true,judge
+assertive_correct-40017,self_check,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-40017,self_check,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-40017,self_check,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-40017,self_check,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-40017,self_check,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-40017,self_check,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-40017,self_check,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-40017,self_check,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-40017,self_check,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-40017,self_check,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-40017,self_check,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-5010,full_rag,threat_assessment,knowledge,This device is emitting Mirai ACK flood.,[],unsupported_but_true,judge
+assertive_correct-5010,full_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-5010,full_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-5010,full_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-5010,full_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-5010,full_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-5010,full_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-5010,full_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-5010,full_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-5010,full_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-5010,full_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-5010,full_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-5010,naive_rag,threat_assessment,knowledge,This device is emitting Mirai ACK flood.,[],unsupported_but_true,judge
+assertive_correct-5010,naive_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-5010,naive_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-5010,naive_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-5010,naive_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-5010,naive_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-5010,naive_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-5010,naive_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-5010,naive_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-5010,naive_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-5010,naive_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-5010,naive_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-5010,no_rag,threat_assessment,knowledge,This device is emitting Mirai ACK flood.,[],unsupported_but_true,judge
+assertive_correct-5010,no_rag,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-5010,no_rag,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-5010,no_rag,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-5010,no_rag,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-5010,no_rag,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-5010,no_rag,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-5010,no_rag,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-5010,no_rag,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-5010,no_rag,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-5010,no_rag,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-5010,no_rag,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+assertive_correct-5010,self_check,threat_assessment,knowledge,This device is emitting Mirai ACK flood.,[],unsupported_but_true,judge
+assertive_correct-5010,self_check,threat_assessment,feature,The calibrated probability is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-5010,self_check,threat_assessment,knowledge,The affected device is Danmini_Doorbell,[],unsupported_but_true,judge
+assertive_correct-5010,self_check,threat_assessment,knowledge,"attacker identity, intent, and dwell time are not established by the available evidence.",[],unsupported_but_true,judge
+assertive_correct-5010,self_check,attack_mechanism,knowledge,The classifier identifies the traffic class,[],unsupported_but_true,judge
+assertive_correct-5010,self_check,attack_mechanism,knowledge,additional mechanism details are not established by the available evidence.,[],unsupported_but_true,judge
+assertive_correct-5010,self_check,observable_indicators,knowledge,Review the supplied evidence observations against the device's benign baseline.,[],unsupported_but_true,judge
+assertive_correct-5010,self_check,immediate_actions,procedural,Isolate the device from the network while preserving the alert evidence.,[],unsupported_but_true,judge
+assertive_correct-5010,self_check,immediate_actions,procedural,Inspect gateway traffic and remove unnecessary external exposure.,[],unsupported_but_true,judge
+assertive_correct-5010,self_check,longer_term_remediation,procedural,"Place the device on a restricted IoT segment, rotate its credentials, and apply supported firmware updates.",[],unsupported_but_true,judge
+assertive_correct-5010,self_check,confidence_notes,feature,The calibrated probability is 1.0000 and the decision margin is 1.0000.,[],unsupported_but_true,machine
+assertive_correct-5010,self_check,confidence_notes,knowledge,"Calibration is a statement about long-run error rates, not a guarantee for this individual alert.",[],unsupported_and_false,judge
+hedged_pair-100021,full_rag,threat_assessment,feature,"The device Ecobee_Thermostat is emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair), with pair probability 0.9992.",[],unsupported_but_true,machine
+hedged_pair-100021,full_rag,threat_assessment,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-100021,full_rag,threat_assessment,knowledge,The flood victim and the local network are the harmed parties,[],unsupported_but_true,judge
+hedged_pair-100021,full_rag,threat_assessment,knowledge,attacker identity and intent are not established by the available evidence.,[],unsupported_but_true,judge
+hedged_pair-100021,full_rag,attack_mechanism,knowledge,"At the supported pair level, the device emits flood traffic associated with gafgyt_tcp and gafgyt_udp.",[],unsupported_but_true,judge
+hedged_pair-100021,full_rag,attack_mechanism,knowledge,The available evidence does not establish further mechanism details.,[],unsupported_but_true,judge
+hedged_pair-100021,full_rag,observable_indicators,knowledge,Review each supplied evidence observation against the device's benign baseline,[],unsupported_but_true,judge
+hedged_pair-100021,full_rag,observable_indicators,knowledge,no within-pair assignment is supported.,[],unsupported_and_false,judge
+hedged_pair-100021,full_rag,immediate_actions,procedural,Isolate the device and contain the traffic,[],unsupported_but_true,judge
+hedged_pair-100021,full_rag,immediate_actions,procedural,containment is identical for gafgyt_tcp and gafgyt_udp and must not wait for disambiguation.,[],unsupported_but_true,judge
+hedged_pair-100021,full_rag,immediate_actions,feature,"After containment, capture any single packet of the flood traffic with tcpdump at the gateway and read the IP header protocol field: protocol 6 means gafgyt_tcp, while protocol 17 means gafgyt_udp.",[],unsupported_but_true,machine
+hedged_pair-100021,full_rag,longer_term_remediation,procedural,"Keep the device on a restricted IoT segment, rotate its credentials, apply supported firmware updates, and remove unnecessary external exposure.",[],unsupported_but_true,judge
+hedged_pair-100021,full_rag,confidence_notes,feature,The pair probability is 0.9992.,[],unsupported_but_true,machine
+hedged_pair-100021,full_rag,confidence_notes,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-100021,full_rag,confidence_notes,knowledge,Any within-pair probability split carries no evidential value because it derives from capture artefacts that do not generalise.,[],unsupported_but_true,judge
+hedged_pair-100021,naive_rag,threat_assessment,feature,"The device Ecobee_Thermostat is emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair), with pair probability 0.9992.",[],unsupported_but_true,machine
+hedged_pair-100021,naive_rag,threat_assessment,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-100021,naive_rag,threat_assessment,knowledge,The flood victim and the local network are the harmed parties,[],unsupported_but_true,judge
+hedged_pair-100021,naive_rag,threat_assessment,knowledge,attacker identity and intent are not established by the available evidence.,[],unsupported_but_true,judge
+hedged_pair-100021,naive_rag,attack_mechanism,knowledge,"At the supported pair level, the device emits flood traffic associated with gafgyt_tcp and gafgyt_udp.",[],unsupported_but_true,judge
+hedged_pair-100021,naive_rag,attack_mechanism,knowledge,The available evidence does not establish further mechanism details.,[],unsupported_but_true,judge
+hedged_pair-100021,naive_rag,observable_indicators,knowledge,Review each supplied evidence observation against the device's benign baseline,[],unsupported_but_true,judge
+hedged_pair-100021,naive_rag,observable_indicators,knowledge,no within-pair assignment is supported.,[],unsupported_and_false,judge
+hedged_pair-100021,naive_rag,immediate_actions,procedural,Isolate the device and contain the traffic,[],unsupported_but_true,judge
+hedged_pair-100021,naive_rag,immediate_actions,procedural,containment is identical for gafgyt_tcp and gafgyt_udp and must not wait for disambiguation.,[],unsupported_but_true,judge
+hedged_pair-100021,naive_rag,immediate_actions,feature,"After containment, capture any single packet of the flood traffic with tcpdump at the gateway and read the IP header protocol field: protocol 6 means gafgyt_tcp, while protocol 17 means gafgyt_udp.",[],unsupported_but_true,machine
+hedged_pair-100021,naive_rag,longer_term_remediation,procedural,"Keep the device on a restricted IoT segment, rotate its credentials, apply supported firmware updates, and remove unnecessary external exposure.",[],unsupported_but_true,judge
+hedged_pair-100021,naive_rag,confidence_notes,feature,The pair probability is 0.9992.,[],unsupported_but_true,machine
+hedged_pair-100021,naive_rag,confidence_notes,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-100021,naive_rag,confidence_notes,knowledge,Any within-pair probability split carries no evidential value because it derives from capture artefacts that do not generalise.,[],unsupported_but_true,judge
+hedged_pair-100021,no_rag,threat_assessment,feature,"The device Ecobee_Thermostat is emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair), with pair probability 0.9992.",[],unsupported_but_true,machine
+hedged_pair-100021,no_rag,threat_assessment,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-100021,no_rag,threat_assessment,knowledge,The flood victim and the local network are the harmed parties,[],unsupported_but_true,judge
+hedged_pair-100021,no_rag,threat_assessment,knowledge,attacker identity and intent are not established by the available evidence.,[],unsupported_but_true,judge
+hedged_pair-100021,no_rag,attack_mechanism,knowledge,"At the supported pair level, the device emits flood traffic associated with gafgyt_tcp and gafgyt_udp.",[],unsupported_but_true,judge
+hedged_pair-100021,no_rag,attack_mechanism,knowledge,The available evidence does not establish further mechanism details.,[],unsupported_but_true,judge
+hedged_pair-100021,no_rag,observable_indicators,knowledge,Review each supplied evidence observation against the device's benign baseline,[],unsupported_but_true,judge
+hedged_pair-100021,no_rag,observable_indicators,knowledge,no within-pair assignment is supported.,[],unsupported_and_false,judge
+hedged_pair-100021,no_rag,immediate_actions,procedural,Isolate the device and contain the traffic,[],unsupported_but_true,judge
+hedged_pair-100021,no_rag,immediate_actions,procedural,containment is identical for gafgyt_tcp and gafgyt_udp and must not wait for disambiguation.,[],unsupported_but_true,judge
+hedged_pair-100021,no_rag,immediate_actions,feature,"After containment, capture any single packet of the flood traffic with tcpdump at the gateway and read the IP header protocol field: protocol 6 means gafgyt_tcp, while protocol 17 means gafgyt_udp.",[],unsupported_but_true,machine
+hedged_pair-100021,no_rag,longer_term_remediation,procedural,"Keep the device on a restricted IoT segment, rotate its credentials, apply supported firmware updates, and remove unnecessary external exposure.",[],unsupported_but_true,judge
+hedged_pair-100021,no_rag,confidence_notes,feature,The pair probability is 0.9992.,[],unsupported_but_true,machine
+hedged_pair-100021,no_rag,confidence_notes,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-100021,no_rag,confidence_notes,knowledge,Any within-pair probability split carries no evidential value because it derives from capture artefacts that do not generalise.,[],unsupported_but_true,judge
+hedged_pair-100021,self_check,threat_assessment,feature,"The device Ecobee_Thermostat is emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair), with pair probability 0.9992.",[],unsupported_but_true,machine
+hedged_pair-100021,self_check,threat_assessment,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-100021,self_check,threat_assessment,knowledge,The flood victim and the local network are the harmed parties,[],unsupported_but_true,judge
+hedged_pair-100021,self_check,threat_assessment,knowledge,attacker identity and intent are not established by the available evidence.,[],unsupported_but_true,judge
+hedged_pair-100021,self_check,attack_mechanism,knowledge,"At the supported pair level, the device emits flood traffic associated with gafgyt_tcp and gafgyt_udp.",[],unsupported_but_true,judge
+hedged_pair-100021,self_check,attack_mechanism,knowledge,The available evidence does not establish further mechanism details.,[],unsupported_but_true,judge
+hedged_pair-100021,self_check,observable_indicators,knowledge,Review each supplied evidence observation against the device's benign baseline,[],unsupported_but_true,judge
+hedged_pair-100021,self_check,observable_indicators,knowledge,no within-pair assignment is supported.,[],unsupported_and_false,judge
+hedged_pair-100021,self_check,immediate_actions,procedural,Isolate the device and contain the traffic,[],unsupported_but_true,judge
+hedged_pair-100021,self_check,immediate_actions,procedural,containment is identical for gafgyt_tcp and gafgyt_udp and must not wait for disambiguation.,[],unsupported_but_true,judge
+hedged_pair-100021,self_check,immediate_actions,feature,"After containment, capture any single packet of the flood traffic with tcpdump at the gateway and read the IP header protocol field: protocol 6 means gafgyt_tcp, while protocol 17 means gafgyt_udp.",[],unsupported_but_true,machine
+hedged_pair-100021,self_check,longer_term_remediation,procedural,"Keep the device on a restricted IoT segment, rotate its credentials, apply supported firmware updates, and remove unnecessary external exposure.",[],unsupported_but_true,judge
+hedged_pair-100021,self_check,confidence_notes,feature,The pair probability is 0.9992.,[],unsupported_but_true,machine
+hedged_pair-100021,self_check,confidence_notes,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-100021,self_check,confidence_notes,knowledge,Any within-pair probability split carries no evidential value because it derives from capture artefacts that do not generalise.,[],unsupported_but_true,judge
+hedged_pair-105008,full_rag,threat_assessment,feature,"The device Ecobee_Thermostat is emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair), with pair probability 0.9992.",[],unsupported_but_true,machine
+hedged_pair-105008,full_rag,threat_assessment,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-105008,full_rag,threat_assessment,knowledge,The flood victim and the local network are the harmed parties,[],unsupported_but_true,judge
+hedged_pair-105008,full_rag,threat_assessment,knowledge,attacker identity and intent are not established by the available evidence.,[],unsupported_but_true,judge
+hedged_pair-105008,full_rag,attack_mechanism,knowledge,"At the supported pair level, the device emits flood traffic associated with gafgyt_tcp and gafgyt_udp.",[],unsupported_but_true,judge
+hedged_pair-105008,full_rag,attack_mechanism,knowledge,The available evidence does not establish further mechanism details.,[],unsupported_but_true,judge
+hedged_pair-105008,full_rag,observable_indicators,knowledge,Review each supplied evidence observation against the device's benign baseline,[],unsupported_but_true,judge
+hedged_pair-105008,full_rag,observable_indicators,knowledge,no within-pair assignment is supported.,[],unsupported_and_false,judge
+hedged_pair-105008,full_rag,immediate_actions,procedural,Isolate the device and contain the traffic,[],unsupported_but_true,judge
+hedged_pair-105008,full_rag,immediate_actions,procedural,containment is identical for gafgyt_tcp and gafgyt_udp and must not wait for disambiguation.,[],unsupported_but_true,judge
+hedged_pair-105008,full_rag,immediate_actions,feature,"After containment, capture any single packet of the flood traffic with tcpdump at the gateway and read the IP header protocol field: protocol 6 means gafgyt_tcp, while protocol 17 means gafgyt_udp.",[],unsupported_but_true,machine
+hedged_pair-105008,full_rag,longer_term_remediation,procedural,"Keep the device on a restricted IoT segment, rotate its credentials, apply supported firmware updates, and remove unnecessary external exposure.",[],unsupported_but_true,judge
+hedged_pair-105008,full_rag,confidence_notes,feature,The pair probability is 0.9992.,[],unsupported_but_true,machine
+hedged_pair-105008,full_rag,confidence_notes,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-105008,full_rag,confidence_notes,knowledge,Any within-pair probability split carries no evidential value because it derives from capture artefacts that do not generalise.,[],unsupported_but_true,judge
+hedged_pair-105008,naive_rag,threat_assessment,feature,"The device Ecobee_Thermostat is emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair), with pair probability 0.9992.",[],unsupported_but_true,machine
+hedged_pair-105008,naive_rag,threat_assessment,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-105008,naive_rag,threat_assessment,knowledge,The flood victim and the local network are the harmed parties,[],unsupported_but_true,judge
+hedged_pair-105008,naive_rag,threat_assessment,knowledge,attacker identity and intent are not established by the available evidence.,[],unsupported_but_true,judge
+hedged_pair-105008,naive_rag,attack_mechanism,knowledge,"At the supported pair level, the device emits flood traffic associated with gafgyt_tcp and gafgyt_udp.",[],unsupported_but_true,judge
+hedged_pair-105008,naive_rag,attack_mechanism,knowledge,The available evidence does not establish further mechanism details.,[],unsupported_but_true,judge
+hedged_pair-105008,naive_rag,observable_indicators,knowledge,Review each supplied evidence observation against the device's benign baseline,[],unsupported_but_true,judge
+hedged_pair-105008,naive_rag,observable_indicators,knowledge,no within-pair assignment is supported.,[],unsupported_and_false,judge
+hedged_pair-105008,naive_rag,immediate_actions,procedural,Isolate the device and contain the traffic,[],unsupported_but_true,judge
+hedged_pair-105008,naive_rag,immediate_actions,procedural,containment is identical for gafgyt_tcp and gafgyt_udp and must not wait for disambiguation.,[],unsupported_but_true,judge
+hedged_pair-105008,naive_rag,immediate_actions,feature,"After containment, capture any single packet of the flood traffic with tcpdump at the gateway and read the IP header protocol field: protocol 6 means gafgyt_tcp, while protocol 17 means gafgyt_udp.",[],unsupported_but_true,machine
+hedged_pair-105008,naive_rag,longer_term_remediation,procedural,"Keep the device on a restricted IoT segment, rotate its credentials, apply supported firmware updates, and remove unnecessary external exposure.",[],unsupported_but_true,judge
+hedged_pair-105008,naive_rag,confidence_notes,feature,The pair probability is 0.9992.,[],unsupported_but_true,machine
+hedged_pair-105008,naive_rag,confidence_notes,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-105008,naive_rag,confidence_notes,knowledge,Any within-pair probability split carries no evidential value because it derives from capture artefacts that do not generalise.,[],unsupported_but_true,judge
+hedged_pair-105008,no_rag,threat_assessment,feature,"The device Ecobee_Thermostat is emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair), with pair probability 0.9992.",[],unsupported_but_true,machine
+hedged_pair-105008,no_rag,threat_assessment,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-105008,no_rag,threat_assessment,knowledge,The flood victim and the local network are the harmed parties,[],unsupported_but_true,judge
+hedged_pair-105008,no_rag,threat_assessment,knowledge,attacker identity and intent are not established by the available evidence.,[],unsupported_but_true,judge
+hedged_pair-105008,no_rag,attack_mechanism,knowledge,"At the supported pair level, the device emits flood traffic associated with gafgyt_tcp and gafgyt_udp.",[],unsupported_but_true,judge
+hedged_pair-105008,no_rag,attack_mechanism,knowledge,The available evidence does not establish further mechanism details.,[],unsupported_but_true,judge
+hedged_pair-105008,no_rag,observable_indicators,knowledge,Review each supplied evidence observation against the device's benign baseline,[],unsupported_but_true,judge
+hedged_pair-105008,no_rag,observable_indicators,knowledge,no within-pair assignment is supported.,[],unsupported_and_false,judge
+hedged_pair-105008,no_rag,immediate_actions,procedural,Isolate the device and contain the traffic,[],unsupported_but_true,judge
+hedged_pair-105008,no_rag,immediate_actions,procedural,containment is identical for gafgyt_tcp and gafgyt_udp and must not wait for disambiguation.,[],unsupported_but_true,judge
+hedged_pair-105008,no_rag,immediate_actions,feature,"After containment, capture any single packet of the flood traffic with tcpdump at the gateway and read the IP header protocol field: protocol 6 means gafgyt_tcp, while protocol 17 means gafgyt_udp.",[],unsupported_but_true,machine
+hedged_pair-105008,no_rag,longer_term_remediation,procedural,"Keep the device on a restricted IoT segment, rotate its credentials, apply supported firmware updates, and remove unnecessary external exposure.",[],unsupported_but_true,judge
+hedged_pair-105008,no_rag,confidence_notes,feature,The pair probability is 0.9992.,[],unsupported_but_true,machine
+hedged_pair-105008,no_rag,confidence_notes,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-105008,no_rag,confidence_notes,knowledge,Any within-pair probability split carries no evidential value because it derives from capture artefacts that do not generalise.,[],unsupported_but_true,judge
+hedged_pair-105008,self_check,threat_assessment,feature,"The device Ecobee_Thermostat is emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair), with pair probability 0.9992.",[],unsupported_but_true,machine
+hedged_pair-105008,self_check,threat_assessment,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-105008,self_check,threat_assessment,knowledge,The flood victim and the local network are the harmed parties,[],unsupported_but_true,judge
+hedged_pair-105008,self_check,threat_assessment,knowledge,attacker identity and intent are not established by the available evidence.,[],unsupported_but_true,judge
+hedged_pair-105008,self_check,attack_mechanism,knowledge,"At the supported pair level, the device emits flood traffic associated with gafgyt_tcp and gafgyt_udp.",[],unsupported_but_true,judge
+hedged_pair-105008,self_check,attack_mechanism,knowledge,The available evidence does not establish further mechanism details.,[],unsupported_but_true,judge
+hedged_pair-105008,self_check,observable_indicators,knowledge,Review each supplied evidence observation against the device's benign baseline,[],unsupported_but_true,judge
+hedged_pair-105008,self_check,observable_indicators,knowledge,no within-pair assignment is supported.,[],unsupported_and_false,judge
+hedged_pair-105008,self_check,immediate_actions,procedural,Isolate the device and contain the traffic,[],unsupported_but_true,judge
+hedged_pair-105008,self_check,immediate_actions,procedural,containment is identical for gafgyt_tcp and gafgyt_udp and must not wait for disambiguation.,[],unsupported_but_true,judge
+hedged_pair-105008,self_check,immediate_actions,feature,"After containment, capture any single packet of the flood traffic with tcpdump at the gateway and read the IP header protocol field: protocol 6 means gafgyt_tcp, while protocol 17 means gafgyt_udp.",[],unsupported_but_true,machine
+hedged_pair-105008,self_check,longer_term_remediation,procedural,"Keep the device on a restricted IoT segment, rotate its credentials, apply supported firmware updates, and remove unnecessary external exposure.",[],unsupported_but_true,judge
+hedged_pair-105008,self_check,confidence_notes,feature,The pair probability is 0.9992.,[],unsupported_but_true,machine
+hedged_pair-105008,self_check,confidence_notes,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-105008,self_check,confidence_notes,knowledge,Any within-pair probability split carries no evidential value because it derives from capture artefacts that do not generalise.,[],unsupported_but_true,judge
+hedged_pair-45014,full_rag,threat_assessment,feature,"The device Danmini_Doorbell is emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair), with pair probability 1.0000.",[],unsupported_but_true,machine
+hedged_pair-45014,full_rag,threat_assessment,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-45014,full_rag,threat_assessment,knowledge,The flood victim and the local network are the harmed parties,[],unsupported_but_true,judge
+hedged_pair-45014,full_rag,threat_assessment,knowledge,attacker identity and intent are not established by the available evidence.,[],unsupported_but_true,judge
+hedged_pair-45014,full_rag,attack_mechanism,knowledge,"At the supported pair level, the device emits flood traffic associated with gafgyt_tcp and gafgyt_udp.",[],unsupported_but_true,judge
+hedged_pair-45014,full_rag,attack_mechanism,knowledge,The available evidence does not establish further mechanism details.,[],unsupported_but_true,judge
+hedged_pair-45014,full_rag,observable_indicators,knowledge,Review each supplied evidence observation against the device's benign baseline,[],unsupported_but_true,judge
+hedged_pair-45014,full_rag,observable_indicators,knowledge,no within-pair assignment is supported.,[],unsupported_and_false,judge
+hedged_pair-45014,full_rag,immediate_actions,procedural,Isolate the device and contain the traffic,[],unsupported_but_true,judge
+hedged_pair-45014,full_rag,immediate_actions,procedural,containment is identical for gafgyt_tcp and gafgyt_udp and must not wait for disambiguation.,[],unsupported_but_true,judge
+hedged_pair-45014,full_rag,immediate_actions,feature,"After containment, capture any single packet of the flood traffic with tcpdump at the gateway and read the IP header protocol field: protocol 6 means gafgyt_tcp, while protocol 17 means gafgyt_udp.",[],unsupported_but_true,machine
+hedged_pair-45014,full_rag,longer_term_remediation,procedural,"Keep the device on a restricted IoT segment, rotate its credentials, apply supported firmware updates, and remove unnecessary external exposure.",[],unsupported_but_true,judge
+hedged_pair-45014,full_rag,confidence_notes,feature,The pair probability is 1.0000.,[],unsupported_but_true,machine
+hedged_pair-45014,full_rag,confidence_notes,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-45014,full_rag,confidence_notes,knowledge,Any within-pair probability split carries no evidential value because it derives from capture artefacts that do not generalise.,[],unsupported_but_true,judge
+hedged_pair-45014,naive_rag,threat_assessment,feature,"The device Danmini_Doorbell is emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair), with pair probability 1.0000.",[],unsupported_but_true,machine
+hedged_pair-45014,naive_rag,threat_assessment,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-45014,naive_rag,threat_assessment,knowledge,The flood victim and the local network are the harmed parties,[],unsupported_but_true,judge
+hedged_pair-45014,naive_rag,threat_assessment,knowledge,attacker identity and intent are not established by the available evidence.,[],unsupported_but_true,judge
+hedged_pair-45014,naive_rag,attack_mechanism,knowledge,"At the supported pair level, the device emits flood traffic associated with gafgyt_tcp and gafgyt_udp.",[],unsupported_but_true,judge
+hedged_pair-45014,naive_rag,attack_mechanism,knowledge,The available evidence does not establish further mechanism details.,[],unsupported_but_true,judge
+hedged_pair-45014,naive_rag,observable_indicators,knowledge,Review each supplied evidence observation against the device's benign baseline,[],unsupported_but_true,judge
+hedged_pair-45014,naive_rag,observable_indicators,knowledge,no within-pair assignment is supported.,[],unsupported_and_false,judge
+hedged_pair-45014,naive_rag,immediate_actions,procedural,Isolate the device and contain the traffic,[],unsupported_but_true,judge
+hedged_pair-45014,naive_rag,immediate_actions,procedural,containment is identical for gafgyt_tcp and gafgyt_udp and must not wait for disambiguation.,[],unsupported_but_true,judge
+hedged_pair-45014,naive_rag,immediate_actions,feature,"After containment, capture any single packet of the flood traffic with tcpdump at the gateway and read the IP header protocol field: protocol 6 means gafgyt_tcp, while protocol 17 means gafgyt_udp.",[],unsupported_but_true,machine
+hedged_pair-45014,naive_rag,longer_term_remediation,procedural,"Keep the device on a restricted IoT segment, rotate its credentials, apply supported firmware updates, and remove unnecessary external exposure.",[],unsupported_but_true,judge
+hedged_pair-45014,naive_rag,confidence_notes,feature,The pair probability is 1.0000.,[],unsupported_but_true,machine
+hedged_pair-45014,naive_rag,confidence_notes,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-45014,naive_rag,confidence_notes,knowledge,Any within-pair probability split carries no evidential value because it derives from capture artefacts that do not generalise.,[],unsupported_but_true,judge
+hedged_pair-45014,no_rag,threat_assessment,feature,"The device Danmini_Doorbell is emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair), with pair probability 1.0000.",[],unsupported_but_true,machine
+hedged_pair-45014,no_rag,threat_assessment,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-45014,no_rag,threat_assessment,knowledge,The flood victim and the local network are the harmed parties,[],unsupported_but_true,judge
+hedged_pair-45014,no_rag,threat_assessment,knowledge,attacker identity and intent are not established by the available evidence.,[],unsupported_but_true,judge
+hedged_pair-45014,no_rag,attack_mechanism,knowledge,"At the supported pair level, the device emits flood traffic associated with gafgyt_tcp and gafgyt_udp.",[],unsupported_but_true,judge
+hedged_pair-45014,no_rag,attack_mechanism,knowledge,The available evidence does not establish further mechanism details.,[],unsupported_but_true,judge
+hedged_pair-45014,no_rag,observable_indicators,knowledge,Review each supplied evidence observation against the device's benign baseline,[],unsupported_but_true,judge
+hedged_pair-45014,no_rag,observable_indicators,knowledge,no within-pair assignment is supported.,[],unsupported_and_false,judge
+hedged_pair-45014,no_rag,immediate_actions,procedural,Isolate the device and contain the traffic,[],unsupported_but_true,judge
+hedged_pair-45014,no_rag,immediate_actions,procedural,containment is identical for gafgyt_tcp and gafgyt_udp and must not wait for disambiguation.,[],unsupported_but_true,judge
+hedged_pair-45014,no_rag,immediate_actions,feature,"After containment, capture any single packet of the flood traffic with tcpdump at the gateway and read the IP header protocol field: protocol 6 means gafgyt_tcp, while protocol 17 means gafgyt_udp.",[],unsupported_but_true,machine
+hedged_pair-45014,no_rag,longer_term_remediation,procedural,"Keep the device on a restricted IoT segment, rotate its credentials, apply supported firmware updates, and remove unnecessary external exposure.",[],unsupported_but_true,judge
+hedged_pair-45014,no_rag,confidence_notes,feature,The pair probability is 1.0000.,[],unsupported_but_true,machine
+hedged_pair-45014,no_rag,confidence_notes,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-45014,no_rag,confidence_notes,knowledge,Any within-pair probability split carries no evidential value because it derives from capture artefacts that do not generalise.,[],unsupported_but_true,judge
+hedged_pair-45014,self_check,threat_assessment,feature,"The device Danmini_Doorbell is emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair), with pair probability 1.0000.",[],unsupported_but_true,machine
+hedged_pair-45014,self_check,threat_assessment,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-45014,self_check,threat_assessment,knowledge,The flood victim and the local network are the harmed parties,[],unsupported_but_true,judge
+hedged_pair-45014,self_check,threat_assessment,knowledge,attacker identity and intent are not established by the available evidence.,[],unsupported_but_true,judge
+hedged_pair-45014,self_check,attack_mechanism,knowledge,"At the supported pair level, the device emits flood traffic associated with gafgyt_tcp and gafgyt_udp.",[],unsupported_but_true,judge
+hedged_pair-45014,self_check,attack_mechanism,knowledge,The available evidence does not establish further mechanism details.,[],unsupported_but_true,judge
+hedged_pair-45014,self_check,observable_indicators,knowledge,Review each supplied evidence observation against the device's benign baseline,[],unsupported_but_true,judge
+hedged_pair-45014,self_check,observable_indicators,knowledge,no within-pair assignment is supported.,[],unsupported_and_false,judge
+hedged_pair-45014,self_check,immediate_actions,procedural,Isolate the device and contain the traffic,[],unsupported_but_true,judge
+hedged_pair-45014,self_check,immediate_actions,procedural,containment is identical for gafgyt_tcp and gafgyt_udp and must not wait for disambiguation.,[],unsupported_but_true,judge
+hedged_pair-45014,self_check,immediate_actions,feature,"After containment, capture any single packet of the flood traffic with tcpdump at the gateway and read the IP header protocol field: protocol 6 means gafgyt_tcp, while protocol 17 means gafgyt_udp.",[],unsupported_but_true,machine
+hedged_pair-45014,self_check,longer_term_remediation,procedural,"Keep the device on a restricted IoT segment, rotate its credentials, apply supported firmware updates, and remove unnecessary external exposure.",[],unsupported_but_true,judge
+hedged_pair-45014,self_check,confidence_notes,feature,The pair probability is 1.0000.,[],unsupported_but_true,machine
+hedged_pair-45014,self_check,confidence_notes,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-45014,self_check,confidence_notes,knowledge,Any within-pair probability split carries no evidential value because it derives from capture artefacts that do not generalise.,[],unsupported_but_true,judge
+hedged_pair-50005,full_rag,threat_assessment,feature,"The device Danmini_Doorbell is emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair), with pair probability 1.0000.",[],unsupported_but_true,machine
+hedged_pair-50005,full_rag,threat_assessment,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-50005,full_rag,threat_assessment,knowledge,The flood victim and the local network are the harmed parties,[],unsupported_but_true,judge
+hedged_pair-50005,full_rag,threat_assessment,knowledge,attacker identity and intent are not established by the available evidence.,[],unsupported_but_true,judge
+hedged_pair-50005,full_rag,attack_mechanism,knowledge,"At the supported pair level, the device emits flood traffic associated with gafgyt_tcp and gafgyt_udp.",[],unsupported_but_true,judge
+hedged_pair-50005,full_rag,attack_mechanism,knowledge,The available evidence does not establish further mechanism details.,[],unsupported_but_true,judge
+hedged_pair-50005,full_rag,observable_indicators,knowledge,Review each supplied evidence observation against the device's benign baseline,[],unsupported_but_true,judge
+hedged_pair-50005,full_rag,observable_indicators,knowledge,no within-pair assignment is supported.,[],unsupported_and_false,judge
+hedged_pair-50005,full_rag,immediate_actions,procedural,Isolate the device and contain the traffic,[],unsupported_but_true,judge
+hedged_pair-50005,full_rag,immediate_actions,procedural,containment is identical for gafgyt_tcp and gafgyt_udp and must not wait for disambiguation.,[],unsupported_but_true,judge
+hedged_pair-50005,full_rag,immediate_actions,feature,"After containment, capture any single packet of the flood traffic with tcpdump at the gateway and read the IP header protocol field: protocol 6 means gafgyt_tcp, while protocol 17 means gafgyt_udp.",[],unsupported_but_true,machine
+hedged_pair-50005,full_rag,longer_term_remediation,procedural,"Keep the device on a restricted IoT segment, rotate its credentials, apply supported firmware updates, and remove unnecessary external exposure.",[],unsupported_but_true,judge
+hedged_pair-50005,full_rag,confidence_notes,feature,The pair probability is 1.0000.,[],unsupported_but_true,machine
+hedged_pair-50005,full_rag,confidence_notes,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-50005,full_rag,confidence_notes,knowledge,Any within-pair probability split carries no evidential value because it derives from capture artefacts that do not generalise.,[],unsupported_but_true,judge
+hedged_pair-50005,naive_rag,threat_assessment,feature,"The device Danmini_Doorbell is emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair), with pair probability 1.0000.",[],unsupported_but_true,machine
+hedged_pair-50005,naive_rag,threat_assessment,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-50005,naive_rag,threat_assessment,knowledge,The flood victim and the local network are the harmed parties,[],unsupported_but_true,judge
+hedged_pair-50005,naive_rag,threat_assessment,knowledge,attacker identity and intent are not established by the available evidence.,[],unsupported_but_true,judge
+hedged_pair-50005,naive_rag,attack_mechanism,knowledge,"At the supported pair level, the device emits flood traffic associated with gafgyt_tcp and gafgyt_udp.",[],unsupported_but_true,judge
+hedged_pair-50005,naive_rag,attack_mechanism,knowledge,The available evidence does not establish further mechanism details.,[],unsupported_but_true,judge
+hedged_pair-50005,naive_rag,observable_indicators,knowledge,Review each supplied evidence observation against the device's benign baseline,[],unsupported_but_true,judge
+hedged_pair-50005,naive_rag,observable_indicators,knowledge,no within-pair assignment is supported.,[],unsupported_and_false,judge
+hedged_pair-50005,naive_rag,immediate_actions,procedural,Isolate the device and contain the traffic,[],unsupported_but_true,judge
+hedged_pair-50005,naive_rag,immediate_actions,procedural,containment is identical for gafgyt_tcp and gafgyt_udp and must not wait for disambiguation.,[],unsupported_but_true,judge
+hedged_pair-50005,naive_rag,immediate_actions,feature,"After containment, capture any single packet of the flood traffic with tcpdump at the gateway and read the IP header protocol field: protocol 6 means gafgyt_tcp, while protocol 17 means gafgyt_udp.",[],unsupported_but_true,machine
+hedged_pair-50005,naive_rag,longer_term_remediation,procedural,"Keep the device on a restricted IoT segment, rotate its credentials, apply supported firmware updates, and remove unnecessary external exposure.",[],unsupported_but_true,judge
+hedged_pair-50005,naive_rag,confidence_notes,feature,The pair probability is 1.0000.,[],unsupported_but_true,machine
+hedged_pair-50005,naive_rag,confidence_notes,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-50005,naive_rag,confidence_notes,knowledge,Any within-pair probability split carries no evidential value because it derives from capture artefacts that do not generalise.,[],unsupported_but_true,judge
+hedged_pair-50005,no_rag,threat_assessment,feature,"The device Danmini_Doorbell is emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair), with pair probability 1.0000.",[],unsupported_but_true,machine
+hedged_pair-50005,no_rag,threat_assessment,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-50005,no_rag,threat_assessment,knowledge,The flood victim and the local network are the harmed parties,[],unsupported_but_true,judge
+hedged_pair-50005,no_rag,threat_assessment,knowledge,attacker identity and intent are not established by the available evidence.,[],unsupported_but_true,judge
+hedged_pair-50005,no_rag,attack_mechanism,knowledge,"At the supported pair level, the device emits flood traffic associated with gafgyt_tcp and gafgyt_udp.",[],unsupported_but_true,judge
+hedged_pair-50005,no_rag,attack_mechanism,knowledge,The available evidence does not establish further mechanism details.,[],unsupported_but_true,judge
+hedged_pair-50005,no_rag,observable_indicators,knowledge,Review each supplied evidence observation against the device's benign baseline,[],unsupported_but_true,judge
+hedged_pair-50005,no_rag,observable_indicators,knowledge,no within-pair assignment is supported.,[],unsupported_and_false,judge
+hedged_pair-50005,no_rag,immediate_actions,procedural,Isolate the device and contain the traffic,[],unsupported_but_true,judge
+hedged_pair-50005,no_rag,immediate_actions,procedural,containment is identical for gafgyt_tcp and gafgyt_udp and must not wait for disambiguation.,[],unsupported_but_true,judge
+hedged_pair-50005,no_rag,immediate_actions,feature,"After containment, capture any single packet of the flood traffic with tcpdump at the gateway and read the IP header protocol field: protocol 6 means gafgyt_tcp, while protocol 17 means gafgyt_udp.",[],unsupported_but_true,machine
+hedged_pair-50005,no_rag,longer_term_remediation,procedural,"Keep the device on a restricted IoT segment, rotate its credentials, apply supported firmware updates, and remove unnecessary external exposure.",[],unsupported_but_true,judge
+hedged_pair-50005,no_rag,confidence_notes,feature,The pair probability is 1.0000.,[],unsupported_but_true,machine
+hedged_pair-50005,no_rag,confidence_notes,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-50005,no_rag,confidence_notes,knowledge,Any within-pair probability split carries no evidential value because it derives from capture artefacts that do not generalise.,[],unsupported_but_true,judge
+hedged_pair-50005,self_check,threat_assessment,feature,"The device Danmini_Doorbell is emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair), with pair probability 1.0000.",[],unsupported_but_true,machine
+hedged_pair-50005,self_check,threat_assessment,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-50005,self_check,threat_assessment,knowledge,The flood victim and the local network are the harmed parties,[],unsupported_but_true,judge
+hedged_pair-50005,self_check,threat_assessment,knowledge,attacker identity and intent are not established by the available evidence.,[],unsupported_but_true,judge
+hedged_pair-50005,self_check,attack_mechanism,knowledge,"At the supported pair level, the device emits flood traffic associated with gafgyt_tcp and gafgyt_udp.",[],unsupported_but_true,judge
+hedged_pair-50005,self_check,attack_mechanism,knowledge,The available evidence does not establish further mechanism details.,[],unsupported_but_true,judge
+hedged_pair-50005,self_check,observable_indicators,knowledge,Review each supplied evidence observation against the device's benign baseline,[],unsupported_but_true,judge
+hedged_pair-50005,self_check,observable_indicators,knowledge,no within-pair assignment is supported.,[],unsupported_and_false,judge
+hedged_pair-50005,self_check,immediate_actions,procedural,Isolate the device and contain the traffic,[],unsupported_but_true,judge
+hedged_pair-50005,self_check,immediate_actions,procedural,containment is identical for gafgyt_tcp and gafgyt_udp and must not wait for disambiguation.,[],unsupported_but_true,judge
+hedged_pair-50005,self_check,immediate_actions,feature,"After containment, capture any single packet of the flood traffic with tcpdump at the gateway and read the IP header protocol field: protocol 6 means gafgyt_tcp, while protocol 17 means gafgyt_udp.",[],unsupported_but_true,machine
+hedged_pair-50005,self_check,longer_term_remediation,procedural,"Keep the device on a restricted IoT segment, rotate its credentials, apply supported firmware updates, and remove unnecessary external exposure.",[],unsupported_but_true,judge
+hedged_pair-50005,self_check,confidence_notes,feature,The pair probability is 1.0000.,[],unsupported_but_true,machine
+hedged_pair-50005,self_check,confidence_notes,knowledge,The candidates gafgyt_tcp and gafgyt_udp cannot be distinguished from the available traffic features because the feature set does not record the transport protocol.,[],unsupported_but_true,judge
+hedged_pair-50005,self_check,confidence_notes,knowledge,Any within-pair probability split carries no evidential value because it derives from capture artefacts that do not generalise.,[],unsupported_but_true,judge

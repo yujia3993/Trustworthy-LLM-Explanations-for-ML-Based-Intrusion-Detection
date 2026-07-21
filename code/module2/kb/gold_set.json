@@ -1,0 +1,112 @@
+{
+  "gold_set_version": "1.0.0",
+  "frozen": true,
+  "frozen_policy": "Frozen before any retrieval tuning. Recall@5 and MRR are computed against these expected document sets. Any change requires a new version and invalidates prior retrieval comparisons.",
+  "description": "Expected knowledge-base documents per (attack_type, report_section). Distractor documents never appear. Cells hold 1-4 expected doc_ids to suit a Recall@5 / MRR evaluation.",
+  "report_sections": [
+    "threat_assessment",
+    "attack_mechanism",
+    "observable_indicators",
+    "immediate_actions",
+    "longer_term_remediation",
+    "confidence_notes"
+  ],
+  "device_profile_placeholder": "DEVICE_PROFILE",
+  "device_profile_resolution": {
+    "doorbell": "device-doorbell-profile",
+    "thermostat": "device-thermostat-profile",
+    "baby_monitor": "device-baby-monitor-profile",
+    "security_camera": "device-security-camera-profile",
+    "webcam": "device-webcam-profile"
+  },
+  "device_profile_note": "DEVICE_PROFILE is a runtime placeholder. The gold set is defined at attack_type granularity; at evaluation time it resolves to the device profile doc for the alert's device via device_category_map in metadata_schema.json.",
+  "confidence_notes_note": "Empty for assertive (non-ambiguous) classes: confidence information is carried by the model's calibrated probability, not retrieved from the KB. Only the ambiguous gafgyt tcp/udp pair requires retrieved confidence-handling documents.",
+  "ambiguous_pair": {
+    "members": ["gafgyt_tcp", "gafgyt_udp"],
+    "note": "These two classes are statistically indistinguishable in the N-BaIoT feature space. Reports assert the pair superclass with p_pair and route to packet-capture disambiguation. Their gold-set entries include the pair-handling findings in confidence_notes and immediate_actions; both members share identical expected documents except for the class-specific mechanism doc.",
+    "shared_confidence_notes": ["finding-pair-level-assertion", "finding-no-protocol-field"],
+    "extra_immediate_action": "finding-pcap-disambiguation"
+  },
+  "entries": {
+    "mirai_ack": {
+      "threat_assessment": ["mirai-ack-flood", "mirai-family-overview", "DEVICE_PROFILE"],
+      "attack_mechanism": ["mirai-ack-flood", "concept-ddos-floods"],
+      "observable_indicators": ["mirai-ack-flood", "concept-ddos-floods"],
+      "immediate_actions": ["iot-immediate-containment", "DEVICE_PROFILE"],
+      "longer_term_remediation": ["iot-long-term-hardening", "network-segmentation-iot", "iot-credential-hygiene", "DEVICE_PROFILE"],
+      "confidence_notes": []
+    },
+    "mirai_syn": {
+      "threat_assessment": ["mirai-syn-flood", "mirai-family-overview", "DEVICE_PROFILE"],
+      "attack_mechanism": ["mirai-syn-flood", "concept-ddos-floods"],
+      "observable_indicators": ["mirai-syn-flood", "concept-ddos-floods"],
+      "immediate_actions": ["iot-immediate-containment", "DEVICE_PROFILE"],
+      "longer_term_remediation": ["iot-long-term-hardening", "network-segmentation-iot", "iot-credential-hygiene", "DEVICE_PROFILE"],
+      "confidence_notes": []
+    },
+    "mirai_udp": {
+      "threat_assessment": ["mirai-udp-flood", "mirai-family-overview", "DEVICE_PROFILE"],
+      "attack_mechanism": ["mirai-udp-flood", "concept-ddos-floods"],
+      "observable_indicators": ["mirai-udp-flood", "concept-ddos-floods"],
+      "immediate_actions": ["iot-immediate-containment", "DEVICE_PROFILE"],
+      "longer_term_remediation": ["iot-long-term-hardening", "network-segmentation-iot", "iot-credential-hygiene", "DEVICE_PROFILE"],
+      "confidence_notes": []
+    },
+    "mirai_udpplain": {
+      "threat_assessment": ["mirai-udpplain-flood", "mirai-family-overview", "DEVICE_PROFILE"],
+      "attack_mechanism": ["mirai-udpplain-flood", "concept-ddos-floods"],
+      "observable_indicators": ["mirai-udpplain-flood", "concept-ddos-floods"],
+      "immediate_actions": ["iot-immediate-containment", "DEVICE_PROFILE"],
+      "longer_term_remediation": ["iot-long-term-hardening", "network-segmentation-iot", "iot-credential-hygiene", "DEVICE_PROFILE"],
+      "confidence_notes": []
+    },
+    "mirai_scan": {
+      "threat_assessment": ["mirai-scan", "mirai-family-overview", "DEVICE_PROFILE"],
+      "attack_mechanism": ["mirai-scan", "concept-scanning-recon", "concept-iot-botnet-lifecycle"],
+      "observable_indicators": ["mirai-scan", "concept-scanning-recon"],
+      "immediate_actions": ["iot-immediate-containment", "network-segmentation-iot", "DEVICE_PROFILE"],
+      "longer_term_remediation": ["iot-long-term-hardening", "network-segmentation-iot", "iot-credential-hygiene", "DEVICE_PROFILE"],
+      "confidence_notes": []
+    },
+    "gafgyt_combo": {
+      "threat_assessment": ["gafgyt-combo-attack", "gafgyt-family-overview", "DEVICE_PROFILE"],
+      "attack_mechanism": ["gafgyt-combo-attack", "concept-ddos-floods"],
+      "observable_indicators": ["gafgyt-combo-attack", "concept-ddos-floods"],
+      "immediate_actions": ["iot-immediate-containment", "DEVICE_PROFILE"],
+      "longer_term_remediation": ["iot-long-term-hardening", "network-segmentation-iot", "iot-credential-hygiene", "DEVICE_PROFILE"],
+      "confidence_notes": []
+    },
+    "gafgyt_junk": {
+      "threat_assessment": ["gafgyt-junk-attack", "gafgyt-family-overview", "DEVICE_PROFILE"],
+      "attack_mechanism": ["gafgyt-junk-attack", "concept-ddos-floods"],
+      "observable_indicators": ["gafgyt-junk-attack", "concept-ddos-floods"],
+      "immediate_actions": ["iot-immediate-containment", "DEVICE_PROFILE"],
+      "longer_term_remediation": ["iot-long-term-hardening", "network-segmentation-iot", "iot-credential-hygiene", "DEVICE_PROFILE"],
+      "confidence_notes": []
+    },
+    "gafgyt_scan": {
+      "threat_assessment": ["gafgyt-scan", "gafgyt-family-overview", "DEVICE_PROFILE"],
+      "attack_mechanism": ["gafgyt-scan", "concept-scanning-recon", "concept-iot-botnet-lifecycle"],
+      "observable_indicators": ["gafgyt-scan", "concept-scanning-recon"],
+      "immediate_actions": ["iot-immediate-containment", "network-segmentation-iot", "DEVICE_PROFILE"],
+      "longer_term_remediation": ["iot-long-term-hardening", "network-segmentation-iot", "iot-credential-hygiene", "DEVICE_PROFILE"],
+      "confidence_notes": []
+    },
+    "gafgyt_tcp": {
+      "threat_assessment": ["gafgyt-tcp-flood", "gafgyt-family-overview", "DEVICE_PROFILE"],
+      "attack_mechanism": ["gafgyt-tcp-flood", "concept-ddos-floods", "finding-no-protocol-field"],
+      "observable_indicators": ["gafgyt-tcp-flood", "concept-ddos-floods"],
+      "immediate_actions": ["iot-immediate-containment", "finding-pcap-disambiguation", "DEVICE_PROFILE"],
+      "longer_term_remediation": ["iot-long-term-hardening", "network-segmentation-iot", "iot-credential-hygiene", "DEVICE_PROFILE"],
+      "confidence_notes": ["finding-pair-level-assertion", "finding-no-protocol-field"]
+    },
+    "gafgyt_udp": {
+      "threat_assessment": ["gafgyt-udp-flood", "gafgyt-family-overview", "DEVICE_PROFILE"],
+      "attack_mechanism": ["gafgyt-udp-flood", "concept-ddos-floods", "finding-no-protocol-field"],
+      "observable_indicators": ["gafgyt-udp-flood", "concept-ddos-floods"],
+      "immediate_actions": ["iot-immediate-containment", "finding-pcap-disambiguation", "DEVICE_PROFILE"],
+      "longer_term_remediation": ["iot-long-term-hardening", "network-segmentation-iot", "iot-credential-hygiene", "DEVICE_PROFILE"],
+      "confidence_notes": ["finding-pair-level-assertion", "finding-no-protocol-field"]
+    }
+  }
+}

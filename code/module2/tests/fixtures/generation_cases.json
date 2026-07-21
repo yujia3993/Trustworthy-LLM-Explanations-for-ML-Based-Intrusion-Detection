@@ -1,0 +1,95 @@
+[
+  {
+    "case_id": "assertive-mirai-udp",
+    "device_name": "Danmini_Doorbell",
+    "device_category": "doorbell",
+    "y_pred": "mirai_udp",
+    "p_top1": 0.9987,
+    "top2_class": "mirai_udpplain",
+    "p_top2": 0.0009,
+    "p_pair": 0.0001,
+    "margin": 0.9978,
+    "entropy": 0.01,
+    "evidence": [
+      {
+        "feature": "HH_L0.01_weight",
+        "value": 18420.0,
+        "benign_median": 3.2,
+        "benign_std": 1.1,
+        "benign_p99": 11.8,
+        "screen": "discriminative"
+      },
+      {
+        "feature": "HH_L0.1_magnitude",
+        "value": 9210.0,
+        "benign_median": 4.0,
+        "benign_std": 1.6,
+        "benign_p99": 15.0,
+        "screen": "discriminative"
+      },
+      {
+        "feature": "MI_dir_L0.1_weight",
+        "value": 81.0,
+        "benign_median": 10.0,
+        "benign_std": 3.5,
+        "benign_p99": 24.0,
+        "screen": "contextual"
+      }
+    ],
+    "label_type": "hand_built"
+  },
+  {
+    "case_id": "hedged-gafgyt-pair",
+    "device_name": "Provision_PT_838_Security_Camera",
+    "device_category": "security_camera",
+    "y_pred": "gafgyt_tcp",
+    "p_top1": 0.5104,
+    "top2_class": "gafgyt_udp",
+    "p_top2": 0.4894,
+    "p_pair": 0.9998,
+    "margin": 0.021,
+    "entropy": 0.71,
+    "evidence": [
+      {
+        "feature": "HH_L0.01_weight",
+        "value": 2450.0,
+        "benign_median": 5.0,
+        "benign_std": 2.0,
+        "benign_p99": 18.0,
+        "screen": "discriminative"
+      },
+      {
+        "feature": "HpHp_L0.1_radius",
+        "value": 42.0,
+        "benign_median": 40.0,
+        "benign_std": 8.0,
+        "benign_p99": 75.0,
+        "screen": "contextual"
+      }
+    ],
+    "label_type": "hand_built"
+  },
+  {
+    "case_id": "hedged-generic-mirai",
+    "device_name": "Ecobee_Thermostat",
+    "device_category": "thermostat",
+    "y_pred": "mirai_ack",
+    "p_top1": 0.55,
+    "top2_class": "mirai_syn",
+    "p_top2": 0.39,
+    "p_pair": 0.0002,
+    "margin": 0.16,
+    "entropy": 0.9,
+    "evidence": [
+      {
+        "feature": "HH_jit_L0.01_mean",
+        "value": 0.0002,
+        "benign_median": 0.004,
+        "benign_std": 0.001,
+        "benign_p99": 0.008,
+        "screen": "discriminative"
+      }
+    ],
+    "label_type": "hand_built"
+  }
+]

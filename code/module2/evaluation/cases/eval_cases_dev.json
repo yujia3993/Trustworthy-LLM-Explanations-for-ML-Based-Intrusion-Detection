@@ -1,0 +1,782 @@
+[
+  {
+    "case_id": "assertive_correct-30005",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 0.0,
+        "benign_p99": 163.165038525,
+        "benign_std": 103.9426348544,
+        "feature": "HH_L0.1_covariance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 1.9846267045,
+        "benign_p99": 5.1715117341,
+        "benign_std": 1.4791793135,
+        "feature": "MI_dir_L3_weight",
+        "screen": "discriminative",
+        "value": 241.8671498226
+      },
+      {
+        "benign_median": 144.2497834,
+        "benign_p99": 144.2497834,
+        "benign_std": 18.6583266723,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2674805613
+      },
+      {
+        "benign_median": 1.0,
+        "benign_p99": 1.960215846,
+        "benign_std": 0.1658147085,
+        "feature": "HH_L3_weight",
+        "screen": "discriminative",
+        "value": 240.5750350757
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 0.5663621308,
+        "benign_std": 0.1305887308,
+        "feature": "HH_L0.1_pcc",
+        "screen": "contextual",
+        "value": 5e-10
+      }
+    ],
+    "label_type": "gafgyt_combo",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "gafgyt_combo",
+      "sample_id": 30005,
+      "split": "dev",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_combo"
+  },
+  {
+    "case_id": "assertive_correct-35006",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 1.0717349285,
+        "benign_p99": 3.0647740801,
+        "benign_std": 0.516432683,
+        "feature": "HH_L0.1_weight",
+        "screen": "discriminative",
+        "value": 6877.7478127443
+      },
+      {
+        "benign_median": 4.2825315045,
+        "benign_p99": 7.767849933,
+        "benign_std": 1.6379988343,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 6898.3112680988
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 210.566574307,
+        "benign_std": 1.9179728784686516e+16,
+        "feature": "HH_jit_L1_variance",
+        "screen": "discriminative",
+        "value": 83677954.16193904
+      },
+      {
+        "benign_median": 144.2497834,
+        "benign_p99": 144.2497834,
+        "benign_std": 18.6583266723,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 95.2672530529
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 184.437007633,
+        "benign_std": 139.6521192903,
+        "feature": "HH_L0.01_covariance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_junk",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "gafgyt_junk",
+      "sample_id": 35006,
+      "split": "dev",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_junk"
+  },
+  {
+    "case_id": "assertive_correct-40017",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.5186293564,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 76.5225125837
+      },
+      {
+        "benign_median": 102.0,
+        "benign_p99": 102.0,
+        "benign_std": 13.5048821417,
+        "feature": "HH_L0.1_mean",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 144.2497834,
+        "benign_p99": 144.2497834,
+        "benign_std": 18.6583266723,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 74.0
+      },
+      {
+        "benign_median": 4.2825315045,
+        "benign_p99": 7.767849933,
+        "benign_std": 1.6379988343,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 943.3603725481
+      },
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.6116131856,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "discriminative",
+        "value": 1574.244297666
+      }
+    ],
+    "label_type": "gafgyt_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "gafgyt_scan",
+      "sample_id": 40017,
+      "split": "dev",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "gafgyt_scan"
+  },
+  {
+    "case_id": "assertive_correct-5010",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.5186293564,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 390.6936778668
+      },
+      {
+        "benign_median": 1.9548827805,
+        "benign_p99": 5.0109052401,
+        "benign_std": 1.4624083245,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 148.5294819195
+      },
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.606857972,
+        "feature": "H_L0.01_variance",
+        "screen": "discriminative",
+        "value": 57969.2558236196
+      },
+      {
+        "benign_median": 0.0004141735,
+        "benign_p99": 362.022673699,
+        "benign_std": 434.272383116,
+        "feature": "MI_dir_L3_variance",
+        "screen": "discriminative",
+        "value": 63680.6474571072
+      },
+      {
+        "benign_median": 102.0,
+        "benign_p99": 102.0,
+        "benign_std": 17.743199032,
+        "feature": "HpHp_L0.01_mean",
+        "screen": "contextual",
+        "value": 60.0
+      }
+    ],
+    "label_type": "mirai_ack",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_ack",
+      "sample_id": 5010,
+      "split": "dev",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_ack"
+  },
+  {
+    "case_id": "assertive_correct-10008",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 1.9548827805,
+        "benign_p99": 5.0109052401,
+        "benign_std": 1.4624083245,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 137.254350888
+      },
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.5186293564,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 60.0214173296
+      },
+      {
+        "benign_median": 4.2825315045,
+        "benign_p99": 7.767849933,
+        "benign_std": 1.6377053437,
+        "feature": "H_L0.1_weight",
+        "screen": "discriminative",
+        "value": 2349.1036558897
+      },
+      {
+        "benign_median": 0.0004141735,
+        "benign_p99": 362.022673699,
+        "benign_std": 434.272383116,
+        "feature": "MI_dir_L3_variance",
+        "screen": "contextual",
+        "value": 0.0001166304
+      },
+      {
+        "benign_median": 0.0004141735,
+        "benign_p99": 362.022673699,
+        "benign_std": 434.2723831329,
+        "feature": "H_L3_variance",
+        "screen": "contextual",
+        "value": 0.0001166304
+      }
+    ],
+    "label_type": "mirai_scan",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_scan",
+      "sample_id": 10008,
+      "split": "dev",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_scan"
+  },
+  {
+    "case_id": "assertive_correct-15007",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.5186293564,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "contextual",
+        "value": 69.3645996127
+      },
+      {
+        "benign_median": 4.2825315045,
+        "benign_p99": 7.767849933,
+        "benign_std": 1.6379988343,
+        "feature": "MI_dir_L0.1_weight",
+        "screen": "discriminative",
+        "value": 6278.7653052623
+      },
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.6116131856,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 43.5828113443
+      },
+      {
+        "benign_median": 102.0,
+        "benign_p99": 102.0,
+        "benign_std": 17.7925112916,
+        "feature": "HH_L5_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 1.9999917825,
+        "benign_p99": 5.6400411289,
+        "benign_std": 1.5128987669,
+        "feature": "H_L1_weight",
+        "screen": "discriminative",
+        "value": 708.4665057657
+      }
+    ],
+    "label_type": "mirai_syn",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "mirai_syn",
+      "sample_id": 15007,
+      "split": "dev",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_syn"
+  },
+  {
+    "case_id": "assertive_correct-20014",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.5186293564,
+        "feature": "MI_dir_L0.01_mean",
+        "screen": "discriminative",
+        "value": 383.4196576136
+      },
+      {
+        "benign_median": 30.33888449,
+        "benign_p99": 35.2467349421,
+        "benign_std": 2.3492190101,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "discriminative",
+        "value": 52247.9783344225
+      },
+      {
+        "benign_median": 0.0004141735,
+        "benign_p99": 362.022673699,
+        "benign_std": 434.272383116,
+        "feature": "MI_dir_L3_variance",
+        "screen": "discriminative",
+        "value": 49973.5918412111
+      },
+      {
+        "benign_median": 30.33888449,
+        "benign_p99": 35.2467349421,
+        "benign_std": 2.3396091109,
+        "feature": "H_L0.01_weight",
+        "screen": "discriminative",
+        "value": 52247.9783344225
+      },
+      {
+        "benign_median": 92.53404477,
+        "benign_p99": 95.5054815345,
+        "benign_std": 4.3741098094,
+        "feature": "H_L0.01_mean",
+        "screen": "discriminative",
+        "value": 383.4196576136
+      }
+    ],
+    "label_type": "mirai_udp",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "mirai_udp",
+      "sample_id": 20014,
+      "split": "dev",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_udp"
+  },
+  {
+    "case_id": "assertive_correct-25017",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 2.7631021115928547e-10,
+    "evidence": [
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.606857972,
+        "feature": "H_L0.01_variance",
+        "screen": "discriminative",
+        "value": 60176.7165239615
+      },
+      {
+        "benign_median": 1.0717241525,
+        "benign_p99": 2.1803257417,
+        "benign_std": 0.2613314668,
+        "feature": "HpHp_L0.1_weight",
+        "screen": "discriminative",
+        "value": 2778.9185692615
+      },
+      {
+        "benign_median": 101.9995081,
+        "benign_p99": 102.0,
+        "benign_std": 17.3639220927,
+        "feature": "MI_dir_L5_mean",
+        "screen": "discriminative",
+        "value": 239.944119461
+      },
+      {
+        "benign_median": 1.9548827805,
+        "benign_p99": 5.0109052401,
+        "benign_std": 1.4624083245,
+        "feature": "MI_dir_L5_weight",
+        "screen": "discriminative",
+        "value": 144.3531125443
+      },
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.6116131856,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "discriminative",
+        "value": 60176.7165239615
+      }
+    ],
+    "label_type": "mirai_udpplain",
+    "margin": 1.0,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "mirai_udpplain",
+      "sample_id": 25017,
+      "split": "dev",
+      "stage_a_flagged": true,
+      "stratum": "assertive_correct"
+    },
+    "p_pair": 0.0,
+    "p_top1": 1.0,
+    "p_top2": 0.0,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "benign",
+    "y_pred": "mirai_udpplain"
+  },
+  {
+    "case_id": "hedged_pair-45014",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 0.6931456996400363,
+    "evidence": [
+      {
+        "benign_median": 30.33888449,
+        "benign_p99": 35.2467349421,
+        "benign_std": 2.3396091109,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.606857972,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 95.17788682,
+        "benign_p99": 101.020475927,
+        "benign_std": 7.1820016298,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 1.9548827805,
+        "benign_p99": 5.0109052401,
+        "benign_std": 1.4624083245,
+        "feature": "MI_dir_L5_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 0.5663621308,
+        "benign_std": 0.1305887308,
+        "feature": "HH_L0.1_pcc",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0017211437225341797,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 45014,
+      "split": "dev",
+      "stage_a_flagged": true,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5008605718612671,
+    "p_top2": 0.4991394281387329,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_tcp",
+    "y_pred": "gafgyt_udp"
+  },
+  {
+    "case_id": "hedged_pair-100021",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 0.6992789723371928,
+    "evidence": [
+      {
+        "benign_median": 12.61918242,
+        "benign_p99": 18.3692629093,
+        "benign_std": 3.5589728158,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10400.622993904,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 222.75688285,
+        "benign_p99": 414.836904654,
+        "benign_std": 86.4850186613,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 12.61918242,
+        "benign_p99": 18.3692629093,
+        "benign_std": 3.5644033945,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10401.8261738834,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_tcp",
+    "margin": 0.0004781943327545335,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_tcp",
+      "sample_id": 100021,
+      "split": "dev",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 0.9991716446768589,
+    "p_top1": 0.49982491950480673,
+    "p_top2": 0.4993467251720522,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_pair-50005",
+    "case_set_version": "1.0.0",
+    "device_category": "doorbell",
+    "device_name": "Danmini_Doorbell",
+    "entropy": 0.6931456996400363,
+    "evidence": [
+      {
+        "benign_median": 30.33888449,
+        "benign_p99": 35.2467349421,
+        "benign_std": 2.3396091109,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 281.5718796,
+        "benign_p99": 1164.24076548,
+        "benign_std": 504.606857972,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 95.17788682,
+        "benign_p99": 101.020475927,
+        "benign_std": 7.1820016298,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 1.9548827805,
+        "benign_p99": 5.0109052401,
+        "benign_std": 1.4624083245,
+        "feature": "MI_dir_L5_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 0.0,
+        "benign_p99": 0.5663621308,
+        "benign_std": 0.1305887308,
+        "feature": "HH_L0.1_pcc",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0017211437225341797,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 50005,
+      "split": "dev",
+      "stage_a_flagged": true,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 1.0,
+    "p_top1": 0.5008605718612671,
+    "p_top2": 0.4991394281387329,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_tcp",
+    "y_pred": "gafgyt_udp"
+  },
+  {
+    "case_id": "hedged_pair-105008",
+    "case_set_version": "1.0.0",
+    "device_category": "thermostat",
+    "device_name": "Ecobee_Thermostat",
+    "entropy": 0.6992789723371928,
+    "evidence": [
+      {
+        "benign_median": 12.61918242,
+        "benign_p99": 18.3692629093,
+        "benign_std": 3.5589728158,
+        "feature": "H_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10400.622993904,
+        "feature": "H_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 222.75688285,
+        "benign_p99": 414.836904654,
+        "benign_std": 86.4850186613,
+        "feature": "MI_dir_L0.1_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 12.61918242,
+        "benign_p99": 18.3692629093,
+        "benign_std": 3.5644033945,
+        "feature": "MI_dir_L0.01_weight",
+        "screen": "contextual",
+        "value": 1.0
+      },
+      {
+        "benign_median": 24831.8269,
+        "benign_p99": 51489.6211872,
+        "benign_std": 10401.8261738834,
+        "feature": "MI_dir_L0.01_variance",
+        "screen": "contextual",
+        "value": 0.0
+      }
+    ],
+    "label_type": "gafgyt_udp",
+    "margin": 0.0004781943327545335,
+    "metadata": {
+      "atypicality_score": 0.0,
+      "label_type": "gafgyt_udp",
+      "sample_id": 105008,
+      "split": "dev",
+      "stage_a_flagged": false,
+      "stratum": "hedged_pair"
+    },
+    "p_pair": 0.9991716446768589,
+    "p_top1": 0.49982491950480673,
+    "p_top2": 0.4993467251720522,
+    "sampling_plan": "sampling_plan.md v1.0.0",
+    "top2_class": "gafgyt_udp",
+    "y_pred": "gafgyt_tcp"
+  }
+]

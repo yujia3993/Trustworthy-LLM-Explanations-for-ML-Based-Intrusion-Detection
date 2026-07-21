@@ -1,0 +1,12 @@
+,benign,gafgyt_combo,gafgyt_junk,gafgyt_scan,gafgyt_tcp,gafgyt_udp,mirai_ack,mirai_scan,mirai_syn,mirai_udp,mirai_udpplain
+benign,4999,0,0,0,1,0,0,0,0,0,0
+gafgyt_combo,0,4999,1,0,0,0,0,0,0,0,0
+gafgyt_junk,0,0,5000,0,0,0,0,0,0,0,0
+gafgyt_scan,0,0,0,5000,0,0,0,0,0,0,0
+gafgyt_tcp,0,0,0,0,8,4992,0,0,0,0,0
+gafgyt_udp,1,0,0,0,0,4999,0,0,0,0,0
+mirai_ack,0,0,0,0,0,0,0,0,0,0,0
+mirai_scan,0,0,0,0,0,0,0,0,0,0,0
+mirai_syn,0,0,0,0,0,0,0,0,0,0,0
+mirai_udp,0,0,0,0,0,0,0,0,0,0,0
+mirai_udpplain,0,0,0,0,0,0,0,0,0,0,0
