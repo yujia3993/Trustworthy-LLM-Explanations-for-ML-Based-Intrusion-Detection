@@ -15,7 +15,7 @@ from ..retrieval.evaluate import (
     recall_at_k,
     resolve_expected_docs,
 )
-from ..retrieval.retrievers import CONFIG_DENSE, Retriever
+from ..retrieval.retrievers import CONFIG_DENSE
 
 
 @pytest.mark.parametrize(
@@ -82,7 +82,7 @@ def test_query_grid_skips_exactly_eight_assertive_confidence_cells():
     }
 
 
-def test_dense_single_query_smoke():
+def test_dense_single_query_smoke(retriever):
     gold_set = load_gold_set()
     query = EvaluationQuery(
         attack_type="mirai_ack",
@@ -94,7 +94,7 @@ def test_dense_single_query_smoke():
             )
         ),
     )
-    row = evaluate_query(Retriever(), "dense", CONFIG_DENSE, query)
+    row = evaluate_query(retriever, "dense", CONFIG_DENSE, query)
 
     assert 0.0 <= row["recall_at_5"] <= 1.0
     assert 0.0 <= row["mrr"] <= 1.0

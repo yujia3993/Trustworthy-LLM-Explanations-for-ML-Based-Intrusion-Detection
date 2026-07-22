@@ -29,8 +29,7 @@ from ..generation import (
     save_cases,
     select_register,
 )
-from ..retrieval import RetrievedChunk, Retriever, build_index
-from ..retrieval.ingest import CHUNKS_SIDECAR_NAME, DEFAULT_INDEX_DIR
+from ..retrieval import RetrievedChunk, Retriever
 
 FIXTURE_PATH = Path(__file__).resolve().parent / "fixtures" / "generation_cases.json"
 
@@ -41,10 +40,9 @@ def generation_cases() -> list[AlertCase]:
 
 
 @pytest.fixture(scope="session")
-def generation_retriever() -> Retriever:
-    if not (DEFAULT_INDEX_DIR / CHUNKS_SIDECAR_NAME).exists():
-        build_index(DEFAULT_INDEX_DIR)
-    return Retriever(DEFAULT_INDEX_DIR)
+def generation_retriever(retrieval_index) -> Retriever:
+    index_dir, _ = retrieval_index
+    return Retriever(index_dir)
 
 
 def test_register_selection_and_review_guard(generation_cases):

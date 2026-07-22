@@ -6,6 +6,7 @@ import argparse
 import csv
 import json
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Sequence
 
@@ -14,6 +15,7 @@ from ..generation import (
     GEN_NAIVE_RAG,
     GEN_NO_RAG,
     GEN_SELF_CHECK,
+    PROMPT_VERSION,
     GenerationConfig,
     LLMClient,
     MockLLMClient,
@@ -26,7 +28,7 @@ from ..generation.audit import AuditResult
 from ..retrieval import RetrievedChunk, Retriever
 from .claims import Claim, ClaimExtractor, MockClaimExtractor
 from .feature_verify import FeatureVerification, classify_feature_claim, verify_features
-from .judge import JudgeClient, JudgeResult, MockJudgeClient
+from .judge import JudgeClient, JudgeResult, MockJudgeClient, load_judge_rubric
 from .metrics import summarize_config
 
 EVALUATION_DIR = Path(__file__).resolve().parent
@@ -83,6 +85,45 @@ def _resolve_configs(
     return sorted(resolved, key=lambda item: item.name)
 
 
+def _stratified_limit(cases, limit):
+    """按 case_id 前缀分层，每层取前 N 个。输入需已按 case_id 排序。"""
+
+    if limit is None:
+        return cases
+    buckets: dict[str, list] = {}
+    for case in cases:
+        buckets.setdefault(case.case_id.rsplit("-", 1)[0], []).append(case)
+    return sorted(
+        (case for bucket in buckets.values() for case in bucket[:limit]),
+        key=lambda case: case.case_id,
+    )
+
+
+def _auto_suffix(active_configs, limit) -> str:
+    parts = []
+    if limit is not None:
+        parts.append(f"limit{limit}")
+    names = sorted(config.name for config in active_configs)
+    if set(names) != {config.name for config in DEFAULT_CONFIGS}:
+        parts.append("-".join(names))
+    return "_".join(parts) or "partial"
+
+
+def _artifact_paths(split, active_configs, limit, results_suffix):
+    partial = limit is not None or {config.name for config in active_configs} != {
+        config.name for config in DEFAULT_CONFIGS
+    }
+    base = (RESULTS_DIR / "scratch") if partial else RESULTS_DIR
+    suffix = results_suffix or (_auto_suffix(active_configs, limit) if partial else "")
+    tag = f"__{suffix}" if suffix else ""
+    return (
+        base / f"eval_{split}_summary{tag}.csv",
+        base / f"eval_{split}_claims{tag}.csv",
+        base / f"rq2_audit_{split}{tag}.csv",
+        base / f"run_manifest_{split}{tag}.json",
+    )
+
+
 def _chunks_seen_by_generator(
     chunk_ids_by_section: dict[str, list[str]], retriever: _MemoizingRetriever
 ) -> dict[str, list[RetrievedChunk]]:
@@ -125,11 +166,15 @@ def run_eval(
     claim_extractor: ClaimExtractor | MockClaimExtractor | None = None,
     retriever: Retriever | None = None,
     use_cache: bool = True,
+    limit: int | None = None,
+    results_suffix: str | None = None,
 ) -> list[dict[str, Any]]:
     """Evaluate all requested configs and write the three protocol CSV artefacts."""
 
     if split not in ("dev", "frozen"):
         raise ValueError("split must be 'dev' or 'frozen'")
+    if limit is not None and limit < 1:
+        raise ValueError("limit must be >= 1")
     if generator_client is None:
         generator_client = OpenAICompatibleClient()
     if judge_client is None:
@@ -140,10 +185,17 @@ def run_eval(
     active_configs = _resolve_configs(configs)
     needs_retrieval = any(config.retrieval != "none" for config in active_configs)
     active_retriever = _MemoizingRetriever(retriever or Retriever()) if needs_retrieval else None
+    case_path = CASES_DIR / f"eval_cases_{split}.json"
+    case_records = json.loads(case_path.read_text(encoding="utf-8"))
+    case_set_versions = {record["case_set_version"] for record in case_records}
+    if len(case_set_versions) != 1:
+        raise ValueError("evaluation cases must have one case_set_version")
+    case_set_version = next(iter(case_set_versions))
     cases = sorted(
-        load_cases(CASES_DIR / f"eval_cases_{split}.json"),
+        load_cases(case_path),
         key=lambda case: case.case_id,
     )
+    cases = _stratified_limit(cases, limit)
 
     evaluations: list[_CaseEvaluation] = []
     claim_rows: list[dict[str, Any]] = []
@@ -276,9 +328,36 @@ def run_eval(
         "passed",
         "needs_review",
     ]
-    _write_csv(RESULTS_DIR / f"eval_{split}_summary.csv", summary_rows, summary_fields)
-    _write_csv(RESULTS_DIR / f"eval_{split}_claims.csv", claim_rows, claim_fields)
-    _write_csv(RESULTS_DIR / f"rq2_audit_{split}.csv", audit_rows, audit_fields)
+    summary_path, claims_path, audit_path, manifest_path = _artifact_paths(
+        split, active_configs, limit, results_suffix
+    )
+    _write_csv(summary_path, summary_rows, summary_fields)
+    _write_csv(claims_path, claim_rows, claim_fields)
+    _write_csv(audit_path, audit_rows, audit_fields)
+
+    partial = limit is not None or {config.name for config in active_configs} != {
+        config.name for config in DEFAULT_CONFIGS
+    }
+    manifest = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "split": split,
+        "configs": [config.name for config in active_configs],
+        "limit": limit,
+        "results_suffix": results_suffix,
+        "partial": partial,
+        "use_cache": use_cache,
+        "n_cases": len(cases),
+        "case_ids": [case.case_id for case in cases],
+        "generator_model": getattr(generator_client, "model", "unknown"),
+        "judge_model": getattr(judge_client, "model", "unknown"),
+        "prompt_version": PROMPT_VERSION,
+        "eval_prompt_version": load_judge_rubric()["eval_prompt_version"],
+        "case_set_version": case_set_version,
+    }
+    manifest_path.write_text(
+        json.dumps(manifest, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
     return summary_rows
 
 
@@ -312,9 +391,21 @@ def _print_summary(rows: Sequence[dict[str, Any]]) -> None:
         print("  ".join(value.ljust(width) for value, width in zip(row, widths)))
 
 
+def _positive_int(value: str) -> int:
+    parsed = int(value)
+    if parsed < 1:
+        raise argparse.ArgumentTypeError("--limit must be >= 1")
+    return parsed
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--split", choices=("dev", "frozen"), default="dev")
+    parser.add_argument(
+        "--configs", nargs="+", choices=tuple(_CONFIG_BY_NAME), default=None
+    )
+    parser.add_argument("--limit", type=_positive_int, default=None)
+    parser.add_argument("--results-suffix", default=None)
     parser.add_argument("--mock", action="store_true", help="use offline mock clients")
     parser.add_argument("--no-cache", action="store_true")
     args = parser.parse_args(argv)
@@ -329,11 +420,14 @@ def main(argv: Sequence[str] | None = None) -> int:
         extractor = ClaimExtractor(generator_client)
     rows = run_eval(
         split=args.split,
+        configs=args.configs,
         generator_client=generator_client,
         judge_client=judge_client,
         claim_extractor=extractor,
         retriever=Retriever(),
         use_cache=not args.no_cache,
+        limit=args.limit,
+        results_suffix=args.results_suffix,
     )
     _print_summary(rows)
     return 0
@@ -341,4 +435,3 @@ def main(argv: Sequence[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

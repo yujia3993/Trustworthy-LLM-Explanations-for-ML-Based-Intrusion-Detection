@@ -13,24 +13,10 @@ from ..retrieval import (
     CONFIG_FULL,
     CONFIG_HYBRID,
     CONFIG_RERANK,
-    Retriever,
-    build_index,
     chunk_documents,
     decode_metadata,
 )
-from ..retrieval.ingest import COLLECTION_NAME, DEFAULT_INDEX_DIR
-
-
-@pytest.fixture(scope="session")
-def retrieval_index():
-    chunks = build_index(DEFAULT_INDEX_DIR)
-    return DEFAULT_INDEX_DIR, chunks
-
-
-@pytest.fixture(scope="session")
-def retriever(retrieval_index):
-    index_dir, _ = retrieval_index
-    return Retriever(index_dir)
+from ..retrieval.ingest import COLLECTION_NAME
 
 
 def test_chunking_shape_and_clean_text():

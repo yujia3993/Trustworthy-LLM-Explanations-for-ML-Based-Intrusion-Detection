@@ -14,21 +14,21 @@ from ..evaluation.feature_verify import (
     extract_numeric_tokens,
     verify_features,
 )
-from ..evaluation.judge import MockJudgeClient, parse_judge_json
+from ..evaluation.judge import JudgeClient, MockJudgeClient, parse_judge_json
 from ..evaluation.metrics import cohens_kappa, weighted_kappa
-from ..evaluation.run_eval import run_eval
+from ..evaluation.run_eval import main as run_eval_main, run_eval
 from ..generation import (
     AlertCase,
     EvidenceItem,
     MockLLMClient,
 )
 from ..retrieval import Retriever
-from ..retrieval.ingest import DEFAULT_INDEX_DIR
 
 
 @pytest.fixture(scope="session")
-def evaluation_retriever() -> Retriever:
-    return Retriever(DEFAULT_INDEX_DIR)
+def evaluation_retriever(retrieval_index) -> Retriever:
+    index_dir, _ = retrieval_index
+    return Retriever(index_dir)
 
 
 @pytest.fixture
@@ -210,3 +210,101 @@ def test_run_eval_all_mock_end_to_end(
         (row["case_id"], row["config"]) for row in claims
     )
 
+
+def test_run_eval_limit_is_stratified_and_writes_scratch_manifest(
+    evaluation_retriever, tmp_path, monkeypatch
+):
+    from ..evaluation import run_eval as run_eval_module
+
+    monkeypatch.setattr(run_eval_module, "RESULTS_DIR", tmp_path)
+    summary = run_eval(
+        split="dev",
+        generator_client=MockLLMClient(),
+        judge_client=MockJudgeClient(),
+        claim_extractor=MockClaimExtractor(),
+        retriever=evaluation_retriever,
+        use_cache=False,
+        limit=1,
+    )
+
+    scratch = tmp_path / "scratch"
+    expected_paths = (
+        scratch / "eval_dev_summary__limit1.csv",
+        scratch / "eval_dev_claims__limit1.csv",
+        scratch / "rq2_audit_dev__limit1.csv",
+        scratch / "run_manifest_dev__limit1.json",
+    )
+    assert all(path.exists() for path in expected_paths)
+    assert not (tmp_path / "eval_dev_summary.csv").exists()
+
+    manifest = json.loads(expected_paths[-1].read_text(encoding="utf-8"))
+    expected_fields = {
+        "generated_at",
+        "split",
+        "configs",
+        "limit",
+        "results_suffix",
+        "partial",
+        "use_cache",
+        "n_cases",
+        "case_ids",
+        "generator_model",
+        "judge_model",
+        "prompt_version",
+        "eval_prompt_version",
+        "case_set_version",
+    }
+    assert expected_fields <= set(manifest)
+    assert manifest["n_cases"] == len(manifest["case_ids"]) == 2
+    assert {
+        case_id.rsplit("-", 1)[0] for case_id in manifest["case_ids"]
+    } == {"assertive_correct", "hedged_pair"}
+    assert manifest["partial"] is True
+    assert manifest["prompt_version"]
+    assert all(row["n_cases"] == 2 for row in summary)
+
+
+def test_run_eval_config_subset_uses_descriptive_scratch_path(
+    evaluation_retriever, tmp_path, monkeypatch
+):
+    from ..evaluation import run_eval as run_eval_module
+
+    monkeypatch.setattr(run_eval_module, "RESULTS_DIR", tmp_path)
+    summary = run_eval(
+        split="dev",
+        configs=["full_rag"],
+        generator_client=MockLLMClient(),
+        judge_client=MockJudgeClient(),
+        claim_extractor=MockClaimExtractor(),
+        retriever=evaluation_retriever,
+        use_cache=False,
+    )
+
+    assert len(summary) == 1
+    assert summary[0]["config"] == "full_rag"
+    assert (tmp_path / "scratch" / "eval_dev_summary__full_rag.csv").exists()
+    assert not (tmp_path / "eval_dev_summary.csv").exists()
+
+
+def test_judge_cache_key_includes_report_content():
+    first = JudgeClient.cache_key("judge", "case", "config", "first report")
+    repeated = JudgeClient.cache_key("judge", "case", "config", "first report")
+    changed = JudgeClient.cache_key("judge", "case", "config", "changed report")
+
+    assert first == repeated
+    assert first != changed
+
+
+@pytest.mark.parametrize("limit", [0, -1])
+def test_run_eval_rejects_non_positive_limit(limit):
+    """A negative limit would slice as bucket[:-1] and silently run nearly everything."""
+
+    with pytest.raises(ValueError, match="limit must be >= 1"):
+        run_eval(split="dev", limit=limit, generator_client=MockLLMClient())
+
+
+@pytest.mark.parametrize("limit", ["0", "-1"])
+def test_cli_rejects_non_positive_limit(limit):
+    with pytest.raises(SystemExit) as excinfo:
+        run_eval_main(["--limit", limit, "--mock"])
+    assert excinfo.value.code == 2

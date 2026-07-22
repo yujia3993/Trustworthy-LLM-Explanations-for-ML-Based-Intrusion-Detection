@@ -170,9 +170,12 @@ class JudgeClient:
         self.cache_dir = Path(cache_dir)
 
     @staticmethod
-    def cache_key(judge_model: str, case_id: str, config_name: str) -> str:
+    def cache_key(
+        judge_model: str, case_id: str, config_name: str, report_md: str
+    ) -> str:
         version = load_judge_rubric()["eval_prompt_version"]
-        material = "|".join((judge_model, case_id, config_name, version))
+        digest = hashlib.sha256(report_md.encode("utf-8")).hexdigest()
+        material = "|".join((judge_model, case_id, config_name, version, digest))
         return hashlib.sha256(material.encode("utf-8")).hexdigest()
 
     def build_messages(
@@ -208,7 +211,7 @@ class JudgeClient:
         config_name: str = "unknown",
         use_cache: bool = True,
     ) -> JudgeResult:
-        key = self.cache_key(self.model, case.case_id, config_name)
+        key = self.cache_key(self.model, case.case_id, config_name, report_md)
         cache_path = self.cache_dir / f"{key}.json"
         if use_cache and cache_path.exists():
             return parse_judge_json(cache_path.read_text(encoding="utf-8"), claims)
