@@ -8,7 +8,14 @@ from pathlib import Path
 
 import pytest
 
-from ..evaluation.claims import Claim, EvalParseError, MockClaimExtractor, parse_claims_json
+from ..evaluation.claim_cache import ClaimCache
+from ..evaluation.claims import (
+    Claim,
+    ClaimExtractor,
+    EvalParseError,
+    MockClaimExtractor,
+    parse_claims_json,
+)
 from ..evaluation.feature_verify import (
     classify_feature_claim,
     extract_numeric_tokens,
@@ -59,6 +66,82 @@ class _CountingMockLLMClient(MockLLMClient):
     def complete(self, messages: list[dict[str, str]]) -> str:
         self.calls += 1
         return super().complete(messages)
+
+
+class _CountingClaimClient:
+    model = "claim-model"
+
+    def __init__(self) -> None:
+        self.calls = 0
+
+    def complete(self, messages: list[dict[str, str]]) -> str:
+        self.calls += 1
+        return json.dumps(
+            [
+                {
+                    "text": "A cached knowledge claim.",
+                    "section": "threat_assessment",
+                    "type": "knowledge",
+                    "cited_refs": ["[C1]"],
+                    "label": None,
+                }
+            ]
+        )
+
+
+def test_claim_cache_put_get_round_trip_preserves_all_fields(tmp_path):
+    cache = ClaimCache(tmp_path)
+    claims = [
+        Claim(
+            "The device contacted a command server.",
+            "attack_mechanism",
+            "knowledge",
+            ["[C1]", "[E2]"],
+            "supported",
+        )
+    ]
+
+    cache.put(claims, "model-a", "claim prompt", "report")
+    restored = cache.get("model-a", "claim prompt", "report")
+
+    assert restored == claims
+    assert restored is not claims
+
+
+def test_claim_cache_key_covers_model_prompt_and_report():
+    baseline = ClaimCache.key("model-a", "prompt one", "report one")
+
+    assert ClaimCache.key("model-b", "prompt one", "report one") != baseline
+    assert ClaimCache.key("model-a", "prompt two", "report one") != baseline
+    assert ClaimCache.key("model-a", "prompt one", "report two") != baseline
+
+
+def test_claim_cache_key_is_stable_with_none_model():
+    first = ClaimCache.key(None, "claim prompt", "report")
+    repeated = ClaimCache.key(None, "claim prompt", "report")
+
+    assert first == repeated
+
+
+def test_claim_cache_get_misses_for_different_model(tmp_path):
+    cache = ClaimCache(tmp_path)
+    claims = [Claim("claim", "threat_assessment", "knowledge", [])]
+    cache.put(claims, "model-a", "claim prompt", "report")
+
+    assert cache.get("model-b", "claim prompt", "report") is None
+
+
+def test_claim_extractor_reuses_cached_result_without_calling_client(tmp_path):
+    client = _CountingClaimClient()
+    extractor = ClaimExtractor(client, cache=ClaimCache(tmp_path))
+
+    first = extractor.extract("report")
+    calls_after_first = client.calls
+    second = extractor.extract("report")
+
+    assert calls_after_first == 1
+    assert client.calls - calls_after_first == 0
+    assert second == first
 
 
 def test_feature_verification_accepts_case_values_and_probabilities(feature_case):
@@ -296,6 +379,7 @@ def test_run_eval_all_mock_end_to_end(
 
     monkeypatch.setattr(run_eval_module, "RESULTS_DIR", tmp_path)
     monkeypatch.setattr(run_eval_module, "GENERATION_CACHE_DIR", tmp_path / "cache")
+    monkeypatch.setattr(run_eval_module, "CLAIM_CACHE_DIR", tmp_path / "claims")
     summary = run_eval(
         split="dev",
         generator_client=MockLLMClient(),
@@ -340,6 +424,7 @@ def test_run_eval_limit_is_stratified_and_writes_scratch_manifest(
 
     monkeypatch.setattr(run_eval_module, "RESULTS_DIR", tmp_path)
     monkeypatch.setattr(run_eval_module, "GENERATION_CACHE_DIR", tmp_path / "cache")
+    monkeypatch.setattr(run_eval_module, "CLAIM_CACHE_DIR", tmp_path / "claims")
     summary = run_eval(
         split="dev",
         generator_client=MockLLMClient(),
@@ -394,6 +479,7 @@ def test_run_eval_config_subset_uses_descriptive_scratch_path(
 
     monkeypatch.setattr(run_eval_module, "RESULTS_DIR", tmp_path)
     monkeypatch.setattr(run_eval_module, "GENERATION_CACHE_DIR", tmp_path / "cache")
+    monkeypatch.setattr(run_eval_module, "CLAIM_CACHE_DIR", tmp_path / "claims")
     summary = run_eval(
         split="dev",
         configs=["full_rag"],
@@ -417,6 +503,7 @@ def test_run_eval_reuses_generation_cache(tmp_path, monkeypatch):
     cache_dir = tmp_path / "cache"
     monkeypatch.setattr(run_eval_module, "RESULTS_DIR", results_dir)
     monkeypatch.setattr(run_eval_module, "GENERATION_CACHE_DIR", cache_dir)
+    monkeypatch.setattr(run_eval_module, "CLAIM_CACHE_DIR", tmp_path / "claims")
     client = _CountingMockLLMClient()
     kwargs = {
         "split": "dev",
@@ -453,6 +540,7 @@ def test_run_eval_no_cache_still_calls_generator(tmp_path, monkeypatch):
     cache_dir = tmp_path / "cache"
     monkeypatch.setattr(run_eval_module, "RESULTS_DIR", tmp_path / "results")
     monkeypatch.setattr(run_eval_module, "GENERATION_CACHE_DIR", cache_dir)
+    monkeypatch.setattr(run_eval_module, "CLAIM_CACHE_DIR", tmp_path / "claims")
     client = _CountingMockLLMClient()
     kwargs = {
         "split": "dev",
@@ -473,18 +561,102 @@ def test_run_eval_no_cache_still_calls_generator(tmp_path, monkeypatch):
     assert list(cache_dir.glob("*.json")) == []
 
 
+def test_run_eval_reuses_claim_cache(tmp_path, monkeypatch):
+    from ..evaluation import run_eval as run_eval_module
+
+    monkeypatch.setattr(run_eval_module, "RESULTS_DIR", tmp_path / "results")
+    monkeypatch.setattr(run_eval_module, "GENERATION_CACHE_DIR", tmp_path / "reports")
+    monkeypatch.setattr(run_eval_module, "CLAIM_CACHE_DIR", tmp_path / "claims")
+    client = _CountingClaimClient()
+    extractor = ClaimExtractor(client)
+    kwargs = {
+        "split": "dev",
+        "configs": ["no_rag"],
+        "generator_client": MockLLMClient(),
+        "judge_client": MockJudgeClient(),
+        "claim_extractor": extractor,
+        "use_cache": True,
+        "limit": 1,
+    }
+
+    run_eval(**kwargs)
+    calls_after_first = client.calls
+    run_eval(**kwargs)
+
+    assert calls_after_first > 0
+    assert client.calls - calls_after_first == 0
+
+
+def test_run_eval_no_cache_still_calls_claim_extractor(tmp_path, monkeypatch):
+    from ..evaluation import run_eval as run_eval_module
+
+    claim_cache_dir = tmp_path / "claims"
+    monkeypatch.setattr(run_eval_module, "RESULTS_DIR", tmp_path / "results")
+    monkeypatch.setattr(run_eval_module, "GENERATION_CACHE_DIR", tmp_path / "reports")
+    monkeypatch.setattr(run_eval_module, "CLAIM_CACHE_DIR", claim_cache_dir)
+    client = _CountingClaimClient()
+    extractor = ClaimExtractor(client)
+    kwargs = {
+        "split": "dev",
+        "configs": ["no_rag"],
+        "generator_client": MockLLMClient(),
+        "judge_client": MockJudgeClient(),
+        "claim_extractor": extractor,
+        "use_cache": False,
+        "limit": 1,
+    }
+
+    run_eval(**kwargs)
+    calls_after_first = client.calls
+    run_eval(**kwargs)
+
+    assert calls_after_first > 0
+    assert client.calls - calls_after_first == calls_after_first
+    assert list(claim_cache_dir.glob("*.json")) == []
+
+
 def test_judge_cache_key_includes_report_content():
-    first = JudgeClient.cache_key("judge", "case", "config", "first report")
-    repeated = JudgeClient.cache_key("judge", "case", "config", "first report")
-    changed = JudgeClient.cache_key("judge", "case", "config", "changed report")
+    claims = [Claim("claim", "attack_mechanism", "knowledge", [])]
+    first = JudgeClient.cache_key("judge", "case", "config", "first report", claims)
+    repeated = JudgeClient.cache_key(
+        "judge", "case", "config", "first report", claims
+    )
+    changed = JudgeClient.cache_key(
+        "judge", "case", "config", "changed report", claims
+    )
 
     assert first == repeated
     assert first != changed
 
 
+def test_judge_cache_key_includes_ordered_claims():
+    first_claim = Claim("first", "attack_mechanism", "knowledge", [])
+    second_claim = Claim("second", "threat_assessment", "knowledge", ["[C1]"])
+    first = JudgeClient.cache_key(
+        "judge", "case", "config", "report", [first_claim, second_claim]
+    )
+    repeated = JudgeClient.cache_key(
+        "judge", "case", "config", "report", [first_claim, second_claim]
+    )
+    changed = JudgeClient.cache_key(
+        "judge", "case", "config", "report", [first_claim]
+    )
+    reordered = JudgeClient.cache_key(
+        "judge", "case", "config", "report", [second_claim, first_claim]
+    )
+
+    assert first == repeated
+    assert first != changed
+    assert first != reordered
+
+
 @pytest.mark.parametrize("limit", [0, -1])
-def test_run_eval_rejects_non_positive_limit(limit):
+def test_run_eval_rejects_non_positive_limit(limit, tmp_path, monkeypatch):
     """A negative limit would slice as bucket[:-1] and silently run nearly everything."""
+
+    from ..evaluation import run_eval as run_eval_module
+
+    monkeypatch.setattr(run_eval_module, "CLAIM_CACHE_DIR", tmp_path / "claims")
 
     with pytest.raises(ValueError, match="limit must be >= 1"):
         run_eval(split="dev", limit=limit, generator_client=MockLLMClient())

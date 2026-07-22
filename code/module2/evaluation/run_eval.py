@@ -28,6 +28,7 @@ from ..generation import (
 from ..generation.audit import AuditResult
 from ..generation.cache import DEFAULT_CACHE_DIR
 from ..retrieval import RetrievedChunk, Retriever
+from .claim_cache import ClaimCache, DEFAULT_CLAIM_CACHE_DIR
 from .claims import Claim, ClaimExtractor, MockClaimExtractor
 from .feature_verify import FeatureVerification, classify_feature_claim, verify_features
 from .judge import JudgeClient, JudgeResult, MockJudgeClient, load_judge_rubric
@@ -37,6 +38,7 @@ EVALUATION_DIR = Path(__file__).resolve().parent
 CASES_DIR = EVALUATION_DIR / "cases"
 RESULTS_DIR = EVALUATION_DIR / "results"
 GENERATION_CACHE_DIR = DEFAULT_CACHE_DIR
+CLAIM_CACHE_DIR = DEFAULT_CLAIM_CACHE_DIR
 DEFAULT_CONFIGS = (GEN_NO_RAG, GEN_NAIVE_RAG, GEN_FULL_RAG, GEN_SELF_CHECK)
 _CONFIG_BY_NAME = {config.name: config for config in DEFAULT_CONFIGS}
 
@@ -183,12 +185,19 @@ def run_eval(
     if limit is not None and limit < 1:
         raise ValueError("limit must be >= 1")
     generation_cache = ReportCache(GENERATION_CACHE_DIR)
+    claim_cache = ClaimCache(CLAIM_CACHE_DIR)
     if generator_client is None:
         generator_client = OpenAICompatibleClient()
     if judge_client is None:
         judge_client = JudgeClient()
     if claim_extractor is None:
         claim_extractor = ClaimExtractor(generator_client)
+    if isinstance(claim_extractor, ClaimExtractor):
+        # Rebind rather than mutate: the caller's extractor must not be reconfigured
+        # behind its back just because it was passed in here.
+        claim_extractor = ClaimExtractor(
+            claim_extractor.client, cache=claim_cache, use_cache=use_cache
+        )
 
     active_configs = _resolve_configs(configs)
     needs_retrieval = any(config.retrieval != "none" for config in active_configs)

@@ -11,6 +11,7 @@ from typing import Any, Sequence
 
 from ..generation.llm_client import LLMClient
 from ..generation.pipeline import REPORT_SECTIONS
+from .claim_cache import ClaimCache
 
 _PROMPT_PATH = Path(__file__).resolve().parent / "prompts" / "claim_extraction.md"
 _CLAIM_TYPES = ("feature", "knowledge", "procedural")
@@ -130,8 +131,15 @@ def _claim_prompt() -> str:
 class ClaimExtractor:
     """LLM-backed atomic claim extractor."""
 
-    def __init__(self, client: LLMClient) -> None:
+    def __init__(
+        self,
+        client: LLMClient,
+        cache: ClaimCache | None = None,
+        use_cache: bool = True,
+    ) -> None:
         self.client = client
+        self.cache = cache
+        self.use_cache = use_cache
 
     def build_messages(self, report_md: str) -> list[dict[str, str]]:
         return [
@@ -140,7 +148,17 @@ class ClaimExtractor:
         ]
 
     def extract(self, report_md: str) -> list[Claim]:
-        return parse_claims_json(self.client.complete(self.build_messages(report_md)))
+        prompt = _claim_prompt()
+        model = getattr(self.client, "model", None)
+        if self.use_cache and self.cache is not None:
+            cached = self.cache.get(model, prompt, report_md)
+            if cached is not None:
+                return cached
+
+        claims = parse_claims_json(self.client.complete(self.build_messages(report_md)))
+        if self.use_cache and self.cache is not None:
+            self.cache.put(claims, model, prompt, report_md)
+        return claims
 
 
 def _normalise_heading(heading: str) -> str:

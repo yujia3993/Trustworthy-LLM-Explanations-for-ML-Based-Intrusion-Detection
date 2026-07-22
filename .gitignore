@@ -7,6 +7,7 @@ code/nbaiot_sampled.parquet
 code/module2/retrieval/index/
 code/module2/generation/cache/
 code/module2/evaluation/judge_cache/
+code/module2/evaluation/claim_cache/
 code/module2/evaluation/results/scratch/
 CLAUDE.md
 AGENTS.md

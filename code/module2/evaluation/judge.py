@@ -179,12 +179,23 @@ class JudgeClient:
 
     @staticmethod
     def cache_key(
-        judge_model: str, case_id: str, config_name: str, report_md: str
+        judge_model: str,
+        case_id: str,
+        config_name: str,
+        report_md: str,
+        claims: Sequence[Claim],
     ) -> str:
         version = load_judge_rubric()["eval_prompt_version"]
-        digest = hashlib.sha256(report_md.encode("utf-8")).hexdigest()
-        material = "|".join((judge_model, case_id, config_name, version, digest))
-        return hashlib.sha256(material.encode("utf-8")).hexdigest()
+        report_digest = hashlib.sha256(report_md.encode("utf-8")).hexdigest()
+        claims_digest = hashlib.sha256(
+            _claims_payload(claims).encode("utf-8")
+        ).hexdigest()
+        material = json.dumps(
+            [judge_model, case_id, config_name, version, report_digest, claims_digest],
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ).encode("utf-8")
+        return hashlib.sha256(material).hexdigest()
 
     def build_messages(
         self,
@@ -219,7 +230,9 @@ class JudgeClient:
         config_name: str = "unknown",
         use_cache: bool = True,
     ) -> JudgeResult:
-        key = self.cache_key(self.model, case.case_id, config_name, report_md)
+        key = self.cache_key(
+            self.model, case.case_id, config_name, report_md, claims
+        )
         cache_path = self.cache_dir / f"{key}.json"
         if use_cache and cache_path.exists():
             return parse_judge_json(cache_path.read_text(encoding="utf-8"), claims)
