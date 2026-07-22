@@ -122,10 +122,27 @@ def test_build_messages_fills_register_and_context(generation_cases):
 
 def test_cache_put_get_round_trip(tmp_path):
     cache = ReportCache(tmp_path)
-    expected_key = ReportCache.key("cfg", "case", PROMPT_VERSION)
+    expected_key = ReportCache.key("cfg", "case", PROMPT_VERSION, "mock")
     entry = cache.put("report", "assertive", "cfg", "case", PROMPT_VERSION, "mock")
-    assert cache.get("cfg", "case", PROMPT_VERSION) == entry
+    assert cache.get("cfg", "case", PROMPT_VERSION, "mock") == entry
     assert (tmp_path / f"{expected_key}.json").exists()
+
+
+def test_cache_key_includes_model_and_none_is_stable():
+    model_a = ReportCache.key("cfg", "case", PROMPT_VERSION, "model-a")
+    model_b = ReportCache.key("cfg", "case", PROMPT_VERSION, "model-b")
+    none_first = ReportCache.key("cfg", "case", PROMPT_VERSION, None)
+    none_second = ReportCache.key("cfg", "case", PROMPT_VERSION, None)
+
+    assert model_a != model_b
+    assert none_first == none_second
+
+
+def test_cache_get_rejects_different_model(tmp_path):
+    cache = ReportCache(tmp_path)
+    cache.put("report", "assertive", "cfg", "case", PROMPT_VERSION, "model-a")
+
+    assert cache.get("cfg", "case", PROMPT_VERSION, "model-b") is None
 
 
 def test_generate_report_uses_cache(generation_cases, tmp_path):
@@ -227,4 +244,7 @@ def test_fallback_is_bannered_and_not_cached(generation_cases, tmp_path):
     )
     assert generated.fallback
     assert "FALLBACK REPORT - LLM unavailable" in generated.report_md
-    assert cache.get(GEN_NO_RAG.name, generated.case_id, PROMPT_VERSION) is None
+    assert (
+        cache.get(GEN_NO_RAG.name, generated.case_id, PROMPT_VERSION, "offline")
+        is None
+    )

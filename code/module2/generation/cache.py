@@ -18,17 +18,38 @@ class ReportCache:
         self.directory.mkdir(parents=True, exist_ok=True)
 
     @staticmethod
-    def key(config_name: str, case_id: str, prompt_version: str) -> str:
-        raw = f"{config_name}|{case_id}|{prompt_version}".encode("utf-8")
+    def key(
+        config_name: str,
+        case_id: str,
+        prompt_version: str,
+        model: str | None,
+    ) -> str:
+        raw = json.dumps(
+            [config_name, case_id, prompt_version, model],
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ).encode("utf-8")
         return hashlib.sha256(raw).hexdigest()
 
-    def _path(self, config_name: str, case_id: str, prompt_version: str) -> Path:
-        return self.directory / f"{self.key(config_name, case_id, prompt_version)}.json"
+    def _path(
+        self,
+        config_name: str,
+        case_id: str,
+        prompt_version: str,
+        model: str | None,
+    ) -> Path:
+        return self.directory / (
+            f"{self.key(config_name, case_id, prompt_version, model)}.json"
+        )
 
     def get(
-        self, config_name: str, case_id: str, prompt_version: str
+        self,
+        config_name: str,
+        case_id: str,
+        prompt_version: str,
+        model: str | None,
     ) -> dict[str, Any] | None:
-        path = self._path(config_name, case_id, prompt_version)
+        path = self._path(config_name, case_id, prompt_version, model)
         if not path.exists():
             return None
         try:
@@ -39,6 +60,7 @@ class ReportCache:
             "config_name": config_name,
             "case_id": case_id,
             "prompt_version": prompt_version,
+            "model": model,
         }
         if not isinstance(entry, dict) or any(
             entry.get(key) != value for key, value in expected.items()
@@ -64,7 +86,7 @@ class ReportCache:
             "model": model,
             "created_at": datetime.now(timezone.utc).isoformat(),
         }
-        path = self._path(config_name, case_id, prompt_version)
+        path = self._path(config_name, case_id, prompt_version, model)
         temporary = path.with_suffix(".tmp")
         temporary.write_text(json.dumps(entry, indent=2) + "\n", encoding="utf-8")
         temporary.replace(path)

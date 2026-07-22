@@ -52,6 +52,15 @@ def feature_case() -> AlertCase:
     )
 
 
+class _CountingMockLLMClient(MockLLMClient):
+    def __init__(self) -> None:
+        self.calls = 0
+
+    def complete(self, messages: list[dict[str, str]]) -> str:
+        self.calls += 1
+        return super().complete(messages)
+
+
 def test_feature_verification_accepts_case_values_and_probabilities(feature_case):
     report = """## Observable Indicators
 HH_weight is 20 against median 10, std 2, and p99 15 (2.0x) [E1].
@@ -121,6 +130,21 @@ def test_parse_claims_json_valid_and_enum_violation():
         parse_claims_json(json.dumps(invalid))
 
 
+def test_parse_claims_json_accepts_fenced_array():
+    raw = json.dumps(
+        [
+            {
+                "text": "A fenced claim.",
+                "section": "threat_assessment",
+                "type": "knowledge",
+                "cited_refs": [],
+            }
+        ]
+    )
+
+    assert parse_claims_json(f"```json\n{raw}\n```") == parse_claims_json(raw)
+
+
 def _judge_json(label: str = "supported", accuracy: int = 5) -> str:
     return json.dumps(
         {
@@ -135,6 +159,14 @@ def _judge_json(label: str = "supported", accuracy: int = 5) -> str:
     )
 
 
+def _judge_json_for_texts(*texts: str) -> str:
+    value = json.loads(_judge_json())
+    value["claim_labels"] = [
+        {"text": text, "label": "supported"} for text in texts
+    ]
+    return json.dumps(value)
+
+
 def test_parse_judge_json_valid_and_enum_violation():
     claims = [Claim("claim", "attack_mechanism", "knowledge", [])]
     assert parse_judge_json(_judge_json(), claims).factual_accuracy == 5
@@ -142,6 +174,95 @@ def test_parse_judge_json_valid_and_enum_violation():
         parse_judge_json(_judge_json("invented"), claims)
     with pytest.raises(EvalParseError, match="above 5"):
         parse_judge_json(_judge_json(accuracy=6), claims)
+
+
+def test_parse_judge_json_accepts_json_and_unlabelled_fences():
+    claims = [Claim("claim", "attack_mechanism", "knowledge", [])]
+    raw = _judge_json()
+    expected = parse_judge_json(raw, claims)
+
+    assert parse_judge_json(f"```json\n{raw}\n```", claims) == expected
+    assert parse_judge_json(f"```\n{raw}\n```", claims) == expected
+    assert parse_judge_json(f"  {raw}\n", claims) == expected
+    # Providers vary on fence casing and trailing whitespace; none of it is a schema error.
+    assert parse_judge_json(f"```JSON \n{raw}\n``` ", claims) == expected
+
+
+def test_parse_judge_json_rejects_json_surrounded_by_prose():
+    with pytest.raises(EvalParseError, match="judge JSON is invalid"):
+        parse_judge_json(f"Here is the result:\n{_judge_json()}\nHope that helps.")
+
+
+@pytest.mark.parametrize(
+    ("supplied_text", "returned_text"),
+    [
+        (
+            "exposing the device’s Telnet ports",
+            "exposing the device's Telnet ports",
+        ),
+        (
+            "traffic observed during a five–minute window",
+            "traffic observed during a five-minute window",
+        ),
+        ("multiple spaces between words", "  multiple   spaces between words  "),
+    ],
+)
+def test_parse_judge_json_accepts_typographic_and_whitespace_differences(
+    supplied_text, returned_text
+):
+    claims = [Claim(supplied_text, "attack_mechanism", "knowledge", [])]
+
+    result = parse_judge_json(_judge_json_for_texts(returned_text), claims)
+
+    assert result.claim_labels == [{"text": supplied_text, "label": "supported"}]
+
+
+@pytest.mark.parametrize(
+    "returned_text",
+    [
+        "The camera contacted the command server.",
+        "The router contacted",
+    ],
+)
+def test_parse_judge_json_rejects_content_differences(returned_text):
+    claims = [
+        Claim(
+            "The router contacted the command server.",
+            "attack_mechanism",
+            "knowledge",
+            [],
+        )
+    ]
+
+    with pytest.raises(EvalParseError, match="text does not match the supplied claim"):
+        parse_judge_json(_judge_json_for_texts(returned_text), claims)
+
+
+def test_parse_judge_json_rejects_claims_returned_out_of_order():
+    claims = [
+        Claim("First claim.", "attack_mechanism", "knowledge", []),
+        Claim("Second claim.", "attack_mechanism", "knowledge", []),
+    ]
+
+    with pytest.raises(EvalParseError, match="claim label 0: text does not match"):
+        parse_judge_json(
+            _judge_json_for_texts("Second claim.", "First claim."), claims
+        )
+
+
+def test_parse_judge_json_rejects_case_difference():
+    claims = [Claim("Device contacted a server.", "attack_mechanism", "knowledge", [])]
+
+    with pytest.raises(EvalParseError, match="text does not match the supplied claim"):
+        parse_judge_json(_judge_json_for_texts("device contacted a server."), claims)
+
+
+def test_parse_judge_json_identical_text_behavior_is_unchanged():
+    claims = [Claim("Identical claim.", "attack_mechanism", "knowledge", [])]
+
+    result = parse_judge_json(_judge_json_for_texts("Identical claim."), claims)
+
+    assert result.claim_labels == [{"text": "Identical claim.", "label": "supported"}]
 
 
 def test_cohens_kappa_known_values_and_weighted_sanity():
@@ -174,6 +295,7 @@ def test_run_eval_all_mock_end_to_end(
     from ..evaluation import run_eval as run_eval_module
 
     monkeypatch.setattr(run_eval_module, "RESULTS_DIR", tmp_path)
+    monkeypatch.setattr(run_eval_module, "GENERATION_CACHE_DIR", tmp_path / "cache")
     summary = run_eval(
         split="dev",
         generator_client=MockLLMClient(),
@@ -217,6 +339,7 @@ def test_run_eval_limit_is_stratified_and_writes_scratch_manifest(
     from ..evaluation import run_eval as run_eval_module
 
     monkeypatch.setattr(run_eval_module, "RESULTS_DIR", tmp_path)
+    monkeypatch.setattr(run_eval_module, "GENERATION_CACHE_DIR", tmp_path / "cache")
     summary = run_eval(
         split="dev",
         generator_client=MockLLMClient(),
@@ -270,6 +393,7 @@ def test_run_eval_config_subset_uses_descriptive_scratch_path(
     from ..evaluation import run_eval as run_eval_module
 
     monkeypatch.setattr(run_eval_module, "RESULTS_DIR", tmp_path)
+    monkeypatch.setattr(run_eval_module, "GENERATION_CACHE_DIR", tmp_path / "cache")
     summary = run_eval(
         split="dev",
         configs=["full_rag"],
@@ -284,6 +408,69 @@ def test_run_eval_config_subset_uses_descriptive_scratch_path(
     assert summary[0]["config"] == "full_rag"
     assert (tmp_path / "scratch" / "eval_dev_summary__full_rag.csv").exists()
     assert not (tmp_path / "eval_dev_summary.csv").exists()
+
+
+def test_run_eval_reuses_generation_cache(tmp_path, monkeypatch):
+    from ..evaluation import run_eval as run_eval_module
+
+    results_dir = tmp_path / "results"
+    cache_dir = tmp_path / "cache"
+    monkeypatch.setattr(run_eval_module, "RESULTS_DIR", results_dir)
+    monkeypatch.setattr(run_eval_module, "GENERATION_CACHE_DIR", cache_dir)
+    client = _CountingMockLLMClient()
+    kwargs = {
+        "split": "dev",
+        "configs": ["no_rag"],
+        "generator_client": client,
+        "judge_client": MockJudgeClient(),
+        "claim_extractor": MockClaimExtractor(),
+        "use_cache": True,
+        "limit": 1,
+    }
+
+    first_summary = run_eval(**kwargs)
+    calls_after_first = client.calls
+    first_reports = sorted(
+        json.loads(path.read_text(encoding="utf-8"))["report_md"]
+        for path in cache_dir.glob("*.json")
+    )
+    second_summary = run_eval(**kwargs)
+    second_run_calls = client.calls - calls_after_first
+    second_reports = sorted(
+        json.loads(path.read_text(encoding="utf-8"))["report_md"]
+        for path in cache_dir.glob("*.json")
+    )
+
+    assert calls_after_first > 0
+    assert second_run_calls == 0
+    assert second_reports == first_reports
+    assert second_summary == first_summary
+
+
+def test_run_eval_no_cache_still_calls_generator(tmp_path, monkeypatch):
+    from ..evaluation import run_eval as run_eval_module
+
+    cache_dir = tmp_path / "cache"
+    monkeypatch.setattr(run_eval_module, "RESULTS_DIR", tmp_path / "results")
+    monkeypatch.setattr(run_eval_module, "GENERATION_CACHE_DIR", cache_dir)
+    client = _CountingMockLLMClient()
+    kwargs = {
+        "split": "dev",
+        "configs": ["no_rag"],
+        "generator_client": client,
+        "judge_client": MockJudgeClient(),
+        "claim_extractor": MockClaimExtractor(),
+        "use_cache": False,
+        "limit": 1,
+    }
+
+    run_eval(**kwargs)
+    calls_after_first = client.calls
+    run_eval(**kwargs)
+
+    assert calls_after_first > 0
+    assert client.calls - calls_after_first == calls_after_first
+    assert list(cache_dir.glob("*.json")) == []
 
 
 def test_judge_cache_key_includes_report_content():

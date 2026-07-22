@@ -14,7 +14,12 @@ from ..generation.cases import AlertCase
 from ..generation.llm_client import LLMClient, OpenAICompatibleClient
 from ..generation.prompt_builder import _alert_data, _context_block, format_evidence
 from ..retrieval.retrievers import RetrievedChunk
-from .claims import Claim, EvalParseError
+from .claims import (
+    Claim,
+    EvalParseError,
+    normalise_claim_text,
+    strip_json_code_fence,
+)
 
 _EVALUATION_DIR = Path(__file__).resolve().parent
 _PROMPT_PATH = _EVALUATION_DIR / "prompts" / "judge.md"
@@ -58,7 +63,7 @@ def parse_judge_json(
     """Parse a judge response and validate every frozen enum and range."""
 
     try:
-        value = json.loads(raw.strip())
+        value = json.loads(strip_json_code_fence(raw))
     except (json.JSONDecodeError, TypeError) as exc:
         detail = getattr(exc, "msg", str(exc))
         raise EvalParseError(f"judge JSON is invalid: {detail}") from exc
@@ -88,11 +93,14 @@ def parse_judge_json(
                 f"judge claim label {index}: invalid label {label!r}; "
                 f"expected one of {sorted(allowed_labels)}"
             )
-        if claims is not None and text != claims[index].text:
+        if claims is not None and normalise_claim_text(text) != normalise_claim_text(
+            claims[index].text
+        ):
             raise EvalParseError(
                 f"judge claim label {index}: text does not match the supplied claim"
             )
-        parsed_labels.append({"text": text, "label": label})
+        canonical_text = claims[index].text if claims is not None else text
+        parsed_labels.append({"text": canonical_text, "label": label})
 
     scores = rubric["report_scores"]
     parsed_scores: dict[str, int] = {}

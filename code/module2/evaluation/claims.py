@@ -18,6 +18,25 @@ _REF_PATTERN = re.compile(r"\[(?:E|C)\d+\]", re.IGNORECASE)
 _FEATURE_PATTERN = re.compile(r"\b[A-Z]+_\w+\b")
 _HEADING_PATTERN = re.compile(r"^##\s+(.+?)\s*$")
 _LIST_PREFIX_PATTERN = re.compile(r"^\s*(?:[-*+]\s+|\d+[.)]\s+)")
+_TYPOGRAPHIC_CHARACTER_MAP = str.maketrans(
+    {
+        "\u2018": "'",
+        "\u2019": "'",
+        "\u201a": "'",
+        "\u201b": "'",
+        "\u201c": '"',
+        "\u201d": '"',
+        "\u201e": '"',
+        "\u201f": '"',
+        "\u2013": "-",
+        "\u2014": "-",
+        "\u2212": "-",
+        "\u2026": "...",
+        "\u00a0": " ",
+        "\u2009": " ",
+        "\u202f": " ",
+    }
+)
 
 _HEADING_TO_SECTION = {
     section.replace("_", " ").replace("longer term", "longer-term"): section
@@ -27,6 +46,27 @@ _HEADING_TO_SECTION = {
 
 class EvalParseError(ValueError):
     """Raised when an evaluator LLM response violates the frozen schema."""
+
+
+def normalise_claim_text(text: str) -> str:
+    """Normalise typographic variants and whitespace for claim comparison."""
+
+    return re.sub(r"\s+", " ", text.translate(_TYPOGRAPHIC_CHARACTER_MAP)).strip()
+
+
+def strip_json_code_fence(raw: str) -> str:
+    """Strip one complete JSON Markdown fence, leaving all other text untouched."""
+
+    text = raw.strip()
+    lines = text.splitlines()
+    if (
+        len(lines) >= 3
+        and lines[0].strip().lower() in {"```", "```json"}
+        and lines[-1].strip() == "```"
+        and not any("```" in line for line in lines[1:-1])
+    ):
+        return "\n".join(lines[1:-1]).strip()
+    return text
 
 
 @dataclass(slots=True)
@@ -73,7 +113,7 @@ def parse_claims_json(raw: str) -> list[Claim]:
     """Parse and validate the claim extractor's JSON-array response."""
 
     try:
-        value = json.loads(raw.strip())
+        value = json.loads(strip_json_code_fence(raw))
     except (json.JSONDecodeError, TypeError) as exc:
         detail = getattr(exc, "msg", str(exc))
         raise EvalParseError(f"claim extraction JSON is invalid: {detail}") from exc

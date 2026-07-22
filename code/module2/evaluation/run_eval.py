@@ -20,11 +20,13 @@ from ..generation import (
     LLMClient,
     MockLLMClient,
     OpenAICompatibleClient,
+    ReportCache,
     audit_report,
     generate_report,
     load_cases,
 )
 from ..generation.audit import AuditResult
+from ..generation.cache import DEFAULT_CACHE_DIR
 from ..retrieval import RetrievedChunk, Retriever
 from .claims import Claim, ClaimExtractor, MockClaimExtractor
 from .feature_verify import FeatureVerification, classify_feature_claim, verify_features
@@ -34,6 +36,7 @@ from .metrics import summarize_config
 EVALUATION_DIR = Path(__file__).resolve().parent
 CASES_DIR = EVALUATION_DIR / "cases"
 RESULTS_DIR = EVALUATION_DIR / "results"
+GENERATION_CACHE_DIR = DEFAULT_CACHE_DIR
 DEFAULT_CONFIGS = (GEN_NO_RAG, GEN_NAIVE_RAG, GEN_FULL_RAG, GEN_SELF_CHECK)
 _CONFIG_BY_NAME = {config.name: config for config in DEFAULT_CONFIGS}
 
@@ -179,6 +182,7 @@ def run_eval(
         raise ValueError("split must be 'dev' or 'frozen'")
     if limit is not None and limit < 1:
         raise ValueError("limit must be >= 1")
+    generation_cache = ReportCache(GENERATION_CACHE_DIR)
     if generator_client is None:
         generator_client = OpenAICompatibleClient()
     if judge_client is None:
@@ -213,6 +217,7 @@ def run_eval(
                 config,
                 retriever=active_retriever,
                 client=generator_client,
+                cache=generation_cache,
                 use_cache=use_cache,
             )
             audit = audit_report(generated.report_md, case, generated.register)

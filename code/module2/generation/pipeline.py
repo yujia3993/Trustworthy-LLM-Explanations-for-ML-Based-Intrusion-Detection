@@ -117,8 +117,9 @@ def generate_report(
         for section, chunks in chunks_by_section.items()
     }
     messages = build_messages(case, register, chunks_by_section)
+    model = getattr(client, "model", None)
     if cache is not None and use_cache:
-        entry = cache.get(gen_config.name, case.case_id, PROMPT_VERSION)
+        entry = cache.get(gen_config.name, case.case_id, PROMPT_VERSION, model)
         if entry is not None:
             return GeneratedReport(
                 case_id=case.case_id,
@@ -132,8 +133,6 @@ def generate_report(
                 chunk_ids_by_section=chunk_ids,
                 model=entry.get("model"),
             )
-
-    model = getattr(client, "model", None)
     try:
         report_md = client.complete(messages)
         if gen_config.self_check:
