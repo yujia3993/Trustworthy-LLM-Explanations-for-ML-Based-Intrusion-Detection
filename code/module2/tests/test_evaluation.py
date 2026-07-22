@@ -17,6 +17,7 @@ from ..evaluation.claims import (
     parse_claims_json,
 )
 from ..evaluation.feature_verify import (
+    build_allowed_number_strings,
     classify_feature_claim,
     extract_numeric_tokens,
     verify_features,
@@ -55,6 +56,37 @@ def feature_case() -> AlertCase:
             EvidenceItem("HH_weight", 20.0, 10.0, 2.0, 15.0, "contextual"),
             EvidenceItem("MI_dir_L3_weight", 30.0, 5.0, 1.5, 12.0, "discriminative"),
             EvidenceItem("HH_L0.1_magnitude", 8.0, 4.0, 0.5, 7.0, "contextual"),
+        ],
+    )
+
+
+def _single_evidence_case(
+    value: float,
+    *,
+    benign_median: float = 281.572,
+    benign_std: float = 2.5,
+    benign_p99: float = 1164.24,
+) -> AlertCase:
+    return AlertCase(
+        case_id="scientific-notation-case",
+        device_name="camera",
+        device_category="security_camera",
+        y_pred="gafgyt_tcp",
+        p_top1=0.61234,
+        top2_class="gafgyt_udp",
+        p_top2=0.38766,
+        p_pair=1.0,
+        margin=0.22468,
+        entropy=0.66789,
+        evidence=[
+            EvidenceItem(
+                "H_L0.01_variance",
+                value,
+                benign_median,
+                benign_std,
+                benign_p99,
+                "discriminative",
+            )
         ],
     )
 
@@ -155,6 +187,78 @@ The probabilities are 0.6123, 0.3877, 1.0000, margin 0.2247, entropy 0.6679.
     assert {"0.6123", "0.3877", "1.0000", "0.2247", "0.6679"} <= set(
         result.matched_numbers
     )
+
+
+@pytest.mark.parametrize(
+    ("value", "scientific", "expanded"),
+    [
+        (57969.3, "5.797e+04", "57970"),
+        (63680.6, "6.368e+04", "63680"),
+    ],
+)
+def test_allowed_numbers_include_exact_decimal_expansion(
+    value, scientific, expanded
+):
+    allowed = build_allowed_number_strings(_single_evidence_case(value))
+
+    assert scientific in allowed
+    assert expanded in allowed
+    assert f"{expanded}.0" not in allowed
+
+
+def test_feature_verification_accepts_grouped_decimal_expansion():
+    case = _single_evidence_case(57969.3)
+    report = (
+        "H_L0.01_variance = 57,970, which is 205.9 times above the device's "
+        "benign median of 281.6 and above the benign 99th percentile of 1164 [E1]."
+    )
+
+    result = verify_features(report, case, {})
+
+    assert result.fabricated_numbers == []
+    assert "57,970" in result.matched_numbers
+
+
+@pytest.mark.parametrize("invented", ["57971", "57969", "5797"])
+def test_feature_verification_rejects_nearby_decimal_values(invented):
+    case = _single_evidence_case(57969.3)
+
+    result = verify_features(
+        f"H_L0.01_variance = {invented} [E1].", case, {}
+    )
+
+    assert result.fabricated_numbers == [invented]
+
+
+def test_allowed_numbers_include_negative_exponent_decimal_expansion():
+    allowed = build_allowed_number_strings(
+        _single_evidence_case(
+            1.234e-05,
+            benign_median=1.0,
+            benign_std=2.0,
+            benign_p99=3.0,
+        )
+    )
+
+    assert "1.234e-05" in allowed
+    assert "0.00001234" in allowed
+
+
+def test_non_scientific_values_do_not_add_allowed_number_entries():
+    allowed = build_allowed_number_strings(_single_evidence_case(390.694))
+
+    assert allowed == {
+        "390.7",
+        "281.6",
+        "2.5",
+        "1164",
+        "1.4",
+        "0.6123",
+        "0.3877",
+        "1.0000",
+        "0.2247",
+        "0.6679",
+    }
 
 
 def test_feature_verification_flags_number_ref_and_contextual_misuse(feature_case):

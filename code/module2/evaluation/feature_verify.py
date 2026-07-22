@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from decimal import Decimal
 from typing import Iterable, Mapping, Sequence
 
 from ..generation.cases import AlertCase
@@ -48,6 +49,11 @@ class FeatureVerification:
 def _add_number_variants(allowed: set[str], formatted: str) -> None:
     allowed.add(formatted)
     allowed.add(formatted.replace(",", ""))
+    if "e" in formatted.lower():
+        expanded = format(Decimal(formatted.replace(",", "")), "f")
+        if "." in expanded:
+            expanded = expanded.rstrip("0").rstrip(".")
+        _add_number_variants(allowed, expanded)
 
 
 def build_allowed_number_strings(case: AlertCase) -> set[str]:
