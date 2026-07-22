@@ -1,0 +1,15 @@
+N-BaIoT/
+**/.venv/
+.venv-wsl/
+__pycache__/
+.codex-worker/
+code/nbaiot_sampled.parquet
+code/module2/retrieval/index/
+code/module2/generation/cache/
+code/module2/evaluation/judge_cache/
+CLAUDE.md
+AGENTS.md
+tools/codex-mcp/
+.mcp.json
+
+
