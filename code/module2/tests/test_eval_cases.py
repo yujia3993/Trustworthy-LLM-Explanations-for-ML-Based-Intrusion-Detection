@@ -116,12 +116,13 @@ def test_sampling_is_deterministic_and_matches_frozen_sizes() -> None:
     assert pair_truth == {"gafgyt_tcp": 18, "gafgyt_udp": 18}
 
 
-def test_dev_is_twelve_and_structurally_disjoint_from_frozen() -> None:
+def test_dev_composition_and_structural_disjointness_from_frozen() -> None:
     sampled = sample_case_sets(_synthetic_alerts())
-    assert len(sampled.dev) == 12
+    assert len(sampled.dev) == 14
     assert Counter(sampled.dev["stratum"]) == {
         "assertive_correct": 8,
         "hedged_pair": 4,
+        "hedged_generic": 2,
     }
     assert set(sampled.frozen["sample_id"]).isdisjoint(sampled.dev["sample_id"])
 
@@ -217,16 +218,31 @@ def test_exported_case_files_validate_and_round_trip() -> None:
         if record["metadata"]["stratum"] == "hedged_pair"
     )
     assert pair_truth == {"gafgyt_tcp": 18, "gafgyt_udp": 18}
-    assert len(dev_cases) == 12
+    assert len(dev_cases) == 14
     assert Counter(record["metadata"]["stratum"] for record in dev_records) == {
         "assertive_correct": 8,
         "hedged_pair": 4,
+        "hedged_generic": 2,
     }
 
     for case, record in zip(frozen_cases + dev_cases, frozen_records + dev_records):
         if record["metadata"]["stratum"] == "hedged_pair":
             assert select_register(case) == "hedged_pair"
+        elif record["metadata"]["stratum"] == "hedged_generic":
+            assert select_register(case) == "hedged_generic"
 
     frozen_ids = {record["metadata"]["sample_id"] for record in frozen_records}
     dev_ids = {record["metadata"]["sample_id"] for record in dev_records}
     assert frozen_ids.isdisjoint(dev_ids)
+
+
+@pytest.mark.skipif(
+    not (FROZEN_PATH.exists() and DEV_PATH.exists()),
+    reason="exported evaluation case files do not exist",
+)
+def test_dev_cases_cover_all_register_paths() -> None:
+    assert {select_register(case) for case in load_cases(DEV_PATH)} == {
+        "assertive",
+        "hedged_pair",
+        "hedged_generic",
+    }

@@ -1,8 +1,9 @@
-# Evaluation Case Set — Sampling Plan (v1.0.0)
+# Evaluation Case Set — Sampling Plan (v1.1.0)
 
-Design authority for `export_cases.py`. This document is frozen together with the
-exported case sets; changing either requires a new version and invalidates
-comparisons across evaluation runs.
+Design authority for `export_cases.py`. The frozen set remains governed by the
+v1.0.0 rules and was neither resampled nor modified in v1.1.0. The development
+set is governed by the v1.1.0 rules below. Version changes invalidate comparisons
+between development evaluation runs made with different case sets.
 
 ## Population
 
@@ -26,10 +27,23 @@ alphabetically, taking lowest `sample_id` first within each device.
 | `hedged_pair` | margin < 0.9, top-2 = {gafgyt_tcp, gafgyt_udp}; balanced 18/18 by ground-truth member (label_type tcp vs udp), each half spread round-robin across devices — the balance guarantees ≈50% within-pair disagreement, the natural error rate the hedged register must survive | 36 |
 | `hedged_generic` | margin < 0.9, top-2 ≠ pair (33 such alerts exist library-wide; held-out subset expected single-digit) | all, cap 6 |
 
-Frozen set target ≈ 100. **Dev set: 12 cases** (8 = one per non-pair class from
-`assertive_correct` criteria; 4 = `hedged_pair` criteria, 2 per ground-truth member),
-sampled from the same pools **after** removing every frozen-set `sample_id` —
-disjointness is structural, not checked after the fact.
+The frozen set was sampled under v1.0.0 using the strata and sizes in the table
+above. Its target remains ≈ 100, and v1.1.0 does not resample or otherwise change
+it.
+
+**Dev set (v1.1.0): 14 cases.** The original 12 cases are retained: 8 = one per
+non-pair class from the `assertive_correct` criteria, and 4 = `hedged_pair`
+criteria, 2 per ground-truth member. Two `hedged_generic` cases are appended from
+the remaining pool. Every dev stratum is sampled only **after** removing every
+frozen-set `sample_id`; selections that require device spread use the same
+alphabetical-device round-robin with the lowest `sample_id` first within each
+device. Disjointness is structural, not checked after the fact.
+
+The dev set cannot include an `assertive_error` stratum: the held-out candidate
+pool contains only 3 cases, and all 3 entered the frozen set under its all-cases,
+cap-5 rule. This is a hard data constraint, not a design choice. Because
+`assertive_error` and `assertive_correct` share the `assertive` register, its
+absence does not prevent the dev set from covering every register path.
 
 `stage_a_flagged` is recorded as per-case metadata and **never used as a filter**:
 the Stage A gate preferentially misses exactly the low-confidence ambiguous-pair

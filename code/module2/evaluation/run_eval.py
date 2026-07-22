@@ -109,10 +109,14 @@ def _auto_suffix(active_configs, limit) -> str:
     return "_".join(parts) or "partial"
 
 
-def _artifact_paths(split, active_configs, limit, results_suffix):
-    partial = limit is not None or {config.name for config in active_configs} != {
+def _is_partial(active_configs, limit) -> bool:
+    return limit is not None or {config.name for config in active_configs} != {
         config.name for config in DEFAULT_CONFIGS
     }
+
+
+def _artifact_paths(split, active_configs, limit, results_suffix):
+    partial = _is_partial(active_configs, limit)
     base = (RESULTS_DIR / "scratch") if partial else RESULTS_DIR
     suffix = results_suffix or (_auto_suffix(active_configs, limit) if partial else "")
     tag = f"__{suffix}" if suffix else ""
@@ -335,9 +339,7 @@ def run_eval(
     _write_csv(claims_path, claim_rows, claim_fields)
     _write_csv(audit_path, audit_rows, audit_fields)
 
-    partial = limit is not None or {config.name for config in active_configs} != {
-        config.name for config in DEFAULT_CONFIGS
-    }
+    partial = _is_partial(active_configs, limit)
     manifest = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "split": split,

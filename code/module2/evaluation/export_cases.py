@@ -1,6 +1,6 @@
 """Export the frozen and development evaluation case sets.
 
-``sampling_plan.md`` v1.0.0 is the design authority for this module.  The JSON
+``sampling_plan.md`` v1.1.0 is the design authority for this module.  The JSON
 files are arrays so that :func:`module2.generation.cases.load_cases` can load
 them directly.  Version information and the sampling-plan metadata are stored
 as extra fields on each array element; ``AlertCase.from_dict`` deliberately
@@ -25,8 +25,10 @@ from ..generation.registers import select_register
 from ..kb_loader import load_metadata_schema
 
 SAMPLING_SEED = 42
-CASE_SET_VERSION = "1.0.0"
-SAMPLING_PLAN_VERSION = "sampling_plan.md v1.0.0"
+CASE_SET_VERSION = "1.0.0"  # frozen set, unchanged
+DEV_CASE_SET_VERSION = "1.1.0"  # dev set gained hedged_generic coverage
+SAMPLING_PLAN_VERSION = "sampling_plan.md v1.0.0"  # frozen sampling rules
+DEV_SAMPLING_PLAN_VERSION = "sampling_plan.md v1.1.0"
 TOP_K_EVIDENCE = 5
 
 MODULE2_DIR = Path(__file__).resolve().parents[1]
@@ -140,12 +142,12 @@ def sample_case_sets(
     *,
     seed: int = SAMPLING_SEED,
 ) -> SampledCaseSets:
-    """Apply the frozen v1 strata and deterministic selection rules.
+    """Apply the frozen v1.0 strata and deterministic dev v1.1 extension.
 
-    The v1 design fixes seed 42.  Selection itself is fully resolved by the
-    lower-sample-ID and alphabetical-device rules, so no random draw remains.
-    Retaining the seed argument makes accidental use of another design seed an
-    explicit error.
+    Both versioned designs fix seed 42.  Selection itself is fully resolved by
+    the lower-sample-ID and alphabetical-device rules, so no random draw
+    remains. Retaining the seed argument makes accidental use of another design
+    seed an explicit error.
     """
 
     if seed != SAMPLING_SEED:
@@ -203,6 +205,9 @@ def sample_case_sets(
     remaining_pair = hedged_pair_pool[
         ~hedged_pair_pool["sample_id"].isin(frozen_ids)
     ]
+    remaining_generic = hedged_generic_pool[
+        ~hedged_generic_pool["sample_id"].isin(frozen_ids)
+    ]
 
     dev_parts: list[pd.DataFrame] = []
     for class_name in NON_PAIR_ATTACK_CLASSES:
@@ -213,6 +218,9 @@ def sample_case_sets(
     for truth_member in AMBIGUOUS_PAIR:
         member_pool = remaining_pair[remaining_pair["label_type"].eq(truth_member)]
         dev_parts.append(_tag(_round_robin_by_device(member_pool, 2), "hedged_pair"))
+    dev_parts.append(
+        _tag(_round_robin_by_device(remaining_generic, 2), "hedged_generic")
+    )
     dev = _concat_tagged(dev_parts)
 
     if frozen_ids & set(dev["sample_id"].astype(int)):
@@ -400,8 +408,14 @@ def _case_record(
     record = case.to_dict()
     record.update(
         {
-            "case_set_version": CASE_SET_VERSION,
-            "sampling_plan": SAMPLING_PLAN_VERSION,
+            "case_set_version": (
+                DEV_CASE_SET_VERSION if split == "dev" else CASE_SET_VERSION
+            ),
+            "sampling_plan": (
+                DEV_SAMPLING_PLAN_VERSION
+                if split == "dev"
+                else SAMPLING_PLAN_VERSION
+            ),
             "metadata": {
                 "atypicality_score": atypicality_score,
                 "label_type": str(row["label_type"]),

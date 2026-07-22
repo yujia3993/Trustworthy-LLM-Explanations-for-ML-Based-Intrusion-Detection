@@ -85,7 +85,14 @@ Under [code/module2/evaluation/](code/module2/evaluation/).
 - `cases/eval_cases_frozen.json` — **101 cases**: 56 assertive-correct /
   3 assertive-error (the known high-confidence errors) / 36 hedged-pair (18-18
   truth-balanced) / 6 hedged-generic. All 9 devices covered.
-- `cases/eval_cases_dev.json` — **12 cases**, disjoint by `sample_id`.
+- `cases/eval_cases_dev.json` — **14 cases** (case set v1.1.0, sampling plan
+  v1.1.0): 8 assertive-correct / 4 hedged-pair / **2 hedged-generic**, disjoint
+  from frozen by `sample_id`. The 2 hedged-generic cases were added so a dev
+  smoke exercises **all three** register paths; before that, `hedged_generic`
+  would have met a real model for the first time during the frozen run.
+  Dev **cannot** contain `assertive_error` — the held-out pool holds only 3 and
+  all 3 are in the frozen set. Harmless: that stratum shares the `assertive`
+  register with `assertive_correct`, so no register path is left untested.
 - `export_cases.py` — idempotent (byte-identical re-runs) via
   `module1_exports.explain_alert`.
 
@@ -140,7 +147,11 @@ Under [code/module2/evaluation/](code/module2/evaluation/).
 
 Order once keyed:
 1. Dev-set smoke — first real model vs register rules + audit gates; failures seed
-   the prompt-iteration log.
+   the prompt-iteration log. Start at the cheapest useful size:
+   `run_eval.py --split dev --limit 1 --configs full_rag` = **3 cases**, one per
+   register path, ≈9 calls. `--limit`/`--configs` isolate their output under
+   `results/scratch/` so a smoke can never overwrite committed results, and each
+   run drops a `run_manifest_*.json` recording split/configs/models/versions.
 2. Prompt iteration on the **dev set only** (bump prompt version, record
    failure-mode → measured-delta).
 3. Frozen-set final 4-config runs → RQ1 taxonomy/hallucination table, RQ2 gate

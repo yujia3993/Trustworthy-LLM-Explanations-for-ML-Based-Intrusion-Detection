@@ -1,7 +1,7 @@
 [
   {
     "case_id": "assertive_correct-30005",
-    "case_set_version": "1.0.0",
+    "case_set_version": "1.1.0",
     "device_category": "doorbell",
     "device_name": "Danmini_Doorbell",
     "entropy": 2.7631021115928547e-10,
@@ -60,13 +60,13 @@
     "p_pair": 0.0,
     "p_top1": 1.0,
     "p_top2": 0.0,
-    "sampling_plan": "sampling_plan.md v1.0.0",
+    "sampling_plan": "sampling_plan.md v1.1.0",
     "top2_class": "benign",
     "y_pred": "gafgyt_combo"
   },
   {
     "case_id": "assertive_correct-35006",
-    "case_set_version": "1.0.0",
+    "case_set_version": "1.1.0",
     "device_category": "doorbell",
     "device_name": "Danmini_Doorbell",
     "entropy": 2.7631021115928547e-10,
@@ -125,13 +125,13 @@
     "p_pair": 0.0,
     "p_top1": 1.0,
     "p_top2": 0.0,
-    "sampling_plan": "sampling_plan.md v1.0.0",
+    "sampling_plan": "sampling_plan.md v1.1.0",
     "top2_class": "benign",
     "y_pred": "gafgyt_junk"
   },
   {
     "case_id": "assertive_correct-40017",
-    "case_set_version": "1.0.0",
+    "case_set_version": "1.1.0",
     "device_category": "doorbell",
     "device_name": "Danmini_Doorbell",
     "entropy": 2.7631021115928547e-10,
@@ -190,13 +190,13 @@
     "p_pair": 0.0,
     "p_top1": 1.0,
     "p_top2": 0.0,
-    "sampling_plan": "sampling_plan.md v1.0.0",
+    "sampling_plan": "sampling_plan.md v1.1.0",
     "top2_class": "benign",
     "y_pred": "gafgyt_scan"
   },
   {
     "case_id": "assertive_correct-5010",
-    "case_set_version": "1.0.0",
+    "case_set_version": "1.1.0",
     "device_category": "doorbell",
     "device_name": "Danmini_Doorbell",
     "entropy": 2.7631021115928547e-10,
@@ -255,13 +255,13 @@
     "p_pair": 0.0,
     "p_top1": 1.0,
     "p_top2": 0.0,
-    "sampling_plan": "sampling_plan.md v1.0.0",
+    "sampling_plan": "sampling_plan.md v1.1.0",
     "top2_class": "benign",
     "y_pred": "mirai_ack"
   },
   {
     "case_id": "assertive_correct-10008",
-    "case_set_version": "1.0.0",
+    "case_set_version": "1.1.0",
     "device_category": "doorbell",
     "device_name": "Danmini_Doorbell",
     "entropy": 2.7631021115928547e-10,
@@ -320,13 +320,13 @@
     "p_pair": 0.0,
     "p_top1": 1.0,
     "p_top2": 0.0,
-    "sampling_plan": "sampling_plan.md v1.0.0",
+    "sampling_plan": "sampling_plan.md v1.1.0",
     "top2_class": "benign",
     "y_pred": "mirai_scan"
   },
   {
     "case_id": "assertive_correct-15007",
-    "case_set_version": "1.0.0",
+    "case_set_version": "1.1.0",
     "device_category": "doorbell",
     "device_name": "Danmini_Doorbell",
     "entropy": 2.7631021115928547e-10,
@@ -385,13 +385,13 @@
     "p_pair": 0.0,
     "p_top1": 1.0,
     "p_top2": 0.0,
-    "sampling_plan": "sampling_plan.md v1.0.0",
+    "sampling_plan": "sampling_plan.md v1.1.0",
     "top2_class": "benign",
     "y_pred": "mirai_syn"
   },
   {
     "case_id": "assertive_correct-20014",
-    "case_set_version": "1.0.0",
+    "case_set_version": "1.1.0",
     "device_category": "doorbell",
     "device_name": "Danmini_Doorbell",
     "entropy": 2.7631021115928547e-10,
@@ -450,13 +450,13 @@
     "p_pair": 0.0,
     "p_top1": 1.0,
     "p_top2": 0.0,
-    "sampling_plan": "sampling_plan.md v1.0.0",
+    "sampling_plan": "sampling_plan.md v1.1.0",
     "top2_class": "benign",
     "y_pred": "mirai_udp"
   },
   {
     "case_id": "assertive_correct-25017",
-    "case_set_version": "1.0.0",
+    "case_set_version": "1.1.0",
     "device_category": "doorbell",
     "device_name": "Danmini_Doorbell",
     "entropy": 2.7631021115928547e-10,
@@ -515,13 +515,13 @@
     "p_pair": 0.0,
     "p_top1": 1.0,
     "p_top2": 0.0,
-    "sampling_plan": "sampling_plan.md v1.0.0",
+    "sampling_plan": "sampling_plan.md v1.1.0",
     "top2_class": "benign",
     "y_pred": "mirai_udpplain"
   },
   {
     "case_id": "hedged_pair-45014",
-    "case_set_version": "1.0.0",
+    "case_set_version": "1.1.0",
     "device_category": "doorbell",
     "device_name": "Danmini_Doorbell",
     "entropy": 0.6931456996400363,
@@ -580,13 +580,13 @@
     "p_pair": 1.0,
     "p_top1": 0.5008605718612671,
     "p_top2": 0.4991394281387329,
-    "sampling_plan": "sampling_plan.md v1.0.0",
+    "sampling_plan": "sampling_plan.md v1.1.0",
     "top2_class": "gafgyt_tcp",
     "y_pred": "gafgyt_udp"
   },
   {
     "case_id": "hedged_pair-100021",
-    "case_set_version": "1.0.0",
+    "case_set_version": "1.1.0",
     "device_category": "thermostat",
     "device_name": "Ecobee_Thermostat",
     "entropy": 0.6992789723371928,
@@ -645,13 +645,13 @@
     "p_pair": 0.9991716446768589,
     "p_top1": 0.49982491950480673,
     "p_top2": 0.4993467251720522,
-    "sampling_plan": "sampling_plan.md v1.0.0",
+    "sampling_plan": "sampling_plan.md v1.1.0",
     "top2_class": "gafgyt_udp",
     "y_pred": "gafgyt_tcp"
   },
   {
     "case_id": "hedged_pair-50005",
-    "case_set_version": "1.0.0",
+    "case_set_version": "1.1.0",
     "device_category": "doorbell",
     "device_name": "Danmini_Doorbell",
     "entropy": 0.6931456996400363,
@@ -710,13 +710,13 @@
     "p_pair": 1.0,
     "p_top1": 0.5008605718612671,
     "p_top2": 0.4991394281387329,
-    "sampling_plan": "sampling_plan.md v1.0.0",
+    "sampling_plan": "sampling_plan.md v1.1.0",
     "top2_class": "gafgyt_tcp",
     "y_pred": "gafgyt_udp"
   },
   {
     "case_id": "hedged_pair-105008",
-    "case_set_version": "1.0.0",
+    "case_set_version": "1.1.0",
     "device_category": "thermostat",
     "device_name": "Ecobee_Thermostat",
     "entropy": 0.6992789723371928,
@@ -775,8 +775,138 @@
     "p_pair": 0.9991716446768589,
     "p_top1": 0.49982491950480673,
     "p_top2": 0.4993467251720522,
-    "sampling_plan": "sampling_plan.md v1.0.0",
+    "sampling_plan": "sampling_plan.md v1.1.0",
     "top2_class": "gafgyt_udp",
     "y_pred": "gafgyt_tcp"
+  },
+  {
+    "case_id": "hedged_generic-312315",
+    "case_set_version": "1.1.0",
+    "device_category": "webcam",
+    "device_name": "Samsung_SNH_1011_N_Webcam",
+    "entropy": 0.25954024088484356,
+    "evidence": [
+      {
+        "benign_median": 0.0,
+        "benign_p99": 2863.53957373,
+        "benign_std": 2901.165182676,
+        "feature": "HH_L0.1_covariance",
+        "screen": "contextual",
+        "value": 0.0
+      },
+      {
+        "benign_median": 0.0012924465,
+        "benign_p99": 326.276563991,
+        "benign_std": 1.5541755559382706e+16,
+        "feature": "HH_jit_L5_variance",
+        "screen": "discriminative",
+        "value": 5.669264756167789e+17
+      },
+      {
+        "benign_median": 268.84250325,
+        "benign_p99": 456.334516171,
+        "benign_std": 167.9552774327,
+        "feature": "HH_L0.01_mean",
+        "screen": "contextual",
+        "value": 60.0
+      },
+      {
+        "benign_median": 381.8109303,
+        "benign_p99": 591.826249904,
+        "benign_std": 149.3842582184,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 84.8528137424
+      },
+      {
+        "benign_median": 1.3920249935,
+        "benign_p99": 5.3491255922,
+        "benign_std": 1.2826776428,
+        "feature": "MI_dir_L3_weight",
+        "screen": "discriminative",
+        "value": 281.9520409068
+      }
+    ],
+    "label_type": "gafgyt_combo",
+    "margin": 0.8594885635970694,
+    "metadata": {
+      "atypicality_score": 0.4,
+      "label_type": "gafgyt_combo",
+      "sample_id": 312315,
+      "split": "dev",
+      "stage_a_flagged": true,
+      "stratum": "hedged_generic"
+    },
+    "p_pair": 0.0,
+    "p_top1": 0.9293591350486213,
+    "p_top2": 0.06987057145155194,
+    "sampling_plan": "sampling_plan.md v1.1.0",
+    "top2_class": "mirai_syn",
+    "y_pred": "gafgyt_combo"
+  },
+  {
+    "case_id": "hedged_generic-372143",
+    "case_set_version": "1.1.0",
+    "device_category": "security_camera",
+    "device_name": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+    "entropy": 0.5902459620523133,
+    "evidence": [
+      {
+        "benign_median": 1.9438272405,
+        "benign_p99": 400.497849165,
+        "benign_std": 66.7802804091,
+        "feature": "MI_dir_L1_weight",
+        "screen": "discriminative",
+        "value": 830.3072308089
+      },
+      {
+        "benign_median": 2.77e-08,
+        "benign_p99": 2.64e+16,
+        "benign_std": 2.5706952022241012e+16,
+        "feature": "HH_jit_L1_variance",
+        "screen": "contextual",
+        "value": 91.4396936457
+      },
+      {
+        "benign_median": 0.172172623,
+        "benign_p99": 1.8938996975,
+        "benign_std": 0.5372933432,
+        "feature": "HH_L0.01_pcc",
+        "screen": "contextual",
+        "value": 0.9462643414
+      },
+      {
+        "benign_median": 1.0,
+        "benign_p99": 187.045745736,
+        "benign_std": 28.3673507595,
+        "feature": "HH_L5_weight",
+        "screen": "contextual",
+        "value": 1.0295596021
+      },
+      {
+        "benign_median": 133.26571605,
+        "benign_p99": 1334.06068,
+        "benign_std": 234.6052765625,
+        "feature": "HH_L0.1_magnitude",
+        "screen": "contextual",
+        "value": 137.3735144123
+      }
+    ],
+    "label_type": "gafgyt_junk",
+    "margin": 0.44569051341688565,
+    "metadata": {
+      "atypicality_score": 0.2,
+      "label_type": "gafgyt_junk",
+      "sample_id": 372143,
+      "split": "dev",
+      "stage_a_flagged": true,
+      "stratum": "hedged_generic"
+    },
+    "p_pair": 0.0,
+    "p_top1": 0.7228452567084428,
+    "p_top2": 0.27715474329155715,
+    "sampling_plan": "sampling_plan.md v1.1.0",
+    "top2_class": "gafgyt_combo",
+    "y_pred": "gafgyt_junk"
   }
 ]

@@ -255,13 +255,13 @@ def test_run_eval_limit_is_stratified_and_writes_scratch_manifest(
         "case_set_version",
     }
     assert expected_fields <= set(manifest)
-    assert manifest["n_cases"] == len(manifest["case_ids"]) == 2
+    assert manifest["n_cases"] == len(manifest["case_ids"]) == 3
     assert {
         case_id.rsplit("-", 1)[0] for case_id in manifest["case_ids"]
-    } == {"assertive_correct", "hedged_pair"}
+    } == {"assertive_correct", "hedged_pair", "hedged_generic"}
     assert manifest["partial"] is True
     assert manifest["prompt_version"]
-    assert all(row["n_cases"] == 2 for row in summary)
+    assert all(row["n_cases"] == 3 for row in summary)
 
 
 def test_run_eval_config_subset_uses_descriptive_scratch_path(
