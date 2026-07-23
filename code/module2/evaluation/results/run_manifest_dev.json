@@ -1,0 +1,36 @@
+{
+  "case_ids": [
+    "assertive_correct-10008",
+    "assertive_correct-15007",
+    "assertive_correct-20014",
+    "assertive_correct-25017",
+    "assertive_correct-30005",
+    "assertive_correct-35006",
+    "assertive_correct-40017",
+    "assertive_correct-5010",
+    "hedged_generic-312315",
+    "hedged_generic-372143",
+    "hedged_pair-100021",
+    "hedged_pair-105008",
+    "hedged_pair-45014",
+    "hedged_pair-50005"
+  ],
+  "case_set_version": "1.1.0",
+  "configs": [
+    "full_rag",
+    "naive_rag",
+    "no_rag",
+    "self_check"
+  ],
+  "eval_prompt_version": "1.0.0",
+  "generated_at": "2026-07-23T09:28:42.023144+00:00",
+  "generator_model": "gpt-4.1-mini",
+  "judge_model": "claude-haiku-4-5-20251001",
+  "limit": null,
+  "n_cases": 14,
+  "partial": false,
+  "prompt_version": "1.0.0",
+  "results_suffix": null,
+  "split": "dev",
+  "use_cache": true
+}
