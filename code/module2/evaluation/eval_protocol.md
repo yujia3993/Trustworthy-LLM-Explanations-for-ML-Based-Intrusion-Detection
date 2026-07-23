@@ -59,7 +59,17 @@ Deterministic, implemented in `feature_verify.py`, no LLM involved:
 
 Feature-claim verdicts: fabricated number ⇒ `unsupported_and_false`; correct value
 with valid citation ⇒ `supported`; correct value, no/invalid citation ⇒
-`unsupported_but_true` (the number is right but not attributed).
+`unsupported_but_true` (the number is right but not attributed). **Exception —
+ALERT DATA numbers:** the prompt renders `p_top1/p_top2/p_pair/margin/entropy` in
+the ALERT DATA block with **no citable `[E#]/[C#]` token**, so a correct claim
+quoting them cannot carry a citation. Per §1, ALERT DATA is itself a grounding
+source, so an *uncited* claim whose numbers are all correct ALERT-DATA numbers is
+`supported`. Evidence values still require `[E#]`; fabrications are still false.
+
+> Clarification added 2026-07-23: this reconciles §3 with §1 (which already lists
+> "ALERT DATA" as grounding). It is an implementation-vs-protocol fix, not a change
+> to what is measured, and does not bump `eval_prompt_version` — matching the
+> precedent of the scientific-notation feature_verify fix.
 
 ## 4. LLM judge (knowledge and procedural claims)
 

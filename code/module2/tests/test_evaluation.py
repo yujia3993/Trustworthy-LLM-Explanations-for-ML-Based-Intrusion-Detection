@@ -299,6 +299,33 @@ def test_classify_feature_claim_three_machine_paths(feature_case):
     ) == "unsupported_and_false"
 
 
+def test_classify_feature_claim_credits_uncited_alert_data_number(feature_case):
+    # A correct ALERT-DATA number (probability/margin/entropy) is grounded in
+    # ALERT DATA even with no citable [E#]/[C#] token (protocol §1).
+    prob = verify_features("The calibrated probability is 0.6123.", feature_case, {})
+    assert classify_feature_claim(
+        Claim("The calibrated probability is 0.6123.", "confidence_notes", "feature", []),
+        prob,
+    ) == "supported"
+    both = verify_features("Margin 0.2247 and entropy 0.6679.", feature_case, {})
+    assert classify_feature_claim(
+        Claim("Margin 0.2247 and entropy 0.6679.", "confidence_notes", "feature", []),
+        both,
+    ) == "supported"
+    # Regression guard: an uncited EVIDENCE value is still unsupported_but_true —
+    # the alert-data credit must not relax citation enforcement for evidence.
+    evid = verify_features("Value 20.", feature_case, {})
+    assert classify_feature_claim(
+        Claim("Value 20.", "observable_indicators", "feature", []), evid
+    ) == "unsupported_but_true"
+    # A claim mixing an alert-data number with an uncited evidence value stays ubt.
+    mixed = verify_features("Probability 0.6123 with value 20.", feature_case, {})
+    assert classify_feature_claim(
+        Claim("Probability 0.6123 with value 20.", "confidence_notes", "feature", []),
+        mixed,
+    ) == "unsupported_but_true"
+
+
 def test_parse_claims_json_valid_and_enum_violation():
     raw = json.dumps(
         [

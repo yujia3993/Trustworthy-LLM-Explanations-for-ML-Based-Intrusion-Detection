@@ -38,6 +38,7 @@ class FeatureVerification:
     fabricated_numbers: list[str]
     invalid_refs: list[str]
     contextual_misuse: list[str]
+    alert_data_numbers: frozenset[str]
 
     @property
     def numeric_tokens(self) -> list[str]:
@@ -70,16 +71,30 @@ def build_allowed_number_strings(case: AlertCase) -> set[str]:
             _add_number_variants(allowed, f"{value:.4g}")
         if item.benign_median != 0:
             _add_number_variants(allowed, f"{item.value / item.benign_median:.1f}")
+    allowed |= build_alert_data_number_strings(case)
+    return allowed
+
+
+def build_alert_data_number_strings(case: AlertCase) -> set[str]:
+    """Return only the ALERT DATA numbers (probabilities, margin, entropy).
+
+    These are rendered in the prompt's ALERT DATA block with no citable [E#]/[C#]
+    token (see prompt_builder._alert_data), so a correct claim quoting them cannot
+    carry a citation. Protocol eval_protocol.md §1 grounds such claims in ALERT
+    DATA; kept separate from evidence values, which still require [E#].
+    """
+
+    alert_data: set[str] = set()
     for probability in (
         case.p_top1,
         case.p_top2,
         case.p_pair,
         case.margin,
     ):
-        _add_number_variants(allowed, f"{probability:.4f}")
-    _add_number_variants(allowed, f"{case.entropy:.4f}")
-    _add_number_variants(allowed, f"{case.entropy:.4g}")
-    return allowed
+        _add_number_variants(alert_data, f"{probability:.4f}")
+    _add_number_variants(alert_data, f"{case.entropy:.4f}")
+    _add_number_variants(alert_data, f"{case.entropy:.4g}")
+    return alert_data
 
 
 def _is_protocol_constant(line: str, match: re.Match[str]) -> bool:
@@ -154,6 +169,7 @@ def verify_features(
             raise TypeError("provide either provided_chunk_count_by_section or chunk_ids")
         provided_chunk_count_by_section = chunk_ids
     allowed = build_allowed_number_strings(case)
+    alert_data_numbers = build_alert_data_number_strings(case)
     numeric_tokens = extract_numeric_tokens(report_md)
     matched = [token for token in numeric_tokens if token.replace(",", "") in allowed]
     fabricated = [
@@ -188,6 +204,7 @@ def verify_features(
         fabricated_numbers=fabricated,
         invalid_refs=invalid_refs,
         contextual_misuse=contextual_misuse,
+        alert_data_numbers=frozenset(alert_data_numbers),
     )
 
 
@@ -211,5 +228,15 @@ def classify_feature_claim(claim: Claim, verification: FeatureVerification) -> s
     invalid = {_normalise_ref(ref) for ref in verification.invalid_refs}
     cited = [_normalise_ref(ref) for ref in claim.cited_refs]
     if cited and all(ref not in invalid for ref in cited):
+        return "supported"
+    # A correct number grounded in ALERT DATA is supported even without a citable
+    # token (protocol §1); the prompt renders probabilities/margin/entropy with no
+    # [E#]/[C#]. Applies only to *uncited* claims whose numbers are all ALERT-DATA
+    # numbers — evidence values still require [E#], fabrications are caught above.
+    if (
+        not cited
+        and claim_numbers
+        and claim_numbers <= verification.alert_data_numbers
+    ):
         return "supported"
     return "unsupported_but_true"
