@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
+import io
+import json
 import re
+import urllib.error
 from dataclasses import replace
 from pathlib import Path
 
@@ -19,6 +22,7 @@ from ..generation import (
     EvidenceItem,
     LLMUnavailableError,
     MockLLMClient,
+    OpenAICompatibleClient,
     ReportCache,
     audit_report,
     build_messages,
@@ -248,3 +252,169 @@ def test_fallback_is_bannered_and_not_cached(generation_cases, tmp_path):
         cache.get(GEN_NO_RAG.name, generated.case_id, PROMPT_VERSION, "offline")
         is None
     )
+
+
+class _FakeHTTPResponse:
+    def __init__(self, body: str, status: int = 200, headers=None) -> None:
+        self.body = body
+        self.status = status
+        self.headers = headers or {}
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc, traceback):
+        return False
+
+    def read(self) -> bytes:
+        return self.body.encode("utf-8")
+
+
+def _http_error(status: int, headers=None) -> urllib.error.HTTPError:
+    return urllib.error.HTTPError(
+        "https://example.test/chat/completions",
+        status,
+        f"HTTP {status}",
+        headers or {},
+        io.BytesIO(),
+    )
+
+
+def _completion_response(content: str = "success") -> _FakeHTTPResponse:
+    return _FakeHTTPResponse(
+        json.dumps({"choices": [{"message": {"content": content}}]})
+    )
+
+
+def test_openai_client_retries_transient_http_error_then_succeeds(monkeypatch):
+    outcomes = [_http_error(429), _completion_response("recovered")]
+    sleeps = []
+    calls = []
+
+    def fake_urlopen(request, timeout):
+        calls.append((request, timeout))
+        outcome = outcomes.pop(0)
+        if isinstance(outcome, Exception):
+            raise outcome
+        return outcome
+
+    monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
+    client = OpenAICompatibleClient(api_key="test", sleep=sleeps.append)
+
+    assert client.complete([{"role": "user", "content": "hello"}]) == "recovered"
+    assert len(calls) == 2
+    assert len(sleeps) == 1
+
+
+def test_openai_client_raises_after_transient_retries_are_exhausted(monkeypatch):
+    sleeps = []
+    calls = []
+
+    def fake_urlopen(request, timeout):
+        calls.append((request, timeout))
+        raise _http_error(503)
+
+    monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
+    client = OpenAICompatibleClient(
+        api_key="test", max_retries=2, sleep=sleeps.append
+    )
+
+    with pytest.raises(LLMUnavailableError, match="LLM request failed: HTTP Error 503"):
+        client.complete([{"role": "user", "content": "hello"}])
+    assert len(calls) == 3
+    assert len(sleeps) == 2
+
+
+def test_openai_client_does_not_retry_non_transient_http_error(monkeypatch):
+    sleeps = []
+    calls = []
+
+    def fake_urlopen(request, timeout):
+        calls.append((request, timeout))
+        raise _http_error(401)
+
+    monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
+    client = OpenAICompatibleClient(api_key="test", sleep=sleeps.append)
+
+    with pytest.raises(LLMUnavailableError, match="LLM request failed: HTTP Error 401"):
+        client.complete([{"role": "user", "content": "hello"}])
+    assert len(calls) == 1
+    assert sleeps == []
+
+
+def test_openai_client_does_not_retry_malformed_success_response(monkeypatch):
+    sleeps = []
+    calls = []
+
+    def fake_urlopen(request, timeout):
+        calls.append((request, timeout))
+        return _FakeHTTPResponse("not JSON")
+
+    monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
+    client = OpenAICompatibleClient(api_key="test", sleep=sleeps.append)
+
+    with pytest.raises(LLMUnavailableError, match="invalid response"):
+        client.complete([{"role": "user", "content": "hello"}])
+    assert len(calls) == 1
+    assert sleeps == []
+
+
+def test_openai_client_max_retries_zero_makes_one_attempt(monkeypatch):
+    sleeps = []
+    calls = []
+
+    def fake_urlopen(request, timeout):
+        calls.append((request, timeout))
+        raise urllib.error.URLError("offline")
+
+    monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
+    client = OpenAICompatibleClient(
+        api_key="test", max_retries=0, sleep=sleeps.append
+    )
+
+    with pytest.raises(LLMUnavailableError, match="LLM request failed"):
+        client.complete([{"role": "user", "content": "hello"}])
+    assert len(calls) == 1
+    assert sleeps == []
+
+
+def test_openai_client_backoff_is_non_decreasing_and_clamped(monkeypatch):
+    sleeps = []
+
+    def fake_urlopen(request, timeout):
+        raise _http_error(500)
+
+    monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
+    monkeypatch.setattr("random.uniform", lambda lower, upper: upper)
+    client = OpenAICompatibleClient(
+        api_key="test",
+        max_retries=4,
+        backoff_base=2.0,
+        backoff_max=5.0,
+        sleep=sleeps.append,
+    )
+
+    with pytest.raises(LLMUnavailableError):
+        client.complete([{"role": "user", "content": "hello"}])
+    assert sleeps == sorted(sleeps)
+    assert sleeps == [2.0, 4.0, 5.0, 5.0]
+    assert max(sleeps) <= client.backoff_max
+
+
+def test_openai_client_honors_numeric_retry_after_with_clamp(monkeypatch):
+    outcomes = [
+        _FakeHTTPResponse("", status=503, headers={"Retry-After": "60"}),
+        _completion_response(),
+    ]
+    sleeps = []
+
+    def fake_urlopen(request, timeout):
+        return outcomes.pop(0)
+
+    monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
+    client = OpenAICompatibleClient(
+        api_key="test", backoff_max=7.0, sleep=sleeps.append
+    )
+
+    assert client.complete([{"role": "user", "content": "hello"}]) == "success"
+    assert sleeps == [7.0]

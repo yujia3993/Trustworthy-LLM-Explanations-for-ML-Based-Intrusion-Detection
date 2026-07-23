@@ -3,11 +3,15 @@
 from __future__ import annotations
 
 import json
+import math
 import os
+import random
 import re
+import sys
+import time
 import urllib.error
 import urllib.request
-from typing import Protocol
+from typing import Callable, Protocol
 
 from ..retrieval.retrievers import RetrievedChunk
 from .cases import AlertCase
@@ -27,6 +31,8 @@ class LLMClient(Protocol):
 class OpenAICompatibleClient:
     """Minimal dependency-free client for an OpenAI-compatible chat endpoint."""
 
+    _TRANSIENT_STATUSES = frozenset({429, 500, 502, 503, 504})
+
     def __init__(
         self,
         model: str = "gpt-4.1-mini",
@@ -34,13 +40,65 @@ class OpenAICompatibleClient:
         api_key: str | None = None,
         temperature: float = 0.0,
         timeout: int = 120,
+        *,
+        max_retries: int = 3,
+        backoff_base: float = 2.0,
+        backoff_max: float = 30.0,
+        sleep: Callable[[float], None] = time.sleep,
     ) -> None:
+        if max_retries < 0:
+            raise ValueError("max_retries must be >= 0")
+        if backoff_base < 0:
+            raise ValueError("backoff_base must be >= 0")
+        if backoff_max < 0:
+            raise ValueError("backoff_max must be >= 0")
         self.model = model
         self.base_url = (base_url or os.environ.get("OPENAI_BASE_URL") or
                          "https://api.openai.com/v1").rstrip("/")
         self.api_key = api_key if api_key is not None else os.environ.get("OPENAI_API_KEY")
         self.temperature = temperature
         self.timeout = timeout
+        self.max_retries = max_retries
+        self.backoff_base = backoff_base
+        self.backoff_max = backoff_max
+        self.sleep = sleep
+
+    @staticmethod
+    def _retry_after(status: int, headers: object) -> float | None:
+        if status not in (429, 503) or headers is None:
+            return None
+        try:
+            value = headers.get("Retry-After")  # type: ignore[union-attr]
+        except (AttributeError, TypeError):
+            return None
+        try:
+            seconds = float(value)
+        except (TypeError, ValueError):
+            return None
+        if not math.isfinite(seconds) or seconds < 0:
+            return None
+        return seconds
+
+    def _wait_before_retry(
+        self,
+        attempt_index: int,
+        reason: str,
+        retry_after: float | None = None,
+    ) -> None:
+        if retry_after is None:
+            ceiling = min(
+                self.backoff_max,
+                self.backoff_base * 2 ** attempt_index,
+            )
+            delay = random.uniform(0.0, ceiling)
+        else:
+            delay = min(self.backoff_max, retry_after)
+        print(
+            f"LLM retry {attempt_index + 1}/{self.max_retries}: {reason}; "
+            f"sleeping {delay:.2f}s",
+            file=sys.stderr,
+        )
+        self.sleep(delay)
 
     def complete(self, messages: list[dict[str, str]]) -> str:
         if not self.api_key:
@@ -61,14 +119,45 @@ class OpenAICompatibleClient:
             },
             method="POST",
         )
-        try:
-            with urllib.request.urlopen(request, timeout=self.timeout) as response:
-                status = getattr(response, "status", 200)
-                body = response.read().decode("utf-8")
-        except (urllib.error.HTTPError, urllib.error.URLError, OSError, TimeoutError) as exc:
-            raise LLMUnavailableError(f"LLM request failed: {exc}") from exc
-        if status < 200 or status >= 300:
-            raise LLMUnavailableError(f"LLM endpoint returned HTTP {status}")
+        for attempt_index in range(self.max_retries + 1):
+            try:
+                with urllib.request.urlopen(request, timeout=self.timeout) as response:
+                    status = getattr(response, "status", 200)
+                    headers = getattr(response, "headers", None)
+                    body = response.read().decode("utf-8")
+            except urllib.error.HTTPError as exc:
+                status = exc.code
+                if (
+                    status not in self._TRANSIENT_STATUSES
+                    or attempt_index >= self.max_retries
+                ):
+                    raise LLMUnavailableError(f"LLM request failed: {exc}") from exc
+                self._wait_before_retry(
+                    attempt_index,
+                    str(exc),
+                    self._retry_after(status, exc.headers),
+                )
+                continue
+            except (urllib.error.URLError, OSError, TimeoutError) as exc:
+                if attempt_index >= self.max_retries:
+                    raise LLMUnavailableError(f"LLM request failed: {exc}") from exc
+                self._wait_before_retry(attempt_index, str(exc))
+                continue
+
+            if status < 200 or status >= 300:
+                if (
+                    status in self._TRANSIENT_STATUSES
+                    and attempt_index < self.max_retries
+                ):
+                    self._wait_before_retry(
+                        attempt_index,
+                        f"HTTP {status}",
+                        self._retry_after(status, headers),
+                    )
+                    continue
+                raise LLMUnavailableError(f"LLM endpoint returned HTTP {status}")
+            break
+
         try:
             result = json.loads(body)
             content = result["choices"][0]["message"]["content"]

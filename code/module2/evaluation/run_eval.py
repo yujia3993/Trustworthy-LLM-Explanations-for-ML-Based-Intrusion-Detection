@@ -5,6 +5,8 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import sys
+import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -177,6 +179,7 @@ def run_eval(
     use_cache: bool = True,
     limit: int | None = None,
     results_suffix: str | None = None,
+    progress: bool = True,
 ) -> list[dict[str, Any]]:
     """Evaluate all requested configs and write the three protocol CSV artefacts."""
 
@@ -218,9 +221,13 @@ def run_eval(
     claim_rows: list[dict[str, Any]] = []
     audit_rows: list[dict[str, Any]] = []
     gate_names: set[str] = set()
+    total_units = len(cases) * len(active_configs)
+    completed_units = 0
+    evaluation_started = time.perf_counter()
 
     for case in cases:
         for config in active_configs:
+            unit_started = time.perf_counter()
             generated = generate_report(
                 case,
                 config,
@@ -303,6 +310,20 @@ def run_eval(
                     needs_review=generated.needs_review,
                 )
             )
+            completed_units += 1
+            unit_elapsed = time.perf_counter() - unit_started
+            total_elapsed = time.perf_counter() - evaluation_started
+            mean_elapsed = total_elapsed / completed_units
+            eta = mean_elapsed * (total_units - completed_units)
+            if progress:
+                print(
+                    f"[{completed_units}/{total_units}] "
+                    f"case_id={case.case_id} config={config.name} "
+                    f"from_cache={generated.from_cache} "
+                    f"unit={unit_elapsed:.2f}s total={total_elapsed:.2f}s "
+                    f"eta={eta:.2f}s",
+                    file=sys.stderr,
+                )
 
     summary_rows: list[dict[str, Any]] = []
     for config in active_configs:
@@ -424,6 +445,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--results-suffix", default=None)
     parser.add_argument("--mock", action="store_true", help="use offline mock clients")
     parser.add_argument("--no-cache", action="store_true")
+    parser.add_argument("--no-progress", action="store_true")
     args = parser.parse_args(argv)
 
     if args.mock:
@@ -444,6 +466,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         use_cache=not args.no_cache,
         limit=args.limit,
         results_suffix=args.results_suffix,
+        progress=not args.no_progress,
     )
     _print_summary(rows)
     return 0

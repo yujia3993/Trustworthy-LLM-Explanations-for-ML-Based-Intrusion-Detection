@@ -798,3 +798,41 @@ def test_cli_rejects_non_positive_limit(limit):
     with pytest.raises(SystemExit) as excinfo:
         run_eval_main(["--limit", limit, "--mock"])
     assert excinfo.value.code == 2
+
+
+def test_run_eval_progress_is_stderr_only_and_can_be_disabled(
+    tmp_path, monkeypatch, capsys
+):
+    from ..evaluation import run_eval as run_eval_module
+
+    monkeypatch.setattr(run_eval_module, "RESULTS_DIR", tmp_path / "results")
+    monkeypatch.setattr(run_eval_module, "GENERATION_CACHE_DIR", tmp_path / "reports")
+    monkeypatch.setattr(run_eval_module, "CLAIM_CACHE_DIR", tmp_path / "claims")
+    kwargs = {
+        "split": "dev",
+        "configs": ["no_rag"],
+        "generator_client": MockLLMClient(),
+        "judge_client": MockJudgeClient(),
+        "claim_extractor": MockClaimExtractor(),
+        "use_cache": False,
+        "limit": 1,
+    }
+
+    run_eval(**kwargs, progress=True)
+    enabled = capsys.readouterr()
+    progress_lines = enabled.err.splitlines()
+    assert enabled.out == ""
+    assert len(progress_lines) == 3
+    for index, line in enumerate(progress_lines, start=1):
+        assert f"[{index}/3]" in line
+        assert "case_id=" in line
+        assert "config=no_rag" in line
+        assert "from_cache=False" in line
+        assert "unit=" in line
+        assert "total=" in line
+        assert "eta=" in line
+
+    run_eval(**kwargs, progress=False)
+    disabled = capsys.readouterr()
+    assert disabled.out == ""
+    assert disabled.err == ""
