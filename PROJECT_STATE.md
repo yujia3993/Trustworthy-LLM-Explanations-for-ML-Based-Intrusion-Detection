@@ -1,7 +1,7 @@
 # Project State
 
 **Trustworthy LLM Explanations for ML-Based Intrusion Detection (N-BaIoT)**
-Snapshot: 2026-07-23 · Branch `main` · 118 tests passing
+Snapshot: 2026-07-23 · Branch `main` · 126 tests passing
 
 This is the working-state document (progress, decisions, what's next). For the
 research narrative and headline results see [README.md](README.md).
@@ -14,13 +14,16 @@ research narrative and headline results see [README.md](README.md).
 |---|---|---|
 | **Module 1** | Two-stage detector + leakage audit + explainability exports | ✅ Complete, sealed (pre-existing) |
 | **Module 2** | RAG explanation layer (KB, retrieval, generation) | ✅ Infrastructure complete |
-| **Module 3** | Evaluation (case set, harness, metrics) | ✅ Harness complete; ✅ 4-config dev ablation + 3 prompt-iteration rounds done; ⏳ frozen runs + RQ3 pending |
+| **Module 3** | Evaluation (case set, harness, metrics) | ✅ Harness complete; ✅ 4-config dev ablation + 3 prompt-iteration rounds done; ✅ frozen pre-flight smoke green; ⏳ frozen runs + RQ3 pending |
 
 **Prompt-iteration phase complete (2026-07-23).** The 4-config dev ablation ran on
 real models (generator `gpt-4.1-mini`, judge `claude-haiku-4-5-20251001`), followed
 by three dev-only prompt-iteration rounds — two kept, one reverted after failing its
-pre-registered decision gate (see §9). **Next concrete step: the frozen 101-case
-4-config runs** (≈$6.20) → RQ1/RQ2 tables, then RQ3 human scoring + κ.
+pre-registered decision gate (see §9). A frozen-split **pre-flight smoke** then
+validated the frozen path end-to-end at the current prompt state (§9.4), and the
+harness was hardened for a multi-hour unattended run (§10). **Next concrete step:
+the frozen 101-case 4-config runs** (≈$6.20) → RQ1/RQ2 tables, then RQ3 human
+scoring + κ.
 
 ---
 
@@ -167,12 +170,15 @@ scorer fix; Round 3 reverted).
 
 ```bash
 set -a; source ~/.config/llm-keys.env; set +a     # keys are NOT auto-loaded
-cd code && python -m module2.evaluation.run_eval --split frozen
+cd code && nohup ../.venv-wsl/bin/python -m module2.evaluation.run_eval \
+  --split frozen > ../frozen_run.log 2>&1 &
 ```
 
-**≈$6.20** (the judge echoes every claim verbatim, so its output scales with claim
-count — ~27 claims/case measured). **Always verify `n_fallback == 0` and that all
-three `JUDGE_*` vars are set** (§8.1 traps) before believing the numbers. Then:
+**≈$6.20, ~4–6 h** (the judge echoes every claim verbatim, so its output scales with
+claim count — ~27 claims/case measured). Progress goes to stderr, one line per
+(case, config) with an ETA — hence `2>&1` into the log. **Always verify
+`n_fallback == 0` and that all three `JUDGE_*` vars are set** (§8.1 traps) before
+believing the numbers; also check the log for `LLM retry` bursts (§10). Then:
 
 1. RQ1 taxonomy/hallucination table + RQ2 gate pass-rate table from the frozen output.
 2. RQ3 — human scoring of 20 cases, Cohen's κ (`rq3_sheet.py`).
@@ -205,8 +211,11 @@ is the canonical artifact. The committed dev CSVs stay the v1.0.0 iteration base
   Windows venv (Py 3.9) and unusable from WSL. `.venv-wsl` has pandas/pyarrow/
   sklearn/xgboost/shap/chromadb/rank-bm25/sentence-transformers/torch; the two HF
   models are cached.
-- **Run tests:** `.venv-wsl/bin/python -m pytest code/module2/tests -q` (117 tests,
-  ~4 min; builds the ChromaDB index once via the session fixture in `tests/conftest.py`).
+- **Run tests:** `.venv-wsl/bin/python -m pytest code/module2/tests -q` (126 tests,
+  ~4.5 min; builds the ChromaDB index once via the session fixture in `tests/conftest.py`).
+- **Memory is the binding resource, not cores** (8 cores / 7 GB). A test run loads
+  ChromaDB + both HF models; so does a real eval run. Two of those concurrently is
+  already tight — do not run a codex test suite alongside the frozen eval.
 - **Gitignored artifacts:** `retrieval/index/`, `generation/cache/`,
   `evaluation/claim_cache/`, `evaluation/judge_cache/`,
   `evaluation/results/scratch/`, `code/nbaiot_sampled.parquet`, `N-BaIoT/`.
@@ -214,6 +223,17 @@ is the canonical artifact. The committed dev CSVs stay the v1.0.0 iteration base
   Codex (`codex_implement`) = delegated engineering. Note: codex-worker often
   reports false-positive `path_violations` on directory-glob matches / dirty tree —
   verify by reading the actual diff.
+- **Codex worktrees now live OUTSIDE the repo** (`CODEX_WORKER_WORKTREE_DIR=
+  ~/.codex-worktrees` in the gitignored `.mcp.json`; takes effect on MCP-server
+  restart). They used to be created at `.codex-worker/worktrees/<id>/`, which is a
+  *real nested git repository* inside the workspace: VS Code auto-detects it as a
+  second Source Control provider (hence a busy SCM badge with nothing Modified in the
+  main repo, since `.codex-worker/` is gitignored), and it leaves a full second copy
+  of the tree for `find`/`grep`/bare `pytest` to trip over. All cache and index paths
+  resolve from `__file__`, so a worktree test run cannot touch the main tree's caches.
+- **`codex_implement` defaults to a 600 s timeout** (`CODEX_WORKER_TIMEOUT`), which is
+  barely twice the test suite's runtime — pass `timeout_seconds` explicitly on any
+  task whose acceptance criteria include running the full suite.
 - **Commit before every `codex_implement` call.** `base_ref` defaults to `HEAD`, so
   an isolated worktree branches from the last commit and cannot see uncommitted work.
   This bit twice on 2026-07-22; the second time was nearly invisible — the worktree's
@@ -464,3 +484,64 @@ more" raises compliance without raising faithfulness. This is a stronger RQ1 sta
 than any marginal prompt win, and it bounds what prompt engineering can promise on this
 task. Improving it would require more precise retrieval or is an irreducible reliance
 on parametric knowledge (plus the ~11% calibration meta-claims no KB chunk can ground).
+
+### 9.4 Frozen pre-flight smoke (2026-07-23, `--limit 1`)
+
+Ran **after** the §9 documentation was committed (`93cf638`), which is why it appears
+here rather than above. Artifacts: `results/scratch/*_frozen__limit1.*`.
+
+`--split frozen --limit 1` takes one case per stratum — **4 cases × 4 configs = 16
+generations**, at prompt v1.1.0, case set v1.0.0, `n_fallback = 0 / n_needs_review = 0`.
+
+| config | faithfulness | supported / ubt / false | all-gates | factual |
+|---|---|---|---|---|
+| `no_rag` | 0.429 | 57 / 76 / 0 | 0.750 | 4.00 |
+| `naive_rag` | 0.884 | 129 / 16 / 1 | 1.000 | 4.25 |
+| `full_rag` | 0.860 | 123 / 18 / 2 | 1.000 | 4.50 |
+| `self_check` | 0.818 | 126 / 28 / 0 | 1.000 | 5.00 |
+
+Two things this buys, neither available from the dev set:
+
+1. **`assertive_error` met a real model for the first time** (`assertive_error-317103`)
+   — the stratum that cannot appear in dev, since all 3 known high-confidence errors
+   are in the frozen set. It passed all four gates in all four configs.
+2. The **frozen** case set, at the **current** prompt state, produces parseable judge
+   output and zero fallbacks — the two failure modes that historically only surfaced
+   against real endpoints (§8.3).
+
+`no_rag` fails gate2 + gate4 on `hedged_pair-100000`: without retrieval the model drops
+the mandated hedged disclosures and mis-states a probability. That is the ablation floor
+behaving as designed, not a regression.
+
+**Do not compare these numbers to the §9.1 table** — this run scores with the Round-2
+fix (§9.2), the committed dev CSVs do not. Compare against §9.2's re-scored column.
+
+---
+
+## 10. Run hardening for the unattended frozen run (2026-07-23)
+
+Commit `41ce10b`. Two defects that only matter at frozen scale: a full run is ~1300
+sequential API calls over 4–6 hours, and there was **no retry anywhere**.
+
+- **Retry.** All network I/O funnels through `OpenAICompatibleClient.complete`, which
+  the judge and the claim extractor both delegate to, so one implementation covers
+  generation, self-check, extraction and judging. Transient `{429,500,502,503,504}` and
+  network/timeout errors now get bounded exponential backoff with full jitter (default
+  3 retries, 30 s ceiling), honoring a numeric `Retry-After`. 4xx and malformed
+  responses still fail on the first attempt so a bad key or model surfaces immediately.
+  After exhaustion the same `LLMUnavailableError` is raised, so the template-fallback
+  path and the `n_fallback` metric are unchanged. Sleep is injectable — the 8 new tests
+  run in 0.13 s with no real network and no wall-clock.
+- **Progress.** `run_eval` prints one line per (case, config) to **stderr** — index/total,
+  cache-hit flag, unit elapsed, total elapsed, ETA. stdout stays reserved for the summary
+  table. `--no-progress` disables it.
+
+**Operational note:** OpenAI returns **429 for quota exhaustion**, not just rate limits,
+so a run that goes dry retries 3× per call before failing. Claim extraction has no
+fallback path, so the run will die loudly rather than silently produce template reports
+— the caches keep everything already completed. If the log starts filling with
+`LLM retry` lines, kill it and top up rather than letting it grind through the remainder.
+
+Why it was safe to do this before the frozen run: nothing here touches a prompt, the
+protocol, the case set, any version string, or any cache key. `max_retries=0` reproduces
+the previous behaviour exactly, and a test pins that.
