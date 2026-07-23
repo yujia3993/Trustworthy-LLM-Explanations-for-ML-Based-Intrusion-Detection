@@ -22,7 +22,8 @@ by three dev-only prompt-iteration rounds — two kept, one reverted after faili
 pre-registered decision gate (see §9). A frozen-split **pre-flight smoke** then
 validated the frozen path end-to-end at the current prompt state (§9.4), and the
 harness was hardened for a multi-hour unattended run (§10). **Next concrete step:
-the frozen 101-case 4-config runs** (≈$6.20) → RQ1/RQ2 tables, then RQ3 human
+the frozen 101-case 4-config runs** (≈$7.2, see §5 for the two-vendor split) →
+RQ1/RQ2 tables, then RQ3 human
 scoring + κ.
 
 ---
@@ -137,7 +138,7 @@ that changing an input invalidates only what depends on it:
 This is what makes iteration affordable: after the fabricated-number fix, the entire
 14-case dev evaluation was **re-run with zero API calls in 1m54s** (versus 10m14s and
 ~$0.25 for the uncached run). Without it, every metric-definition change would cost a
-full re-run — $6.20 at frozen-set scale.
+full re-run — ~$7.2 at frozen-set scale.
 
 ---
 
@@ -174,8 +175,11 @@ cd code && nohup ../.venv-wsl/bin/python -m module2.evaluation.run_eval \
   --split frozen > ../frozen_run.log 2>&1 &
 ```
 
-**≈$6.20, ~4–6 h** (the judge echoes every claim verbatim, so its output scales with
-claim count — ~27 claims/case measured). Progress goes to stderr, one line per
+**≈$7.2, ~4–6 h**, split **~$2.9 OpenAI / ~$4.3 Anthropic** — measured from the cached
+prompts and responses of the §9.4 smoke, not estimated. The judge is the expensive half
+despite moving fewer tokens (0.46 MTok out vs 1.26): it echoes every claim verbatim and
+Haiku bills output at 5×. **Check both balances, not just OpenAI.** Progress goes to
+stderr, one line per
 (case, config) with an ETA — hence `2>&1` into the log. **Always verify
 `n_fallback == 0` and that all three `JUDGE_*` vars are set** (§8.1 traps) before
 believing the numbers; also check the log for `LLM retry` bursts (§10). Then:
