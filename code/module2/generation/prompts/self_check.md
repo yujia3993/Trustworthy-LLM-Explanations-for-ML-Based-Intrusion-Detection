@@ -12,7 +12,12 @@ TASKS
    actually supports the sentence it is attached to; fix or remove mismatched
    citations.
 3. Numeric fidelity. Verify every numeric value in the draft matches its source
-   exactly; correct any that do not. Remove numbers that have no source.
+   exactly; correct any that do not. Remove numbers that have no source. A number
+   that matches a source but is FORBIDDEN by the REGISTER RULES must still be
+   removed: in a hedged-pair report the within-pair split values (the individual
+   gafgyt_tcp and gafgyt_udp probabilities) must never appear - state the mandated
+   no-evidential-value sentence about the split abstractly, keeping only the pair
+   probability.
 4. Register compliance. Verify every MANDATORY item of the REGISTER RULES is
    present and no FORBIDDEN language appears. Fix violations with the minimal
    edit that restores compliance.
