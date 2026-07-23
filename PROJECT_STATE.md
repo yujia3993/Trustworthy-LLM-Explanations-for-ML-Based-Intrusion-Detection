@@ -1,7 +1,7 @@
 # Project State
 
 **Trustworthy LLM Explanations for ML-Based Intrusion Detection (N-BaIoT)**
-Snapshot: 2026-07-22 · Branch `main` · 117 tests passing
+Snapshot: 2026-07-23 · Branch `main` · 118 tests passing
 
 This is the working-state document (progress, decisions, what's next). For the
 research narrative and headline results see [README.md](README.md).
@@ -14,13 +14,13 @@ research narrative and headline results see [README.md](README.md).
 |---|---|---|
 | **Module 1** | Two-stage detector + leakage audit + explainability exports | ✅ Complete, sealed (pre-existing) |
 | **Module 2** | RAG explanation layer (KB, retrieval, generation) | ✅ Infrastructure complete |
-| **Module 3** | Evaluation (case set, harness, metrics) | ✅ Harness complete; ✅ dev baseline measured; ⏳ 4-config ablation pending |
+| **Module 3** | Evaluation (case set, harness, metrics) | ✅ Harness complete; ✅ 4-config dev ablation + 3 prompt-iteration rounds done; ⏳ frozen runs + RQ3 pending |
 
-**No longer blocked.** API keys were configured on 2026-07-22 and the first real-LLM
-runs completed: generator `gpt-4.1-mini`, judge `claude-haiku-4-5-20251001` via
-Anthropic's OpenAI-compatible endpoint. A full dev baseline exists for `full_rag`
-(see §8). **Next concrete step: the 4-config ablation** — `no_rag` / `naive_rag` /
-`self_check` have never met a real model.
+**Prompt-iteration phase complete (2026-07-23).** The 4-config dev ablation ran on
+real models (generator `gpt-4.1-mini`, judge `claude-haiku-4-5-20251001`), followed
+by three dev-only prompt-iteration rounds — two kept, one reverted after failing its
+pre-registered decision gate (see §9). **Next concrete step: the frozen 101-case
+4-config runs** (≈$6.20) → RQ1/RQ2 tables, then RQ3 human scoring + κ.
 
 ---
 
@@ -114,12 +114,11 @@ Under [code/module2/evaluation/](code/module2/evaluation/).
   mock), `metrics.py` (taxonomy aggregation + Cohen's/weighted κ),
   `run_eval.py` (4-config orchestrator → summary/claims/RQ2 CSVs),
   `rq3_sheet.py` (20-case human scoring sheet).
-- Mock dev run validated the mechanics: **48/48 RQ2 audits pass**. The mock output
-  CSVs *are* committed under `evaluation/results/` (`eval_dev_summary.csv`,
-  `eval_dev_claims.csv`, `rq2_audit_dev.csv`) — they are mechanism evidence only,
-  produced by `MockLLMClient`. **They are still the committed ones**: real runs so
-  far used `--configs full_rag`, which routes output to the gitignored
-  `results/scratch/`. They will be overwritten by the first full 4-config run.
+- The committed CSVs under `evaluation/results/` (`eval_dev_summary.csv`,
+  `eval_dev_claims.csv`, `rq2_audit_dev.csv`) now hold the **real 4-config dev
+  ablation** output (2026-07-23), replacing the earlier `MockLLMClient` placeholders.
+  Caveat: they carry the **v1.0.0** labels — the Round-2 scorer fix (§9.2) is not
+  re-scored into them; the deterministic re-score in §9.2 documents that delta.
 
 ### Caching architecture (load-bearing for cost — added 2026-07-22)
 
@@ -161,35 +160,26 @@ full re-run — $6.20 at frozen-set scale.
 
 ## 5. Next steps
 
-**Immediate next action: the 4-config dev ablation.**
+**Immediate next action: the frozen 101-case 4-config runs.** Prompt iteration is
+finished (§9); the dev set has served its purpose. The reportable numbers come from
+the frozen set, at the current prompt state (v1.1.0: Round-1 self_check fix + Round-2
+scorer fix; Round 3 reverted).
 
 ```bash
 set -a; source ~/.config/llm-keys.env; set +a     # keys are NOT auto-loaded
-cd code && python -m module2.evaluation.run_eval --split dev
+cd code && python -m module2.evaluation.run_eval --split frozen
 ```
 
-Run it in the background: **≈140 API calls, 45–60 min, ≈$0.65**. `full_rag` is fully
-cached and costs nothing; the spend is `no_rag` (14 gen) + `naive_rag` (14 gen) +
-`self_check` (**28 gen** — it generates twice per case), plus 42 extractions and 42
-judge calls. Note this writes to `results/` proper, not `scratch/`, and will overwrite
-the committed mock CSVs — that is intended.
+**≈$6.20** (the judge echoes every claim verbatim, so its output scales with claim
+count — ~27 claims/case measured). **Always verify `n_fallback == 0` and that all
+three `JUDGE_*` vars are set** (§8.1 traps) before believing the numbers. Then:
 
-**Why the ablation before any prompt tuning:** the dev baseline shows
-`unsupported_but_true` steady at **18.6%** (90/483) — the model states true things
-without citing evidence. That is a citation-behaviour problem, not a hallucination
-problem, and it is the largest single defect. But tuning prompts against it now would
-be guessing: without `no_rag`/`naive_rag` as controls there is no way to tell whether
-it is caused by the RAG layer or is common to every configuration.
+1. RQ1 taxonomy/hallucination table + RQ2 gate pass-rate table from the frozen output.
+2. RQ3 — human scoring of 20 cases, Cohen's κ (`rq3_sheet.py`).
 
-Then:
-1. Prompt iteration on the **dev set only** (bump prompt version, record
-   failure-mode → measured-delta). Bumping `PROMPT_VERSION` invalidates the
-   generation cache by design; the claim and judge caches follow via their digests.
-2. Frozen-set final 4-config runs → RQ1 taxonomy/hallucination table, RQ2 gate
-   pass-rate table. **≈$6.20** (revised upward from an earlier ≈$4.40: the judge must
-   echo every claim verbatim, so its output tokens scale with claim count — ~27
-   claims/case measured).
-3. RQ3 — human scoring of 20 cases, Cohen's κ.
+A standalone dev-baseline refresh at v1.1.0 is **not** worth ≈$0.65: for the
+non-`self_check` configs the reports are near-identical to v1.0.0, and the frozen run
+is the canonical artifact. The committed dev CSVs stay the v1.0.0 iteration baseline.
 
 **Environment required for any real run** (see §8.1 for storage and traps):
 
@@ -388,3 +378,89 @@ Claim extraction is not deterministic across runs (see §8.3 item 3). The
 the cache**, but a from-scratch re-extraction may yield a slightly different claim
 count. This must be disclosed rather than claimed away; setting a seed is not
 available on the endpoint in use.
+
+---
+
+## 9. 4-config dev ablation + prompt iteration (2026-07-23)
+
+All numbers below are **dev set, n=14** — directional, not statistical. At this scale
+run-to-run non-determinism swings judge-scored metrics by ~±2 claims / ~±0.3 factual
+(measured in Round 1). Only the machine-checkable gates and the deterministic scorer
+are resolvable on dev; the reportable RQ1/RQ2 tables come from the frozen 101-case run.
+
+### 9.1 The 4-config dev ablation (prompt v1.0.0, `n_fallback = 0` all configs)
+
+| config | faithfulness | supported / ubt / false | RQ2 all-gates | factual |
+|---|---|---|---|---|
+| `no_rag` | 0.368 | 167 / 287 / 0 | 0.786 | 4.00 |
+| `naive_rag` | 0.794 | 362 / 90 / 4 | 0.929 | 4.71 |
+| `full_rag` | 0.799 | 386 / 90 / 7 | 1.000 | 4.43 |
+| `self_check` | 0.808 | 388 / 89 / 3 | 0.929 | 4.79 |
+
+**Central read — `unsupported_but_true` is a RESIDUAL of RAG, not caused by it.**
+`no_rag` sits at 63.2% ubt; adding retrieval collapses it to ~19%, and the elaborate
+stack (`full_rag`) adds only ~1pt of ubt reduction over naive top-k. Retrieval is the
+cure; the sophisticated interventions show diminishing, mixed returns (`full_rag` has
+*more* false claims than `naive_rag`). `self_check` halves hard hallucinations
+(false 7→3) and tops factual accuracy but is the only config that generates twice.
+Committed CSVs (`evaluation/results/eval_dev_*.csv`) hold this v1.0.0 output.
+
+### 9.2 Prompt-iteration rounds (dev only, freeze-before-tune preserved)
+
+Each round: one bounded change, measured delta, keep-or-revert. Two kept, one reverted.
+
+- **Round 1 — kept (prompt v1.0.0 → v1.1.0).** The ablation showed `self_check` failing
+  RQ2 gate4 on `hedged_pair-105008`: the self-check *rewrite* made the register-mandated
+  "within-pair split has no evidential value" sentence concrete by quoting the split
+  values (`p_top1=0.4998, p_top2=0.4993`), which the hedged_pair register forbids
+  surfacing at all (base generation never did). Fix in `self_check.md` Task 3: a
+  source-matching number the REGISTER RULES forbid must still be removed. Result:
+  `self_check` gate4 / all-gates **0.929 → 1.000**, faithfulness/ubt stable.
+
+- **Round 2 — kept (harness fix, no prompt/version change).** Decomposing `full_rag`'s
+  90 ubt: **21 feature (alert-data) + 60 uncited knowledge/procedural + 9 cited-but-ubt**.
+  The 21 are a *measurement artifact*: ALERT DATA (`p_top1/p_pair/margin/entropy`) is
+  rendered with no citable `[E#]/[C#]` token, so register-mandated probability claims
+  are structurally unciteable — yet `classify_feature_claim` sent every uncited number
+  to ubt, contradicting protocol §1 ("…material (or ALERT DATA)"). Fix in
+  `feature_verify.py`: an *uncited* feature claim whose numbers are all correct
+  ALERT-DATA numbers is `supported` (evidence values still need `[E#]`; fabrications
+  still false). `eval_protocol.md` §3 reconciled to §1 (dated note, no
+  `eval_prompt_version` bump — matching the scientific-notation precedent). Deterministic
+  re-score of the committed dev claims (same reports, both scorings), faithfulness:
+
+  | config | before | after | feature ubt flipped |
+  |---|---|---|---|
+  | `no_rag` | 0.368 | 0.432 | 29 |
+  | `naive_rag` | 0.794 | 0.844 | 23 |
+  | `full_rag` | 0.799 | 0.841 | 20 of 21 |
+  | `self_check` | 0.808 | 0.838 | 14 |
+
+  (`full_rag`'s 1 held-back claim is a no-number "maximum confidence" paraphrase,
+  correctly left ubt by the ≥1-alert-data-number guard.)
+
+- **Round 3 — REVERTED (attempted prompt v1.1.0 → v1.2.0, then reverted).** Targeted the
+  60 uncited knowledge/procedural ubt. A deterministic diagnosis first (replay
+  `full_rag`'s provided context; rank every KB chunk by dense sim to each claim) found
+  the residual is **generation-behaviour, not retrieval**: retrieval-missed was the
+  *smallest* bucket at every threshold; ~11% are classifier-calibration meta-claims the
+  KB can never ground. Change: `system.md` GROUNDING RULE 1 → "when a provided CONTEXT
+  excerpt supports a claim you MUST cite it". Full 4-config dev run (suffixed output to
+  protect the decision gate). **It failed its target and tripped the guards, so it was
+  reverted:** knowledge/proc ubt did not drop (`full_rag` 69→74, `self_check` 75→87);
+  `full_rag` all-gates 1.000→0.929; `self_check` false 3→14.
+
+### 9.3 The headline finding — the grounding residual is entailment-limited
+
+Round 3 is a *productive* negative result. The model **obeyed** the citation mandate —
+`full_rag` knowledge/procedural citation rate rose **0.59 → 0.67** — but faithfulness
+did **not** follow: supported stayed flat and cited-but-ubt rose 9 → 13. The extra
+citations were **mis-attributed** (the judge ruled the cited chunk does not entail the
+claim). This cleanly separates two hypotheses: *"the model won't cite its context"*
+(**false**) vs *"the provided context is topically related but does not precisely
+entail the specific claims"* (**true**). **The residual unfaithfulness is
+retrieval-entailment-limited, not a prompt-fixable citation-behaviour gap** — "cite
+more" raises compliance without raising faithfulness. This is a stronger RQ1 statement
+than any marginal prompt win, and it bounds what prompt engineering can promise on this
+task. Improving it would require more precise retrieval or is an irreducible reliance
+on parametric knowledge (plus the ~11% calibration meta-claims no KB chunk can ground).
