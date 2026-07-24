@@ -1,7 +1,7 @@
 # Project State
 
 **Trustworthy LLM Explanations for ML-Based Intrusion Detection (N-BaIoT)**
-Snapshot: 2026-07-23 · Branch `main` · 126 tests passing
+Snapshot: 2026-07-24 · Branch `main` · 131 tests passing
 
 This is the working-state document (progress, decisions, what's next). For the
 research narrative and headline results see [README.md](README.md).
@@ -14,17 +14,17 @@ research narrative and headline results see [README.md](README.md).
 |---|---|---|
 | **Module 1** | Two-stage detector + leakage audit + explainability exports | ✅ Complete, sealed (pre-existing) |
 | **Module 2** | RAG explanation layer (KB, retrieval, generation) | ✅ Infrastructure complete |
-| **Module 3** | Evaluation (case set, harness, metrics) | ✅ Harness complete; ✅ 4-config dev ablation + 3 prompt-iteration rounds done; ✅ frozen pre-flight smoke green; ⏳ frozen runs + RQ3 pending |
+| **Module 3** | Evaluation (case set, harness, metrics) | ✅ Harness complete; ✅ 4-config dev ablation + 3 prompt-iteration rounds done; ✅ **frozen 101-case run complete** (§11); ⏳ RQ3 human scoring pending |
 
-**Prompt-iteration phase complete (2026-07-23).** The 4-config dev ablation ran on
-real models (generator `gpt-4.1-mini`, judge `claude-haiku-4-5-20251001`), followed
-by three dev-only prompt-iteration rounds — two kept, one reverted after failing its
-pre-registered decision gate (see §9). A frozen-split **pre-flight smoke** then
-validated the frozen path end-to-end at the current prompt state (§9.4), and the
-harness was hardened for a multi-hour unattended run (§10). **Next concrete step:
-the frozen 101-case 4-config runs** (≈$7.2, see §5 for the two-vendor split) →
-RQ1/RQ2 tables, then RQ3 human
-scoring + κ.
+**Frozen run complete (2026-07-24).** The 101-case × 4-config evaluation ran to
+completion (generator `gpt-4.1-mini`, judge `claude-haiku-4-5-20251001`, prompt
+v1.1.0, case set v1.0.0) — `n_fallback = 0` and `n_needs_review = 0` on all four
+configs, manifest `partial: false`, zero transient-failure retries over ~6 h and 404
+(case, config) units. **The reportable RQ1/RQ2 numbers now come from the frozen set;
+they are in §11, and two of them overturn what the 14-case dev set showed.** The
+committed CSVs are `evaluation/results/eval_frozen_*.csv` +
+`claim_analysis_frozen*.csv`. **Next concrete step: RQ3** — human scoring of 20 cases +
+Cohen's κ, which first needs the RQ3 pipeline fix (§5).
 
 ---
 
@@ -164,32 +164,33 @@ full re-run — ~$7.2 at frozen-set scale.
 
 ## 5. Next steps
 
-**Immediate next action: the frozen 101-case 4-config runs.** Prompt iteration is
-finished (§9); the dev set has served its purpose. The reportable numbers come from
-the frozen set, at the current prompt state (v1.1.0: Round-1 self_check fix + Round-2
-scorer fix; Round 3 reverted).
+**The frozen run is done (§11).** The RQ1 taxonomy/hallucination and RQ2 gate tables
+now exist and are committed. What remains is **RQ3 — human scoring of 20 cases +
+Cohen's κ** — and it is blocked on a pipeline fix, described next.
 
-```bash
-set -a; source ~/.config/llm-keys.env; set +a     # keys are NOT auto-loaded
-cd code && nohup ../.venv-wsl/bin/python -m module2.evaluation.run_eval \
-  --split frozen > ../frozen_run.log 2>&1 &
-```
+**Immediate next action: fix the RQ3 pipeline before scoring anything.** As written,
+`rq3_sheet.py` regenerates full-RAG reports with `use_cache=False` and re-extracts
+claims (non-deterministic, §8.4), so the report a **human** scores is not the report the
+**judge** scored — Cohen's κ would then compare labels on two different texts and be
+meaningless. The fix (delegated task "C"): (1) route reports and claims through the same
+caches the frozen run wrote, so the human and the judge see byte-identical inputs;
+(2) wire a real (non-mock) client into the CLI — today `main()` hard-refuses anything but
+`--mock`; (3) carry claim text and a `(case_id, config, claim_index)` alignment key into
+the sheet; (4) add a read-back entry point that scores a filled sheet and computes
+Cohen's / weighted κ via `metrics.py`; (5) tests, in a **new** `test_rq3.py` (not
+`test_evaluation.py` — merge-safety, §6). Then the human scores 20 cases (your time, not
+API cost — the reports are already cached), single-rater fallback disclosed per protocol §7.
 
-**≈$7.2, ~4–6 h**, split **~$2.9 OpenAI / ~$4.3 Anthropic** — measured from the cached
-prompts and responses of the §9.4 smoke, not estimated. The judge is the expensive half
-despite moving fewer tokens (0.46 MTok out vs 1.26): it echoes every claim verbatim and
-Haiku bills output at 5×. **Check both balances, not just OpenAI.** Progress goes to
-stderr, one line per
-(case, config) with an ETA — hence `2>&1` into the log. **Always verify
-`n_fallback == 0` and that all three `JUDGE_*` vars are set** (§8.1 traps) before
-believing the numbers; also check the log for `LLM retry` bursts (§10). Then:
+**Environment required for any real run** (see §8.1 for storage and traps):
 
-1. RQ1 taxonomy/hallucination table + RQ2 gate pass-rate table from the frozen output.
-2. RQ3 — human scoring of 20 cases, Cohen's κ (`rq3_sheet.py`).
+| Variable | Role |
+|---|---|
+| `OPENAI_API_KEY` | generator + claim extraction + self-check (`gpt-4.1-mini`, temp 0) |
+| `JUDGE_API_KEY` + `JUDGE_BASE_URL` + `JUDGE_MODEL` | judge — **different family** |
 
-A standalone dev-baseline refresh at v1.1.0 is **not** worth ≈$0.65: for the
-non-`self_check` configs the reports are near-identical to v1.0.0, and the frozen run
-is the canonical artifact. The committed dev CSVs stay the v1.0.0 iteration baseline.
+A frozen re-run is **not** needed for RQ3 — `rq3_sheet` will hit the caches the run
+already wrote, so the sheet export is near-zero cost. A re-run only becomes necessary if
+the protocol, rubric, or case set changes (which would also invalidate the caches).
 
 **Environment required for any real run** (see §8.1 for storage and traps):
 
@@ -342,9 +343,15 @@ all three version strings).
 | invalid refs / contextual misuse | 0 / 0 |
 | factual_accuracy (judge, 1–5) | 4.43 |
 
-**All four machine-checkable RQ2 gates passing on real model output across all three
-register paths is the central methodological result so far** — until now they had only
-mock evidence.
+> ⚠️ **This "all four gates at 100%" claim was later falsified by the frozen run.**
+> This §8.2 baseline is `full_rag`, whose true gate-4 failure rate *on hedged_pair* is
+> **25%** at n=101 (§11.2). Dev held only **4** hedged_pair cases, so a clean sweep has
+> probability ≈ 0.75⁴ ≈ **1-in-3** — the observed 100% was luck, not a result. (The
+> other configs fail hedged_pair gate 4 far harder: naive 44%, no_rag 86%, self_check
+> 3%.) Do **not** cite "all four gates pass on real output." Cite the frozen numbers in
+> §11.2, where the methodological result is instead that `self_check`'s Round-1 fix
+> lifts gate 4 to **0.990** while the base retrieval configs sit at 0.84–0.91. The dev
+> figure below is left as the historical iteration baseline, not a finding.
 
 The single genuine fabrication is worth quoting, since it is exactly what the checker
 exists to catch:
@@ -489,6 +496,14 @@ than any marginal prompt win, and it bounds what prompt engineering can promise 
 task. Improving it would require more precise retrieval or is an irreducible reliance
 on parametric knowledge (plus the ~11% calibration meta-claims no KB chunk can ground).
 
+> **Independently replicated on the frozen set (§11.3).** This finding was derived on
+> dev (n=14) by comparing *prompt versions*. The frozen run reproduces the same
+> monotone relationship *across configs* (n=101): citation rate 0.15 → 0.50 → 0.61 →
+> 0.67 across no_rag/naive/full/self_check, mis-attribution (cited-but-ubt / cited)
+> climbing 0.00 → 0.03 → 0.06 → 0.08, and faithfulness flat at ~0.81 for all three
+> retrieval configs. Two different axes (prompt version, config ladder), same
+> conclusion — "cite more" buys compliance, not faithfulness.
+
 ### 9.4 Frozen pre-flight smoke (2026-07-23, `--limit 1`)
 
 Ran **after** the §9 documentation was committed (`93cf638`), which is why it appears
@@ -549,3 +564,99 @@ fallback path, so the run will die loudly rather than silently produce template 
 Why it was safe to do this before the frozen run: nothing here touches a prompt, the
 protocol, the case set, any version string, or any cache key. `max_retries=0` reproduces
 the previous behaviour exactly, and a test pins that.
+
+---
+
+## 11. Frozen 101-case 4-config results (2026-07-24) — the reportable numbers
+
+Commits `9e6f122` (analysis script) + `7270005` (result CSVs). Generator `gpt-4.1-mini`,
+judge `claude-haiku-4-5-20251001`, prompt v1.1.0, case set v1.0.0. Run integrity:
+**`n_fallback = 0` and `n_needs_review = 0` on all four configs**, manifest
+`partial: false`, **0 `LLM retry` lines** across 404 (case, config) units / ~6 h.
+Artifacts: `evaluation/results/eval_frozen_{summary,claims}.csv`, `rq2_audit_frozen.csv`,
+`run_manifest_frozen.json`, and the derived `claim_analysis_frozen{,_by_section}.csv`.
+
+Unlike the dev tables in §9, these are **statistically reportable** (n=101, all 9
+devices, all three registers, 3 known high-confidence errors). Where dev and frozen
+disagree, **frozen is canonical** and the dev figure is an underpowered artifact.
+
+### 11.1 RQ1 — taxonomy / hallucination
+
+| config | claims | faithfulness | sup / ubt / false | halluc. rate | fabricated-num rate | factual (judge 1–5) |
+|---|---|---|---|---|---|---|
+| `no_rag` | 3363 | 0.422 | 1420 / 1914 / 29 | 0.0086 | 0.0000 | 3.87 |
+| `naive_rag` | 3470 | **0.821** | 2849 / 594 / 27 | **0.0078** | 0.0105 | **4.80** |
+| `full_rag` | 3618 | 0.812 | 2938 / 616 / **64** | 0.0177 | 0.0063 | 4.48 |
+| `self_check` | 3641 | 0.815 | 2969 / 613 / 59 | 0.0162 | 0.0049 | 4.44 |
+
+`invalid_refs` and `contextual_misuse` are 0 everywhere. **Central RQ1 read: retrieval is
+the whole story, the elaborate stack is not.** `no_rag` → `naive_rag` nearly doubles
+faithfulness (0.42 → 0.82); `naive_rag` → `full_rag` → `self_check` moves it **not at
+all** (0.821 / 0.812 / 0.815). Worse, `full_rag` has **2.3× the hard hallucinations** of
+`naive_rag` (64 vs 27 false claims) and a lower judge score (4.48 vs 4.80). On this task,
+naive top-k RAG is the value; the reranker + query-decomposition stack does not earn its
+complexity on any RQ1 metric. `self_check` halves nothing here (false 64→59) — its one
+real win is RQ2 gate 4 (below).
+
+The Round-2 scorer fix (§9.2) is **confirmed at scale**: feature-claim ubt collapses from
+dev's 21/24/29/14 to frozen's 3/2/0/2, so the residual is now almost purely
+knowledge/procedural, not a measurement artefact of unciteable alert-data numbers.
+
+### 11.2 RQ2 — machine-checkable gate pass rates (this corrects §8.2)
+
+| config | gate1 register↔margin | gate2 hedged disclosures | gate3 no within-pair order | gate4 prob. consistency | **all-gates** |
+|---|---|---|---|---|---|
+| `no_rag` | 1.000 | 0.970 | 1.000 | 0.693 | 0.693 |
+| `naive_rag` | 1.000 | 1.000 | 1.000 | 0.842 | 0.842 |
+| `full_rag` | 1.000 | 1.000 | 1.000 | 0.911 | 0.911 |
+| `self_check` | 1.000 | 1.000 | 1.000 | **0.990** | **0.990** |
+
+**Gate 4 does not hold at scale, and that is the actual finding.** All 57 failing
+(case, config) pairs are on the **`hedged_pair`** register, all on gate 4 (three no_rag
+cases also drop gate 2). Gates 1 and 3 are perfect; gate 2 is perfect except under
+no_rag. So the machine-checkable story is not "everything passes" (§8.2, now retracted)
+but: **register mapping and the no-within-pair-ordering rule are rock-solid, while
+probability-string consistency on the ambiguous pair is the one hard gate — and
+`self_check`'s Round-1 fix is what tames it** (0.990 vs the 0.84–0.91 base configs).
+That is a *stronger* and more honest result: a named intervention measurably moves a gate
+that the base pipeline fails ~9–16% of the time. Dev could not have shown this — it had 4
+hedged_pair cases; frozen has 36.
+
+### 11.3 RQ1 headline replicated: the residual is entailment-limited
+
+`claim_analysis_frozen.csv` decomposes each config's ubt into feature / uncited-kp /
+cited-but-ubt, and this reproduces §9.3's dev-only finding on an independent axis:
+
+| config | kp citation rate | cited-but-ubt | mis-attribution (cited-but-ubt / cited) | faithfulness |
+|---|---|---|---|---|
+| `no_rag` | 0.15 | 0 | 0.000 | 0.422 |
+| `naive_rag` | 0.50 | 42 | 0.031 | 0.821 |
+| `full_rag` | 0.61 | 111 | 0.063 | 0.812 |
+| `self_check` | 0.67 | 147 | 0.076 | 0.815 |
+
+Citing more (0.15 → 0.67 across the ladder) **raises mis-attribution, not faithfulness** —
+the judge increasingly rules the cited chunk does not entail the claim. §9.3 showed this
+by varying the *prompt*; §11.3 shows it by varying the *config*. The unfaithfulness that
+survives retrieval is **entailment-limited, not a citation-behaviour gap** — it bounds
+what prompt engineering can promise and points the only real lever at retrieval precision.
+
+### 11.4 Per-section faithfulness (feeds the retrieval failure analysis)
+
+From `claim_analysis_frozen_by_section.csv`, faithfulness by report section:
+
+| section | no_rag | naive | full | self_check |
+|---|---|---|---|---|
+| `attack_mechanism` | 0.206 | 0.781 | 0.788 | 0.806 |
+| `confidence_notes` | 0.675 | 0.699 | **0.784** | 0.755 |
+| `immediate_actions` | 0.009 | 0.843 | 0.852 | 0.806 |
+| `longer_term_remediation` | 0.000 | **0.724** | 0.665 | 0.723 |
+| `observable_indicators` | 0.977 | 0.983 | 0.939 | 0.945 |
+| `threat_assessment` | 0.389 | 0.754 | 0.751 | 0.749 |
+
+Note for the retrieval-v2 backlog item (§5): the full-config `threat_assessment`
+**Recall@5 regression (0.60→0.34)** did **not** cost end-to-end faithfulness there
+(0.751, level with naive's 0.754). full_rag's only section-level *loss* to naive is
+`longer_term_remediation` (0.665 vs 0.724). Its only section-level *win* is
+`confidence_notes` (0.784) — which is why gate 4 aside, full_rag buys almost nothing.
+`observable_indicators` is near-ceiling for every config including no_rag (0.977) — it is
+largely detector-data transcription, not knowledge that retrieval helps with.
