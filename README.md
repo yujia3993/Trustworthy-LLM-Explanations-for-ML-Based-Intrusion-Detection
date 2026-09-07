@@ -30,9 +30,11 @@ A fourth finding emerged unplanned and became central to the project's argument:
 | gafgyt_tcp vs gafgyt_udp separability (clean features) | **None found: single-feature separation AUC ∈ [0.4987, 0.5013] across all 9 devices × 5 time windows, pooled AUC ≈ 0.50** |
 | Pair-level assertion calibration (p_pair = p_tcp + p_udp) | **ECE = 4.4×10⁻⁵, Brier = 3.3×10⁻⁵ (held-out, 89k samples, 18k pair-positives)** |
 | Confidence regime structure (clean model, held-out) | **Two regimes, empty middle: margin < 0.9 → error rate 50.65% (≈ within-pair coin flip); margin ≥ 0.9 → error rate 0.005%. Calibration honest in both** |
-| Hallucination rate, naive RAG → full pipeline | TBD |
-| Retrieval Recall@5, naive → hybrid+rerank | TBD |
-| LLM-judge ↔ human agreement (κ) | TBD |
+| Faithfulness, no-RAG → RAG (RQ1, n=101 cases × 4 configs, 14k claims) | **Retrieval is the entire gain, and it saturates at naive top-k: faithfulness 0.422 (no-RAG) → 0.821 (naive RAG) → 0.812 (rerank + query decomposition). The elaborate stack does not beat naive RAG on any RQ1 metric, and has 2.4× the hard hallucinations (64 vs 27 false claims)** |
+| Nature of the residual unfaithfulness (RQ1) | **Entailment-limited, not a citation-behaviour gap. Across the config ladder, citation rate rises 0.15 → 0.67 while mis-attribution rises 0.00 → 0.08 and faithfulness stays flat — "cite more" buys compliance, not faithfulness. Replicated on two independent axes (prompt version; config)** |
+| Confidence-transfer audit gates (RQ2, n=101) | **Register mapping and the no-within-pair-ordering rule hold at 1.000; probability-string consistency is the hard gate and fails on the ambiguous pair (0.842 naive / 0.911 full). A targeted self-check fix lifts it to 0.990** |
+| Retrieval Recall@5 / MRR (component micro-ablation) | **0.385 / 0.601 (dense) → 0.504 / 0.653 (+per-section query decomposition). BM25 fusion is *negative* (0.355) and reranking does not recover it (0.369) — decomposition is the only component that pays** |
+| LLM-judge ↔ human agreement (RQ3, κ) | **Claim-level taxonomy validated at moderate agreement: κ = 0.477, 83.4% raw, PABAK 0.668 (n=602 claims). The report-level rubric is *not* validated — 3 of its 4 criteria are degenerate (the judge never varies them). Single rater; no human–human baseline** |
 
 ## The leakage audit
 
@@ -154,9 +156,9 @@ The two-stage detector is **infrastructure, not the contribution**. It exists to
 
 **Design-decision log highlights.** Clean model as canonical despite the F1 drop (headline honesty > headline size). Register threshold chosen from data and shown to be insensitive. Pre-audit LODO's 0.997 recorded as a methodological lesson: LODO only rules out leakage along its own axis (device), not orthogonal axes (time).
 
-## Module 2 — Explanation layer (in progress)
+## Module 2 — Explanation layer (complete)
 
-- **Knowledge base**: ~28 self-authored markdown documents (Mirai/Gafgyt variants, IoT remediation, device categories, attack concepts) as a precision core, expanded with external material (MITRE ATT&CK techniques, public botnet analyses, CVE entries, vendor advisories) to 300+ chunks — **including 20–30% deliberate distractors** (other botnet families, near-duplicate variant docs, plausible-but-off-target hardening advice) so that retrieval is fallible and the ablation has headroom to measure. New KB documents encode this project's own findings where analysts need them (protocol field absent from features; pcap disambiguation procedure; pair-level assertion rationale; temporal artefacts in capture datasets). Metadata schema (attack_family incl. `generic`, device_categories, doc_type, source, is_distractor) frozen before ingestion.
+- **Knowledge base** — frozen v1.0.0, **38 documents → 117 chunks**: 28 self-authored core documents (Mirai/Gafgyt variants, IoT remediation, device categories, attack concepts) plus **10 deliberate distractors (26%)** (other botnet families, near-duplicate variant docs, plausible-but-off-target hardening advice) so that retrieval is fallible and the ablation has headroom to measure. KB documents encode this project's own findings where analysts need them (protocol field absent from features; pcap disambiguation procedure; pair-level assertion rationale; temporal artefacts in capture datasets). Metadata schema (attack_family incl. `generic`, device_categories, doc_type, source, is_distractor) frozen before ingestion. **Scope note:** the KB is the self-authored core only. Expansion with external material (MITRE ATT&CK, CVE entries, vendor advisories) to 300+ chunks is **future work, not done here** — it would invalidate the frozen gold set and every retrieval-ablation number reported above, so it is deliberately deferred until after end-to-end failure analysis.
 - **Retrieval**: per-report-section query decomposition; hybrid BM25 + dense (sentence-transformers/all-MiniLM-L6-v2, local) fused with reciprocal rank fusion; cross-encoder reranking (ms-marco-MiniLM-L-6-v2, local); ChromaDB with metadata filtering on attack family and device category — applied per-section, not as a hard filter, so generic remediation docs remain reachable.
 - **Evidence grounding**: triple-screened discriminative features with actual values expressed against per-device benign baselines, injected via fixed templates; the LLM is instructed not to extrapolate beyond template semantics. Contextual features are barred from "this value indicates X" phrasing. Every key claim must cite a retrieved chunk or a feature value.
 - **Confidence-aware generation (two registers)**: margin ≥ 0.9 → assertive report; margin < 0.9 → hedged-differential report asserting the pair superclass with p_pair, stating within-pair indistinguishability, presenting candidates symmetrically, and escalating to the pcap protocol-field check.
@@ -164,15 +166,39 @@ The two-stage detector is **infrastructure, not the contribution**. It exists to
 - **LLM**: provider-swappable OpenAI-compatible client (default gpt-4.1-mini; temperature 0), outputs cached by (config_hash, case_id, prompt_version) for cost-free re-evaluation. Fallback to raw retrieved chunks if the API is unavailable.
 - **Output**: structured Markdown report — Threat Assessment, Attack Mechanism, Observable Indicators, Immediate Actions, Longer-term Remediation, Confidence Notes.
 
-## Module 3 — Evaluation protocol (planned)
+## Module 3 — Evaluation protocol (complete)
 
 - **Generation ablation**: no-RAG baseline → naive RAG → hybrid + rerank RAG → + self-check loop, scored on faithfulness, factual accuracy, actionability, and hallucination rate under the three-way claim taxonomy. Feature-value claims are verified mechanically against the reference tables; knowledge claims go to an LLM judge **from a different model family** than the generator/self-checker.
 - **Retrieval evaluated separately** from generation, at two granularities: the 4-configuration view, plus a **component-level micro-ablation** (dense-only / +BM25+RRF / +rerank / +decomposition) — free to run locally and necessary to attribute gains. Gold set (attack type × report section → expected documents) built alongside KB authoring and **git-frozen before any retrieval tuning**; Recall@5 and MRR per configuration.
 - **Evaluation case set**: frozen before prompt iteration begins; stratified across confidence regimes and classes; the hedged regime is naturally populated (~18k candidates). A separate small dev set is used for prompt debugging so the frozen set stays untouched.
 - **RQ2 audit**: the three machine-checkable gates above, plus a p_pair-language consistency check; the 3 high-confidence errors documented as the limit of what confidence transfer can promise.
 - **Judge validation**: LLM-judge vs human rubric on 20 cases, Cohen's κ, with stated caveats (wide CI at n=20; second rater sought, single-rater fallback disclosed). Actionability is decomposed into concrete sub-criteria (device-specific action present; immediate vs long-term separated; advice matches device category) rather than scored as a gestalt.
-- **Prompt iteration log**: prompt versions, the failure mode each revision targets, and the measured delta — the engineering process itself is part of the evidence.
-- **Demo**: Streamlit, multi-panel (detection → retrieval traces → generated report), with an analyst feedback control whose log feeds the prompt iteration record.
+- **Prompt iteration log**: prompt versions, the failure mode each revision targets, and the measured delta — the engineering process itself is part of the evidence. Three rounds were run on the dev set only; two were kept and **one was reverted after failing its pre-registered decision gate**, which is what established the entailment-limited finding above.
+
+**Results and provenance.** The reportable numbers come from a single frozen run — 101 cases × 4 configurations, 14,092 claims, `n_fallback = 0` — with per-claim and per-gate CSVs under `code/module2/evaluation/results/`. `PROJECT_STATE.md` §11–§12 carries the full write-up, including one **retracted** earlier claim: a dev-set result reporting all four RQ2 gates at 100% did not survive the frozen run, and the retraction and its cause are documented rather than quietly dropped.
+
+**Not built.** A Streamlit demo (detection → retrieval traces → generated report) was scoped but is not implemented; it is not required by any research question. See *Future work* below.
+
+## Limitations and future work
+
+**Limitations of what is reported here.**
+
+- **RQ3 has no human–human baseline.** Agreement was collected from a single rater; a second was sought and not obtained. κ = 0.477 therefore cannot be attributed to judge unreliability rather than ordinary inter-human variation on a hard task — the coefficient is reported, but its interpretation is bounded. This is the most consequential open item.
+- **The report-level rubric does not discriminate.** Three of its four criteria are constant in the judge's hands (one is constant for both raters), so they can be neither validated nor used; only the claim-level taxonomy earned its keep.
+- **`factual_accuracy` agreement is uninterpretable**: the rater used a two-point subset of the five-point scale, and the rubric anchors only 5, 3 and 1.
+- **Stratum leak in the RQ3 sheets**: case identifiers encode the stratum, so the rater was not blind to it. Sensitivity analysis shows this does not drive the primary coefficient (0.477 → 0.505 when the affected cases are excluded), but it is a design defect.
+- **Claim extraction is not deterministic** despite temperature 0 (no seed is available on the endpoint). Results are reproducible from the on-disk cache; a from-scratch re-extraction may differ slightly.
+- **Scale**: n = 101 cases for RQ1/RQ2, n = 20 reports / 602 claims for RQ3, with correspondingly wide intervals — fixed in advance by the protocol, not chosen after seeing results.
+- **Single dataset, single generator/judge pair.** Nothing here establishes that the findings transfer to other detectors, corpora, or model families.
+
+**Future work**, in descending order of value to the research claims:
+
+1. **A second human rater** for RQ3, even on a subset — the one addition that would materially strengthen a stated research question.
+2. **A discriminating report-level rubric** to replace the three degenerate criteria.
+3. **KB expansion** with external material (MITRE ATT&CK, CVEs, vendor advisories) to 300+ chunks. Deliberately deferred: it invalidates the frozen gold set and every retrieval number reported here, so it belongs after end-to-end failure analysis, not before.
+4. **Retrieval v2**, targeting the two failures this evaluation localised: BM25 fusion is net-negative, and the full configuration regresses `threat_assessment` recall (0.60 → 0.34) without costing end-to-end faithfulness.
+5. **Evidence screen v2** — a per-class × per-feature univariate AUC table replacing the current z-score / p99 proxy.
+6. **Streamlit demo** — presentation only; no research question depends on it.
 
 ## Repository structure
 
