@@ -574,18 +574,43 @@ def score_rq3(
     if not human_reports:
         raise ValueError("report sheets contain no aligned ratings")
 
+    def agreement_row(
+        metric: str,
+        method: str,
+        coefficient: float,
+        human_values: Sequence[object],
+        judge_values: Sequence[object],
+    ) -> dict[str, Any]:
+        n = len(human_values)
+        n_distinct_human = len(set(human_values))
+        n_distinct_judge = len(set(judge_values))
+        return {
+            "metric": metric,
+            "method": method,
+            "kappa": coefficient,
+            "n": n,
+            "raw_agreement": sum(
+                human == judge
+                for human, judge in zip(human_values, judge_values)
+            )
+            / n,
+            "n_distinct_human": n_distinct_human,
+            "n_distinct_judge": n_distinct_judge,
+            "degenerate": n_distinct_human == 1 or n_distinct_judge == 1,
+        }
+
     claim_keys = sorted(human_claims)
     report_keys = sorted(human_reports)
+    human_claim_values = [human_claims[key] for key in claim_keys]
+    judge_claim_values = [judge_claims[key] for key in claim_keys]
     rows: list[dict[str, Any]] = [
-        {
-            "metric": "claim_labels",
-            "method": "cohens_kappa",
-            "kappa": cohens_kappa(
-                [human_claims[key] for key in claim_keys],
-                [judge_claims[key] for key in claim_keys],
-            ),
-            "n": len(claim_keys),
-        }
+        agreement_row(
+            "claim_labels",
+            "cohens_kappa",
+            cohens_kappa(human_claim_values, judge_claim_values),
+            human_claim_values,
+            judge_claim_values,
+        )
     ]
     for field in score_fields:
         human_values = [human_reports[key][field] for key in report_keys]
@@ -597,19 +622,44 @@ def score_rq3(
             method = "cohens_kappa"
             coefficient = cohens_kappa(human_values, judge_values)
         rows.append(
-            {
-                "metric": field,
-                "method": method,
-                "kappa": coefficient,
-                "n": len(report_keys),
-            }
+            agreement_row(field, method, coefficient, human_values, judge_values)
         )
 
     output_path = Path(out)
-    _write_csv(output_path, rows, ["metric", "method", "kappa", "n"])
+    _write_csv(
+        output_path,
+        rows,
+        [
+            "metric",
+            "method",
+            "kappa",
+            "n",
+            "raw_agreement",
+            "n_distinct_human",
+            "n_distinct_judge",
+            "degenerate",
+        ],
+    )
     print("RQ3 human-vs-judge agreement")
     for row in rows:
-        print(f"{row['metric']}: kappa={row['kappa']:.4f} (n={row['n']})")
+        summary = (
+            f"  {row['metric']:<34} kappa={row['kappa']:.4f}  "
+            f"n={row['n']:<4} raw={row['raw_agreement']:.1%}"
+        )
+        if row["degenerate"]:
+            human_constant = row["n_distinct_human"] == 1
+            judge_constant = row["n_distinct_judge"] == 1
+            if human_constant and judge_constant:
+                reason = "human and judge each assigned a single value"
+            elif human_constant:
+                reason = "human assigned a single value"
+            else:
+                reason = "judge assigned a single value"
+            summary += (
+                "  ** NOT INTERPRETABLE: "
+                f"{reason} to all {row['n']} cases **"
+            )
+        print(summary)
     return output_path
 
 

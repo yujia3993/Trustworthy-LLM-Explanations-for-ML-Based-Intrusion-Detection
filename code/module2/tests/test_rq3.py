@@ -715,4 +715,158 @@ def test_score_rq3_accepts_claims_sheet_with_cited_refs(tmp_path):
 
     output = score_rq3(reports, claims, reference, out=tmp_path / "agreement.csv")
 
-    assert set(_read_csv(output)[0]) == {"metric", "method", "kappa", "n"}
+    assert set(_read_csv(output)[0]) == {
+        "metric",
+        "method",
+        "kappa",
+        "n",
+        "raw_agreement",
+        "n_distinct_human",
+        "n_distinct_judge",
+        "degenerate",
+    }
+
+
+def test_score_rq3_flags_both_raters_constant_and_equal(tmp_path):
+    reports, claims, reference = _scoring_artifacts(
+        tmp_path,
+        CLAIM_LABELS,
+        CLAIM_LABELS,
+        {
+            "case-1": [1, 1, 0, 0],
+            "case-2": [2, 1, 1, 1],
+            "case-3": [3, 1, 0, 1],
+        },
+        {
+            "case-1": [1, 1, 0, 0],
+            "case-2": [2, 1, 1, 1],
+            "case-3": [3, 1, 0, 1],
+        },
+    )
+
+    output = score_rq3(
+        reports, claims, reference, out=tmp_path / "agreement.csv"
+    )
+    row = _agreement_rows(output)["actionability_device_specific"]
+
+    assert row["degenerate"] == "True"
+    assert float(row["raw_agreement"]) == 1.0
+    assert float(row["kappa"]) == 1.0
+    assert row["n_distinct_human"] == "1"
+    assert row["n_distinct_judge"] == "1"
+
+
+def test_score_rq3_flags_one_constant_rater_and_preserves_raw_agreement(tmp_path):
+    reports, claims, reference = _scoring_artifacts(
+        tmp_path,
+        CLAIM_LABELS,
+        CLAIM_LABELS,
+        {
+            "case-1": [1, 1, 0, 0],
+            "case-2": [2, 0, 1, 1],
+            "case-3": [3, 1, 0, 1],
+            "case-4": [4, 0, 1, 0],
+        },
+        {
+            "case-1": [1, 1, 0, 0],
+            "case-2": [2, 1, 1, 1],
+            "case-3": [3, 1, 0, 1],
+            "case-4": [4, 1, 1, 0],
+        },
+    )
+
+    output = score_rq3(
+        reports, claims, reference, out=tmp_path / "agreement.csv"
+    )
+    row = _agreement_rows(output)["actionability_device_specific"]
+
+    assert row["degenerate"] == "True"
+    assert float(row["raw_agreement"]) == 0.5
+    assert float(row["raw_agreement"]) != 0.0
+    assert float(row["kappa"]) == 0.0
+    assert row["n_distinct_human"] == "2"
+    assert row["n_distinct_judge"] == "1"
+
+
+def test_score_rq3_records_distinct_counts_and_hand_computed_raw_agreement(tmp_path):
+    reports, claims, reference = _scoring_artifacts(
+        tmp_path,
+        CLAIM_LABELS,
+        CLAIM_LABELS,
+        {
+            "case-1": [1, 0, 0, 0],
+            "case-2": [2, 0, 1, 1],
+            "case-3": [3, 1, 0, 1],
+            "case-4": [4, 1, 1, 0],
+        },
+        {
+            "case-1": [1, 0, 0, 0],
+            "case-2": [2, 1, 1, 1],
+            "case-3": [4, 1, 1, 0],
+            "case-4": [5, 0, 1, 0],
+        },
+    )
+
+    output = score_rq3(
+        reports, claims, reference, out=tmp_path / "agreement.csv"
+    )
+    row = _agreement_rows(output)["factual_accuracy"]
+
+    assert row["degenerate"] == "False"
+    assert row["n_distinct_human"] == "4"
+    assert row["n_distinct_judge"] == "4"
+    assert round(float(row["raw_agreement"]), 4) == 0.5000
+
+
+def test_score_rq3_stdout_warns_only_for_degenerate_metrics(tmp_path, capsys):
+    degenerate_dir = tmp_path / "degenerate"
+    degenerate_dir.mkdir()
+    reports, claims, reference = _scoring_artifacts(
+        degenerate_dir,
+        CLAIM_LABELS,
+        CLAIM_LABELS,
+        {
+            "case-1": [1, 1, 0, 0],
+            "case-2": [2, 0, 1, 1],
+            "case-3": [3, 1, 0, 1],
+        },
+        {
+            "case-1": [1, 1, 0, 0],
+            "case-2": [2, 1, 1, 1],
+            "case-3": [3, 1, 0, 1],
+        },
+    )
+    score_rq3(
+        reports,
+        claims,
+        reference,
+        out=degenerate_dir / "agreement.csv",
+    )
+    warning_output = capsys.readouterr().out
+
+    assert "actionability_device_specific" in warning_output
+    assert "NOT INTERPRETABLE" in warning_output
+    assert "judge assigned a single value to all 3 cases" in warning_output
+
+    healthy_dir = tmp_path / "healthy"
+    healthy_dir.mkdir()
+    reports, claims, reference = _scoring_artifacts(
+        healthy_dir,
+        CLAIM_LABELS,
+        CLAIM_LABELS,
+        {
+            "case-1": [1, 0, 0, 0],
+            "case-2": [2, 1, 1, 1],
+            "case-3": [3, 0, 0, 1],
+        },
+        {
+            "case-1": [1, 0, 0, 0],
+            "case-2": [2, 1, 1, 1],
+            "case-3": [3, 0, 1, 0],
+        },
+    )
+    score_rq3(reports, claims, reference, out=healthy_dir / "agreement.csv")
+    healthy_output = capsys.readouterr().out
+
+    assert "RQ3 human-vs-judge agreement" in healthy_output
+    assert "NOT INTERPRETABLE" not in healthy_output
