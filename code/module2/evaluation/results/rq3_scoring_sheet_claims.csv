@@ -1,0 +1,603 @@
+case_id,claim_index,section,cited_refs,claim_text,human_label
+assertive_correct-125012,0,threat_assessment,"[""C3""]",The attack is a Telnet scanning activity conducted by the Gafgyt (BASHLITE) botnet to identify new vulnerable devices for propagation,supported
+assertive_correct-125012,1,threat_assessment,"[""C3""]",The severity is high because the device is confirmed compromised and actively recruiting new bots,supported
+assertive_correct-125012,2,threat_assessment,"[""C3""]",The compromised device poses a risk to the local network and potentially other devices on the same LAN,supported
+assertive_correct-125012,3,threat_assessment,"[""C3""]",The device owner is collateral damage while the victims of the scanning are external targets,unsupported_but_true
+assertive_correct-125012,4,threat_assessment,"[""C3""]","The attack is ongoing and automated, indicating the device is under botnet control",supported
+assertive_correct-125012,5,attack_mechanism,"[""C3""]",The Gafgyt scan attack involves the infected device sending Telnet connection attempts to a range of IP addresses to discover new vulnerable devices with exposed Telnet services,supported
+assertive_correct-125012,6,attack_mechanism,"[""C3""]","This scanning is part of the botnet’s propagation strategy, enabling it to recruit additional devices into the botnet",supported
+assertive_correct-125012,7,attack_mechanism,"[""C3""]",The device became infected likely through exploitation of default or weak credentials,supported
+assertive_correct-125012,8,attack_mechanism,"[""C3""]",The botnet executes this scanning behavior autonomously,unsupported_but_true
+assertive_correct-125012,9,attack_mechanism,"[""C3""]",This scanning activity uses modest bandwidth but is effective in expanding the botnet’s reach,supported
+assertive_correct-125012,10,observable_indicators,"[""E5"", ""C3""]",MI_dir_L0.1_weight is a discriminative feature supporting the identification of the Gafgyt scan attack,supported
+assertive_correct-125012,11,observable_indicators,"[""E1""]",MI_dir_L0.01_mean is anomalous relative to baseline but not indicative of a specific attack,supported
+assertive_correct-125012,12,observable_indicators,"[""E2""]",HH_L0.1_mean is anomalous relative to baseline but not indicative of a specific attack,supported
+assertive_correct-125012,13,observable_indicators,"[""E3""]",HH_jit_L1_variance is anomalous relative to baseline but not indicative of a specific attack,supported
+assertive_correct-125012,14,observable_indicators,"[""E4""]",HH_L0.1_magnitude is anomalous relative to baseline but not indicative of a specific attack,supported
+assertive_correct-125012,15,immediate_actions,[],Disconnecting the Ennio_Doorbell from Wi-Fi or isolating its switch port or VLAN prevents further scanning activity,supported
+assertive_correct-125012,16,immediate_actions,[],Power-cycling the doorbell clears the memory-resident bot code,supported
+assertive_correct-125012,17,immediate_actions,[],"Changing the web/app password and any Telnet or administrative credentials to unique, non-default values is necessary",supported
+assertive_correct-125012,18,immediate_actions,[],Checking for and applying any available firmware updates from the vendor is necessary,supported
+assertive_correct-125012,19,immediate_actions,[],Verifying and disabling any port-forwarding or UPnP mappings on the home router that expose the doorbell or Telnet ports to the WAN is necessary,supported
+assertive_correct-125012,20,immediate_actions,[],Blocking outbound Telnet traffic (ports 23 and 2323) from the doorbell’s network segment is necessary,supported
+assertive_correct-125012,21,longer_term_remediation,[],Placing the doorbell on an IoT-only network segment with no route to workstations or NAS devices limits lateral movement,supported
+assertive_correct-125012,22,longer_term_remediation,"[""C12""]","Maintaining an inventory of IoT devices and ensuring all have unique, non-default credentials prevents botnet propagation",supported
+assertive_correct-125012,23,longer_term_remediation,[],Disabling UPnP on the router prevents unintended exposure of IoT devices,supported
+assertive_correct-125012,24,longer_term_remediation,[],Regularly checking for and applying firmware updates to the doorbell patches vulnerabilities,unsupported_but_true
+assertive_correct-125012,25,longer_term_remediation,"[""C10""]","If the device requires exposed management ports and does not receive vendor updates, it should be considered for replacement as end-of-life",supported
+assertive_correct-125012,26,confidence_notes,[],Calibration reflects the long-run error rates of the classifier in this regime but does not guarantee the correctness of this individual alert,unsupported_but_true
+assertive_correct-145003,0,threat_assessment,"[""C1""]",The attack is severe because the device is under external control,supported
+assertive_correct-145003,1,threat_assessment,"[""C1""]",The device is actively participating in a distributed denial-of-service attack that consumes upstream bandwidth and harms third parties,supported
+assertive_correct-145003,2,threat_assessment,"[""C1""]",The third parties harmed are specifically the flood victim and potentially the local network,unsupported_but_true
+assertive_correct-145003,3,threat_assessment,[],The device owner is collateral damage in this scenario,unsupported_but_true
+assertive_correct-145003,4,threat_assessment,[],The attack is confirmed with the highest confidence,supported
+assertive_correct-145003,5,threat_assessment,[],No alternative attack types are indicated,supported
+assertive_correct-145003,6,attack_mechanism,"[""C5""]",The Mirai ACK flood attack involves the infected device sending TCP segments with the ACK flag set that do not belong to any established connection,supported
+assertive_correct-145003,7,attack_mechanism,[],"These packets force the victim or intermediate stateful devices to perform costly connection table lookups, exhausting CPU and state-table resources",supported
+assertive_correct-145003,8,attack_mechanism,[],The attack bypasses naive SYN filters by mimicking the middle of legitimate sessions,supported
+assertive_correct-145003,9,attack_mechanism,"[""C4"", ""C5""]",Mirai generates these packets in a tight loop with randomized source ports and sequence numbers and configurable payload sizes,supported
+assertive_correct-145003,10,attack_mechanism,[],The device became compromised through Mirai botnet infection,supported
+assertive_correct-145003,11,attack_mechanism,[],The Mirai botnet controls the device to emit this attack traffic,supported
+assertive_correct-145003,12,observable_indicators,"[""E1"", ""E2"", ""C4"", ""C5""]",The discriminative features MI_dir_L0.01_mean and MI_dir_L5_weight strongly support the identification of Mirai ACK flood traffic,supported
+assertive_correct-145003,13,observable_indicators,"[""C4"", ""C5""]","The discriminative features are consistent with the known attack signature of highly regular, machine-generated packets",supported
+assertive_correct-145003,14,immediate_actions,[],Disconnecting the Philips_B120N10_Baby_Monitor from the network immediately stops ongoing attack traffic and prevents further harm,supported
+assertive_correct-145003,15,immediate_actions,[],Power-cycling the device clears any memory-resident malware,supported
+assertive_correct-145003,16,immediate_actions,[],"Changing all credentials associated with the device includes local admin, RTSP, and vendor cloud account passwords",supported
+assertive_correct-145003,17,immediate_actions,[],Inspecting and removing any router port-forwarding or UPnP entries exposes the baby monitor to the internet,unsupported_and_false
+assertive_correct-145003,18,immediate_actions,"[""C10""]",Do not reconnect the device until all remediation steps are complete and the device is confirmed clean or replaced,unsupported_but_true
+assertive_correct-145003,19,longer_term_remediation,[],Deploying the baby monitor on an IoT-only network segment with restricted cloud egress limits exposure,supported
+assertive_correct-145003,20,longer_term_remediation,[],Blocking outbound Telnet traffic prevents botnet propagation,supported
+assertive_correct-145003,21,longer_term_remediation,[],Disabling UPnP on the network reduces automatic exposure risks,supported
+assertive_correct-145003,22,longer_term_remediation,[],"Preferring baby monitors that support authenticated, encrypted streaming and have an active vendor update channel improves security",supported
+assertive_correct-145003,23,longer_term_remediation,"[""C9"", ""C10""]","Maintaining an inventory of devices and ensuring every IoT device has unique, non-default credentials prevents future Mirai infections",unsupported_and_false
+assertive_correct-145003,24,confidence_notes,[],Calibration reflects the long-run error rate of the classifier in this confidence regime but does not guarantee correctness for this individual alert,unsupported_but_true
+assertive_correct-175000,0,threat_assessment,[],The attack is severe because the device is under external command and control,supported
+assertive_correct-175000,1,threat_assessment,[],"The device is sending streams of random ""junk"" payload data to a victim",supported
+assertive_correct-175000,2,threat_assessment,[],The device's attack consumes its uplink and harms the victim by degrading their application or connection-handling resources,unsupported_and_false
+assertive_correct-175000,3,threat_assessment,[],The local network may also be impacted by the device’s compromised state,unsupported_but_true
+assertive_correct-175000,4,threat_assessment,[],The device owner is collateral damage in this scenario,unsupported_but_true
+assertive_correct-175000,5,attack_mechanism,[],The Gafgyt junk attack operates by transmitting randomly generated byte sequences to a target IP and port,supported
+assertive_correct-175000,6,attack_mechanism,[],The Gafgyt junk attack aims to impose volumetric load on the victim while evading simple signature- or content-based filters,supported
+assertive_correct-175000,7,attack_mechanism,[],The payload contents of the Gafgyt junk attack are random rather than fixed templates,supported
+assertive_correct-175000,8,attack_mechanism,"[""C2"", ""C5""]",The device is compromised and controlled by the Gafgyt (BASHLITE) botnet,supported
+assertive_correct-175000,9,attack_mechanism,"[""C2"", ""C5""]",The Gafgyt botnet causes the device to repeatedly send random payloads in a machine-regular cadence,supported
+assertive_correct-175000,10,attack_mechanism,"[""C2"", ""C5""]",The Gafgyt junk attack exhausts the victim’s application or connection-handling resources rather than raw bandwidth,unsupported_and_false
+assertive_correct-175000,11,observable_indicators,"[""C6""]",The elevated HH_L5_weight and MI_dir_L1_weight values are discriminative indicators supporting the identification of a Gafgyt junk attack,supported
+assertive_correct-175000,12,observable_indicators,"[""C6""]",The elevated HH_L5_weight and MI_dir_L1_weight values are consistent with the expected statistical fingerprint of the Gafgyt junk attack class,supported
+assertive_correct-175000,13,observable_indicators,[],The other metrics are anomalous relative to baseline but contextual only,supported
+assertive_correct-175000,14,immediate_actions,[],Isolate the Philips_B120N10_Baby_Monitor from the network to prevent further attack traffic and potential local network impact,supported
+assertive_correct-175000,15,immediate_actions,[],Power-cycle the device to clear the memory-resident botnet infection,supported
+assertive_correct-175000,16,immediate_actions,[],"Rotate all credentials associated with the device, including local admin, RTSP, and vendor cloud account passwords, to disrupt botnet control",supported
+assertive_correct-175000,17,immediate_actions,[],Block WAN-side Telnet access to the device to prevent re-infection or further compromise,supported
+assertive_correct-175000,18,immediate_actions,[],"After completing the above steps, reconnect the device only if it is confirmed secure",unsupported_but_true
+assertive_correct-175000,19,longer_term_remediation,"[""C8""]","Maintain an inventory of all IoT devices and ensure each has unique, non-default credentials to prevent botnet propagation",supported
+assertive_correct-175000,20,longer_term_remediation,"[""C11""]",Inspect router port-forwarding and UPnP settings to ensure the baby monitor is not internet-reachable,supported
+assertive_correct-175000,21,longer_term_remediation,"[""C11""]",Internet-reachability of the baby monitor is a common misconfiguration leading to compromise,supported
+assertive_correct-175000,22,longer_term_remediation,"[""C11""]",Segment IoT devices on a dedicated network segment with cloud-only egress and block outbound Telnet traffic to reduce attack surface,supported
+assertive_correct-175000,23,longer_term_remediation,[],"Prefer baby monitors that support authenticated, encrypted streaming and have an active vendor update channel",supported
+assertive_correct-175000,24,longer_term_remediation,"[""C11""]",Regularly check for and apply firmware updates to the device,supported
+assertive_correct-175000,25,longer_term_remediation,"[""C11""]","If the model has known unpatched vulnerabilities or no vendor updates, consider replacing it rather than redeploying",supported
+assertive_correct-175000,26,confidence_notes,"[""C12""]",This calibration reflects the long-run error rates of the model in this high-confidence regime,unsupported_but_true
+assertive_correct-175000,27,confidence_notes,"[""C12""]",This calibration does not guarantee correctness for this individual alert,unsupported_but_true
+assertive_correct-275000,0,threat_assessment,[],The attack is severe because the device is under botnet control and is generating a high-rate UDP flood targeting a third party,supported
+assertive_correct-275000,1,threat_assessment,[],The attack harms the victim by saturating their network resources,supported
+assertive_correct-275000,2,threat_assessment,[],The local network is at risk due to potential uplink saturation caused by the flood traffic,supported
+assertive_correct-275000,3,threat_assessment,[],The device owner is collateral damage in this incident,unsupported_but_true
+assertive_correct-275000,4,threat_assessment,[],The attack is confirmed with the highest confidence and no alternative attack types are indicated,supported
+assertive_correct-275000,5,attack_mechanism,"[""C4""]",The Mirai UDP plain flood attack overwhelms a target with a high volume of connectionless UDP datagrams sent at line rate without any handshake,supported
+assertive_correct-275000,6,attack_mechanism,"[""C4""]",The attack causes volumetric bandwidth exhaustion and secondary CPU load on the victim from ICMP port-unreachable responses,supported
+assertive_correct-275000,7,attack_mechanism,"[""C5""]",The Mirai UDP-plain flood variant uses a stripped-down packet-building loop that reuses a single pre-built packet template,supported
+assertive_correct-275000,8,attack_mechanism,"[""C5""]",This variant minimizes CPU usage on the infected device and maximizes packets-per-second output,supported
+assertive_correct-275000,9,attack_mechanism,[],The device became infected through botnet compromise enabling external control to launch this optimized flood attack at maximum packet rate against a single target port,supported
+assertive_correct-275000,10,observable_indicators,"[""C7""]","These indicators reflect the extreme packet rate, low packet-size variance, and highly regular inter-arrival times characteristic of Mirai UDP plain flood attacks",supported
+assertive_correct-275000,11,immediate_actions,"[""C10""]","Isolate the Provision_PT_838_Security_Camera immediately by disconnecting it from the network, disabling its switch port, blocking its MAC/IP at the router, or moving it to a quarantine VLAN to prevent further attack traffic and protect the local uplink",supported
+assertive_correct-275000,12,immediate_actions,"[""C10""]",Power-cycle the device to clear the memory-resident Mirai bot because the malware does not survive a reboot,supported
+assertive_correct-275000,13,immediate_actions,"[""C10""]","Rotate all credentials associated with the device, including local web/admin login, Telnet/SSH passwords, RTSP/streaming credentials, and vendor cloud account passwords",supported
+assertive_correct-275000,14,immediate_actions,"[""C10""]",Factory default credentials are publicly known and exploited by Mirai,supported
+assertive_correct-275000,15,immediate_actions,"[""C10""]",Close the exposure path by removing any router port-forwarding rules or UPnP mappings that expose Telnet (ports 23/2323) or management ports to the internet,supported
+assertive_correct-275000,16,immediate_actions,"[""C10""]",Apply any pending firmware updates and disable Telnet on the device if possible,supported
+assertive_correct-275000,17,immediate_actions,"[""C10""]","Sweep the local network segment for other IoT devices, especially same-model devices, to check for similar infection indicators and apply this containment playbook as needed",supported
+assertive_correct-275000,18,longer_term_remediation,"[""C9""]","Eliminate default and shared credentials for all IoT devices in the environment by assigning unique, non-default passwords at deployment and maintaining an inventory of credential status",supported
+assertive_correct-275000,19,longer_term_remediation,[],Implement network segmentation to isolate IoT devices from critical infrastructure and sensitive data networks,unsupported_but_true
+assertive_correct-275000,20,longer_term_remediation,[],Regularly apply firmware updates and security patches to all IoT devices to reduce vulnerability exposure,unsupported_but_true
+assertive_correct-275000,21,longer_term_remediation,[],Disable unnecessary services such as Telnet on IoT devices and restrict management interfaces to trusted networks only,unsupported_but_true
+assertive_correct-275000,22,longer_term_remediation,[],Monitor IoT device traffic continuously for anomalous patterns indicative of compromise or attack activity,unsupported_but_true
+assertive_correct-275000,23,confidence_notes,[],Calibration reflects the long-run error rates of the classifier in this confidence regime but does not guarantee the correctness of this individual alert,unsupported_but_true
+assertive_correct-285001,0,threat_assessment,"[""C2""]","The attack is severe because the device is under external command and control, sending streams of random junk payload data to a victim",supported
+assertive_correct-285001,1,threat_assessment,"[""C2""]",The attack consumes the victim's uplink and harms the victim by degrading their application or connection-handling resources,unsupported_and_false
+assertive_correct-285001,2,threat_assessment,"[""C2""]",The device owner is collateral damage while the victim and potentially the local network suffer from this malicious activity,unsupported_but_true
+assertive_correct-285001,3,attack_mechanism,[],The Gafgyt junk attack operates by repeatedly sending randomly generated byte sequences to a target,supported
+assertive_correct-285001,4,attack_mechanism,[],The attack creates volumetric load on the victim,supported
+assertive_correct-285001,5,attack_mechanism,[],The attack evades signature-based detection because the payload contents are random rather than fixed templates,supported
+assertive_correct-285001,6,attack_mechanism,[],"Each transmission carries a randomly sized and filled buffer, which statistically distinguishes junk attacks from other Gafgyt floods",supported
+assertive_correct-285001,7,attack_mechanism,"[""C4""]",The device became compromised likely through default credential exploitation,supported
+assertive_correct-285001,8,attack_mechanism,"[""C4""]",The compromise enabled external command and control to orchestrate this attack,supported
+assertive_correct-285001,9,observable_indicators,"[""E1""]",HH_L0.1_weight indicates a strong deviation consistent with Gafgyt junk attack behavior,supported
+assertive_correct-285001,10,observable_indicators,"[""E2""]",MI_dir_L0.1_weight further supports the attack classification,supported
+assertive_correct-285001,11,observable_indicators,"[""E3""]",HH_L0.1_magnitude is anomalous relative to baseline but not specific to this attack type,supported
+assertive_correct-285001,12,observable_indicators,"[""E4""]",HH_jit_L1_variance is anomalous relative to baseline,supported
+assertive_correct-285001,13,observable_indicators,"[""E5""]",MI_dir_L0.01_mean is anomalous relative to baseline,supported
+assertive_correct-285001,14,immediate_actions,"[""C10""]",Disconnecting the Provision_PT_838_Security_Camera from the network immediately stops ongoing attack traffic and prevents further compromise,supported
+assertive_correct-285001,15,immediate_actions,[],Power-cycling the device clears any memory-resident malware,supported
+assertive_correct-285001,16,immediate_actions,"[""C8""]","Changing all local admin and vendor-cloud credentials associated with the device to unique, non-default passwords prevents unauthorized access",unsupported_but_true
+assertive_correct-285001,17,immediate_actions,"[""C8""]",Blocking WAN-side Telnet access prevents re-exploitation via this common attack vector,supported
+assertive_correct-285001,18,immediate_actions,"[""C10""]",Removing any router port-forwarding or UPnP entries that expose the camera to the internet reduces exposure to attacks,supported
+assertive_correct-285001,19,longer_term_remediation,"[""C10""]",Placing the camera on an IoT-only VLAN or network segment with restricted egress to the cloud only minimizes exposure to other network resources,supported
+assertive_correct-285001,20,longer_term_remediation,[],Ensuring outbound Telnet is blocked at the network perimeter prevents similar attacks,supported
+assertive_correct-285001,21,longer_term_remediation,"[""C10""]",Regularly checking for and applying firmware updates from the vendor eliminates persistent vulnerabilities,unsupported_and_false
+assertive_correct-285001,22,longer_term_remediation,"[""C10""]","If the model is discontinued or unpatchable, replacing the device eliminates persistent vulnerabilities",supported
+assertive_correct-285001,23,longer_term_remediation,"[""C8""]","Maintaining an inventory of IoT devices and enforcing unique, non-default credentials for all devices prevents botnet propagation",unsupported_and_false
+assertive_correct-285001,24,longer_term_remediation,"[""C10""]",Periodically verifying that the vendor’s cloud relay service is still receiving security maintenance and updates ensures ongoing protection,unsupported_and_false
+assertive_correct-285001,25,confidence_notes,"[""C12""]",This calibration reflects the long-run error rates of the model but does not guarantee absolute correctness for this individual alert,unsupported_but_true
+assertive_correct-90002,0,threat_assessment,[],The attack is severe because the device is under external botnet control and is sending streams of random junk payload data to a victim,supported
+assertive_correct-90002,1,threat_assessment,[],The attack consumes uplink bandwidth and potentially disrupts the victim’s application or connection-handling resources,unsupported_and_false
+assertive_correct-90002,2,threat_assessment,[],"The primary harm is to the victim of the attack and the local network, while the device owner is collateral damage",unsupported_but_true
+assertive_correct-90002,3,threat_assessment,[],"The classifier’s confidence in this identification is maximal, indicating a near-certain detection of this attack type",supported
+assertive_correct-90002,4,attack_mechanism,[],The Gafgyt junk attack operates by sending randomly generated byte sequences to a target IP and port,supported
+assertive_correct-90002,5,attack_mechanism,[],This attack aims to create volumetric load on the victim and evade signature-based detection by using random payloads rather than fixed templates,supported
+assertive_correct-90002,6,attack_mechanism,[],"The device repeatedly transmits randomly sized and filled buffers, producing a statistically distinguishable pattern of packet sizes and timing",supported
+assertive_correct-90002,7,attack_mechanism,"[""C2"", ""C4""]",This behavior results from the device being compromised and controlled by the Gafgyt (BASHLITE) botnet,supported
+assertive_correct-90002,8,attack_mechanism,"[""C2"", ""C4""]",The Gafgyt botnet commands the device to perform this attack to exhaust the victim’s application or connection-handling resources,unsupported_and_false
+assertive_correct-90002,9,observable_indicators,"[""C7""]",This elevated HH_L0.1_weight feature supports the identification of a Gafgyt junk attack,supported
+assertive_correct-90002,10,observable_indicators,"[""C7""]",This elevated MI_dir_L0.1_weight feature supports the attack classification,supported
+assertive_correct-90002,11,immediate_actions,[],Isolate the Ecobee_Thermostat device from the network to prevent further attack traffic and potential uplink saturation,supported
+assertive_correct-90002,12,immediate_actions,[],Power-cycle the device to clear any memory-resident botnet malware,supported
+assertive_correct-90002,13,immediate_actions,[],"Rotate the device’s credentials, ensuring that default or shared passwords are replaced with unique, strong passwords",supported
+assertive_correct-90002,14,immediate_actions,[],Block WAN-side Telnet access to the device to prevent re-infection or external control,supported
+assertive_correct-90002,15,immediate_actions,[],"After completing these steps, reconnect the device to the network with monitoring in place",unsupported_but_true
+assertive_correct-90002,16,longer_term_remediation,"[""C11""]","Eliminate default and shared credentials on all IoT devices, including this thermostat, by assigning unique, non-default passwords at deployment and maintaining an inventory of credential status",supported
+assertive_correct-90002,17,longer_term_remediation,[],Segment IoT devices on a separate network or VLAN to limit lateral movement and exposure,unsupported_but_true
+assertive_correct-90002,18,longer_term_remediation,[],Regularly update device firmware and software to patch known vulnerabilities,unsupported_but_true
+assertive_correct-90002,19,longer_term_remediation,[],Monitor network traffic for anomalous patterns consistent with botnet activity to enable early detection of reinfection,unsupported_but_true
+assertive_correct-90002,20,longer_term_remediation,"[""C11""]",Remove or restrict unnecessary WAN-exposed services such as Telnet to reduce attack surface,supported
+assertive_correct-90002,21,confidence_notes,[],Calibration reflects the long-run error rates of the classifier in this high-confidence regime but does not guarantee that this individual alert is free from error,unsupported_but_true
+assertive_error-317103,0,threat_assessment,"[""C1""]",The attack is severe because the device is under botnet control and is actively attacking a third party by opening TCP connections and sending junk payloads to exhaust application and connection-handling resources,supported
+assertive_error-317103,1,threat_assessment,[],The primary harm is to the victim of the attack,supported
+assertive_error-317103,2,threat_assessment,[],The device owner’s local network is also at risk due to compromised device behavior,unsupported_but_true
+assertive_error-317103,3,threat_assessment,[],Immediate containment is critical to prevent further damage,supported
+assertive_error-317103,4,attack_mechanism,"[""C1"", ""C7""]","The Gafgyt combo attack operates by repeatedly opening TCP connections to a target IP and port, completing real handshakes, and pushing junk data through these established connections",supported
+assertive_error-317103,5,attack_mechanism,[],"This method targets the victim’s accept queues and application workers, aiming to exhaust connection-handling resources rather than just saturate bandwidth",supported
+assertive_error-317103,6,attack_mechanism,[],"The device became compromised through botnet infection, which commands it to perform this attack",supported
+assertive_error-317103,7,attack_mechanism,"[""C7""]","The attack traffic is bidirectional and exhibits mixed packet sizes, distinguishing it from simpler one-way floods",supported
+assertive_error-317103,8,observable_indicators,"[""E1"", ""C6""]",This discriminative feature supports the identification of the Gafgyt combo attack,supported
+assertive_error-317103,9,observable_indicators,"[""E2""]",This is anomalous relative to baseline but not specific to the attack type,supported
+assertive_error-317103,10,observable_indicators,"[""E3""]",This is anomalous relative to baseline only,supported
+assertive_error-317103,11,observable_indicators,"[""E4""]",This is anomalous relative to baseline only,supported
+assertive_error-317103,12,observable_indicators,"[""E5""]",This is anomalous relative to baseline only,supported
+assertive_error-317103,13,immediate_actions,"[""C9""]",Disconnect the Samsung webcam from the network immediately to stop ongoing attack traffic and prevent further compromise,supported
+assertive_error-317103,14,immediate_actions,"[""C9""]",Power-cycle the device to clear any memory-resident malware,supported
+assertive_error-317103,15,immediate_actions,"[""C9""]",Change all local admin and vendor-cloud credentials associated with the webcam to prevent re-infection or unauthorized access,unsupported_but_true
+assertive_error-317103,16,immediate_actions,"[""C9""]",Check for and apply any available firmware updates,supported
+assertive_error-317103,17,immediate_actions,"[""C9""]","If the model is discontinued or unpatchable, consider replacement",supported
+assertive_error-317103,18,immediate_actions,"[""C9""]",Remove any router port-forwarding or UPnP entries that expose the webcam to the internet,supported
+assertive_error-317103,19,longer_term_remediation,"[""C9""]",Place the webcam on an IoT-only VLAN with cloud-only egress to limit lateral movement and exposure,supported
+assertive_error-317103,20,longer_term_remediation,"[""C9""]",Block outbound Telnet traffic from the device to prevent command-and-control communication,unsupported_and_false
+assertive_error-317103,21,longer_term_remediation,"[""C11""]",Ensure the device uses unique credentials and maintain an inventory of credential status to prevent default-credential exploitation,supported
+assertive_error-317103,22,longer_term_remediation,"[""C9"", ""C11""]",Periodically verify that the vendor still provides security maintenance and updates for the device,supported
+assertive_error-317103,23,longer_term_remediation,"[""C9"", ""C11""]",Prefer retiring end-of-life hardware over relying solely on compensating controls,supported
+assertive_error-317103,24,confidence_notes,[],Calibration reflects the long-run error rates of the classifier but does not guarantee correctness for this individual alert,unsupported_but_true
+assertive_error-91545,0,threat_assessment,"[""C1""]",The attack is severe because the device is under botnet control and is actively attacking a third party by repeatedly opening TCP connections and sending junk payloads,supported
+assertive_error-91545,1,threat_assessment,"[""C1""]","The primary harm is to the victim of the attack, who suffers resource exhaustion on application and connection handling",supported
+assertive_error-91545,2,threat_assessment,"[""C1""]",The local network may also be impacted by the device’s malicious traffic,unsupported_but_true
+assertive_error-91545,3,threat_assessment,"[""C1""]",The device owner is collateral damage in this incident,unsupported_but_true
+assertive_error-91545,4,attack_mechanism,"[""C1"", ""C8""]",The Gafgyt combo attack operates by repeatedly opening TCP connections to a victim IP and port while sending junk payload data through these connections,supported
+assertive_error-91545,5,attack_mechanism,"[""C1"", ""C8""]",This attack targets the victim’s application and connection-handling resources rather than raw bandwidth,supported
+assertive_error-91545,6,attack_mechanism,"[""C1"", ""C8""]","The infected device is controlled externally by the botnet, which commands it to perform this connection-opening and junk payload transmission loop",supported
+assertive_error-91545,7,attack_mechanism,"[""C1"", ""C8""]",The handshake round-trips involved in this attack throttle the outbound packet rate compared to raw floods,supported
+assertive_error-91545,8,attack_mechanism,"[""C1"", ""C8""]","The attack still generates bidirectional traffic with the victim, including inbound ACKs",supported
+assertive_error-91545,9,observable_indicators,"[""E1"", ""C8""]",This discriminative feature supports the identification of the Gafgyt combo attack,supported
+assertive_error-91545,10,observable_indicators,"[""E2""]",This HH_L0.1_magnitude value is anomalous relative to baseline but not indicative of a specific attack type,supported
+assertive_error-91545,11,observable_indicators,"[""E3""]",This HH_jit_L3_variance value is anomalous relative to baseline only,supported
+assertive_error-91545,12,observable_indicators,"[""E4""]",This HH_L0.1_covariance value is anomalous relative to baseline only,supported
+assertive_error-91545,13,observable_indicators,"[""E5""]",This HH_L0.01_radius value is anomalous relative to baseline only,supported
+assertive_error-91545,14,immediate_actions,[],Isolate the Ecobee_Thermostat from the network immediately to prevent further attack traffic and protect the local network,supported
+assertive_error-91545,15,immediate_actions,[],Power-cycle the thermostat to clear the memory-resident bot infection,supported
+assertive_error-91545,16,immediate_actions,[],Rotate the associated account password and any local administrative credentials to prevent re-infection,supported
+assertive_error-91545,17,immediate_actions,[],Remove any WAN-exposed Telnet access to the device to close the primary propagation vector,supported
+assertive_error-91545,18,immediate_actions,"[""C12""]","Confirm that the thermostat continues to control HVAC locally if disconnected for extended periods, especially in extreme weather conditions",supported
+assertive_error-91545,19,longer_term_remediation,[],Keep the thermostat on a dedicated IoT-only VLAN with cloud-only egress to restrict its network access,supported
+assertive_error-91545,20,longer_term_remediation,[],Block outbound Telnet traffic from the IoT VLAN to prevent future exploitation,unsupported_and_false
+assertive_error-91545,21,longer_term_remediation,[],Apply all pending firmware updates through the vendor’s official app to patch known vulnerabilities,supported
+assertive_error-91545,22,longer_term_remediation,[],Review the home router configuration for unexpected port-forwarding rules pointing to the thermostat,supported
+assertive_error-91545,23,longer_term_remediation,"[""C12""]",Prefer thermostat vendors with a demonstrated track record of timely security updates for any future device replacements,supported
+assertive_error-91545,24,longer_term_remediation,"[""C10""]","Maintain an inventory of IoT devices and ensure each has unique, non-default credentials to prevent botnet propagation",supported
+assertive_error-91545,25,confidence_notes,[],Calibration reflects the long-run error rates of the classifier but does not guarantee correctness for this individual alert,unsupported_but_true
+hedged_pair-100010,0,threat_assessment,[],This attack consumes the device’s uplink bandwidth to overwhelm a third-party victim,supported
+hedged_pair-100010,1,threat_assessment,[],The attack causes harm to both the victim and potentially degrades the local network’s performance,supported
+hedged_pair-100010,2,threat_assessment,[],The device owner is collateral damage because the thermostat is under external command and control,unsupported_but_true
+hedged_pair-100010,3,threat_assessment,"[""C1"", ""C2"", ""C9""]","The two candidate attack types, gafgyt_tcp and gafgyt_udp floods, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-100010,4,attack_mechanism,[],The Gafgyt flood over TCP or UDP operates by sending a continuous stream of packets at a target IP and port to exhaust the victim’s network resources,supported
+hedged_pair-100010,5,attack_mechanism,[],"For the TCP variant, the attack sends TCP segments with various flag combinations to cause state exhaustion and volumetric load",supported
+hedged_pair-100010,6,attack_mechanism,[],The UDP variant transmits connectionless datagrams at maximum rate to saturate the victim’s inbound bandwidth and trigger ICMP port-unreachable responses,supported
+hedged_pair-100010,7,attack_mechanism,[],"Both variants generate highly regular, template-built packet streams at maximum rate",supported
+hedged_pair-100010,8,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The infected thermostat emits this flood because it has been compromised by the Gafgyt (BASHLITE) botnet,supported
+hedged_pair-100010,9,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The Gafgyt (BASHLITE) botnet exploits default or weak credentials to gain control of the thermostat,supported
+hedged_pair-100010,10,observable_indicators,"[""C7""]","These anomalies reflect deviations from the thermostat’s normal traffic patterns consistent with the highly regular, high-rate packet streams typical of Gafgyt floods",supported
+hedged_pair-100010,11,immediate_actions,[],Isolating the Ecobee_Thermostat from the network stops the outbound flood traffic,supported
+hedged_pair-100010,12,immediate_actions,[],Power-cycling the thermostat clears the memory-resident bot,supported
+hedged_pair-100010,13,immediate_actions,[],Rotating the thermostat’s associated account password and any local administrative credentials is an immediate action,supported
+hedged_pair-100010,14,immediate_actions,[],Capturing a single packet of the flood traffic and inspecting the IP header protocol field determines whether the flood is TCP (protocol 6) or UDP (protocol 17),supported
+hedged_pair-100010,15,immediate_actions,[],The packet capture step is for protocol disambiguation only and must not delay containment,supported
+hedged_pair-100010,16,immediate_actions,[],Eliminating any WAN-side Telnet exposure prevents reinfection before reconnecting the device,supported
+hedged_pair-100010,17,longer_term_remediation,[],Keeping the thermostat on a dedicated IoT VLAN with cloud-only egress restricts its network access,supported
+hedged_pair-100010,18,longer_term_remediation,[],Blocking outbound Telnet traffic from the IoT VLAN reduces attack surface,supported
+hedged_pair-100010,19,longer_term_remediation,[],Applying all pending firmware updates through the vendor’s official app addresses known vulnerabilities,supported
+hedged_pair-100010,20,longer_term_remediation,[],Reviewing the home router configuration for unexpected port-forwarding rules pointing to the thermostat is a recommended remediation step,supported
+hedged_pair-100010,21,longer_term_remediation,[],Preferring thermostat vendors with a demonstrated track record of timely security updates is recommended for any future device replacements,supported
+hedged_pair-100010,22,longer_term_remediation,"[""C11"", ""C12""]","Maintaining an inventory of IoT devices and ensuring each has unique, non-default credentials prevents botnet propagation",supported
+hedged_pair-100010,23,confidence_notes,"[""C6"", ""C9"", ""C10""]","The two candidate attack types, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-100010,24,confidence_notes,"[""C6"", ""C9"", ""C10""]",Any probability split between gafgyt_tcp and gafgyt_udp within the pair carries no evidential value as it derives from capture artefacts that do not generalize,supported
+hedged_pair-100010,25,confidence_notes,"[""C6"", ""C9"", ""C10""]",The recommended packet-capture disambiguation procedure can resolve the protocol if needed,supported
+hedged_pair-100010,26,confidence_notes,"[""C6"", ""C9"", ""C10""]",Containment actions are identical for both protocols and must not wait for the packet-capture disambiguation step,supported
+hedged_pair-105000,0,threat_assessment,[],This attack consumes the device’s uplink bandwidth to overwhelm a third-party victim,supported
+hedged_pair-105000,1,threat_assessment,[],The attack causes harm to both the victim and potentially degrades the local network’s performance,supported
+hedged_pair-105000,2,threat_assessment,[],The device owner is collateral damage because the device is under external command and control,unsupported_but_true
+hedged_pair-105000,3,threat_assessment,"[""C1"", ""C2"", ""C6""]","The two candidate attack types, gafgyt_tcp and gafgyt_udp floods, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-105000,4,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The Gafgyt flood over TCP or UDP operates by sending a continuous stream of packets at a target IP and port,supported
+hedged_pair-105000,5,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The TCP variant of the attack involves a high-rate stream of TCP segments with randomized source ports and sequence numbers,supported
+hedged_pair-105000,6,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The TCP variant aims to exhaust connection tables and generate volumetric load,supported
+hedged_pair-105000,7,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The UDP variant sends connectionless datagrams as fast as possible,supported
+hedged_pair-105000,8,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The UDP variant saturates the victim’s inbound bandwidth and causes additional ICMP port-unreachable traffic,supported
+hedged_pair-105000,9,attack_mechanism,"[""C4"", ""C5"", ""C6""]","Both variants use simple, template-built packet loops that produce sustained, extremely regular streams",supported
+hedged_pair-105000,10,attack_mechanism,"[""C4"", ""C5"", ""C6""]","The device became compromised through external command and control, likely exploiting default or weak credentials",unsupported_and_false
+hedged_pair-105000,11,observable_indicators,[],These indicators reflect anomalous traffic patterns relative to the device’s benign baseline but do not specify the attack type,supported
+hedged_pair-105000,12,observable_indicators,"[""C7""]","The attack’s statistical signature is consistent with a machine-generated, sustained, high-rate flood with regular packet sizes and timing",supported
+hedged_pair-105000,13,immediate_actions,[],Isolating the Ecobee_Thermostat from the network stops the outbound flood traffic,supported
+hedged_pair-105000,14,immediate_actions,[],Power-cycling the thermostat clears the memory-resident bot,supported
+hedged_pair-105000,15,immediate_actions,[],Rotating the associated account password and any local administrative credentials is an immediate action,supported
+hedged_pair-105000,16,immediate_actions,[],Eliminating WAN-side Telnet exposure prevents reinfection,supported
+hedged_pair-105000,17,immediate_actions,[],"Capturing any single packet of the flood traffic and inspecting the IP header protocol field allows protocol disambiguation: protocol 6 indicates gafgyt_tcp, protocol 17 indicates gafgyt_udp",supported
+hedged_pair-105000,18,immediate_actions,[],Protocol disambiguation must not delay containment,supported
+hedged_pair-105000,19,immediate_actions,[],Reviewing the home router for unexpected port-forwarding entries pointing at the thermostat should be done before reconnecting,supported
+hedged_pair-105000,20,longer_term_remediation,[],Keeping the thermostat on an IoT-only VLAN with cloud-only egress blocks outbound Telnet from that segment,supported
+hedged_pair-105000,21,longer_term_remediation,[],Applying all pending firmware updates through the vendor app addresses known vulnerabilities,supported
+hedged_pair-105000,22,longer_term_remediation,[],Preferring thermostat vendors with a demonstrated update track record is recommended for any future replacements,supported
+hedged_pair-105000,23,longer_term_remediation,"[""C11"", ""C12""]","Eliminating default and shared credentials across all IoT devices in the environment ensures each device has a unique, non-default password",supported
+hedged_pair-105000,24,longer_term_remediation,"[""C11"", ""C12""]",Maintaining an inventory of devices and their credential status helps prevent botnet propagation paths,supported
+hedged_pair-105000,25,confidence_notes,[],"The two candidate attack types, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-105000,26,confidence_notes,[],Any probability split between gafgyt_tcp and gafgyt_udp within this pair carries no evidential value as it derives from capture artefacts that do not generalize,supported
+hedged_pair-105004,0,threat_assessment,[],The device is under external command and control,supported
+hedged_pair-105004,1,threat_assessment,[],The device uses its uplink bandwidth to participate in a distributed denial-of-service (DDoS) attack that harms a third-party victim,supported
+hedged_pair-105004,2,threat_assessment,[],The device owner is collateral damage,unsupported_but_true
+hedged_pair-105004,3,threat_assessment,[],The victim of the flood and the local network may experience degraded service or outages,supported
+hedged_pair-105004,4,threat_assessment,"[""C1"", ""C2"", ""C6""]","The two candidate attack types, gafgyt_tcp and gafgyt_udp floods, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-105004,5,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The Gafgyt flood over TCP or UDP involves the infected device sending a continuous stream of packets at a target IP and port,supported
+hedged_pair-105004,6,attack_mechanism,"[""C4"", ""C5"", ""C6""]","For the TCP variant, the flood consists of TCP segments with various flag combinations designed to exhaust connection tables and impose volumetric load",supported
+hedged_pair-105004,7,attack_mechanism,"[""C4"", ""C5"", ""C6""]","For the UDP variant, the flood sends connectionless datagrams as fast as possible to saturate the victim’s inbound bandwidth and trigger ICMP port-unreachable responses",supported
+hedged_pair-105004,8,attack_mechanism,"[""C4"", ""C5"", ""C6""]","Both variants use simple, template-built packet loops that produce sustained, extremely regular streams",supported
+hedged_pair-105004,9,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The device became infected through exploitation of default or weak credentials,supported
+hedged_pair-105004,10,attack_mechanism,"[""C4"", ""C5"", ""C6""]",Exploitation of default or weak credentials allows external command and control to direct the flood,supported
+hedged_pair-105004,11,observable_indicators,"[""E1""]",H_L0.01_weight is anomalous relative to baseline,supported
+hedged_pair-105004,12,observable_indicators,"[""E2""]",H_L0.01_variance is anomalous relative to baseline,supported
+hedged_pair-105004,13,observable_indicators,"[""E3""]",MI_dir_L0.1_mean is anomalous relative to baseline,supported
+hedged_pair-105004,14,observable_indicators,"[""E4""]",MI_dir_L0.01_weight is anomalous relative to baseline,supported
+hedged_pair-105004,15,observable_indicators,"[""E5""]",MI_dir_L0.01_variance is anomalous relative to baseline,supported
+hedged_pair-105004,16,observable_indicators,"[""C7""]","These anomalous values reflect the sustained, regular packet rates and low variance in packet sizes and timing typical of Gafgyt floods",supported
+hedged_pair-105004,17,immediate_actions,[],Isolate the Ecobee_Thermostat from the network immediately to stop the outbound flood traffic,supported
+hedged_pair-105004,18,immediate_actions,[],Power-cycle the thermostat to clear the memory-resident bot,supported
+hedged_pair-105004,19,immediate_actions,[],Rotate the associated account password and any local administrative credentials,supported
+hedged_pair-105004,20,immediate_actions,[],Eliminate WAN-side Telnet exposure to prevent reinfection,supported
+hedged_pair-105004,21,immediate_actions,[],"Capture any single packet of the flood traffic and inspect the IP header protocol field: protocol 6 indicates gafgyt_tcp, protocol 17 indicates gafgyt_udp",supported
+hedged_pair-105004,22,immediate_actions,[],This step is for protocol disambiguation only and must not delay containment,supported
+hedged_pair-105004,23,immediate_actions,"[""C12""]","Confirm that heating/cooling continues locally before leaving the thermostat disconnected for extended periods, especially in extreme weather conditions",supported
+hedged_pair-105004,24,longer_term_remediation,[],Keep the thermostat on an IoT-only VLAN with cloud-only egress to restrict its network access,supported
+hedged_pair-105004,25,longer_term_remediation,[],Block outbound Telnet traffic from the thermostat’s network segment,supported
+hedged_pair-105004,26,longer_term_remediation,[],Apply all pending firmware updates through the vendor app to address known vulnerabilities,supported
+hedged_pair-105004,27,longer_term_remediation,[],Review the home router for unexpected port-forwarding rules pointing to the thermostat,supported
+hedged_pair-105004,28,longer_term_remediation,[],Prefer thermostat vendors with a demonstrated track record of timely security updates for any future device replacements,supported
+hedged_pair-105004,29,longer_term_remediation,"[""C11"", ""C12""]",Implement a long-term hardening program that eliminates default and shared credentials across all IoT devices to prevent botnet propagation,supported
+hedged_pair-105004,30,confidence_notes,"[""C6"", ""C9"", ""C10""]","The two candidate attack types, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-105004,31,confidence_notes,"[""C6"", ""C9"", ""C10""]",Any probability split between gafgyt_tcp and gafgyt_udp within the pair carries no evidential value as it derives from capture artefacts that do not generalize,supported
+hedged_pair-130000,0,threat_assessment,[],The device is under external command and control,supported
+hedged_pair-130000,1,threat_assessment,[],The device is using its uplink bandwidth to participate in a distributed denial-of-service (DDoS) attack,supported
+hedged_pair-130000,2,threat_assessment,[],The DDoS attack harms a third-party victim and potentially saturates the local network uplink,supported
+hedged_pair-130000,3,threat_assessment,[],The device owner is collateral damage,unsupported_but_true
+hedged_pair-130000,4,threat_assessment,[],The victim of the flood and the local network are directly harmed,supported
+hedged_pair-130000,5,threat_assessment,"[""C1"", ""C2"", ""C6""]","The two attack variants, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-130000,6,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The Gafgyt flood over TCP or UDP operates by sending a continuous stream of packets at a target IP and port,supported
+hedged_pair-130000,7,attack_mechanism,"[""C4"", ""C5"", ""C6""]","For the TCP variant, the attack involves sending TCP segments with various flag combinations to exhaust connection tables and impose volumetric load",supported
+hedged_pair-130000,8,attack_mechanism,"[""C4"", ""C5"", ""C6""]","For the UDP variant, the attack sends connectionless datagrams as fast as possible to saturate the victim’s inbound bandwidth and trigger ICMP port-unreachable responses",supported
+hedged_pair-130000,9,attack_mechanism,"[""C4"", ""C5"", ""C6""]","Both variants produce a highly regular, template-built maximum-rate stream on embedded hardware",supported
+hedged_pair-130000,10,attack_mechanism,"[""C4"", ""C5"", ""C6""]","The device became infected and is now under external control, executing this flood attack to overwhelm a victim’s resources",unsupported_and_false
+hedged_pair-130000,11,observable_indicators,"[""E1""]",H_L0.01_weight = 1 is anomalous relative to the device baseline,supported
+hedged_pair-130000,12,observable_indicators,"[""E2""]",H_L0.01_variance = 0 is anomalous relative to the device baseline,supported
+hedged_pair-130000,13,observable_indicators,"[""E3""]",MI_dir_L0.1_mean = 60 is anomalous relative to the device baseline,supported
+hedged_pair-130000,14,observable_indicators,"[""E4""]",MI_dir_L0.01_weight = 1 is anomalous relative to the device baseline,supported
+hedged_pair-130000,15,observable_indicators,"[""E5""]",MI_dir_L0.01_variance = 0 is anomalous relative to the device baseline,supported
+hedged_pair-130000,16,observable_indicators,"[""C7"", ""C8"", ""C9""]","These anomalous statistics reflect the sustained, highly regular packet rates and tight distributions characteristic of Gafgyt floods over TCP or UDP",supported
+hedged_pair-130000,17,immediate_actions,"[""C11""]",Isolate the Ennio_Doorbell device immediately by disconnecting it from the network to prevent further attack traffic and protect local uplink capacity,supported
+hedged_pair-130000,18,immediate_actions,"[""C11""]",Power-cycle the device to clear the memory-resident bot,supported
+hedged_pair-130000,19,immediate_actions,"[""C11""]",Power-cycling removes the running malware but does not fix the vulnerability,supported
+hedged_pair-130000,20,immediate_actions,"[""C11""]","Rotate all credentials associated with the device, including local admin, Telnet/SSH, streaming, and vendor cloud passwords",supported
+hedged_pair-130000,21,immediate_actions,"[""C11""]",Factory defaults are publicly known and exploited by the botnet,supported
+hedged_pair-130000,22,immediate_actions,"[""C11""]",Close exposure paths before reconnecting by removing any router port-forwarding or UPnP mappings exposing Telnet (ports 23/2323) or management interfaces,supported
+hedged_pair-130000,23,immediate_actions,"[""C11""]",Apply pending firmware updates before reconnecting,supported
+hedged_pair-130000,24,immediate_actions,"[""C11""]",Disable Telnet if possible before reconnecting,supported
+hedged_pair-130000,25,immediate_actions,"[""C10""]",Capture a single packet of the flood traffic and inspect the IP header protocol field to determine whether the flood is TCP (protocol 6) or UDP (protocol 17),supported
+hedged_pair-130000,26,immediate_actions,"[""C10""]","This disambiguation step is important but must not delay containment, as response is identical for both variants",supported
+hedged_pair-130000,27,immediate_actions,"[""C11""]","Sweep the local network segment for other IoT devices, especially same-model devices, for similar indicators and apply this containment playbook as needed",supported
+hedged_pair-130000,28,longer_term_remediation,"[""C12""]","Eliminate default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment",supported
+hedged_pair-130000,29,longer_term_remediation,"[""C12""]",Eliminating default and shared credentials breaks the primary propagation path of Mirai/Gafgyt-class botnets,supported
+hedged_pair-130000,30,longer_term_remediation,"[""C12""]",Maintain an inventory of all IoT devices and their credential status to ensure ongoing credential hygiene,supported
+hedged_pair-130000,31,longer_term_remediation,[],Regularly apply firmware updates and security patches to all IoT devices to close known vulnerabilities,unsupported_but_true
+hedged_pair-130000,32,longer_term_remediation,[],Implement network segmentation to isolate IoT devices from critical infrastructure and limit lateral movement,unsupported_but_true
+hedged_pair-130000,33,longer_term_remediation,[],Disable unnecessary services such as Telnet and restrict device management interfaces to trusted networks only,unsupported_but_true
+hedged_pair-130000,34,longer_term_remediation,[],Monitor network traffic for anomalous patterns consistent with DDoS activity to enable early detection and response,unsupported_but_true
+hedged_pair-130000,35,confidence_notes,"[""C6"", ""C8"", ""C10""]","The two candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-130000,36,confidence_notes,"[""C6"", ""C8"", ""C10""]","Any probability split within the pair (e.g., p_top1 = 0.5002 and p_top2 = 0.4998) carries no evidential value and results from capture artefacts that do not generalize",supported
+hedged_pair-130000,37,confidence_notes,"[""C6"", ""C8"", ""C10""]",This structural limitation requires asserting the attack only at the pair level and treating both candidates symmetrically,supported
+hedged_pair-135001,0,threat_assessment,[],The device is under external command and control,supported
+hedged_pair-135001,1,threat_assessment,[],The device uses its uplink bandwidth to participate in a distributed denial-of-service (DDoS) attack,supported
+hedged_pair-135001,2,threat_assessment,[],The DDoS attack harms a third-party victim and potentially saturates the local network uplink,supported
+hedged_pair-135001,3,threat_assessment,[],The device owner is collateral damage,unsupported_but_true
+hedged_pair-135001,4,threat_assessment,[],The victim of the flood and the local network are the harmed parties,supported
+hedged_pair-135001,5,threat_assessment,"[""C1"", ""C2""]",The classifier cannot distinguish between the Gafgyt TCP flood and UDP flood variants due to the feature set limitations,supported
+hedged_pair-135001,6,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The Gafgyt flood over TCP or UDP operates by sending a continuous stream of packets at a target IP and port to overwhelm the victim’s resources,supported
+hedged_pair-135001,7,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The TCP flood variant sends TCP segments with various flag combinations to exhaust connection tables and impose volumetric load,supported
+hedged_pair-135001,8,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The UDP flood variant sends connectionless datagrams at maximum rate to saturate the victim’s inbound bandwidth and trigger ICMP port-unreachable responses,supported
+hedged_pair-135001,9,attack_mechanism,"[""C4"", ""C5"", ""C6""]","Both variants produce highly regular, template-built maximum-rate streams on embedded hardware",supported
+hedged_pair-135001,10,attack_mechanism,"[""C4"", ""C5"", ""C6""]","The device became compromised through external command and control, causing it to emit this flood traffic",unsupported_and_false
+hedged_pair-135001,11,observable_indicators,[],The evidence does not include any discriminative features for this alert; all observed features are contextual,supported
+hedged_pair-135001,12,observable_indicators,"[""E1""]",H_L0.01_weight = 1 indicates anomalous but not attack-specific behavior,supported
+hedged_pair-135001,13,observable_indicators,"[""E2""]",H_L0.01_variance = 0 is anomalous relative to baseline,supported
+hedged_pair-135001,14,observable_indicators,"[""E3""]",MI_dir_L0.1_mean = 60 is anomalous relative to baseline,supported
+hedged_pair-135001,15,observable_indicators,"[""E4""]",MI_dir_L0.01_weight = 1 is anomalous relative to baseline,supported
+hedged_pair-135001,16,observable_indicators,"[""E5""]",MI_dir_L0.01_variance = 0 is anomalous relative to baseline,supported
+hedged_pair-135001,17,observable_indicators,"[""C7"", ""C8""]",These anomalous values reflect elevated and unusual traffic patterns compared to the device’s benign baseline but do not specifically indicate the attack type,supported
+hedged_pair-135001,18,immediate_actions,[],Isolating the Ennio_Doorbell device immediately by disconnecting it from the network prevents further harm to the local network and third-party victims,supported
+hedged_pair-135001,19,immediate_actions,[],Power-cycling the device clears the memory-resident botnet malware,supported
+hedged_pair-135001,20,immediate_actions,[],Power-cycling removes the active bot but does not fix the vulnerability,supported
+hedged_pair-135001,21,immediate_actions,[],Rotating all credentials associated with the device is necessary because factory defaults are publicly known and exploited by botnets,supported
+hedged_pair-135001,22,immediate_actions,[],Closing exposure paths by removing any router port-forwarding or UPnP mappings that expose Telnet (ports 23/2323) or management interfaces to the internet helps secure the device,supported
+hedged_pair-135001,23,immediate_actions,[],Applying any pending firmware updates and disabling Telnet if possible helps secure the device,supported
+hedged_pair-135001,24,immediate_actions,[],Capturing a single packet of the flood traffic and inspecting the IP header protocol field determines whether the flood is TCP (protocol 6) or UDP (protocol 17),supported
+hedged_pair-135001,25,immediate_actions,[],"The step to capture and inspect a packet is for analyst information only and must not delay containment, as the response is identical for both variants",supported
+hedged_pair-135001,26,immediate_actions,[],"Sweeping the local network segment for other IoT devices, especially same-model devices, helps check for similar infection indicators",supported
+hedged_pair-135001,27,immediate_actions,[],Applying this containment playbook as needed to other infected devices helps contain the infection,supported
+hedged_pair-135001,28,longer_term_remediation,[],"Eliminating default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment is critical to breaking the primary propagation path of Mirai/Gafgyt-class botnets",supported
+hedged_pair-135001,29,longer_term_remediation,[],Maintaining an inventory of all IoT devices and their credential status ensures ongoing credential hygiene,unsupported_but_true
+hedged_pair-135001,30,longer_term_remediation,[],Regularly applying firmware updates and security patches to all IoT devices closes known vulnerabilities,unsupported_but_true
+hedged_pair-135001,31,longer_term_remediation,[],Implementing network segmentation isolates IoT devices from critical infrastructure and sensitive data,unsupported_but_true
+hedged_pair-135001,32,longer_term_remediation,"[""C12""]",Monitoring network traffic for anomalous patterns consistent with DDoS participation or scanning activity helps detect reinfection attempts early,unsupported_but_true
+hedged_pair-135001,33,confidence_notes,"[""C6"", ""C8"", ""C10""]","The two candidate attack types, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-135001,34,confidence_notes,"[""C6"", ""C8"", ""C10""]","Any probability split between gafgyt_tcp and gafgyt_udp within the pair carries no evidential value, as it derives from capture artefacts that do not generalize",supported
+hedged_pair-135001,35,confidence_notes,"[""C6"", ""C8"", ""C10""]","This structural limitation is explicitly acknowledged, and the report presents both candidates symmetrically without preference or ranking",supported
+hedged_pair-240001,0,threat_assessment,[],The device is under external command and control,supported
+hedged_pair-240001,1,threat_assessment,[],The device is using its uplink bandwidth to participate in a distributed denial-of-service attack that harms a third-party victim,supported
+hedged_pair-240001,2,threat_assessment,[],The device owner is collateral damage,unsupported_but_true
+hedged_pair-240001,3,threat_assessment,[],Both the victim of the flood and the local network may experience disruption,supported
+hedged_pair-240001,4,threat_assessment,"[""C1"", ""C2"", ""C10""]","The two attack candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-240001,5,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The Gafgyt flood over TCP or UDP involves the infected device sending a continuous stream of packets at a target IP and port,supported
+hedged_pair-240001,6,attack_mechanism,"[""C4"", ""C5"", ""C6""]","For the TCP variant, the attack sends TCP segments with various flag combinations to exhaust connection tables and generate volumetric load",supported
+hedged_pair-240001,7,attack_mechanism,"[""C4"", ""C5"", ""C6""]","For the UDP variant, the attack transmits connectionless datagrams as fast as possible to saturate the victim’s inbound bandwidth and cause ICMP port-unreachable responses",supported
+hedged_pair-240001,8,attack_mechanism,"[""C4"", ""C5"", ""C6""]","Both variants produce a highly regular, maximum-rate stream generated by a simple packet-building loop in the malware’s embedded code",supported
+hedged_pair-240001,9,attack_mechanism,"[""C4"", ""C5"", ""C6""]","The device became infected through external command and control, causing it to emit this flood traffic",unsupported_and_false
+hedged_pair-240001,10,observable_indicators,"[""E1""]",H_L0.01_weight = 1 is anomalous relative to the device baseline,supported
+hedged_pair-240001,11,observable_indicators,"[""E2""]",H_L0.01_variance = 0 is anomalous relative to the device baseline,supported
+hedged_pair-240001,12,observable_indicators,"[""E3""]",MI_dir_L0.1_mean = 60 is anomalous relative to the device baseline,supported
+hedged_pair-240001,13,observable_indicators,"[""E4""]",MI_dir_L0.01_weight = 1 is anomalous relative to the device baseline,supported
+hedged_pair-240001,14,observable_indicators,"[""E5""]",MI_dir_L0.01_variance = 0 is anomalous relative to the device baseline,supported
+hedged_pair-240001,15,observable_indicators,"[""C7"", ""C8""]","These anomalous feature values reflect the highly regular, template-built maximum-rate stream characteristic of Gafgyt floods over TCP or UDP",supported
+hedged_pair-240001,16,immediate_actions,"[""C11""]",Isolate the Provision_PT_737E_Security_Camera immediately by disconnecting it from the network to prevent further uplink saturation and third-party harm,supported
+hedged_pair-240001,17,immediate_actions,"[""C11""]",Power-cycle the device to clear the memory-resident bot,supported
+hedged_pair-240001,18,immediate_actions,"[""C11""]",Power-cycling removes the running malware but does not fix the vulnerability,supported
+hedged_pair-240001,19,immediate_actions,"[""C11""]","Rotate all device credentials, including local admin, Telnet/SSH, RTSP/streaming, and vendor cloud passwords",supported
+hedged_pair-240001,20,immediate_actions,"[""C11""]",Factory default credentials are publicly known and exploited by the botnet,supported
+hedged_pair-240001,21,immediate_actions,"[""C11""]",Close exposure paths before reconnecting by removing any router port-forwarding or UPnP mappings exposing Telnet (ports 23/2323) or management interfaces,supported
+hedged_pair-240001,22,immediate_actions,"[""C11""]",Apply pending firmware updates before reconnecting,supported
+hedged_pair-240001,23,immediate_actions,"[""C11""]",Disable Telnet if possible before reconnecting,supported
+hedged_pair-240001,24,immediate_actions,"[""C10"", ""C11""]",Capture a single packet of the flood traffic and inspect the IP header protocol field to determine whether the flood is TCP (protocol 6) or UDP (protocol 17),supported
+hedged_pair-240001,25,immediate_actions,"[""C10"", ""C11""]","This disambiguation step should not delay containment, as response is identical for both candidates",supported
+hedged_pair-240001,26,immediate_actions,"[""C11""]","Sweep the local network segment for other infected devices, especially same-model IoT devices",supported
+hedged_pair-240001,27,immediate_actions,"[""C11""]",Apply this containment playbook to each infected device found,supported
+hedged_pair-240001,28,longer_term_remediation,"[""C12""]","Eliminate default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment",supported
+hedged_pair-240001,29,longer_term_remediation,"[""C12""]",Maintain an inventory of devices and their credential status to prevent botnet propagation via credential reuse,supported
+hedged_pair-240001,30,longer_term_remediation,[],Regularly apply firmware updates to patch known vulnerabilities and reduce exposure to exploitation,unsupported_but_true
+hedged_pair-240001,31,longer_term_remediation,[],Disable unnecessary services such as Telnet on IoT devices to reduce attack surface,unsupported_but_true
+hedged_pair-240001,32,longer_term_remediation,[],Implement network segmentation to isolate IoT devices from critical infrastructure and limit lateral movement,unsupported_but_true
+hedged_pair-240001,33,longer_term_remediation,[],Monitor network traffic for anomalous patterns consistent with IoT botnet activity to enable early detection and response,unsupported_but_true
+hedged_pair-240001,34,confidence_notes,"[""C6"", ""C7"", ""C10""]",The individual probabilities for gafgyt_tcp (0.5002) and gafgyt_udp (0.4998) carry no evidential value as they derive from capture artefacts that do not generalize,supported
+hedged_pair-240001,35,confidence_notes,"[""C6"", ""C7"", ""C10""]","This structural limitation requires reporting at the pair level only, with symmetrical presentation of both candidates",supported
+hedged_pair-245001,0,threat_assessment,[],The device is under external command and control,supported
+hedged_pair-245001,1,threat_assessment,[],The device is using its uplink bandwidth to participate in a distributed denial-of-service attack that harms a third-party victim,supported
+hedged_pair-245001,2,threat_assessment,[],The device owner is collateral damage,unsupported_but_true
+hedged_pair-245001,3,threat_assessment,[],Both the victim of the flood and the local network may experience negative impacts,supported
+hedged_pair-245001,4,threat_assessment,"[""C1"", ""C2"", ""C6""]","The classifier cannot distinguish between the TCP and UDP variants of the Gafgyt flood due to the feature set limitations, which do not record the transport protocol",supported
+hedged_pair-245001,5,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The Gafgyt flood over TCP or UDP involves the infected device sending a continuous stream of packets at a target IP and port,supported
+hedged_pair-245001,6,attack_mechanism,"[""C4"", ""C5"", ""C6""]","For the TCP variant, the attack sends TCP segments with various flag combinations to exhaust connection tables and generate volumetric load",supported
+hedged_pair-245001,7,attack_mechanism,"[""C4"", ""C5"", ""C6""]","For the UDP variant, the attack sends connectionless datagrams as fast as possible to saturate the victim’s inbound bandwidth and cause ICMP port-unreachable responses",supported
+hedged_pair-245001,8,attack_mechanism,"[""C4"", ""C5"", ""C6""]","Both variants produce a highly regular, maximum-rate packet stream generated by simple embedded code",supported
+hedged_pair-245001,9,attack_mechanism,"[""C4"", ""C5"", ""C6""]","The device became infected through external command and control, causing it to emit this flood traffic",unsupported_and_false
+hedged_pair-245001,10,observable_indicators,"[""E1""]",H_L0.01_weight = 1 is anomalous relative to the device baseline,supported
+hedged_pair-245001,11,observable_indicators,"[""E2""]",H_L0.01_variance = 0 is anomalous relative to the device baseline,supported
+hedged_pair-245001,12,observable_indicators,"[""E3""]",MI_dir_L0.1_mean = 60 is anomalous relative to the device baseline,supported
+hedged_pair-245001,13,observable_indicators,"[""E4""]",MI_dir_L0.01_weight = 1 is anomalous relative to the device baseline,supported
+hedged_pair-245001,14,observable_indicators,"[""E5""]",MI_dir_L0.01_variance = 0 is anomalous relative to the device baseline,supported
+hedged_pair-245001,15,observable_indicators,"[""C7"", ""C8""]","These anomalous feature values are consistent with the expected statistical signature of a Gafgyt flood, which produces a sustained, highly regular packet stream with low variance in packet sizes and timing",supported
+hedged_pair-245001,16,immediate_actions,"[""C11""]",Isolating the Provision_PT_737E_Security_Camera immediately by disconnecting it from the network prevents further attack traffic and protects local uplink bandwidth,supported
+hedged_pair-245001,17,immediate_actions,"[""C11""]",Power-cycling the device clears the memory-resident botnet malware,supported
+hedged_pair-245001,18,immediate_actions,"[""C11""]",The reboot removes the running bot but does not fix the vulnerability,supported
+hedged_pair-245001,19,immediate_actions,"[""C11""]","Rotating all device credentials, including local admin, Telnet/SSH, RTSP/streaming, and vendor cloud passwords, is necessary because factory defaults are publicly known and exploited by Gafgyt",supported
+hedged_pair-245001,20,immediate_actions,"[""C11""]",Closing exposure paths before reconnecting involves removing any WAN-side port-forwarding or UPnP mappings exposing Telnet (ports 23/2323) or management interfaces,supported
+hedged_pair-245001,21,immediate_actions,"[""C11""]",Applying any pending firmware updates is part of closing exposure paths before reconnecting,supported
+hedged_pair-245001,22,immediate_actions,"[""C11""]",Disabling Telnet if possible is part of closing exposure paths before reconnecting,supported
+hedged_pair-245001,23,immediate_actions,"[""C6"", ""C10""]",Capturing a single packet of the flood traffic and inspecting the IP header protocol field determines whether the flood is TCP (protocol 6) or UDP (protocol 17),supported
+hedged_pair-245001,24,immediate_actions,"[""C6"", ""C10""]","This step aids further analysis but must not delay containment, as response is identical for both TCP and UDP candidates",supported
+hedged_pair-245001,25,immediate_actions,"[""C11""]","Sweeping the local network segment for other infected devices, especially same-model IoT devices, and applying this containment playbook to each is recommended",supported
+hedged_pair-245001,26,longer_term_remediation,"[""C12""]","Eliminating default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment is critical to breaking the primary propagation path of Mirai/Gafgyt-class botnets",supported
+hedged_pair-245001,27,longer_term_remediation,"[""C12""]",Maintaining an inventory of all IoT devices and their credential status ensures ongoing credential hygiene,unsupported_but_true
+hedged_pair-245001,28,longer_term_remediation,"[""C11""]",Regularly applying firmware updates and security patches to IoT devices closes known vulnerabilities,unsupported_but_true
+hedged_pair-245001,29,longer_term_remediation,"[""C11""]",Disabling unnecessary services such as Telnet on IoT devices and restricting management interfaces to trusted networks is recommended,unsupported_but_true
+hedged_pair-245001,30,longer_term_remediation,"[""C12""]",Segmenting IoT devices on separate VLANs or network segments limits lateral movement and contains infections,unsupported_but_true
+hedged_pair-245001,31,confidence_notes,"[""C6"", ""C7"", ""C10""]","The two candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-245001,32,confidence_notes,"[""C6"", ""C7"", ""C10""]","Any probability split between gafgyt_tcp and gafgyt_udp within the pair carries no evidential value, as it derives from capture artefacts that do not generalize",supported
+hedged_pair-245001,33,confidence_notes,"[""C6"", ""C7"", ""C10""]","This structural limitation is explicitly acknowledged, and the report presents both candidates symmetrically without preference or ranking",supported
+hedged_pair-245009,0,threat_assessment,[],The device is under external command and control,supported
+hedged_pair-245009,1,threat_assessment,[],The device uses its uplink bandwidth to participate in a distributed denial-of-service attack,supported
+hedged_pair-245009,2,threat_assessment,[],The attack harms a third-party victim and potentially saturates the local network uplink,supported
+hedged_pair-245009,3,threat_assessment,[],The device owner is collateral damage,unsupported_but_true
+hedged_pair-245009,4,threat_assessment,[],The victim of the flood and the local network are directly impacted,supported
+hedged_pair-245009,5,threat_assessment,"[""C1"", ""C2"", ""C10""]","The two attack candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-245009,6,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The Gafgyt flood over TCP or UDP operates by sending a continuous stream of packets at a target IP and port,supported
+hedged_pair-245009,7,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The TCP variant of the attack involves sending TCP segments with various flag combinations to exhaust connection tables and generate volumetric load,supported
+hedged_pair-245009,8,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The UDP variant sends connectionless datagrams as fast as possible to saturate the victim’s inbound bandwidth and cause ICMP port-unreachable responses,supported
+hedged_pair-245009,9,attack_mechanism,"[""C4"", ""C5"", ""C6""]","Both variants produce a highly regular, maximum-rate stream generated by a simple packet-building loop in embedded C code",supported
+hedged_pair-245009,10,attack_mechanism,"[""C4"", ""C5"", ""C6""]","The device became infected and is now under external control, emitting this flood traffic as part of a botnet operation",unsupported_and_false
+hedged_pair-245009,11,observable_indicators,"[""E1""]",H_L0.01_weight = 1 is anomalous relative to the device baseline,supported
+hedged_pair-245009,12,observable_indicators,"[""E2""]",H_L0.01_variance = 0 is anomalous relative to the device baseline,supported
+hedged_pair-245009,13,observable_indicators,"[""E3""]",MI_dir_L0.1_mean = 60 is anomalous relative to the device baseline,supported
+hedged_pair-245009,14,observable_indicators,"[""E4""]",MI_dir_L0.01_weight = 1 is anomalous relative to the device baseline,supported
+hedged_pair-245009,15,observable_indicators,"[""E5""]",MI_dir_L0.01_variance = 0 is anomalous relative to the device baseline,supported
+hedged_pair-245009,16,observable_indicators,"[""C7"", ""C8""]",These features reflect anomalous traffic patterns compared to the device’s benign baseline but do not distinguish between TCP or UDP floods,supported
+hedged_pair-245009,17,immediate_actions,"[""C11""]",Isolate the Provision_PT_737E_Security_Camera immediately by disconnecting it from the network to prevent further attack traffic and protect local uplink capacity,supported
+hedged_pair-245009,18,immediate_actions,"[""C11""]",Power-cycle the device to clear the memory-resident botnet malware,supported
+hedged_pair-245009,19,immediate_actions,"[""C11""]",The reboot removes the running bot but does not fix the vulnerability,supported
+hedged_pair-245009,20,immediate_actions,"[""C11""]","Rotate all device credentials, including local admin, Telnet/SSH, RTSP/streaming, and vendor cloud passwords",supported
+hedged_pair-245009,21,immediate_actions,"[""C11""]",Factory defaults are publicly known and exploited by the botnet,supported
+hedged_pair-245009,22,immediate_actions,"[""C11""]",Close exposure paths by removing any WAN-side port-forwarding or UPnP mappings that expose Telnet (ports 23/2323) or management interfaces,supported
+hedged_pair-245009,23,immediate_actions,"[""C11""]",Apply any pending firmware updates,supported
+hedged_pair-245009,24,immediate_actions,"[""C11""]",Disable Telnet if possible,supported
+hedged_pair-245009,25,immediate_actions,"[""C10""]",Capture a single packet of the flood traffic and inspect the IP header protocol field to determine whether the flood is TCP (protocol 6) or UDP (protocol 17),supported
+hedged_pair-245009,26,immediate_actions,"[""C10""]","This step is for protocol disambiguation only and must not delay containment, as response is identical for both candidates",supported
+hedged_pair-245009,27,immediate_actions,"[""C11""]","Sweep the local network segment for other infected devices, especially same-model IoT devices",supported
+hedged_pair-245009,28,immediate_actions,"[""C11""]",Apply this containment playbook to each infected device found,supported
+hedged_pair-245009,29,longer_term_remediation,"[""C12""]","Eliminate default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment",supported
+hedged_pair-245009,30,longer_term_remediation,"[""C12""]",Maintain an inventory of devices and their credential status to prevent botnet propagation via credential reuse,supported
+hedged_pair-245009,31,longer_term_remediation,[],Regularly update device firmware to patch known vulnerabilities and reduce exposure to exploitation,unsupported_but_true
+hedged_pair-245009,32,longer_term_remediation,[],Disable unnecessary services such as Telnet on IoT devices to reduce attack surface,unsupported_but_true
+hedged_pair-245009,33,longer_term_remediation,[],Implement network segmentation to isolate IoT devices from critical infrastructure and limit lateral movement in case of compromise,unsupported_but_true
+hedged_pair-245009,34,longer_term_remediation,[],Monitor network traffic for anomalous patterns consistent with IoT botnet activity to enable early detection and response,unsupported_but_true
+hedged_pair-245009,35,confidence_notes,"[""C6"", ""C7"", ""C10""]","The two candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-245009,36,confidence_notes,"[""C6"", ""C7"", ""C10""]","Any probability split between gafgyt_tcp and gafgyt_udp within the pair carries no evidential value, as it derives from capture artefacts that do not generalize",supported
+hedged_pair-295024,0,threat_assessment,[],The device is under external command and control,supported
+hedged_pair-295024,1,threat_assessment,[],The device uses its uplink to participate in a distributed denial-of-service attack that harms a third-party victim by saturating their bandwidth,supported
+hedged_pair-295024,2,threat_assessment,[],The device owner is collateral damage,unsupported_but_true
+hedged_pair-295024,3,threat_assessment,[],The local network may also be affected by uplink saturation,supported
+hedged_pair-295024,4,threat_assessment,"[""C1"", ""C2"", ""C6""]","The two attack candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-295024,5,attack_mechanism,[],The Gafgyt flood over TCP or UDP operates by sending a continuous stream of packets at a target IP and port,supported
+hedged_pair-295024,6,attack_mechanism,"[""C4""]",The TCP variant of the attack involves a high-rate stream of TCP segments with randomized source ports and sequence numbers,supported
+hedged_pair-295024,7,attack_mechanism,"[""C4""]",The TCP variant aims to exhaust connection tables and generate volumetric load,supported
+hedged_pair-295024,8,attack_mechanism,"[""C5""]",The UDP variant sends connectionless datagrams as fast as possible to saturate the victim’s inbound bandwidth and cause ICMP port-unreachable responses,supported
+hedged_pair-295024,9,attack_mechanism,[],"Both variants produce a highly regular, template-built maximum-rate stream on embedded hardware",supported
+hedged_pair-295024,10,attack_mechanism,"[""C6""]","The device became compromised through external command and control, causing it to emit this flood traffic",unsupported_and_false
+hedged_pair-295024,11,observable_indicators,"[""E1"", ""E2"", ""E3"", ""E4"", ""E5"", ""C7"", ""C8""]",These observations indicate anomalous traffic relative to the device’s benign baseline but do not distinguish between the TCP and UDP flood variants of the Gafgyt attack,supported
+hedged_pair-295024,12,immediate_actions,"[""C11""]",Isolate the Provision_PT_838_Security_Camera immediately by disconnecting it from the network or blocking its MAC/IP to prevent further attack traffic and uplink saturation,supported
+hedged_pair-295024,13,immediate_actions,"[""C11""]",Power-cycle the device to clear the memory-resident bot,supported
+hedged_pair-295024,14,immediate_actions,"[""C11""]",Power-cycling removes the running malware but does not fix the vulnerability,supported
+hedged_pair-295024,15,immediate_actions,"[""C11""]","Rotate all credentials associated with the device, including local admin, Telnet/SSH, RTSP/streaming, and vendor cloud passwords",supported
+hedged_pair-295024,16,immediate_actions,"[""C11""]",Factory defaults are publicly known and exploited by the botnet,supported
+hedged_pair-295024,17,immediate_actions,"[""C11""]",Close exposure paths by removing any router port-forwarding or UPnP mappings that expose Telnet (ports 23/2323) or management interfaces to the internet,supported
+hedged_pair-295024,18,immediate_actions,"[""C11""]",Apply any pending firmware updates and disable Telnet if possible,supported
+hedged_pair-295024,19,immediate_actions,"[""C6"", ""C10""]",Capture a single packet of the flood traffic and inspect the IP header protocol field to determine whether the flood is TCP (protocol 6) or UDP (protocol 17),supported
+hedged_pair-295024,20,immediate_actions,"[""C6"", ""C10""]","This packet capture step is for analyst information only and must not delay containment, as the response is identical for both candidates",supported
+hedged_pair-295024,21,immediate_actions,"[""C11""]","Sweep the local network segment for other infected devices, especially those of the same model, and apply this containment playbook to each",supported
+hedged_pair-295024,22,longer_term_remediation,"[""C12""]","Eliminate default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment",supported
+hedged_pair-295024,23,longer_term_remediation,"[""C12""]",Eliminating default and shared credentials breaks the primary propagation path of Mirai/Gafgyt-class botnets,supported
+hedged_pair-295024,24,longer_term_remediation,"[""C12""]",Maintain an inventory of all IoT devices and their credential status to ensure ongoing credential hygiene,supported
+hedged_pair-295024,25,longer_term_remediation,"[""C11""]",Regularly apply firmware updates and security patches to all IoT devices to close known vulnerabilities,unsupported_but_true
+hedged_pair-295024,26,longer_term_remediation,"[""C11""]",Disable unnecessary services such as Telnet on IoT devices,unsupported_but_true
+hedged_pair-295024,27,longer_term_remediation,"[""C11""]",Restrict management interfaces to trusted networks,unsupported_but_true
+hedged_pair-295024,28,longer_term_remediation,"[""C12""]",Segment IoT devices on separate VLANs or network segments to limit lateral movement and contain potential infections,unsupported_but_true
+hedged_pair-295024,29,confidence_notes,"[""ALERT DATA"", ""C6"", ""C10""]","The two candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-295024,30,confidence_notes,"[""ALERT DATA"", ""C6"", ""C10""]",Any probability split within the pair carries no evidential value as it derives from capture artefacts that do not generalize,supported
+hedged_pair-295024,31,confidence_notes,"[""ALERT DATA"", ""C6"", ""C10""]",This structural limitation is explicitly acknowledged and does not reduce confidence in the pair-level identification,supported
+hedged_pair-300009,0,threat_assessment,[],The device is under external command and control,supported
+hedged_pair-300009,1,threat_assessment,[],The device uses its uplink to participate in a distributed denial-of-service (DDoS) attack that harms a third-party victim by saturating their network bandwidth,supported
+hedged_pair-300009,2,threat_assessment,[],The device owner is collateral damage,unsupported_but_true
+hedged_pair-300009,3,threat_assessment,[],The local network may also be affected by uplink saturation,supported
+hedged_pair-300009,4,threat_assessment,"[""C1"", ""C2"", ""C6""]","The two attack candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-300009,5,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The Gafgyt flood over TCP or UDP operates by sending a continuous stream of packets at a target IP and port,supported
+hedged_pair-300009,6,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The TCP variant of the attack involves a high-rate stream of TCP segments with randomized source ports and sequence numbers,supported
+hedged_pair-300009,7,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The TCP variant aims to exhaust connection tables and generate volumetric load,supported
+hedged_pair-300009,8,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The UDP variant sends connectionless datagrams as fast as possible,supported
+hedged_pair-300009,9,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The UDP variant saturates the victim’s inbound bandwidth and causes ICMP port-unreachable responses,supported
+hedged_pair-300009,10,attack_mechanism,"[""C4"", ""C5"", ""C6""]","Both variants produce a highly regular, template-built maximum-rate stream on embedded hardware",supported
+hedged_pair-300009,11,attack_mechanism,"[""C4"", ""C5"", ""C6""]","The device became infected and is now under external control, executing this attack as part of the Gafgyt (BASHLITE) botnet",supported
+hedged_pair-300009,12,observable_indicators,"[""E1"", ""E2"", ""E3"", ""E4"", ""E5"", ""C7"", ""C8""]",These features indicate anomalous traffic relative to the device’s benign baseline,supported
+hedged_pair-300009,13,observable_indicators,"[""E1"", ""E2"", ""E3"", ""E4"", ""E5"", ""C7"", ""C8""]",These features do not distinguish between the TCP and UDP flood variants of the Gafgyt attack,supported
+hedged_pair-300009,14,immediate_actions,"[""C11""]",Isolating the Provision_PT_838_Security_Camera immediately by disconnecting it from the network prevents further uplink saturation and third-party harm,supported
+hedged_pair-300009,15,immediate_actions,"[""C11""]",Power-cycling the device clears the memory-resident bot,supported
+hedged_pair-300009,16,immediate_actions,"[""C11""]",Power-cycling removes the running malware but does not fix the vulnerability,supported
+hedged_pair-300009,17,immediate_actions,"[""C11""]","Rotating all device credentials, including local admin, Telnet/SSH, RTSP/streaming, and vendor cloud passwords, is necessary because factory defaults are publicly known and exploited by the botnet",supported
+hedged_pair-300009,18,immediate_actions,"[""C11""]",Closing exposure paths before reconnecting involves removing any router port-forwarding or UPnP mappings exposing Telnet (ports 23/2323) or management interfaces,supported
+hedged_pair-300009,19,immediate_actions,"[""C11""]",Closing exposure paths before reconnecting involves applying pending firmware updates,supported
+hedged_pair-300009,20,immediate_actions,"[""C11""]",Closing exposure paths before reconnecting involves disabling Telnet if possible,supported
+hedged_pair-300009,21,immediate_actions,"[""C6"", ""C10""]",Capturing a single packet of the flood traffic and inspecting the IP header protocol field determines whether the flood is TCP (protocol 6) or UDP (protocol 17),supported
+hedged_pair-300009,22,immediate_actions,"[""C6"", ""C10""]","The disambiguation step of capturing a packet should not delay containment, as response is identical for both candidates",supported
+hedged_pair-300009,23,immediate_actions,"[""C11""]","Sweeping the local network segment for other infected devices, especially same-model IoT devices, and applying this playbook to each is recommended",supported
+hedged_pair-300009,24,longer_term_remediation,"[""C12""]","Eliminating default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment breaks the primary propagation path of Mirai/Gafgyt-class botnets",supported
+hedged_pair-300009,25,longer_term_remediation,"[""C12""]",Maintaining an inventory of all IoT devices and their credential status ensures ongoing credential hygiene,unsupported_but_true
+hedged_pair-300009,26,longer_term_remediation,"[""C11""]",Regularly applying firmware updates and security patches to all IoT devices closes known vulnerabilities,unsupported_but_true
+hedged_pair-300009,27,longer_term_remediation,"[""C11""]",Disabling unnecessary services such as Telnet and restricting device management interfaces to trusted networks only improves security,unsupported_but_true
+hedged_pair-300009,28,longer_term_remediation,"[""C12""]",Segmenting IoT devices on separate VLANs or network segments limits lateral movement and contains infections,unsupported_but_true
+hedged_pair-300009,29,confidence_notes,"[""ALERT DATA"", ""C6"", ""C7"", ""C10""]","The two candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-300009,30,confidence_notes,"[""ALERT DATA"", ""C6"", ""C7"", ""C10""]",Any probability split between gafgyt_tcp and gafgyt_udp carries no evidential value as it derives from capture artefacts that do not generalize,supported
+hedged_pair-300009,31,confidence_notes,"[""ALERT DATA"", ""C6"", ""C7"", ""C10""]",This structural limitation is explicitly acknowledged and does not reduce confidence in the pair-level identification,supported
+hedged_pair-325011,0,threat_assessment,[],The device is under external command and control,supported
+hedged_pair-325011,1,threat_assessment,[],The device is using its uplink bandwidth to participate in a distributed denial-of-service attack that harms a third-party victim and potentially saturates the local network uplink,supported
+hedged_pair-325011,2,threat_assessment,"[""C1"", ""C2"", ""C6""]","The two attack variants, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-325011,3,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The Gafgyt flood over TCP or UDP involves the device sending a continuous stream of packets at a target IP and port,supported
+hedged_pair-325011,4,attack_mechanism,"[""C4"", ""C5"", ""C6""]","For the TCP variant, the attack sends TCP segments with various flag combinations to exhaust connection tables and generate volumetric load",supported
+hedged_pair-325011,5,attack_mechanism,"[""C4"", ""C5"", ""C6""]","For the UDP variant, the attack sends connectionless datagrams as fast as possible to saturate the victim’s inbound bandwidth and cause ICMP port-unreachable responses",supported
+hedged_pair-325011,6,attack_mechanism,"[""C4"", ""C5"", ""C6""]","Both variants produce a highly regular, template-built maximum-rate stream on embedded hardware",supported
+hedged_pair-325011,7,attack_mechanism,"[""C4"", ""C5"", ""C6""]","The device became infected and is now under external control, executing this attack to overwhelm a victim’s network resources",supported
+hedged_pair-325011,8,observable_indicators,"[""C7"", ""C8""]","These anomalous feature values reflect the highly regular, high-rate packet stream characteristic of Gafgyt floods over TCP or UDP",supported
+hedged_pair-325011,9,immediate_actions,"[""C11""]",Isolate the Samsung_SNH_1011_N_Webcam immediately by disconnecting it from the network to prevent further attack traffic and protect local uplink capacity,supported
+hedged_pair-325011,10,immediate_actions,"[""C11""]",Power-cycle the device to clear the memory-resident botnet malware,supported
+hedged_pair-325011,11,immediate_actions,"[""C11""]",This reboot removes the running bot but does not fix the vulnerability,supported
+hedged_pair-325011,12,immediate_actions,"[""C11""]","Rotate all device credentials, including local web/admin login, Telnet/SSH passwords, RTSP/streaming credentials, and vendor cloud account passwords",supported
+hedged_pair-325011,13,immediate_actions,"[""C11""]",Factory defaults are publicly known and exploited by botnets,supported
+hedged_pair-325011,14,immediate_actions,"[""C11""]","Before reconnecting, close exposure paths by removing any router port-forwarding or UPnP mappings exposing Telnet (ports 23/2323) or management interfaces",supported
+hedged_pair-325011,15,immediate_actions,"[""C11""]","Before reconnecting, apply any pending firmware updates",supported
+hedged_pair-325011,16,immediate_actions,"[""C11""]","Before reconnecting, disable Telnet if possible",supported
+hedged_pair-325011,17,immediate_actions,"[""C10""]",Capture a single packet of the flood traffic and inspect the IP header protocol field to determine whether the flood is TCP (protocol 6) or UDP (protocol 17),supported
+hedged_pair-325011,18,immediate_actions,"[""C10""]","This step aids further analysis but must not delay containment, as response is identical for both candidates",supported
+hedged_pair-325011,19,immediate_actions,"[""C11""]","Sweep the local network segment for other infected devices, especially same-model webcams, and apply this containment playbook to each",supported
+hedged_pair-325011,20,longer_term_remediation,"[""C12""]","Eliminate default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment",supported
+hedged_pair-325011,21,longer_term_remediation,"[""C12""]",This measure breaks the primary propagation path of Mirai/Gafgyt-class botnets and is critical for long-term protection,supported
+hedged_pair-325011,22,longer_term_remediation,"[""C12""]",Maintain an inventory of all IoT devices and their credential status to ensure ongoing credential hygiene,supported
+hedged_pair-325011,23,longer_term_remediation,"[""C11"", ""C12""]",Regularly apply firmware updates and security patches to all IoT devices to close known vulnerabilities and reduce exposure,unsupported_but_true
+hedged_pair-325011,24,longer_term_remediation,"[""C12""]",Implement network segmentation and strict access controls to isolate IoT devices from critical network resources and limit lateral movement in case of compromise,unsupported_but_true
+hedged_pair-325011,25,longer_term_remediation,"[""C7""]",Monitor network traffic for anomalous patterns consistent with IoT botnet activity to enable early detection and response,unsupported_but_true
+hedged_pair-325011,26,confidence_notes,"[""C6"", ""C8"", ""C10""]","The two candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-325011,27,confidence_notes,"[""C6"", ""C8"", ""C10""]",Any probability split between gafgyt_tcp and gafgyt_udp within the pair carries no evidential value as it derives from capture artefacts that do not generalize,supported
+hedged_pair-325011,28,confidence_notes,"[""C6"", ""C8"", ""C10""]","This structural limitation is explicitly acknowledged, and the report presents both candidates symmetrically without preference or ranking",supported
+hedged_pair-330023,0,threat_assessment,[],The device is under external command and control,supported
+hedged_pair-330023,1,threat_assessment,[],The device is using its uplink bandwidth to participate in a distributed denial-of-service attack that harms a third-party victim and potentially saturates the local network uplink,supported
+hedged_pair-330023,2,threat_assessment,[],The device owner is collateral damage,unsupported_but_true
+hedged_pair-330023,3,threat_assessment,[],The victim of the flood and the local network are the harmed parties,supported
+hedged_pair-330023,4,threat_assessment,"[""C1"", ""C2"", ""C6""]","The two attack variants, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-330023,5,attack_mechanism,"[""C4"", ""C5"", ""C6""]",The Gafgyt flood over TCP or UDP operates by sending a continuous stream of packets at a target IP and port,supported
+hedged_pair-330023,6,attack_mechanism,"[""C4"", ""C5"", ""C6""]","For the TCP variant, the attack involves sending TCP segments with various flag combinations to exhaust connection tables and generate volumetric load",supported
+hedged_pair-330023,7,attack_mechanism,"[""C4"", ""C5"", ""C6""]","For the UDP variant, the attack sends connectionless datagrams as fast as possible to saturate the victim’s inbound bandwidth and cause ICMP port-unreachable responses",supported
+hedged_pair-330023,8,attack_mechanism,"[""C4"", ""C5"", ""C6""]","Both variants produce a highly regular, template-built maximum-rate stream on embedded hardware",supported
+hedged_pair-330023,9,attack_mechanism,"[""C4"", ""C5"", ""C6""]","The device became infected and is now under external control, emitting this flood to overwhelm a victim’s resources",supported
+hedged_pair-330023,10,observable_indicators,"[""E1""]",H_L0.01_weight is anomalous relative to the device baseline,supported
+hedged_pair-330023,11,observable_indicators,"[""E2""]",H_L0.01_variance is anomalous relative to the device baseline,supported
+hedged_pair-330023,12,observable_indicators,"[""E3""]",MI_dir_L0.1_mean is anomalous relative to the device baseline,supported
+hedged_pair-330023,13,observable_indicators,"[""E4""]",MI_dir_L0.01_weight is anomalous relative to the device baseline,supported
+hedged_pair-330023,14,observable_indicators,"[""E5""]",MI_dir_L0.01_variance is anomalous relative to the device baseline,supported
+hedged_pair-330023,15,observable_indicators,"[""C7"", ""C8""]","These features reflect the anomalous traffic patterns consistent with a machine-generated, high-rate flood",supported
+hedged_pair-330023,16,observable_indicators,"[""C7"", ""C8""]",These features do not distinguish between TCP and UDP floods,supported
+hedged_pair-330023,17,immediate_actions,"[""C11""]",Isolate the Samsung_SNH_1011_N_Webcam immediately by disconnecting it from the network to prevent further attack traffic and protect local uplink capacity,supported
+hedged_pair-330023,18,immediate_actions,"[""C11""]",Power-cycle the device to clear the memory-resident bot,supported
+hedged_pair-330023,19,immediate_actions,"[""C11""]",Power-cycling removes the running malware but does not prevent reinfection,supported
+hedged_pair-330023,20,immediate_actions,"[""C11""]","Rotate all device credentials, including local web/admin login, Telnet/SSH passwords, RTSP/streaming credentials, and any associated vendor cloud account passwords",supported
+hedged_pair-330023,21,immediate_actions,"[""C11""]",Default credentials are publicly known and exploited by Gafgyt,supported
+hedged_pair-330023,22,immediate_actions,"[""C11""]",Close exposure paths before reconnecting by removing any router port-forwarding or UPnP mappings exposing Telnet (ports 23/2323) or management interfaces,supported
+hedged_pair-330023,23,immediate_actions,"[""C11""]",Apply any pending firmware updates before reconnecting,supported
+hedged_pair-330023,24,immediate_actions,"[""C11""]",Disable Telnet if possible before reconnecting,supported
+hedged_pair-330023,25,immediate_actions,"[""C10""]",Capture a single packet of the flood traffic and inspect the IP header protocol field to determine whether the flood is TCP (protocol 6) or UDP (protocol 17),supported
+hedged_pair-330023,26,immediate_actions,"[""C10""]",This packet capture step is for analyst information only and does not delay containment,supported
+hedged_pair-330023,27,immediate_actions,"[""C11""]","Sweep the local network segment for other infected devices, especially same-model webcams",supported
+hedged_pair-330023,28,immediate_actions,"[""C11""]",Apply this containment playbook to each infected device found in the local network sweep,supported
+hedged_pair-330023,29,longer_term_remediation,"[""C12""]","Eliminate default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment",supported
+hedged_pair-330023,30,longer_term_remediation,"[""C12""]",Maintain an inventory of devices and their credential status to prevent botnet propagation via credential reuse,supported
+hedged_pair-330023,31,longer_term_remediation,[],Implement network segmentation to isolate IoT devices from critical infrastructure and sensitive data,unsupported_but_true
+hedged_pair-330023,32,longer_term_remediation,[],Network segmentation reduces the impact of any future compromise,unsupported_but_true
+hedged_pair-330023,33,longer_term_remediation,[],Regularly update device firmware and software to patch known vulnerabilities and remove exposed services such as Telnet,unsupported_but_true
+hedged_pair-330023,34,longer_term_remediation,[],Monitor network traffic for anomalous patterns consistent with IoT botnet activity to enable early detection and response,unsupported_but_true
+hedged_pair-330023,35,longer_term_remediation,[],"Review and restrict router configurations to minimize WAN exposure of IoT devices, including disabling unnecessary port forwarding and UPnP mappings",supported
+hedged_pair-330023,36,confidence_notes,"[""C6"", ""C8"", ""C10""]","The two candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol",supported
+hedged_pair-330023,37,confidence_notes,"[""C6"", ""C8"", ""C10""]",Any probability split between gafgyt_tcp and gafgyt_udp within the pair carries no evidential value as it derives from capture artefacts that do not generalize,supported
+hedged_pair-330023,38,confidence_notes,"[""C6"", ""C8"", ""C10""]","This structural limitation is explicitly acknowledged, and the report presents both candidates symmetrically without preference or ranking",supported

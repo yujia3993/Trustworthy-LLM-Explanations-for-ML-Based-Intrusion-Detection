@@ -1,7 +1,7 @@
 # Project State
 
 **Trustworthy LLM Explanations for ML-Based Intrusion Detection (N-BaIoT)**
-Snapshot: 2026-07-24 · Branch `main` · 131 tests passing
+Snapshot: 2026-07-24 · Branch `main` · 152 tests passing
 
 This is the working-state document (progress, decisions, what's next). For the
 research narrative and headline results see [README.md](README.md).
@@ -14,17 +14,18 @@ research narrative and headline results see [README.md](README.md).
 |---|---|---|
 | **Module 1** | Two-stage detector + leakage audit + explainability exports | ✅ Complete, sealed (pre-existing) |
 | **Module 2** | RAG explanation layer (KB, retrieval, generation) | ✅ Infrastructure complete |
-| **Module 3** | Evaluation (case set, harness, metrics) | ✅ Harness complete; ✅ 4-config dev ablation + 3 prompt-iteration rounds done; ✅ **frozen 101-case run complete** (§11); ⏳ RQ3 human scoring pending |
+| **Module 3** | Evaluation (case set, harness, metrics) | ✅ Complete — harness, 4-config dev ablation + 3 prompt-iteration rounds, **frozen 101-case run** (§11), **RQ3 human validation** (§12) |
 
-**Frozen run complete (2026-07-24).** The 101-case × 4-config evaluation ran to
-completion (generator `gpt-4.1-mini`, judge `claude-haiku-4-5-20251001`, prompt
-v1.1.0, case set v1.0.0) — `n_fallback = 0` and `n_needs_review = 0` on all four
-configs, manifest `partial: false`, zero transient-failure retries over ~6 h and 404
-(case, config) units. **The reportable RQ1/RQ2 numbers now come from the frozen set;
-they are in §11, and two of them overturn what the 14-case dev set showed.** The
-committed CSVs are `evaluation/results/eval_frozen_*.csv` +
-`claim_analysis_frozen*.csv`. **Next concrete step: RQ3** — human scoring of 20 cases +
-Cohen's κ, which first needs the RQ3 pipeline fix (§5).
+**All three research questions are answered (2026-07-24).** The 101-case × 4-config frozen
+evaluation ran to completion (generator `gpt-4.1-mini`, judge `claude-haiku-4-5-20251001`,
+prompt v1.1.0, case set v1.0.0) — `n_fallback = 0` and `n_needs_review = 0` on all four
+configs, manifest `partial: false`, zero retries over ~6 h and 404 (case, config) units —
+and RQ3's human validation is scored. **§11 holds the reportable RQ1/RQ2 numbers, §12 the
+RQ3 agreement.** Three results overturn or qualify earlier claims: the dev-set "all four
+RQ2 gates pass" claim is retracted (§8.2 → §11.2); `naive_rag` matches the full retrieval
+stack on every RQ1 metric (§11.1); and the judge's report-level rubric fails validation —
+three of its four criteria are degenerate (§12.2). What remains is **write-up**, not
+measurement.
 
 ---
 
@@ -164,35 +165,25 @@ full re-run — ~$7.2 at frozen-set scale.
 
 ## 5. Next steps
 
-**The frozen run is done (§11).** The RQ1 taxonomy/hallucination and RQ2 gate tables
-now exist and are committed. What remains is **RQ3 — human scoring of 20 cases +
-Cohen's κ** — and it is blocked on a pipeline fix, described next.
+**Measurement is finished.** RQ1/RQ2 come from the frozen run (§11); RQ3 is scored (§12).
+No further API spend is required for the results as they stand.
 
-**Immediate next action: fix the RQ3 pipeline before scoring anything.** As written,
-`rq3_sheet.py` regenerates full-RAG reports with `use_cache=False` and re-extracts
-claims (non-deterministic, §8.4), so the report a **human** scores is not the report the
-**judge** scored — Cohen's κ would then compare labels on two different texts and be
-meaningless. The fix (delegated task "C"): (1) route reports and claims through the same
-caches the frozen run wrote, so the human and the judge see byte-identical inputs;
-(2) wire a real (non-mock) client into the CLI — today `main()` hard-refuses anything but
-`--mock`; (3) carry claim text and a `(case_id, config, claim_index)` alignment key into
-the sheet; (4) add a read-back entry point that scores a filled sheet and computes
-Cohen's / weighted κ via `metrics.py`; (5) tests, in a **new** `test_rq3.py` (not
-`test_evaluation.py` — merge-safety, §6). Then the human scores 20 cases (your time, not
-API cost — the reports are already cached), single-rater fallback disclosed per protocol §7.
+**Immediate next action: the write-up.** The three headline claims and their caveats are
+already stated in §11 and §12 and every number in them has been verified against the
+committed CSVs. Points that must survive into the thesis, because each corrects or bounds
+something a reader would otherwise assume:
 
-**Environment required for any real run** (see §8.1 for storage and traps):
+1. §8.2's "all four RQ2 gates pass" is **retracted** — cite §11.2 instead, where
+   `self_check`'s Round-1 fix lifting gate 4 to 0.990 is the real result.
+2. `naive_rag` is not beaten by the full retrieval stack on any RQ1 metric (§11.1).
+3. The grounding residual is **entailment-limited**, replicated on two independent axes
+   (§9.3 across prompt versions, §11.3 across configs).
+4. RQ3 validates the **claim-level** taxonomy only (κ=0.477, PABAK=0.668). The
+   report-level rubric is **not** validated — three of four criteria are degenerate
+   (§12.2). Disclose the single-rater limitation and the `case_id` stratum leak (§12.4).
 
-| Variable | Role |
-|---|---|
-| `OPENAI_API_KEY` | generator + claim extraction + self-check (`gpt-4.1-mini`, temp 0) |
-| `JUDGE_API_KEY` + `JUDGE_BASE_URL` + `JUDGE_MODEL` | judge — **different family** |
-
-A frozen re-run is **not** needed for RQ3 — `rq3_sheet` will hit the caches the run
-already wrote, so the sheet export is near-zero cost. A re-run only becomes necessary if
-the protocol, rubric, or case set changes (which would also invalidate the caches).
-
-**Environment required for any real run** (see §8.1 for storage and traps):
+**If a re-run ever becomes necessary** (protocol, rubric, or case-set change — each also
+invalidates the caches), the environment is:
 
 | Variable | Role |
 |---|---|
@@ -200,6 +191,12 @@ the protocol, rubric, or case set changes (which would also invalidate the cache
 | `JUDGE_API_KEY` + `JUDGE_BASE_URL` + `JUDGE_MODEL` | judge — **different family** |
 
 **Deferred / backlog:**
+- **Second RQ3 rater** — protocol §7 sought one and none was obtained. Without a
+  human–human baseline, κ=0.477 cannot be attributed to judge unreliability rather than
+  ordinary inter-human variation. This is the single highest-value addition to RQ3.
+- **Report-level rubric v2** — the three degenerate criteria (§12.2) need either
+  discriminating definitions or removal; as written they measure nothing.
+- **Drop the stratum from `case_id` in rater-facing exports** (§12.4 confound).
 - KB expansion to 300+ chunks with external material (MITRE ATT&CK, CVEs, vendor
   advisories) — README targets this; current KB is the self-authored core.
 - Retrieval v2 improvements (only after end-to-end failure analysis): full-config
@@ -660,3 +657,148 @@ Note for the retrieval-v2 backlog item (§5): the full-config `threat_assessment
 `confidence_notes` (0.784) — which is why gate 4 aside, full_rag buys almost nothing.
 `observable_indicators` is near-ceiling for every config including no_rag (0.977) — it is
 largely detector-data transcription, not knowledge that retrieval helps with.
+
+---
+
+## 12. RQ3 — judge validation against a human rater (2026-07-24)
+
+Pipeline commits `9d45f74` (cache-backed export + κ scoring), `3683ce3` (grounding
+material for the rater), `4fe0084`/`4d64345` (rater guide, committed before annotation),
+`6db555e` (degeneracy flags). Artifacts: `results/rq3_scoring_sheet_{reports,claims}.csv`
+(filled), `rq3_judge_reference.csv`, `rq3_case_materials.md`, `rq3_agreement.csv`.
+
+Sample: 20 `full_rag` cases, seed-42 stratified — 12 `hedged_pair`, 6 `assertive_correct`,
+2 `assertive_error` — and their 602 judge-routed claims. Validity precondition met: the
+sheets were exported through the frozen run's caches, and all 602 claim texts were
+verified byte-identical to `eval_frozen_claims.csv`, so both raters scored the same
+material under the same rubric (`prompts/judge.md`, quoted verbatim in
+`rq3_rater_guide.md`).
+
+| metric | κ | raw | n | interpretable? |
+|---|---|---|---|---|
+| **claim_labels** (primary) | **0.477** | 83.4% | 602 | ✅ |
+| factual_accuracy | 0.044 | 70.0% | 20 | ❌ scale mismatch (§12.3) |
+| actionability_device_specific | 0.000 | 70.0% | 20 | ❌ degenerate (§12.2) |
+| actionability_phases_separated | 1.000 | 100% | 20 | ❌ degenerate (§12.2) |
+| actionability_matches_category | 1.000 | 100% | 20 | ❌ degenerate (§12.2) |
+
+### 12.1 Primary result — claim-label agreement
+
+κ = **0.477** ("moderate", Landis–Koch) on raw agreement of **83.4%** (502/602).
+
+| human ↓ / judge → | supported | ubt | false | **total** |
+|---|---|---|---|---|
+| supported | **441** | 61 | 1 | 503 |
+| unsupported_but_true | 19 | **60** | 1 | 80 |
+| unsupported_and_false | 11 | 7 | **1** | 19 |
+| **total** | 471 | 128 | 3 | 602 |
+
+The gap between 83.4% raw and κ=0.477 is the **κ paradox**: both raters put ~80% of claims
+in `supported`, which inflates the chance-agreement term and deflates κ. Report both, plus
+**PABAK = 2·P₀ − 1 = 0.668**, which is the standard prevalence-adjusted companion.
+
+Two asymmetries are substantive, not noise:
+
+- **The human is more lenient about entailment.** 61 claims scored `supported` by the human
+  were `unsupported_but_true` to the judge, against 19 the other way. The judge holds a
+  stricter entailment bar than a human reading the same chunk.
+- **The human calls falsehood far more often** — 19 vs the judge's 3. Of the human's 19,
+  the judge scored 11 `supported` and 7 `unsupported_but_true`, agreeing on exactly **one**.
+  Given RQ1 reports `unsupported_and_false` as the hallucination rate, this is a direct
+  caution: **the judge's hallucination counts are likely a floor, not an estimate.**
+
+By stratum, agreement is *best* where the task is hardest:
+
+| stratum | n | raw | κ |
+|---|---|---|---|
+| `hedged_pair` | 399 | 90.0% | **0.601** |
+| `assertive_correct` | 152 | 71.1% | 0.333 |
+| `assertive_error` | 51 | 68.6% | 0.268 |
+
+The register rules constrain hedged-pair reports tightly, and both raters track those
+constraints well. Excluding `assertive_error` entirely, κ = 0.505 (n=551) — close to the
+headline, so the confound in §12.4 does not drive the primary result.
+
+### 12.2 Three report-level criteria are degenerate — and that is itself the finding
+
+κ is undefined when either rater is constant, because the chance-correction term collapses;
+`metrics.py` then returns 1.0 or 0.0 from a degenerate branch. That fired three times:
+
+- `actionability_phases_separated` and `actionability_matches_category`: **both raters
+  scored 1 on all 20 cases.** 100% raw agreement, but κ=1.0000 is the degenerate branch,
+  **not** evidence of judge validity.
+- `actionability_device_specific`: the **judge scored 1 on all 20**; the human scored 0 on
+  six. 70% raw agreement, but κ=0.0000 is the degenerate branch, not chance-level agreement.
+
+This is systemic, not a small-sample accident. Across all 404 frozen units the judge's
+`actionability_phases_separated` mean is **exactly 1.000** — it never once assigned 0 —
+and `matches_category` is 1.000 for three of four configs (0.990 for `no_rag`);
+`device_specific` runs 0.931–1.000.
+
+**So three of the four report-level criteria have no discriminative power as the judge
+applies them.** They are near-constant by construction, so they can neither be validated
+against a human nor carry information in RQ1/RQ2. This is a defect of the rubric's
+report-level half, and the honest conclusion is that only the claim-level taxonomy earned
+its keep. `rq3_agreement.csv` now carries `raw_agreement`, `n_distinct_human`,
+`n_distinct_judge` and a `degenerate` flag so the number cannot be misread (`6db555e`).
+
+### 12.3 `factual_accuracy` is not interpretable here
+
+The rater used only **{1, 5}** (18 fives, 2 ones); the judge used **{2, 4, 5}**. Raw
+agreement 70%, κ = 0.044. Excluding the two `assertive_error` cases the human is constant
+at 5, so κ is undefined outright.
+
+`rq3_rater_guide.md` §4.3 predicted this failure mode and instructed the full 1–5 range
+precisely to avoid it; the rater nonetheless scored on an effective two-point scale. Since
+the judge places 39.8% of its scores on the unanchored 4 and 2, a two-point rater cannot
+match a third of the items regardless of judgement quality. The coefficient is reported as
+measured, flagged as uninterpretable, and **not** re-collected — see §12.5.
+
+### 12.4 The `assertive_error` disagreement, and its confound
+
+**Both reports the human scored 1** (errors that would misdirect the response) are the two
+`assertive_error` cases — the stratum where the classifier is confidently *wrong*
+(`y_pred != label_type`, margin ≥ 0.9; here p_top1 = 0.9992). The judge scored them **4 and
+5**.
+
+The mechanism is structural: **the judge has no ground-truth access.** It evaluates a
+report against ALERT DATA that already asserts the wrong class at p=0.9992. A report that
+faithfully renders that input contains no false statement *relative to its inputs*, so the
+judge cannot detect the misclassification even in principle. The human, holding the truth,
+sees a report that would send an analyst after the wrong attack.
+
+⚠️ **Confound — disclose this, do not build on it.** The sheets key on `case_id`, and the
+case_id string literally contains `assertive_error`. **The rater was therefore not blind to
+the stratum**, and these two scores may reflect knowing the label rather than detecting the
+error from the report. The correct reading is *two raters with unequal information*, not
+*the human caught what the judge missed*. This is a design defect in the sheet export
+(the case_id was carried through as the alignment key without considering what it encodes),
+and it is the reason the §12.1 sensitivity check excluding `assertive_error` matters.
+
+The judge-side limitation stands on its own regardless of the confound: **an LLM judge
+scoring a report against the detector's own output cannot audit the detector.** Faithfulness
+to a wrong input is indistinguishable from correctness. Any pipeline relying on such a judge
+for factual accuracy inherits that blind spot.
+
+### 12.5 What was deliberately not done, and limitations
+
+- **No re-annotation.** By the time the scale-usage problem in §12.3 was visible, the rater
+  had seen the coefficients. Re-scoring afterwards would fit the human to the judge and
+  destroy exactly what RQ3 measures. The result stands as collected.
+- **Single rater**, per `eval_protocol.md` §7; a second was sought and not obtained. With
+  n=20 report-level and one rater there is no human–human baseline to contextualise
+  κ=0.477, so it cannot be said whether that is judge unreliability or ordinary inter-human
+  variation on a hard task.
+- **Prior exposure**: the rater had seen the judge's *aggregate* `factual_accuracy` mean
+  (4.48, §11.1) before scoring. Aggregate only, and κ is chance-corrected against marginals,
+  so it cannot manufacture per-item agreement — recorded for completeness.
+- **n=20 / n=602** with wide confidence intervals, fixed in advance by protocol §7.
+- The 4 and 2 points of `factual_accuracy` are unanchored in the frozen rubric; judge and
+  human interpolated them independently (`rq3_rater_guide.md` §4).
+
+**Net read for the write-up:** the claim-level three-way taxonomy is validated at moderate
+agreement (κ=0.477, PABAK=0.668, 83.4% raw), with the judge stricter on entailment and
+markedly more conservative about declaring falsehood. The report-level rubric is not
+validated — three of four criteria are degenerate and the fourth is uninterpretable through
+rater scale usage. Two independent judge limitations are established: hallucination counts
+are a floor, and a judge scored against the detector's own output cannot audit the detector.

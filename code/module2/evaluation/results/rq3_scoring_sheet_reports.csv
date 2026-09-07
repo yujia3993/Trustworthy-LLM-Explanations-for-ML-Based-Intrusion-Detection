@@ -1,0 +1,663 @@
+case_id,report_md,factual_accuracy,actionability_device_specific,actionability_phases_separated,actionability_matches_category
+assertive_correct-125012,"## Threat Assessment
+This device, Ennio_Doorbell, is emitting Gafgyt scan with a calibrated probability of 1.0000. The attack is a Telnet scanning activity conducted by the Gafgyt (BASHLITE) botnet to identify new vulnerable devices for propagation. The severity is high because the device is confirmed compromised and actively recruiting new bots, which poses a risk to the local network and potentially other devices on the same LAN. The device owner is collateral damage, while the victims of the scanning are external targets. The attack is ongoing and automated, indicating the device is under botnet control [C3].
+
+## Attack Mechanism
+The Gafgyt scan attack involves the infected device sending Telnet connection attempts to a range of IP addresses to discover new vulnerable devices with exposed Telnet services. This scanning is part of the botnet’s propagation strategy, enabling it to recruit additional devices into the botnet. The device became infected likely through exploitation of default or weak credentials, allowing the botnet to execute this scanning behavior autonomously. This scanning activity uses modest bandwidth but is effective in expanding the botnet’s reach [C3].
+
+## Observable Indicators
+- [E5] MI_dir_L0.1_weight = 1206, which is 363.3 times above the device's benign median of 3.32 and above the benign 99th percentile of 12.5. This discriminative feature supports the identification of the Gafgyt scan attack [E5][C3].
+- [E1] MI_dir_L0.01_mean = 76.47, approximately at the device's benign median of 82.2 and within the benign 99th percentile of 106.5. This is anomalous relative to baseline but not indicative of a specific attack [E1].
+- [E2] HH_L0.1_mean = 74, approximately at the device's benign median of 83.72 and within the benign 99th percentile of 202.1. This is anomalous relative to baseline but not indicative of a specific attack [E2].
+- [E3] HH_jit_L1_variance = 4.254e+15, which is 559792941880069293342720.0 times above the device's benign median of 7.6e-09 and within the benign 99th percentile of 1.471e+16. This is anomalous relative to baseline but not indicative of a specific attack [E3].
+- [E4] HH_L0.1_magnitude = 74, 0.7 times below the device's benign median of 106.9 and within the benign 99th percentile of 223. This is anomalous relative to baseline but not indicative of a specific attack [E4].
+
+## Immediate Actions
+1. Disconnect the Ennio_Doorbell from Wi-Fi or isolate its switch port or VLAN to prevent further scanning activity.
+2. Power-cycle the doorbell to clear the memory-resident bot code.
+3. Change the web/app password and any Telnet or administrative credentials to unique, non-default values.
+4. Check for and apply any available firmware updates from the vendor.
+5. Verify and disable any port-forwarding or UPnP mappings on the home router that expose the doorbell or Telnet ports to the WAN.
+6. Block outbound Telnet traffic (ports 23 and 2323) from the doorbell’s network segment.
+
+## Longer-term Remediation
+1. Place the doorbell on an IoT-only network segment with no route to workstations or NAS devices to limit lateral movement.
+2. Maintain an inventory of IoT devices and ensure all have unique, non-default credentials to prevent botnet propagation [C12].
+3. Disable UPnP on the router to prevent unintended exposure of IoT devices.
+4. Regularly check for and apply firmware updates to the doorbell to patch vulnerabilities.
+5. If the device requires exposed management ports and does not receive vendor updates, consider replacing it as end-of-life [C10].
+
+## Confidence Notes
+The classification of this alert as Gafgyt scan has a calibrated probability of 1.0000 and a decision margin of 1.0000. Calibration reflects the long-run error rates of the classifier in this regime but does not guarantee the correctness of this individual alert.",5,0,1,1
+assertive_correct-145003,"## Threat Assessment
+
+This device, a Philips_B120N10_Baby_Monitor, is emitting Mirai ACK flood traffic with a calibrated probability of 1.0000. The attack is severe because the device is under external control and is actively participating in a distributed denial-of-service attack that consumes upstream bandwidth and harms third parties, specifically the flood victim and potentially the local network [C1]. The device owner is collateral damage in this scenario. The attack is confirmed with the highest confidence, and no alternative attack types are indicated.
+
+## Attack Mechanism
+
+The Mirai ACK flood attack involves the infected device sending TCP segments with the ACK flag set that do not belong to any established connection [C5]. These packets force the victim or intermediate stateful devices to perform costly connection table lookups, exhausting CPU and state-table resources. The attack bypasses naive SYN filters by mimicking the middle of legitimate sessions. Mirai generates these packets in a tight loop with randomized source ports and sequence numbers and configurable payload sizes [C4, C5]. The device became compromised through Mirai botnet infection, which controls it to emit this attack traffic.
+
+## Observable Indicators
+
+- [E1] MI_dir_L0.01_mean = 390.8, which is 5.5 times above the device's benign median of 71.11 and above the benign 99th percentile of 277.5 (DISCRIMINATIVE).
+- [E2] MI_dir_L5_weight = 166.1, which is 120.3 times above the device's benign median of 1.381 and above the benign 99th percentile of 10.33 (DISCRIMINATIVE).
+- [E3] MI_dir_L3_variance = 6.165e+04, anomalous relative to baseline at 2,894,634.1 times above the device's benign median of 0.0213 but within the benign 99th percentile of 7.918e+04 (CONTEXTUAL).
+- [E4] H_L0.01_variance = 5.795e+04, anomalous relative to baseline at 147.2 times above the device's benign median of 393.7 but within the benign 99th percentile of 1.84e+05 (CONTEXTUAL).
+- [E5] HpHp_L0.01_mean = 60, approximately at the device's benign median of 66.86 and within the benign 99th percentile of 170.5 (CONTEXTUAL).
+
+The discriminative features [E1] and [E2] strongly support the identification of Mirai ACK flood traffic, consistent with the known attack signature of highly regular, machine-generated packets [C4, C5].
+
+## Immediate Actions
+
+1. Immediately disconnect the Philips_B120N10_Baby_Monitor from the network to stop ongoing attack traffic and prevent further harm.
+2. Power-cycle the device to clear any memory-resident malware.
+3. Change all credentials associated with the device, including local admin, RTSP, and vendor cloud account passwords.
+4. Inspect and remove any router port-forwarding or UPnP entries that expose the baby monitor to the internet.
+5. Do not reconnect the device until all remediation steps are complete and the device is confirmed clean or replaced [C10].
+
+## Longer-term Remediation
+
+1. Deploy the baby monitor on an IoT-only network segment with restricted cloud egress to limit exposure.
+2. Block outbound Telnet traffic to prevent botnet propagation.
+3. Disable UPnP on the network to reduce automatic exposure risks.
+4. Prefer baby monitors that support authenticated, encrypted streaming and have an active vendor update channel.
+5. Maintain an inventory of devices and ensure every IoT device has unique, non-default credentials to prevent future Mirai infections [C9, C10].
+
+## Confidence Notes
+
+The classifier assigned a calibrated probability of 1.0000 and a decision margin of 1.0000 to the Mirai ACK flood class for this alert. Calibration reflects the long-run error rate of the classifier in this confidence regime but does not guarantee correctness for this individual alert.",5,1,1,1
+assertive_correct-175000,"## Threat Assessment
+This Philips_B120N10_Baby_Monitor device is emitting a Gafgyt junk attack with a calibrated probability of 1.0000. The attack is severe, as the device is under external command and control, sending streams of random ""junk"" payload data to a victim, thereby consuming its uplink and harming the victim by degrading their application or connection-handling resources. The local network may also be impacted by the device’s compromised state. The device owner is collateral damage in this scenario.  
+
+## Attack Mechanism
+The Gafgyt junk attack operates by transmitting randomly generated byte sequences to a target IP and port. This attack aims to impose volumetric load on the victim while evading simple signature- or content-based filters, as the payload contents are random rather than fixed templates. The device is compromised and controlled by the Gafgyt (BASHLITE) botnet, which causes it to repeatedly send these random payloads in a machine-regular cadence, exhausting the victim’s application or connection-handling resources rather than raw bandwidth [C2], [C5].  
+
+## Observable Indicators
+- HH_L5_weight = 166.9, which is 162.7 times above the device's benign median of 1.026 and above the benign 99th percentile of 9.486 [E1].  
+- MI_dir_L1_weight = 838.6, which is 406.1 times above the device's benign median of 2.065 and above the benign 99th percentile of 22.83 [E2].  
+- HH_jit_L1_variance = 3.78e+13, anomalous relative to the device's benign median of 1.856 and within the benign 99th percentile of 6.392e+13 [E3].  
+- HH_L0.1_magnitude = 95.26, approximately at the device's benign median of 117.6 and within the benign 99th percentile of 765.6 [E4].  
+- MI_dir_L0.01_mean = 74.15, approximately at the device's benign median of 71.11 and within the benign 99th percentile of 277.5 [E5].  
+
+The elevated HH_L5_weight and MI_dir_L1_weight values are discriminative indicators supporting the identification of a Gafgyt junk attack, consistent with the expected statistical fingerprint of this attack class [C6]. The other metrics are anomalous relative to baseline but contextual only.  
+
+## Immediate Actions
+1. Isolate the Philips_B120N10_Baby_Monitor from the network to prevent further attack traffic and potential local network impact.  
+2. Power-cycle the device to clear the memory-resident botnet infection.  
+3. Rotate all credentials associated with the device, including local admin, RTSP, and vendor cloud account passwords, to disrupt botnet control.  
+4. Block WAN-side Telnet access to the device to prevent re-infection or further compromise.  
+5. After completing the above steps, reconnect the device only if it is confirmed secure.  
+
+## Longer-term Remediation
+1. Maintain an inventory of all IoT devices and ensure each has unique, non-default credentials to prevent botnet propagation [C8].  
+2. Inspect router port-forwarding and UPnP settings to ensure the baby monitor is not internet-reachable, as this is a common misconfiguration leading to compromise [C11].  
+3. Segment IoT devices on a dedicated network segment with cloud-only egress and block outbound Telnet traffic to reduce attack surface [C11].  
+4. Prefer baby monitors that support authenticated, encrypted streaming and have an active vendor update channel.  
+5. Regularly check for and apply firmware updates to the device; if the model has known unpatched vulnerabilities or no vendor updates, consider replacing it rather than redeploying [C11].  
+
+## Confidence Notes
+The classifier assigned a calibrated probability of 1.0000 and a decision margin of 1.0000 to the Gafgyt junk attack classification. This calibration reflects the long-run error rates of the model in this high-confidence regime but does not guarantee correctness for this individual alert [C12].",5,1,1,1
+assertive_correct-275000,"## Threat Assessment
+This device, a Provision_PT_838_Security_Camera, is emitting Mirai UDP plain flood attack traffic with a calibrated probability of 1.0000. The attack is severe, as the device is under botnet control and is generating a high-rate UDP flood targeting a third party, which harms the victim by saturating their network resources. The local network is also at risk due to potential uplink saturation caused by the flood traffic. The device owner is collateral damage in this incident. The attack is confirmed with the highest confidence and no alternative attack types are indicated.
+
+## Attack Mechanism
+The Mirai UDP plain flood attack works by overwhelming a target with a high volume of connectionless UDP datagrams sent at line rate without any handshake, causing volumetric bandwidth exhaustion and secondary CPU load on the victim from ICMP port-unreachable responses [C4]. This variant, Mirai UDP-plain flood, uses a stripped-down packet-building loop that reuses a single pre-built packet template, minimizing CPU usage on the infected device and maximizing packets-per-second output [C5]. The device became infected through botnet compromise, enabling external control to launch this optimized flood attack at maximum packet rate against a single target port.
+
+## Observable Indicators
+- H_L0.01_variance = 6.096e+04, which is 3.5 times above the device's benign median of 1.766e+04 and above the benign 99th percentile of 4.95e+04 [E1].
+- HpHp_L0.1_weight = 1562, which is 807.9 times above the device's benign median of 1.933 and above the benign 99th percentile of 14.87 [E2].
+- MI_dir_L0.01_mean = 302.5, which is 2.9 times above the device's benign median of 103.7 and above the benign 99th percentile of 159.2 [E3].
+- MI_dir_L0.01_variance = 6.096e+04, which is 3.5 times above the device's benign median of 1.766e+04 and above the benign 99th percentile of 4.95e+04 [E4].
+- MI_dir_L5_weight = 121.3, which is 61.5 times above the device's benign median of 1.971 and above the benign 99th percentile of 54.39 [E5].
+
+These indicators reflect the extreme packet rate, low packet-size variance, and highly regular inter-arrival times characteristic of Mirai UDP plain flood attacks [C7].
+
+## Immediate Actions
+1. Isolate the Provision_PT_838_Security_Camera immediately by disconnecting it from the network, disabling its switch port, blocking its MAC/IP at the router, or moving it to a quarantine VLAN to prevent further attack traffic and protect the local uplink [C10].
+2. Power-cycle the device to clear the memory-resident Mirai bot, as the malware does not survive a reboot [C10].
+3. Rotate all credentials associated with the device, including local web/admin login, Telnet/SSH passwords, RTSP/streaming credentials, and vendor cloud account passwords, since factory defaults are publicly known and exploited by Mirai [C10].
+4. Close the exposure path by removing any router port-forwarding rules or UPnP mappings that expose Telnet (ports 23/2323) or management ports to the internet, apply any pending firmware updates, and disable Telnet on the device if possible [C10].
+5. Sweep the local network segment for other IoT devices, especially same-model devices, to check for similar infection indicators and apply this containment playbook as needed [C10].
+
+## Longer-term Remediation
+1. Eliminate default and shared credentials for all IoT devices in the environment by assigning unique, non-default passwords at deployment and maintaining an inventory of credential status [C9].
+2. Implement network segmentation to isolate IoT devices from critical infrastructure and sensitive data networks.
+3. Regularly apply firmware updates and security patches to all IoT devices to reduce vulnerability exposure.
+4. Disable unnecessary services such as Telnet on IoT devices and restrict management interfaces to trusted networks only.
+5. Monitor IoT device traffic continuously for anomalous patterns indicative of compromise or attack activity.
+
+## Confidence Notes
+The classification of this alert as Mirai UDP plain flood has a calibrated probability of 1.0000 and a decision margin of 1.0000. Calibration reflects the long-run error rates of the classifier in this confidence regime but does not guarantee the correctness of this individual alert.",5,1,1,1
+assertive_correct-285001,"## Threat Assessment
+This Provision_PT_838_Security_Camera device is emitting a Gafgyt junk attack with a calibrated probability of 1.0000. The attack is severe, as the device is under external command and control, sending streams of random ""junk"" payload data to a victim, thereby consuming its uplink and harming the victim by degrading their application or connection-handling resources. The device owner is collateral damage, while the victim and potentially the local network suffer from this malicious activity [C2]. The classifier’s confidence in this identification is maximal, with a margin of 1.0000.
+
+## Attack Mechanism
+The Gafgyt junk attack operates by repeatedly sending randomly generated byte sequences to a target. This serves two purposes: creating volumetric load on the victim and evading signature-based detection, as the payload contents are random rather than fixed templates. Each transmission carries a randomly sized and filled buffer, which statistically distinguishes junk attacks from other Gafgyt floods. The device became compromised likely through default credential exploitation, enabling external command and control to orchestrate this attack [C4].
+
+## Observable Indicators
+- HH_L0.1_weight = 7282, which is 2384.9 times above the device's benign median of 3.054 and above the benign 99th percentile of 115.5, indicating a strong deviation consistent with Gafgyt junk attack behavior [E1].
+- MI_dir_L0.1_weight = 7309, which is 838.0 times above the device's benign median of 8.723 and above the benign 99th percentile of 123.3, further supporting the attack classification [E2].
+- HH_L0.1_magnitude = 95.27, approximately at the device's benign median of 114 and within the benign 99th percentile of 522.2, anomalous relative to baseline but not specific to this attack type [E3].
+- HH_jit_L1_variance = 1.37, 1.8 times above the device's benign median of 0.7571 and within the benign 99th percentile of 1.042e+05, anomalous relative to baseline [E4].
+- MI_dir_L0.01_mean = 74.53, 0.7 times below the device's benign median of 103.7 and within the benign 99th percentile of 159.2, anomalous relative to baseline [E5].
+
+## Immediate Actions
+1. Disconnect the Provision_PT_838_Security_Camera from the network immediately to stop ongoing attack traffic and prevent further compromise [C10].
+2. Power-cycle the device to clear any memory-resident malware.
+3. Change all local admin and vendor-cloud credentials associated with the device to unique, non-default passwords [C8].
+4. Block WAN-side Telnet access to prevent re-exploitation via this common attack vector [C8].
+5. Remove any router port-forwarding or UPnP entries that expose the camera to the internet [C10].
+
+## Longer-term Remediation
+1. Place the camera on an IoT-only VLAN or network segment with restricted egress to the cloud only, minimizing exposure to other network resources [C10].
+2. Ensure outbound Telnet is blocked at the network perimeter to prevent similar attacks.
+3. Regularly check for and apply firmware updates from the vendor; if the model is discontinued or unpatchable, replace the device to eliminate persistent vulnerabilities [C10].
+4. Maintain an inventory of IoT devices and enforce unique, non-default credentials for all devices to prevent botnet propagation [C8].
+5. Periodically verify that the vendor’s cloud relay service is still receiving security maintenance and updates [C10].
+
+## Confidence Notes
+The classifier assigned a calibrated probability of 1.0000 and a decision margin of 1.0000 to the Gafgyt junk attack classification. This calibration reflects the long-run error rates of the model but does not guarantee absolute correctness for this individual alert [C12].",5,0,1,1
+assertive_correct-90002,"## Threat Assessment
+This Ecobee_Thermostat device is emitting a Gafgyt junk attack with a calibrated probability of 1.0000. The attack is severe, as the device is under external botnet control and is sending streams of random junk payload data to a victim, consuming uplink bandwidth and potentially disrupting the victim’s application or connection-handling resources. The primary harm is to the victim of the attack and the local network, while the device owner is collateral damage. The classifier’s confidence in this identification is maximal, indicating a near-certain detection of this attack type.
+
+## Attack Mechanism
+The Gafgyt junk attack operates by sending randomly generated byte sequences to a target IP and port. This attack aims to create volumetric load on the victim and evade signature-based detection by using random payloads rather than fixed templates. The device repeatedly transmits randomly sized and filled buffers, producing a statistically distinguishable pattern of packet sizes and timing. This behavior results from the device being compromised and controlled by the Gafgyt (BASHLITE) botnet, which commands it to perform this attack to exhaust the victim’s application or connection-handling resources [C2], [C4].
+
+## Observable Indicators
+- HH_L0.1_weight = 7008, which is 4599.3 times above the device’s benign median of 1.524 and above the benign 99th percentile of 5.344 [E1]. This elevated feature supports the identification of a Gafgyt junk attack [C7].
+- MI_dir_L0.1_weight = 7033, which is 2898.6 times above the device’s benign median of 2.426 and above the benign 99th percentile of 6.257 [E2]. This also supports the attack classification [C7].
+- HH_jit_L1_variance = 24.28, anomalous relative to the device’s benign median of 3.53e-05 by a factor of 687755.4, but within the benign 99th percentile of 880.1 [E3].
+- HH_L0.1_magnitude = 95.27, anomalous relative to the device’s benign median of 382.6 by a factor of 0.2 (below median), within the benign 99th percentile of 765.5 [E4].
+- MI_dir_L0.01_mean = 74.35, anomalous relative to the device’s benign median of 200.9 by a factor of 0.4 (below median), within the benign 99th percentile of 261.4 [E5].
+
+## Immediate Actions
+1. Isolate the Ecobee_Thermostat device from the network to prevent further attack traffic and potential uplink saturation.
+2. Power-cycle the device to clear any memory-resident botnet malware.
+3. Rotate the device’s credentials, ensuring that default or shared passwords are replaced with unique, strong passwords.
+4. Block WAN-side Telnet access to the device to prevent re-infection or external control.
+5. After completing these steps, reconnect the device to the network with monitoring in place.
+
+## Longer-term Remediation
+1. Eliminate default and shared credentials on all IoT devices, including this thermostat, by assigning unique, non-default passwords at deployment and maintaining an inventory of credential status [C11].
+2. Segment IoT devices on a separate network or VLAN to limit lateral movement and exposure.
+3. Regularly update device firmware and software to patch known vulnerabilities.
+4. Monitor network traffic for anomalous patterns consistent with botnet activity to enable early detection of reinfection.
+5. Remove or restrict unnecessary WAN-exposed services such as Telnet to reduce attack surface [C11].
+
+## Confidence Notes
+The classifier’s calibrated probability for this Gafgyt junk attack is 1.0000 with a decision margin of 1.0000. Calibration reflects the long-run error rates of the classifier in this high-confidence regime but does not guarantee that this individual alert is free from error.",5,0,1,1
+assertive_error-317103,"## Threat Assessment
+This device, a Samsung_SNH_1011_N_Webcam, is emitting a Gafgyt combo attack with a calibrated probability of 0.9992. The attack is severe because the device is under botnet control and is actively attacking a third party by opening TCP connections and sending junk payloads to exhaust application and connection-handling resources [C1]. The primary harm is to the victim of the attack, while the device owner’s local network is also at risk due to compromised device behavior. Immediate containment is critical to prevent further damage.
+
+## Attack Mechanism
+The Gafgyt combo attack operates by repeatedly opening TCP connections to a target IP and port, completing real handshakes, and pushing junk data through these established connections [C1], [C7]. This method targets the victim’s accept queues and application workers, aiming to exhaust connection-handling resources rather than just saturate bandwidth. The device became compromised through botnet infection, which commands it to perform this attack. The attack traffic is bidirectional and exhibits mixed packet sizes, distinguishing it from simpler one-way floods [C7].
+
+## Observable Indicators
+- [E1] MI_dir_L0.1_weight = 7485, which is 1974.8 times above the device’s benign median of 3.79 and above the benign 99th percentile of 52.97. This discriminative feature supports the identification of the Gafgyt combo attack [E1], [C6].
+- [E2] HH_L0.1_magnitude = 137.5, which is 0.4 times below the device’s benign median of 381.8 and within the benign 99th percentile of 591.8. This is anomalous relative to baseline but not specific to the attack type [E2].
+- [E3] HH_jit_L3_variance = 9.366e-07, which is 0.0 times below the device’s benign median of 0.003906 and within the benign 99th percentile of 631.5. This is anomalous relative to baseline only [E3].
+- [E4] HH_L0.1_covariance = 26.78, far above the device’s benign median of 0 but within the benign 99th percentile of 2864. This is anomalous relative to baseline only [E4].
+- [E5] HH_L0.01_radius = 38.88, which is 0.1 times below the device’s benign median of 397.1 and within the benign 99th percentile of 1.974e+05. This is anomalous relative to baseline only [E5].
+
+## Immediate Actions
+1. Disconnect the Samsung webcam from the network immediately to stop ongoing attack traffic and prevent further compromise [C9].
+2. Power-cycle the device to clear any memory-resident malware [C9].
+3. Change all local admin and vendor-cloud credentials associated with the webcam to prevent re-infection or unauthorized access [C9].
+4. Check for and apply any available firmware updates; if the model is discontinued or unpatchable, consider replacement [C9].
+5. Remove any router port-forwarding or UPnP entries that expose the webcam to the internet [C9].
+
+## Longer-term Remediation
+1. Place the webcam on an IoT-only VLAN with cloud-only egress to limit lateral movement and exposure [C9].
+2. Block outbound Telnet traffic from the device to prevent command-and-control communication [C9].
+3. Ensure the device uses unique credentials and maintain an inventory of credential status to prevent default-credential exploitation [C11].
+4. Periodically verify that the vendor still provides security maintenance and updates for the device; prefer retiring end-of-life hardware over relying solely on compensating controls [C9], [C11].
+
+## Confidence Notes
+The classifier’s calibrated probability for this Gafgyt combo attack is 0.9992 with a decision margin of 0.9983. Calibration reflects the long-run error rates of the classifier but does not guarantee correctness for this individual alert.",1,0,1,1
+assertive_error-91545,"## Threat Assessment
+This Ecobee_Thermostat device is emitting a Gafgyt combo attack with a calibrated probability of 0.9992. The attack is severe, as the device is under botnet control and is actively attacking a third party by repeatedly opening TCP connections and sending junk payloads. The primary harm is to the victim of the attack, who suffers resource exhaustion on application and connection handling. The local network may also be impacted by the device’s malicious traffic. The device owner is collateral damage in this incident [C1].
+
+## Attack Mechanism
+The Gafgyt combo attack operates by repeatedly opening TCP connections to a victim IP and port while sending junk payload data through these connections. This attack targets the victim’s application and connection-handling resources rather than raw bandwidth. The infected device is controlled externally by the botnet, which commands it to perform this connection-opening and junk payload transmission loop. The handshake round-trips involved in this attack throttle the outbound packet rate compared to raw floods, but the attack still generates bidirectional traffic with the victim, including inbound ACKs [C1, C8].
+
+## Observable Indicators
+- [E1] MI_dir_L0.1_weight = 7485, which is 3084.8 times above the device’s benign median of 2.426 and above the benign 99th percentile of 6.257. This discriminative feature supports the identification of the Gafgyt combo attack [E1, C8].
+- [E2] HH_L0.1_magnitude = 137.5, which is 0.4 times below the device’s benign median of 382.6 and within the benign 99th percentile of 765.5. This is anomalous relative to baseline but not indicative of a specific attack type [E2].
+- [E3] HH_jit_L3_variance = 9.366e-07, far above the device’s benign median of 0 and within the benign 99th percentile of 835.7. This is anomalous relative to baseline only [E3].
+- [E4] HH_L0.1_covariance = 26.78, which is -75.6 times below the device’s benign median of -0.3542 and within the benign 99th percentile of 1317. This is anomalous relative to baseline only [E4].
+- [E5] HH_L0.01_radius = 38.88, which is 0.0 times below the device’s benign median of 3.454e+04 and within the benign 99th percentile of 1.119e+05. This is anomalous relative to baseline only [E5].
+
+## Immediate Actions
+1. Isolate the Ecobee_Thermostat from the network immediately to prevent further attack traffic and protect the local network.
+2. Power-cycle the thermostat to clear the memory-resident bot infection.
+3. Rotate the associated account password and any local administrative credentials to prevent re-infection.
+4. Remove any WAN-exposed Telnet access to the device to close the primary propagation vector.
+5. Confirm that the thermostat continues to control HVAC locally if disconnected for extended periods, especially in extreme weather conditions [C12].
+
+## Longer-term Remediation
+1. Keep the thermostat on a dedicated IoT-only VLAN with cloud-only egress to restrict its network access.
+2. Block outbound Telnet traffic from the IoT VLAN to prevent future exploitation.
+3. Apply all pending firmware updates through the vendor’s official app to patch known vulnerabilities.
+4. Review the home router configuration for unexpected port-forwarding rules pointing to the thermostat.
+5. Prefer thermostat vendors with a demonstrated track record of timely security updates for any future device replacements [C12].
+6. Maintain an inventory of IoT devices and ensure each has unique, non-default credentials to prevent botnet propagation [C10].
+
+## Confidence Notes
+The classifier’s calibrated probability for this Gafgyt combo attack is 0.9992 with a decision margin of 0.9983. Calibration reflects the long-run error rates of the classifier but does not guarantee correctness for this individual alert.",1,1,1,1
+hedged_pair-100010,"## Threat Assessment
+
+The Ecobee_Thermostat device is currently participating in a high-severity distributed denial-of-service attack characterized as a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 0.9992. This attack consumes the device’s uplink bandwidth to overwhelm a third-party victim, causing harm to both the victim and potentially degrading the local network’s performance. The device owner is collateral damage, as the thermostat is under external command and control. The two candidate attack types, gafgyt_tcp and gafgyt_udp floods, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol [C1], [C2], [C9].
+
+## Attack Mechanism
+
+The Gafgyt flood over TCP or UDP operates by sending a continuous stream of packets at a target IP and port to exhaust the victim’s network resources. For the TCP variant, the attack sends TCP segments with various flag combinations to cause state exhaustion and volumetric load, while the UDP variant transmits connectionless datagrams at maximum rate to saturate the victim’s inbound bandwidth and trigger ICMP port-unreachable responses. Both variants generate highly regular, template-built packet streams at maximum rate. The infected thermostat emits this flood because it has been compromised by the Gafgyt (BASHLITE) botnet, which exploits default or weak credentials to gain control [C4], [C5], [C6].
+
+## Observable Indicators
+
+- [E1] H_L0.01_weight = 1, which is 0.1x below the device's benign median of 12.62 and within the benign 99th percentile of 18.37; anomalous relative to baseline.
+- [E2] H_L0.01_variance = 0, which is 0.0x below the device's benign median of 2.483e+04 and within the benign 99th percentile of 5.149e+04; anomalous relative to baseline.
+- [E3] MI_dir_L0.1_mean = 60, which is 0.3x below the device's benign median of 222.8 and within the benign 99th percentile of 414.8; anomalous relative to baseline.
+- [E4] MI_dir_L0.01_weight = 1, which is 0.1x below the device's benign median of 12.62 and within the benign 99th percentile of 18.37; anomalous relative to baseline.
+- [E5] MI_dir_L0.01_variance = 0, which is 0.0x below the device's benign median of 2.483e+04 and within the benign 99th percentile of 5.149e+04; anomalous relative to baseline.
+
+These anomalies reflect deviations from the thermostat’s normal traffic patterns consistent with the highly regular, high-rate packet streams typical of Gafgyt floods [C7].
+
+## Immediate Actions
+
+1. Isolate the Ecobee_Thermostat from the network to stop the outbound flood traffic.
+2. Power-cycle the thermostat to clear the memory-resident bot.
+3. Rotate the thermostat’s associated account password and any local administrative credentials.
+4. Capture a single packet of the flood traffic (e.g., using tcpdump at the network gateway) and inspect the IP header protocol field to determine whether the flood is TCP (protocol 6) or UDP (protocol 17). This step is for protocol disambiguation only and must not delay containment.
+5. Eliminate any WAN-side Telnet exposure to prevent reinfection before reconnecting the device.
+
+## Longer-term Remediation
+
+1. Keep the thermostat on a dedicated IoT VLAN with cloud-only egress to restrict its network access.
+2. Block outbound Telnet traffic from the IoT VLAN to reduce attack surface.
+3. Apply all pending firmware updates through the vendor’s official app to address known vulnerabilities.
+4. Review the home router configuration for unexpected port-forwarding rules pointing to the thermostat.
+5. Prefer thermostat vendors with a demonstrated track record of timely security updates for any future device replacements.
+6. Maintain an inventory of IoT devices and ensure each has unique, non-default credentials to prevent botnet propagation [C11], [C12].
+
+## Confidence Notes
+
+The classification confidence for the Gafgyt flood over TCP or UDP (the tcp-or-udp pair) is very high, with a pair probability of 0.9992. The two candidate attack types, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol. Any probability split between gafgyt_tcp and gafgyt_udp within the pair carries no evidential value, as it derives from capture artefacts that do not generalize. The recommended packet-capture disambiguation procedure can resolve the protocol if needed, but containment actions are identical and must not wait for this step [C6], [C9], [C10].",5,0,1,1
+hedged_pair-105000,"## Threat Assessment
+
+The Ecobee_Thermostat device is currently participating in a high-severity distributed denial-of-service attack characterized as a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 0.9992. This attack consumes the device’s uplink bandwidth to overwhelm a third-party victim, causing harm to both the victim and potentially degrading the local network’s performance. The device owner is collateral damage, as the device is under external command and control. The two candidate attack types, gafgyt_tcp and gafgyt_udp floods, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol [C1], [C2], [C6].
+
+## Attack Mechanism
+
+The Gafgyt flood over TCP or UDP operates by sending a continuous stream of packets at a target IP and port. For the TCP variant, the attack involves a high-rate stream of TCP segments with randomized source ports and sequence numbers, aiming to exhaust connection tables and generate volumetric load. For the UDP variant, the attack sends connectionless datagrams as fast as possible, saturating the victim’s inbound bandwidth and causing additional ICMP port-unreachable traffic. Both variants use simple, template-built packet loops that produce sustained, extremely regular streams. The device became compromised through external command and control, likely exploiting default or weak credentials, causing it to emit this flood traffic [C4], [C5], [C6].
+
+## Observable Indicators
+
+- [E1] H_L0.01_weight = 1, which is 0.1x below the device's benign median of 12.62 and within the benign 99th percentile of 18.37; anomalous relative to baseline.
+- [E2] H_L0.01_variance = 0, which is 0.0x below the device's benign median of 2.483e+04 and within the benign 99th percentile of 5.149e+04; anomalous relative to baseline.
+- [E3] MI_dir_L0.1_mean = 60, which is 0.3x below the device's benign median of 222.8 and within the benign 99th percentile of 414.8; anomalous relative to baseline.
+- [E4] MI_dir_L0.01_weight = 1, which is 0.1x below the device's benign median of 12.62 and within the benign 99th percentile of 18.37; anomalous relative to baseline.
+- [E5] MI_dir_L0.01_variance = 0, which is 0.0x below the device's benign median of 2.483e+04 and within the benign 99th percentile of 5.149e+04; anomalous relative to baseline.
+
+These indicators reflect anomalous traffic patterns relative to the device’s benign baseline but do not specify the attack type. The attack’s statistical signature is consistent with a machine-generated, sustained, high-rate flood with regular packet sizes and timing [C7].
+
+## Immediate Actions
+
+1. Isolate the Ecobee_Thermostat from the network to stop the outbound flood traffic.
+2. Power-cycle the thermostat to clear the memory-resident bot.
+3. Rotate the associated account password and any local administrative credentials.
+4. Eliminate WAN-side Telnet exposure to prevent reinfection.
+5. Capture any single packet of the flood traffic (e.g., using tcpdump at the gateway) and inspect the IP header protocol field: protocol 6 indicates gafgyt_tcp, protocol 17 indicates gafgyt_udp. This step is for protocol disambiguation only and must not delay containment.
+6. Review the home router for unexpected port-forwarding entries pointing at the thermostat before reconnecting.
+
+## Longer-term Remediation
+
+1. Keep the thermostat on an IoT-only VLAN with cloud-only egress, blocking outbound Telnet from that segment.
+2. Apply all pending firmware updates through the vendor app to address known vulnerabilities.
+3. Prefer thermostat vendors with a demonstrated update track record for any future replacements.
+4. Eliminate default and shared credentials across all IoT devices in the environment, ensuring each device has a unique, non-default password.
+5. Maintain an inventory of devices and their credential status to prevent botnet propagation paths [C11], [C12].
+
+## Confidence Notes
+
+The classification confidence for this alert is very high, with a pair probability of 0.9992 for a Gafgyt flood over TCP or UDP (the tcp-or-udp pair). The two candidate attack types, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol. Any probability split between gafgyt_tcp and gafgyt_udp within this pair carries no evidential value, as it derives from capture artefacts that do not generalize.",5,0,1,1
+hedged_pair-105004,"## Threat Assessment
+The Ecobee_Thermostat device is currently emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a high confidence probability of 0.9992. This attack is severe as the device is under external command and control, using its uplink bandwidth to participate in a distributed denial-of-service (DDoS) attack that harms a third-party victim. The device owner is collateral damage, while the victim of the flood and the local network may experience degraded service or outages. The two candidate attack types, gafgyt_tcp and gafgyt_udp floods, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol [C1], [C2], [C6].
+
+## Attack Mechanism
+The Gafgyt flood over TCP or UDP involves the infected device sending a continuous stream of packets at a target IP and port. For the TCP variant, the flood consists of TCP segments with various flag combinations designed to exhaust connection tables and impose volumetric load. For the UDP variant, the flood sends connectionless datagrams as fast as possible to saturate the victim’s inbound bandwidth and trigger ICMP port-unreachable responses. Both variants use simple, template-built packet loops that produce sustained, extremely regular streams. The device became infected through exploitation of default or weak credentials, allowing external command and control to direct the flood [C4], [C5], [C6].
+
+## Observable Indicators
+- [E1] H_L0.01_weight = 1, which is 0.1x below the device's benign median of 12.62 and within the benign 99th percentile of 18.37; anomalous relative to baseline.
+- [E2] H_L0.01_variance = 0, which is 0.0x below the device's benign median of 2.483e+04 and within the benign 99th percentile of 5.149e+04; anomalous relative to baseline.
+- [E3] MI_dir_L0.1_mean = 60, which is 0.3x below the device's benign median of 222.8 and within the benign 99th percentile of 414.8; anomalous relative to baseline.
+- [E4] MI_dir_L0.01_weight = 1, which is 0.1x below the device's benign median of 12.62 and within the benign 99th percentile of 18.37; anomalous relative to baseline.
+- [E5] MI_dir_L0.01_variance = 0, which is 0.0x below the device's benign median of 2.483e+04 and within the benign 99th percentile of 5.149e+04; anomalous relative to baseline.
+
+These anomalous values reflect the sustained, regular packet rates and low variance in packet sizes and timing typical of Gafgyt floods [C7].
+
+## Immediate Actions
+1. Isolate the Ecobee_Thermostat from the network immediately to stop the outbound flood traffic.
+2. Power-cycle the thermostat to clear the memory-resident bot.
+3. Rotate the associated account password and any local administrative credentials.
+4. Eliminate WAN-side Telnet exposure to prevent reinfection.
+5. Capture any single packet of the flood traffic (e.g., using tcpdump at the gateway) and inspect the IP header protocol field: protocol 6 indicates gafgyt_tcp, protocol 17 indicates gafgyt_udp. This step is for protocol disambiguation only and must not delay containment.
+6. Confirm that heating/cooling continues locally before leaving the thermostat disconnected for extended periods, especially in extreme weather conditions [C12].
+
+## Longer-term Remediation
+1. Keep the thermostat on an IoT-only VLAN with cloud-only egress to restrict its network access.
+2. Block outbound Telnet traffic from the thermostat’s network segment.
+3. Apply all pending firmware updates through the vendor app to address known vulnerabilities.
+4. Review the home router for unexpected port-forwarding rules pointing to the thermostat.
+5. Prefer thermostat vendors with a demonstrated track record of timely security updates for any future device replacements.
+6. Implement a long-term hardening program that eliminates default and shared credentials across all IoT devices to prevent botnet propagation [C11], [C12].
+
+## Confidence Notes
+The classification confidence for the Gafgyt flood over TCP or UDP (the tcp-or-udp pair) is very high, with a pair probability of 0.9992. The two candidate attack types, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol. Any probability split between gafgyt_tcp and gafgyt_udp within the pair carries no evidential value, as it derives from capture artefacts that do not generalize [C6], [C9], [C10].",5,1,1,1
+hedged_pair-130000,"## Threat Assessment
+The Ennio_Doorbell device is currently emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. This attack is severe as the device is under external command and control, using its uplink bandwidth to participate in a distributed denial-of-service (DDoS) attack that harms a third-party victim and potentially saturates the local network uplink. The device owner is collateral damage, while the victim of the flood and the local network are directly harmed. The two attack variants, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol [C1], [C2], [C6].
+
+## Attack Mechanism
+The Gafgyt flood over TCP or UDP operates by sending a continuous stream of packets at a target IP and port. For the TCP variant, the attack involves sending TCP segments with various flag combinations to exhaust connection tables and impose volumetric load. For the UDP variant, the attack sends connectionless datagrams as fast as possible to saturate the victim’s inbound bandwidth and trigger ICMP port-unreachable responses. Both variants produce a highly regular, template-built maximum-rate stream on embedded hardware. The device became infected and is now under external control, executing this flood attack to overwhelm a victim’s resources [C4], [C5], [C6].
+
+## Observable Indicators
+- [E1] H_L0.01_weight = 1 - 0.0x below the device's benign median (20.36); within the benign 99th percentile (41.32). This is anomalous relative to the device baseline.
+- [E2] H_L0.01_variance = 0 - 0.0x below the device's benign median (199.6); within the benign 99th percentile (8923). This is anomalous relative to the device baseline.
+- [E3] MI_dir_L0.1_mean = 60 - 0.7x below the device's benign median (87.61); within the benign 99th percentile (129.7). This is anomalous relative to the device baseline.
+- [E4] MI_dir_L0.01_weight = 1 - 0.0x below the device's benign median (20.36); within the benign 99th percentile (41.32). This is anomalous relative to the device baseline.
+- [E5] MI_dir_L0.01_variance = 0 - 0.0x below the device's benign median (199.6); within the benign 99th percentile (8922). This is anomalous relative to the device baseline.
+
+These anomalous statistics reflect the sustained, highly regular packet rates and tight distributions characteristic of Gafgyt floods over TCP or UDP [C7], [C8], [C9].
+
+## Immediate Actions
+1. Isolate the Ennio_Doorbell device immediately by disconnecting it from the network (e.g., unplug Ethernet, disable switch port, block MAC/IP, or move to quarantine VLAN) to prevent further attack traffic and protect local uplink capacity [C11].
+2. Power-cycle the device to clear the memory-resident bot; this removes the running malware but does not fix the vulnerability [C11].
+3. Rotate all credentials associated with the device, including local admin, Telnet/SSH, streaming, and vendor cloud passwords, as factory defaults are publicly known and exploited by the botnet [C11].
+4. Close exposure paths before reconnecting: remove any router port-forwarding or UPnP mappings exposing Telnet (ports 23/2323) or management interfaces, apply pending firmware updates, and disable Telnet if possible [C11].
+5. Capture a single packet of the flood traffic (e.g., using tcpdump at the gateway) and inspect the IP header protocol field to determine whether the flood is TCP (protocol 6) or UDP (protocol 17). This disambiguation step is important but must not delay containment, as response is identical for both variants [C10].
+6. Sweep the local network segment for other IoT devices, especially same-model devices, for similar indicators and apply this containment playbook as needed [C11].
+
+## Longer-term Remediation
+1. Eliminate default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment. This measure breaks the primary propagation path of Mirai/Gafgyt-class botnets [C12].
+2. Maintain an inventory of all IoT devices and their credential status to ensure ongoing credential hygiene [C12].
+3. Regularly apply firmware updates and security patches to all IoT devices to close known vulnerabilities.
+4. Implement network segmentation to isolate IoT devices from critical infrastructure and limit lateral movement.
+5. Disable unnecessary services such as Telnet and restrict device management interfaces to trusted networks only.
+6. Monitor network traffic for anomalous patterns consistent with DDoS activity to enable early detection and response.
+
+## Confidence Notes
+The classification identifies the attack as a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. The two candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol. Any probability split within the pair (e.g., p_top1 = 0.5002 and p_top2 = 0.4998) carries no evidential value and results from capture artefacts that do not generalize. This structural limitation requires asserting the attack only at the pair level and treating both candidates symmetrically [C6], [C8], [C10].",5,1,1,1
+hedged_pair-135001,"## Threat Assessment
+
+The Ennio_Doorbell device is currently emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. This attack is severe because the device is under external command and control, using its uplink bandwidth to participate in a distributed denial-of-service (DDoS) attack that harms a third-party victim and potentially saturates the local network uplink. The device owner is collateral damage, while the victim of the flood and the local network are the harmed parties. The classifier cannot distinguish between the Gafgyt TCP flood and UDP flood variants due to the feature set limitations, but the certainty of a Gafgyt flood from this pair is complete [C1], [C2].
+
+## Attack Mechanism
+
+The Gafgyt flood over TCP or UDP operates by sending a continuous stream of packets at a target IP and port to overwhelm the victim’s resources. The TCP flood variant sends TCP segments with various flag combinations to exhaust connection tables and impose volumetric load, while the UDP flood variant sends connectionless datagrams at maximum rate to saturate the victim’s inbound bandwidth and trigger ICMP port-unreachable responses. Both variants produce highly regular, template-built maximum-rate streams on embedded hardware. The device became compromised through external command and control, causing it to emit this flood traffic [C4], [C5], [C6].
+
+## Observable Indicators
+
+- The evidence does not include any DISCRIMINATIVE features for this alert; all observed features are CONTEXTUAL.
+- [E1] H_L0.01_weight = 1, which is 0.0x below the device's benign median of 20.36 and within the benign 99th percentile of 41.32, indicating anomalous but not attack-specific behavior.
+- [E2] H_L0.01_variance = 0, 0.0x below the benign median of 199.6 and within the 99th percentile of 8923, anomalous relative to baseline.
+- [E3] MI_dir_L0.1_mean = 60, 0.7x below the benign median of 87.61 and within the 99th percentile of 129.7, anomalous relative to baseline.
+- [E4] MI_dir_L0.01_weight = 1, 0.0x below the benign median of 20.36 and within the 99th percentile of 41.32, anomalous relative to baseline.
+- [E5] MI_dir_L0.01_variance = 0, 0.0x below the benign median of 199.6 and within the 99th percentile of 8922, anomalous relative to baseline.
+
+These anomalous values reflect elevated and unusual traffic patterns compared to the device’s benign baseline but do not specifically indicate the attack type [C7], [C8].
+
+## Immediate Actions
+
+1. Isolate the Ennio_Doorbell device immediately by disconnecting it from the network (e.g., unplug Ethernet, disable switch port, block MAC/IP, or move to quarantine VLAN) to prevent further harm to the local network and third-party victims.
+2. Power-cycle the device to clear the memory-resident botnet malware; this removes the active bot but does not fix the vulnerability.
+3. Rotate all credentials associated with the device, including local admin, Telnet/SSH, streaming, and vendor cloud passwords, as factory defaults are publicly known and exploited by botnets.
+4. Close exposure paths by removing any router port-forwarding or UPnP mappings that expose Telnet (ports 23/2323) or management interfaces to the internet; apply any pending firmware updates and disable Telnet if possible.
+5. Capture a single packet of the flood traffic (e.g., using tcpdump at the gateway) and inspect the IP header protocol field to determine whether the flood is TCP (protocol 6) or UDP (protocol 17). This step is for analyst information only and must not delay containment, as the response is identical for both variants.
+6. Sweep the local network segment for other IoT devices, especially same-model devices, to check for similar infection indicators and apply this containment playbook as needed.
+
+## Longer-term Remediation
+
+1. Eliminate default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment. This measure is critical to breaking the primary propagation path of Mirai/Gafgyt-class botnets.
+2. Maintain an inventory of all IoT devices and their credential status to ensure ongoing credential hygiene.
+3. Regularly apply firmware updates and security patches to all IoT devices to close known vulnerabilities.
+4. Implement network segmentation to isolate IoT devices from critical infrastructure and sensitive data.
+5. Monitor network traffic for anomalous patterns consistent with DDoS participation or scanning activity to detect reinfection attempts early [C12].
+
+## Confidence Notes
+
+The classification identifies the attack as a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. The two candidate attack types, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol. Any probability split between gafgyt_tcp and gafgyt_udp within the pair carries no evidential value, as it derives from capture artefacts that do not generalize. This structural limitation is explicitly acknowledged, and the report presents both candidates symmetrically without preference or ranking [C6], [C8], [C10].",5,1,1,1
+hedged_pair-240001,"## Threat Assessment
+The Provision_PT_737E_Security_Camera is currently emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. This attack is severe as the device is under external command and control, using its uplink bandwidth to participate in a distributed denial-of-service attack that harms a third-party victim. The device owner is collateral damage, while both the victim of the flood and the local network may experience disruption. The two attack candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol [C1], [C2], [C10].
+
+## Attack Mechanism
+The Gafgyt flood over TCP or UDP involves the infected device sending a continuous stream of packets at a target IP and port. For the TCP variant, the attack sends TCP segments with various flag combinations to exhaust connection tables and generate volumetric load. For the UDP variant, the attack transmits connectionless datagrams as fast as possible to saturate the victim’s inbound bandwidth and cause ICMP port-unreachable responses. Both variants produce a highly regular, maximum-rate stream generated by a simple packet-building loop in the malware’s embedded code. The device became infected through external command and control, causing it to emit this flood traffic [C4], [C5], [C6].
+
+## Observable Indicators
+- [E1] H_L0.01_weight = 1 - 0.0x below the device's benign median (31.5); within the benign 99th percentile (131.1). This is anomalous relative to the device baseline.
+- [E2] H_L0.01_variance = 0 - 0.0x below the device's benign median (3430); within the benign 99th percentile (4.384e+04). This is anomalous relative to the device baseline.
+- [E3] MI_dir_L0.1_mean = 60 - 0.8x below the device's benign median (79.26); within the benign 99th percentile (171.1). This is anomalous relative to the device baseline.
+- [E4] MI_dir_L0.01_weight = 1 - 0.0x below the device's benign median (31.5); within the benign 99th percentile (131.1). This is anomalous relative to the device baseline.
+- [E5] MI_dir_L0.01_variance = 0 - 0.0x below the device's benign median (3419); within the benign 99th percentile (4.384e+04). This is anomalous relative to the device baseline.
+
+These anomalous feature values reflect the highly regular, template-built maximum-rate stream characteristic of Gafgyt floods over TCP or UDP [C7], [C8].
+
+## Immediate Actions
+1. Isolate the Provision_PT_737E_Security_Camera immediately by disconnecting it from the network (unplug Ethernet, disable switch port, block MAC/IP, or move to quarantine VLAN) to prevent further uplink saturation and third-party harm [C11].
+2. Power-cycle the device to clear the memory-resident bot; this removes the running malware but does not fix the vulnerability [C11].
+3. Rotate all device credentials, including local admin, Telnet/SSH, RTSP/streaming, and vendor cloud passwords, as factory defaults are publicly known and exploited by the botnet [C11].
+4. Close exposure paths before reconnecting: remove any router port-forwarding or UPnP mappings exposing Telnet (ports 23/2323) or management interfaces, apply pending firmware updates, and disable Telnet if possible [C11].
+5. Capture a single packet of the flood traffic (e.g., using tcpdump at the gateway) and inspect the IP header protocol field to determine whether the flood is TCP (protocol 6) or UDP (protocol 17). This disambiguation step should not delay containment, as response is identical for both candidates [C10], [C11].
+6. Sweep the local network segment for other infected devices, especially same-model IoT devices, and apply this containment playbook to each [C11].
+
+## Longer-term Remediation
+1. Eliminate default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment. Maintain an inventory of devices and their credential status to prevent botnet propagation via credential reuse [C12].
+2. Regularly apply firmware updates to patch known vulnerabilities and reduce exposure to exploitation.
+3. Disable unnecessary services such as Telnet on IoT devices to reduce attack surface.
+4. Implement network segmentation to isolate IoT devices from critical infrastructure and limit lateral movement.
+5. Monitor network traffic for anomalous patterns consistent with IoT botnet activity to enable early detection and response.
+
+## Confidence Notes
+The classification confidence for the Gafgyt flood over TCP or UDP (the tcp-or-udp pair) is 1.0000. The two candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol. The individual probabilities for gafgyt_tcp (0.5002) and gafgyt_udp (0.4998) carry no evidential value as they derive from capture artefacts that do not generalize. This structural limitation requires reporting at the pair level only, with symmetrical presentation of both candidates [C6], [C7], [C10].",5,1,1,1
+hedged_pair-245001,"## Threat Assessment
+The Provision_PT_737E_Security_Camera is currently emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. This attack is severe as the device is under external command and control, using its uplink bandwidth to participate in a distributed denial-of-service attack that harms a third-party victim. The device owner is collateral damage, while both the victim of the flood and the local network may experience negative impacts. The classifier cannot distinguish between the TCP and UDP variants of the Gafgyt flood due to the feature set limitations, which do not record the transport protocol [C1], [C2], [C6].
+
+## Attack Mechanism
+The Gafgyt flood over TCP or UDP involves the infected device sending a continuous stream of packets at a target IP and port. For the TCP variant, the attack sends TCP segments with various flag combinations to exhaust connection tables and generate volumetric load. For the UDP variant, the attack sends connectionless datagrams as fast as possible to saturate the victim’s inbound bandwidth and cause ICMP port-unreachable responses. Both variants produce a highly regular, maximum-rate packet stream generated by simple embedded code. The device became infected through external command and control, causing it to emit this flood traffic [C4], [C5], [C6].
+
+## Observable Indicators
+- [E1] H_L0.01_weight = 1 - 0.0x below the device's benign median (31.5); within the benign 99th percentile (131.1). This is anomalous relative to the device baseline.
+- [E2] H_L0.01_variance = 0 - 0.0x below the device's benign median (3430); within the benign 99th percentile (4.384e+04). This is anomalous relative to the device baseline.
+- [E3] MI_dir_L0.1_mean = 60 - 0.8x below the device's benign median (79.26); within the benign 99th percentile (171.1). This is anomalous relative to the device baseline.
+- [E4] MI_dir_L0.01_weight = 1 - 0.0x below the device's benign median (31.5); within the benign 99th percentile (131.1). This is anomalous relative to the device baseline.
+- [E5] MI_dir_L0.01_variance = 0 - 0.0x below the device's benign median (3419); within the benign 99th percentile (4.384e+04). This is anomalous relative to the device baseline.
+
+These anomalous feature values are consistent with the expected statistical signature of a Gafgyt flood, which produces a sustained, highly regular packet stream with low variance in packet sizes and timing [C7], [C8].
+
+## Immediate Actions
+1. Isolate the Provision_PT_737E_Security_Camera immediately by disconnecting it from the network (unplug Ethernet, disable switch port, block MAC/IP, or move to quarantine VLAN) to prevent further attack traffic and protect local uplink bandwidth [C11].
+2. Power-cycle the device to clear the memory-resident botnet malware; this reboot removes the running bot but does not fix the vulnerability [C11].
+3. Rotate all device credentials, including local admin, Telnet/SSH, RTSP/streaming, and vendor cloud passwords, as factory defaults are publicly known and exploited by Gafgyt [C11].
+4. Close exposure paths before reconnecting: remove any WAN-side port-forwarding or UPnP mappings exposing Telnet (ports 23/2323) or management interfaces; apply any pending firmware updates; disable Telnet if possible [C11].
+5. Capture a single packet of the flood traffic (e.g., using tcpdump at the gateway) and inspect the IP header protocol field to determine whether the flood is TCP (protocol 6) or UDP (protocol 17). This step aids further analysis but must not delay containment, as response is identical for both candidates [C6], [C10].
+6. Sweep the local network segment for other infected devices, especially same-model IoT devices, and apply this containment playbook to each [C11].
+
+## Longer-term Remediation
+1. Eliminate default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment. This measure is critical to breaking the primary propagation path of Mirai/Gafgyt-class botnets [C12].
+2. Maintain an inventory of all IoT devices and their credential status to ensure ongoing credential hygiene [C12].
+3. Regularly apply firmware updates and security patches to IoT devices to close known vulnerabilities [C11].
+4. Disable unnecessary services such as Telnet on IoT devices and restrict management interfaces to trusted networks [C11].
+5. Segment IoT devices on separate VLANs or network segments to limit lateral movement and contain infections [C12].
+
+## Confidence Notes
+The classification identifies the attack as a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. The two candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol. Any probability split between gafgyt_tcp and gafgyt_udp within the pair carries no evidential value, as it derives from capture artefacts that do not generalize. This structural limitation is explicitly acknowledged, and the report presents both candidates symmetrically without preference or ranking [C6], [C7], [C10].",5,1,1,1
+hedged_pair-245009,"## Threat Assessment
+The Provision_PT_737E_Security_Camera is currently emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. This attack is severe as the device is under external command and control, using its uplink bandwidth to participate in a distributed denial-of-service attack that harms a third-party victim and potentially saturates the local network uplink. The device owner is collateral damage, while the victim of the flood and the local network are directly impacted. The two attack candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol [C1], [C2], [C10].
+
+## Attack Mechanism
+The Gafgyt flood over TCP or UDP operates by sending a continuous stream of packets at a target IP and port. For the TCP variant, the attack involves sending TCP segments with various flag combinations to exhaust connection tables and generate volumetric load. For the UDP variant, the attack sends connectionless datagrams as fast as possible to saturate the victim’s inbound bandwidth and cause ICMP port-unreachable responses. Both variants produce a highly regular, maximum-rate stream generated by a simple packet-building loop in embedded C code. The device became infected and is now under external control, emitting this flood traffic as part of a botnet operation [C4], [C5], [C6].
+
+## Observable Indicators
+- [E1] H_L0.01_weight = 1 - 0.0x below the device's benign median (31.5); within the benign 99th percentile (131.1). This is anomalous relative to the device baseline.
+- [E2] H_L0.01_variance = 0 - 0.0x below the device's benign median (3430); within the benign 99th percentile (4.384e+04). This is anomalous relative to the device baseline.
+- [E3] MI_dir_L0.1_mean = 60 - 0.8x below the device's benign median (79.26); within the benign 99th percentile (171.1). This is anomalous relative to the device baseline.
+- [E4] MI_dir_L0.01_weight = 1 - 0.0x below the device's benign median (31.5); within the benign 99th percentile (131.1). This is anomalous relative to the device baseline.
+- [E5] MI_dir_L0.01_variance = 0 - 0.0x below the device's benign median (3419); within the benign 99th percentile (4.384e+04). This is anomalous relative to the device baseline.
+
+These features reflect anomalous traffic patterns compared to the device’s benign baseline but do not distinguish between TCP or UDP floods [C7], [C8].
+
+## Immediate Actions
+1. Isolate the Provision_PT_737E_Security_Camera immediately by disconnecting it from the network (unplug Ethernet, disable switch port, block MAC/IP, or move to quarantine VLAN) to prevent further attack traffic and protect local uplink capacity [C11].
+2. Power-cycle the device to clear the memory-resident botnet malware; this reboot removes the running bot but does not fix the vulnerability [C11].
+3. Rotate all device credentials, including local admin, Telnet/SSH, RTSP/streaming, and vendor cloud passwords, as factory defaults are publicly known and exploited by the botnet [C11].
+4. Close exposure paths by removing any WAN-side port-forwarding or UPnP mappings that expose Telnet (ports 23/2323) or management interfaces; apply any pending firmware updates; disable Telnet if possible [C11].
+5. Capture a single packet of the flood traffic (e.g., using tcpdump at the gateway) and inspect the IP header protocol field to determine whether the flood is TCP (protocol 6) or UDP (protocol 17). This step is for protocol disambiguation only and must not delay containment, as response is identical for both candidates [C10].
+6. Sweep the local network segment for other infected devices, especially same-model IoT devices, and apply this containment playbook to each [C11].
+
+## Longer-term Remediation
+1. Eliminate default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment. Maintain an inventory of devices and their credential status to prevent botnet propagation via credential reuse [C12].
+2. Regularly update device firmware to patch known vulnerabilities and reduce exposure to exploitation.
+3. Disable unnecessary services such as Telnet on IoT devices to reduce attack surface.
+4. Implement network segmentation to isolate IoT devices from critical infrastructure and limit lateral movement in case of compromise.
+5. Monitor network traffic for anomalous patterns consistent with IoT botnet activity to enable early detection and response.
+
+## Confidence Notes
+The classification identifies the attack as a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. The two candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol. Any probability split between gafgyt_tcp and gafgyt_udp within the pair carries no evidential value, as it derives from capture artefacts that do not generalize [C6], [C7], [C10].",5,1,1,1
+hedged_pair-295024,"## Threat Assessment
+The Provision_PT_838_Security_Camera is currently emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. This attack is severe as the device is under external command and control, using its uplink to participate in a distributed denial-of-service attack that harms a third-party victim by saturating their bandwidth. The device owner is collateral damage, and the local network may also be affected by uplink saturation. The two attack candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol [C1], [C2], [C6].
+
+## Attack Mechanism
+The Gafgyt flood over TCP or UDP operates by sending a continuous stream of packets at a target IP and port. For the TCP variant, the attack involves a high-rate stream of TCP segments with randomized source ports and sequence numbers, aiming to exhaust connection tables and generate volumetric load [C4]. For the UDP variant, the attack sends connectionless datagrams as fast as possible to saturate the victim’s inbound bandwidth and cause ICMP port-unreachable responses [C5]. Both variants produce a highly regular, template-built maximum-rate stream on embedded hardware. The device became compromised through external command and control, causing it to emit this flood traffic [C6].
+
+## Observable Indicators
+- [E1] H_L0.01_weight = 1, which is 0.0x below the device's benign median of 59.29 and within the benign 99th percentile of 254.2; anomalous relative to baseline.
+- [E2] H_L0.01_variance = 0, which is 0.0x below the device's benign median of 1.766e+04 and within the benign 99th percentile of 4.95e+04; anomalous relative to baseline.
+- [E3] MI_dir_L0.1_mean = 60, which is 0.7x below the device's benign median of 89.05 and within the benign 99th percentile of 171.3; anomalous relative to baseline.
+- [E4] MI_dir_L0.01_weight = 1, which is 0.0x below the device's benign median of 59.29 and within the benign 99th percentile of 254.2; anomalous relative to baseline.
+- [E5] MI_dir_L0.01_variance = 0, which is 0.0x below the device's benign median of 1.766e+04 and within the benign 99th percentile of 4.95e+04; anomalous relative to baseline.
+
+These observations indicate anomalous traffic relative to the device’s benign baseline but do not distinguish between the TCP and UDP flood variants of the Gafgyt attack [E1–E5], [C7], [C8].
+
+## Immediate Actions
+1. Isolate the Provision_PT_838_Security_Camera immediately by disconnecting it from the network or blocking its MAC/IP to prevent further attack traffic and uplink saturation [C11].
+2. Power-cycle the device to clear the memory-resident bot; this removes the running malware but does not fix the vulnerability [C11].
+3. Rotate all credentials associated with the device, including local admin, Telnet/SSH, RTSP/streaming, and vendor cloud passwords, as factory defaults are publicly known and exploited by the botnet [C11].
+4. Close exposure paths by removing any router port-forwarding or UPnP mappings that expose Telnet (ports 23/2323) or management interfaces to the internet; apply any pending firmware updates and disable Telnet if possible [C11].
+5. Capture a single packet of the flood traffic (e.g., using tcpdump at the gateway) and inspect the IP header protocol field to determine whether the flood is TCP (protocol 6) or UDP (protocol 17). This step is for analyst information only and must not delay containment, as the response is identical for both candidates [C6], [C10].
+6. Sweep the local network segment for other infected devices, especially those of the same model, and apply this containment playbook to each [C11].
+
+## Longer-term Remediation
+1. Eliminate default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment. This measure breaks the primary propagation path of Mirai/Gafgyt-class botnets [C12].
+2. Maintain an inventory of all IoT devices and their credential status to ensure ongoing credential hygiene [C12].
+3. Regularly apply firmware updates and security patches to all IoT devices to close known vulnerabilities [C11].
+4. Disable unnecessary services such as Telnet on IoT devices and restrict management interfaces to trusted networks [C11].
+5. Segment IoT devices on separate VLANs or network segments to limit lateral movement and contain potential infections [C12].
+
+## Confidence Notes
+The classification identifies the attack as a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. The two candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol. Any probability split within the pair carries no evidential value as it derives from capture artefacts that do not generalize. This structural limitation is explicitly acknowledged and does not reduce confidence in the pair-level identification [ALERT DATA], [C6], [C10].",5,1,1,1
+hedged_pair-300009,"## Threat Assessment
+The Provision_PT_838_Security_Camera is currently emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. This attack is severe as the device is under external command and control, using its uplink to participate in a distributed denial-of-service (DDoS) attack that harms a third-party victim by saturating their network bandwidth. The device owner is collateral damage, and the local network may also be affected by uplink saturation. The two attack candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol [C1], [C2], [C6].
+
+## Attack Mechanism
+The Gafgyt flood over TCP or UDP operates by sending a continuous stream of packets at a target IP and port. For the TCP variant, the attack involves a high-rate stream of TCP segments with randomized source ports and sequence numbers, aiming to exhaust connection tables and generate volumetric load. For the UDP variant, the attack sends connectionless datagrams as fast as possible, saturating the victim’s inbound bandwidth and causing ICMP port-unreachable responses. Both variants produce a highly regular, template-built maximum-rate stream on embedded hardware. The device became infected and is now under external control, executing this attack as part of the Gafgyt (BASHLITE) botnet [C4], [C5], [C6].
+
+## Observable Indicators
+- [E1] H_L0.01_weight = 1, which is 0.0x below the device's benign median of 59.29 and within the benign 99th percentile of 254.2; anomalous relative to baseline.
+- [E2] H_L0.01_variance = 0, which is 0.0x below the device's benign median of 1.766e+04 and within the benign 99th percentile of 4.95e+04; anomalous relative to baseline.
+- [E3] MI_dir_L0.1_mean = 60, which is 0.7x below the device's benign median of 89.05 and within the benign 99th percentile of 171.3; anomalous relative to baseline.
+- [E4] MI_dir_L0.01_weight = 1, which is 0.0x below the device's benign median of 59.29 and within the benign 99th percentile of 254.2; anomalous relative to baseline.
+- [E5] MI_dir_L0.01_variance = 0, which is 0.0x below the device's benign median of 1.766e+04 and within the benign 99th percentile of 4.95e+04; anomalous relative to baseline.
+
+These features indicate anomalous traffic relative to the device’s benign baseline but do not distinguish between the TCP and UDP flood variants of the Gafgyt attack [E1–E5], [C7], [C8].
+
+## Immediate Actions
+1. Isolate the Provision_PT_838_Security_Camera immediately by disconnecting it from the network (unplug Ethernet, disable switch port, block MAC/IP, or move to quarantine VLAN) to prevent further uplink saturation and third-party harm [C11].
+2. Power-cycle the device to clear the memory-resident bot; this removes the running malware but does not fix the vulnerability [C11].
+3. Rotate all device credentials, including local admin, Telnet/SSH, RTSP/streaming, and vendor cloud passwords, as factory defaults are publicly known and exploited by the botnet [C11].
+4. Close exposure paths before reconnecting: remove any router port-forwarding or UPnP mappings exposing Telnet (ports 23/2323) or management interfaces, apply pending firmware updates, and disable Telnet if possible [C11].
+5. Capture a single packet of the flood traffic (e.g., tcpdump at the gateway) and inspect the IP header protocol field to determine whether the flood is TCP (protocol 6) or UDP (protocol 17). This disambiguation step should not delay containment, as response is identical for both candidates [C6], [C10].
+6. Sweep the local network segment for other infected devices, especially same-model IoT devices, and apply this playbook to each [C11].
+
+## Longer-term Remediation
+1. Eliminate default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment. This measure breaks the primary propagation path of Mirai/Gafgyt-class botnets [C12].
+2. Maintain an inventory of all IoT devices and their credential status to ensure ongoing credential hygiene [C12].
+3. Regularly apply firmware updates and security patches to all IoT devices to close known vulnerabilities [C11].
+4. Disable unnecessary services such as Telnet and restrict device management interfaces to trusted networks only [C11].
+5. Segment IoT devices on separate VLANs or network segments to limit lateral movement and contain infections [C12].
+
+## Confidence Notes
+The classifier identifies this attack confidently at the pair level as a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. The two candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol. Any probability split between gafgyt_tcp and gafgyt_udp carries no evidential value as it derives from capture artefacts that do not generalize. This structural limitation is explicitly acknowledged and does not reduce confidence in the pair-level identification [ALERT DATA], [C6], [C7], [C10].",5,1,1,1
+hedged_pair-325011,"## Threat Assessment
+
+The Samsung_SNH_1011_N_Webcam is currently emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. This attack is severe as the device is under external command and control, using its uplink bandwidth to participate in a distributed denial-of-service attack that harms a third-party victim and potentially saturates the local network uplink. The two attack variants, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol [C1], [C2], [C6].
+
+## Attack Mechanism
+
+The Gafgyt flood over TCP or UDP involves the device sending a continuous stream of packets at a target IP and port. For the TCP variant, the attack sends TCP segments with various flag combinations to exhaust connection tables and generate volumetric load. For the UDP variant, the attack sends connectionless datagrams as fast as possible to saturate the victim’s inbound bandwidth and cause ICMP port-unreachable responses. Both variants produce a highly regular, template-built maximum-rate stream on embedded hardware. The device became infected and is now under external control, executing this attack to overwhelm a victim’s network resources [C4], [C5], [C6].
+
+## Observable Indicators
+
+- [E1] H_L0.01_weight = 1 - 0.0x below the device's benign median (29.18); within the benign 99th percentile (410.7). This is anomalous relative to the device baseline.
+- [E2] H_L0.01_variance = 0 - 0.0x below the device's benign median (3.164e+04); within the benign 99th percentile (7.688e+04). This is anomalous relative to the device baseline.
+- [E3] MI_dir_L0.1_mean = 60 - 0.2x below the device's benign median (288.3); within the benign 99th percentile (413.2). This is anomalous relative to the device baseline.
+- [E4] MI_dir_L0.01_weight = 1 - 0.0x below the device's benign median (29.18); within the benign 99th percentile (410.7). This is anomalous relative to the device baseline.
+- [E5] MI_dir_L0.01_variance = 0 - 0.0x below the device's benign median (3.164e+04); within the benign 99th percentile (7.688e+04). This is anomalous relative to the device baseline.
+
+These anomalous feature values reflect the highly regular, high-rate packet stream characteristic of Gafgyt floods over TCP or UDP, consistent with the known statistical signature of this attack class [C7], [C8].
+
+## Immediate Actions
+
+1. Isolate the Samsung_SNH_1011_N_Webcam immediately by disconnecting it from the network (unplug Ethernet, disable switch port, block MAC/IP, or move to quarantine VLAN) to prevent further attack traffic and protect local uplink capacity [C11].
+2. Power-cycle the device to clear the memory-resident botnet malware; this reboot removes the running bot but does not fix the vulnerability [C11].
+3. Rotate all device credentials, including local web/admin login, Telnet/SSH passwords, RTSP/streaming credentials, and vendor cloud account passwords, as factory defaults are publicly known and exploited by botnets [C11].
+4. Before reconnecting, close exposure paths by removing any router port-forwarding or UPnP mappings exposing Telnet (ports 23/2323) or management interfaces, apply any pending firmware updates, and disable Telnet if possible [C11].
+5. Capture a single packet of the flood traffic (e.g., via tcpdump at the gateway) and inspect the IP header protocol field to determine whether the flood is TCP (protocol 6) or UDP (protocol 17). This step aids further analysis but must not delay containment, as response is identical for both candidates [C10].
+6. Sweep the local network segment for other infected devices, especially same-model webcams, and apply this containment playbook to each [C11].
+
+## Longer-term Remediation
+
+1. Eliminate default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment. This measure breaks the primary propagation path of Mirai/Gafgyt-class botnets and is critical for long-term protection [C12].
+2. Maintain an inventory of all IoT devices and their credential status to ensure ongoing credential hygiene [C12].
+3. Regularly apply firmware updates and security patches to all IoT devices to close known vulnerabilities and reduce exposure [C11], [C12].
+4. Implement network segmentation and strict access controls to isolate IoT devices from critical network resources and limit lateral movement in case of compromise [C12].
+5. Monitor network traffic for anomalous patterns consistent with IoT botnet activity to enable early detection and response [C7].
+
+## Confidence Notes
+
+The classification identifies the attack as a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. The two candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol. Any probability split between gafgyt_tcp and gafgyt_udp within the pair carries no evidential value as it derives from capture artefacts that do not generalize. This structural limitation is explicitly acknowledged, and the report presents both candidates symmetrically without preference or ranking [C6], [C8], [C10].",5,1,1,1
+hedged_pair-330023,"## Threat Assessment
+
+The Samsung_SNH_1011_N_Webcam is currently emitting a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. This attack is severe because the device is under external command and control, using its uplink bandwidth to participate in a distributed denial-of-service attack that harms a third-party victim and potentially saturates the local network uplink. The device owner is collateral damage, while the victim of the flood and the local network are the harmed parties. The two attack variants, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol [C1], [C2], [C6].
+
+## Attack Mechanism
+
+The Gafgyt flood over TCP or UDP operates by sending a continuous stream of packets at a target IP and port. For the TCP variant, the attack involves sending TCP segments with various flag combinations to exhaust connection tables and generate volumetric load. For the UDP variant, the attack sends connectionless datagrams as fast as possible to saturate the victim’s inbound bandwidth and cause ICMP port-unreachable responses. Both variants produce a highly regular, template-built maximum-rate stream on embedded hardware. The device became infected and is now under external control, emitting this flood to overwhelm a victim’s resources [C4], [C5], [C6].
+
+## Observable Indicators
+
+- [E1] H_L0.01_weight = 1 - 0.0x below the device's benign median (29.18); within the benign 99th percentile (410.7). This is anomalous relative to the device baseline.
+- [E2] H_L0.01_variance = 0 - 0.0x below the device's benign median (3.164e+04); within the benign 99th percentile (7.688e+04). This is anomalous relative to the device baseline.
+- [E3] MI_dir_L0.1_mean = 60 - 0.2x below the device's benign median (288.3); within the benign 99th percentile (413.2). This is anomalous relative to the device baseline.
+- [E4] MI_dir_L0.01_weight = 1 - 0.0x below the device's benign median (29.18); within the benign 99th percentile (410.7). This is anomalous relative to the device baseline.
+- [E5] MI_dir_L0.01_variance = 0 - 0.0x below the device's benign median (3.164e+04); within the benign 99th percentile (7.688e+04). This is anomalous relative to the device baseline.
+
+These features reflect the anomalous traffic patterns consistent with a machine-generated, high-rate flood, although they do not distinguish between TCP and UDP floods [C7], [C8].
+
+## Immediate Actions
+
+1. Isolate the Samsung_SNH_1011_N_Webcam immediately by disconnecting it from the network (unplug Ethernet, disable switch port, block MAC/IP, or move to quarantine VLAN) to prevent further attack traffic and protect local uplink capacity [C11].
+2. Power-cycle the device to clear the memory-resident bot; this removes the running malware but does not prevent reinfection [C11].
+3. Rotate all device credentials, including local web/admin login, Telnet/SSH passwords, RTSP/streaming credentials, and any associated vendor cloud account passwords, as default credentials are publicly known and exploited by Gafgyt [C11].
+4. Close exposure paths before reconnecting: remove any router port-forwarding or UPnP mappings exposing Telnet (ports 23/2323) or management interfaces, apply any pending firmware updates, and disable Telnet if possible [C11].
+5. Capture a single packet of the flood traffic (e.g., using tcpdump at the gateway) and inspect the IP header protocol field to determine whether the flood is TCP (protocol 6) or UDP (protocol 17). This step is for analyst information only and does not delay containment [C10].
+6. Sweep the local network segment for other infected devices, especially same-model webcams, and apply this containment playbook to each [C11].
+
+## Longer-term Remediation
+
+1. Eliminate default and shared credentials by assigning unique, non-default passwords to every IoT device at deployment. Maintain an inventory of devices and their credential status to prevent botnet propagation via credential reuse [C12].
+2. Implement network segmentation to isolate IoT devices from critical infrastructure and sensitive data, reducing the impact of any future compromise.
+3. Regularly update device firmware and software to patch known vulnerabilities and remove exposed services such as Telnet.
+4. Monitor network traffic for anomalous patterns consistent with IoT botnet activity to enable early detection and response.
+5. Review and restrict router configurations to minimize WAN exposure of IoT devices, including disabling unnecessary port forwarding and UPnP mappings.
+
+## Confidence Notes
+
+The classification identifies this incident as a Gafgyt flood over TCP or UDP (the tcp-or-udp pair) with a pair probability of 1.0000. The two candidates, gafgyt_tcp and gafgyt_udp, cannot be distinguished from the available traffic features because the feature set does not record the transport protocol. Any probability split between gafgyt_tcp and gafgyt_udp within the pair carries no evidential value, as it derives from capture artefacts that do not generalize. This structural limitation is explicitly acknowledged, and the report presents both candidates symmetrically without preference or ranking [C6], [C8], [C10].",5,1,1,1

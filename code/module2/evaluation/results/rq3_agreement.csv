@@ -1,0 +1,6 @@
+metric,method,kappa,n,raw_agreement,n_distinct_human,n_distinct_judge,degenerate
+claim_labels,cohens_kappa,0.4774033369793566,602,0.8338870431893688,3,3,False
+factual_accuracy,linear_weighted_kappa,0.044117647058823595,20,0.7,2,3,False
+actionability_device_specific,cohens_kappa,0.0,20,0.7,2,1,True
+actionability_phases_separated,cohens_kappa,1.0,20,1.0,1,1,True
+actionability_matches_category,cohens_kappa,1.0,20,1.0,1,1,True
