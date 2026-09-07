@@ -1,15 +1,17 @@
 """Export and score the frozen RQ3 human-versus-judge agreement sample.
 
-Export creates three CSV files in ``out_dir``:
+Export creates three CSV files and one human-readable Markdown file in ``out_dir``:
 
 * ``rq3_scoring_sheet_reports.csv`` contains the exact cached reports shown to
   the judge and blank report-level cells for the human rater.
 * ``rq3_scoring_sheet_claims.csv`` contains the exact non-feature claims routed
-  to the judge and blank human labels. ``(case_id, claim_index)`` is the claim
-  alignment key.
+  to the judge, their cited references, and blank human labels.
+  ``(case_id, claim_index)`` is the claim alignment key.
 * ``rq3_judge_reference.csv`` is withheld from the rater. It has a ``kind``
   column: ``claim`` rows carry ``claim_index`` and ``judge_label``; ``report``
   rows carry the judge's factual-accuracy and actionability scores.
+* ``rq3_case_materials.md`` contains the alert, evidence, and retrieved context
+  blocks supplied to the judge, but no judge answers.
 
 The scorer uses only these artifacts, rather than consulting cache internals.
 """
@@ -35,6 +37,7 @@ from ..generation import (
     load_cases,
 )
 from ..generation.cache import DEFAULT_CACHE_DIR
+from ..generation.prompt_builder import _alert_data, _context_block, format_evidence
 from ..retrieval import Retriever
 from .claim_cache import ClaimCache, DEFAULT_CLAIM_CACHE_DIR
 from .claims import ClaimExtractor, MockClaimExtractor
@@ -50,6 +53,7 @@ from .run_eval import (
 REPORTS_FILENAME = "rq3_scoring_sheet_reports.csv"
 CLAIMS_FILENAME = "rq3_scoring_sheet_claims.csv"
 JUDGE_REFERENCE_FILENAME = "rq3_judge_reference.csv"
+MATERIALS_FILENAME = "rq3_case_materials.md"
 AGREEMENT_FILENAME = "rq3_agreement.csv"
 _INTEGER_PATTERN = re.compile(r"-?(?:0|[1-9]\d*)")
 _CLAIM_INDEX_PATTERN = re.compile(r"(?:0|[1-9]\d*)")
@@ -103,25 +107,92 @@ def _write_csv(
         writer.writerows(rows)
 
 
-def export_rq3_sheet(
-    split: str = "frozen",
-    n: int = 20,
-    out_dir: str | Path = RESULTS_DIR,
-    client: LLMClient | None = None,
-    retriever: Retriever | None = None,
-    claim_extractor: ClaimExtractor | MockClaimExtractor | None = None,
-    use_cache: bool = True,
-    judge_client: JudgeClient | MockJudgeClient | None = None,
-) -> tuple[Path, Path, Path]:
-    """Export the exact reports, claims, and stored judge answers for RQ3."""
+def _has_human_annotations(path: Path, human_fields: Sequence[str]) -> bool:
+    if not path.exists():
+        return False
+    with path.open(encoding="utf-8", newline="") as handle:
+        for row in csv.DictReader(handle):
+            if any((row.get(field) or "").strip() for field in human_fields):
+                return True
+    return False
+
+
+def _protect_human_annotations(
+    reports_path: Path,
+    claims_path: Path,
+    score_fields: Sequence[str],
+    *,
+    force: bool,
+) -> None:
+    if force:
+        return
+    for path, human_fields in (
+        (reports_path, score_fields),
+        (claims_path, ("human_label",)),
+    ):
+        if _has_human_annotations(path, human_fields):
+            raise FileExistsError(
+                f"{path}: refusing to overwrite a sheet containing human "
+                "annotations; --force will discard human annotations"
+            )
+
+
+def _case_material(case: Any, chunks_by_section: dict[str, list[Any]]) -> str:
+    context = _context_block(chunks_by_section)
+    return "\n\n".join(
+        (
+            f"## {case.case_id}",
+            f"### ALERT DATA\n{_alert_data(case)}",
+            f"### EVIDENCE\nEVIDENCE\n{format_evidence(case.evidence)}",
+            f"### CONTEXT\n{context or '(no retrieved context)'}",
+        )
+    )
+
+
+def _write_materials(path: Path, case_materials: Sequence[str]) -> None:
+    header = (
+        "# RQ3 Case Grounding Materials\n\n"
+        "This is the grounding material the judge received for the selected RQ3 "
+        "cases. It is provided so the human rater can apply the `supported` "
+        "entailment criterion. It contains no judge answers."
+    )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n\n".join((header, *case_materials)) + "\n", encoding="utf-8")
+
+
+def _export_rq3_files(
+    split: str,
+    n: int,
+    out_dir: str | Path,
+    client: LLMClient | None,
+    retriever: Retriever | None,
+    claim_extractor: ClaimExtractor | MockClaimExtractor | None,
+    use_cache: bool,
+    judge_client: JudgeClient | MockJudgeClient | None,
+    *,
+    claims_only: bool,
+    force: bool,
+) -> tuple[Path, ...]:
+    """Build either the complete export or only the rater-facing claim files."""
 
     if split not in ("dev", "frozen"):
         raise ValueError("split must be 'dev' or 'frozen'")
     if n <= 0:
         raise ValueError("n must be positive")
 
+    output_dir = Path(out_dir)
+    reports_path = output_dir / REPORTS_FILENAME
+    claims_path = output_dir / CLAIMS_FILENAME
+    reference_path = output_dir / JUDGE_REFERENCE_FILENAME
+    materials_path = output_dir / MATERIALS_FILENAME
+    score_fields = _report_score_fields()
+    if not claims_only:
+        _protect_human_annotations(
+            reports_path, claims_path, score_fields, force=force
+        )
+
     generator_client = client or OpenAICompatibleClient()
-    active_judge = judge_client or JudgeClient()
+    active_judge = None if claims_only else (judge_client or JudgeClient())
     generation_cache = ReportCache(DEFAULT_CACHE_DIR)
     claim_cache = ClaimCache(DEFAULT_CLAIM_CACHE_DIR)
     if claim_extractor is None:
@@ -150,10 +221,10 @@ def export_rq3_sheet(
         missing = sorted(selected_ids - found_ids)
         raise ValueError(f"selected RQ3 cases were not loaded: {missing}")
 
-    score_fields = _report_score_fields()
     report_rows: list[dict[str, Any]] = []
     claim_rows: list[dict[str, Any]] = []
     reference_rows: list[dict[str, Any]] = []
+    case_materials: list[str] = []
     for case in cases:
         generated = generate_report(
             case,
@@ -168,6 +239,24 @@ def export_rq3_sheet(
         chunks_by_section = _chunks_seen_by_generator(
             generated.chunk_ids_by_section, active_retriever
         )
+        case_materials.append(_case_material(case, chunks_by_section))
+
+        for claim_index, claim in enumerate(judge_claims):
+            claim_rows.append(
+                {
+                    "case_id": case.case_id,
+                    "claim_index": claim_index,
+                    "section": claim.section,
+                    "cited_refs": json.dumps(claim.cited_refs),
+                    "claim_text": claim.text,
+                    "human_label": "",
+                }
+            )
+
+        if claims_only:
+            continue
+
+        assert active_judge is not None
         judge_result = active_judge.judge(
             case,
             generated.report_md,
@@ -207,15 +296,6 @@ def export_rq3_sheet(
                     f"{(case.case_id, claim_index)!r}: stored judge text differs "
                     "from the extracted claim"
                 )
-            claim_rows.append(
-                {
-                    "case_id": case.case_id,
-                    "claim_index": claim_index,
-                    "section": claim.section,
-                    "claim_text": claim.text,
-                    "human_label": "",
-                }
-            )
             claim_reference: dict[str, Any] = {
                 "kind": "claim",
                 "case_id": case.case_id,
@@ -225,19 +305,26 @@ def export_rq3_sheet(
             claim_reference.update({field: "" for field in score_fields})
             reference_rows.append(claim_reference)
 
-    output_dir = Path(out_dir)
-    reports_path = output_dir / REPORTS_FILENAME
-    claims_path = output_dir / CLAIMS_FILENAME
-    reference_path = output_dir / JUDGE_REFERENCE_FILENAME
+    _write_csv(
+        claims_path,
+        claim_rows,
+        [
+            "case_id",
+            "claim_index",
+            "section",
+            "cited_refs",
+            "claim_text",
+            "human_label",
+        ],
+    )
+    _write_materials(materials_path, case_materials)
+    if claims_only:
+        return claims_path, materials_path
+
     _write_csv(
         reports_path,
         report_rows,
         ["case_id", "report_md", *score_fields],
-    )
-    _write_csv(
-        claims_path,
-        claim_rows,
-        ["case_id", "claim_index", "section", "claim_text", "human_label"],
     )
     _write_csv(
         reference_path,
@@ -251,6 +338,60 @@ def export_rq3_sheet(
         ],
     )
     return reports_path, claims_path, reference_path
+
+
+def export_rq3_sheet(
+    split: str = "frozen",
+    n: int = 20,
+    out_dir: str | Path = RESULTS_DIR,
+    client: LLMClient | None = None,
+    retriever: Retriever | None = None,
+    claim_extractor: ClaimExtractor | MockClaimExtractor | None = None,
+    use_cache: bool = True,
+    judge_client: JudgeClient | MockJudgeClient | None = None,
+    force: bool = False,
+) -> tuple[Path, Path, Path]:
+    """Export the exact reports, claims, and stored judge answers for RQ3."""
+
+    paths = _export_rq3_files(
+        split,
+        n,
+        out_dir,
+        client,
+        retriever,
+        claim_extractor,
+        use_cache,
+        judge_client,
+        claims_only=False,
+        force=force,
+    )
+    return paths[0], paths[1], paths[2]
+
+
+def refresh_rq3_claims(
+    split: str = "frozen",
+    n: int = 20,
+    out_dir: str | Path = RESULTS_DIR,
+    client: LLMClient | None = None,
+    retriever: Retriever | None = None,
+    claim_extractor: ClaimExtractor | MockClaimExtractor | None = None,
+    use_cache: bool = True,
+) -> tuple[Path, Path]:
+    """Refresh only the claims sheet and human-readable grounding materials."""
+
+    paths = _export_rq3_files(
+        split,
+        n,
+        out_dir,
+        client,
+        retriever,
+        claim_extractor,
+        use_cache,
+        None,
+        claims_only=True,
+        force=False,
+    )
+    return paths[0], paths[1]
 
 
 def _read_csv(path: str | Path, required_fields: Sequence[str]) -> list[dict[str, str]]:
@@ -483,6 +624,24 @@ def _parser() -> argparse.ArgumentParser:
     export_parser.add_argument(
         "--mock", action="store_true", help="use offline mock clients"
     )
+    export_parser.add_argument(
+        "--force",
+        action="store_true",
+        help="discard any existing human annotations and overwrite the sheets",
+    )
+
+    refresh_parser = subparsers.add_parser(
+        "refresh-claims",
+        help="refresh only the claims sheet and rater grounding materials",
+    )
+    refresh_parser.add_argument(
+        "--split", choices=("dev", "frozen"), default="frozen"
+    )
+    refresh_parser.add_argument("--n", type=int, default=20)
+    refresh_parser.add_argument("--out-dir", type=Path, default=RESULTS_DIR)
+    refresh_parser.add_argument(
+        "--mock", action="store_true", help="use offline mock clients"
+    )
 
     score_parser = subparsers.add_parser("score", help="score filled RQ3 sheets")
     score_parser.add_argument(
@@ -504,7 +663,7 @@ def _parser() -> argparse.ArgumentParser:
 
 def main(argv: Sequence[str] | None = None) -> int:
     arguments = list(sys.argv[1:] if argv is None else argv)
-    if not arguments or arguments[0] not in {"export", "score"}:
+    if not arguments or arguments[0] not in {"export", "refresh-claims", "score"}:
         arguments.insert(0, "export")
     args = _parser().parse_args(arguments)
 
@@ -514,22 +673,34 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     if args.mock:
         generator_client: LLMClient = MockLLMClient()
-        active_judge: JudgeClient | MockJudgeClient = MockJudgeClient()
         extractor: ClaimExtractor | MockClaimExtractor = MockClaimExtractor()
     else:
         generator_client = OpenAICompatibleClient()
-        active_judge = JudgeClient()
         extractor = ClaimExtractor(generator_client)
-    paths = export_rq3_sheet(
-        split=args.split,
-        n=args.n,
-        out_dir=args.out_dir,
-        client=generator_client,
-        retriever=Retriever(),
-        claim_extractor=extractor,
-        use_cache=True,
-        judge_client=active_judge,
-    )
+    if args.mode == "refresh-claims":
+        paths = refresh_rq3_claims(
+            split=args.split,
+            n=args.n,
+            out_dir=args.out_dir,
+            client=generator_client,
+            retriever=Retriever(),
+            claim_extractor=extractor,
+            use_cache=True,
+        )
+    else:
+        active_judge: JudgeClient | MockJudgeClient
+        active_judge = MockJudgeClient() if args.mock else JudgeClient()
+        paths = export_rq3_sheet(
+            split=args.split,
+            n=args.n,
+            out_dir=args.out_dir,
+            client=generator_client,
+            retriever=Retriever(),
+            claim_extractor=extractor,
+            use_cache=True,
+            judge_client=active_judge,
+            force=args.force,
+        )
     for path in paths:
         print(path)
     return 0
